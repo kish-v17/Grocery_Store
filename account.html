@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="header">
+        <!-- header will be here -->
+    </div>
+    <div class="container sitemap d-flex justify-content-between">
+        <p><span class="dim">Home / </span>Account</p>
+        <p>Welcome! <span class="highlight">Username</span></p>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <div class="shadow-sm p-4 flex-col heading">
+                <ul>
+                    <li class="menu-item" data-id="my-profile">Manage My Account</li>
+                    <ul>
+                        <li class="active menu-item" data-id="my-profile">My Profile</li>
+                        <li class="menu-item" data-id="address-book">Address Book</li>
+                    </ul>
+                    <li class="menu-item" data-id="all-orders">My Orders</li>
+                    <ul>
+                        <li class="menu-item" data-id="all-orders">All Orders</li>
+                        <li class="menu-item" data-id="my-returns">My Returns</li>
+                        <li class="menu-item" data-id="my-cancellations">My Cancellations</li>
+                    </ul>
+                    <li class="menu-item" data-id="my-wishlist">My Wishlist</li>
+                </ul>
+            </div>
+            <div class="shadow-sm p-4">
+                <div id="my-profile" class="invisible">My Profile</div>
+                <div id="address-book" class="invisible">Address Book</div>
+                <div id="all-orders" class="invisible">All orders</div>
+                <div id="my-returns" class="invisible">My Returns</div>
+                <div id="my-cancellations" class="invisible">My Cancellations</div>
+                <div id="my-wishlist" class="invisible">My Wishlist</div>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+        <footer class="py-5">
+            <!-- footer will be here -->
+        </footer>
+    </div>
+    
+    <script src="js/scipt.js"></script>
+</body>
+</html>
