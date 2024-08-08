@@ -17,7 +17,7 @@
     </div>
     <div class="container">
         <div class="grid">
-            <div class="shadow-sm p-4 flex-col heading">
+            <div class="shadow-sm p-4 d-flex flex-column heading">
                 <ul>
                     <li class="menu-item" data-id="my-profile">Manage My Account</li>
                     <ul>
@@ -33,9 +33,46 @@
                     <li class="menu-item" data-id="my-wishlist">My Wishlist</li>
                 </ul>
             </div>
+            
             <div class="shadow-sm p-4">
-                <div id="my-profile" class="invisible">My Profile</div>
-                <div id="address-book" class="invisible">Address Book</div>
+                <div id="my-profile" class="invisible">
+                    <p class="highlight title">Edit Your Profile</p>
+                    <form action="" class="edit-profile">
+                        <div class="flex">
+                            <div class="flex-item">
+                                <label for="" class="form-label">First Name</label>
+                                <input type="text" placeholder="Your Name*">
+                            </div>
+                            <div class="flex-item">
+                                <label for="" class="form-label">Last Name</label>
+                                <input type="text" placeholder="Your Email*">
+                            </div>
+                            <div class="flex-item">
+                                <label for="" class="form-label">Email</label>
+                                <input type="text" placeholder="Your Email*">
+                            </div>
+                            <div class="flex-item">
+                                <label for="" class="form-label">Phone</label>
+                                <input type="text" placeholder="Your Phone*">
+                            </div>
+                            <div class="flex-item">
+                                <label for="" class="form-label">Address</label>
+                                <textarea name="address" id="address" rows="7" placeholder="Your Address*"></textarea>
+                            </div>
+                        </div>
+                        <input type="submit" value="Send Message" class="btn-msg mt-3">
+                    </form>
+                </div>
+                <div id="address-book" class="invisible">
+                    <p class="highlight title">Address Book</p>
+                    <div class="flex">
+                        <div class="flex-item"></div>
+                        <div class="flex-item"></div>
+                        <div class="flex-item"></div>
+                        <div class="flex-item"></div>
+                        <div class="flex-item"></div>
+                    </div>
+                </div>
                 <div id="all-orders" class="invisible">All orders</div>
                 <div id="my-returns" class="invisible">My Returns</div>
                 <div id="my-cancellations" class="invisible">My Cancellations</div>
