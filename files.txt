@@ -1,0 +1,43 @@
+User:
+-Register, Login, Forget password, enter otp page
+-Home
+-Product
+-wishlist & cart including empty cart and empty wishlist
+-my profile
+-my orders
+-contact us
+-header & footer including how would it look without login and with login
+-checkout
+-ordered successfully page
+
+Admin:
+-dashboard
+-order management
+    -update order
+    -add order
+    -display orders-delete included
+    -display order details
+-product management
+    -add product
+    -update product
+    -display product -delete included
+-review management
+    -add review 
+    -update review
+    -display reviews & delete review
+-category management
+    -add category
+    -update category
+    -delete category
+    -display category
+-user management
+    -add user
+    -update user info & delete user
+    -display users
+    -display particular user
+-profile management and field
+    -update own login info
+    -contact page number and email field display update
+    -change site's name
+-display contact responses
+    -update responses
