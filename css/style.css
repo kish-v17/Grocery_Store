@@ -15,13 +15,17 @@ html body{
     height: 100%;
     width: 100%;
 }
+/* common */
+.link{transition: color 0.15s;}
+.link:hover{color:var(--primary);}
 
 /* account page */
+.btn-edit-address:hover{box-shadow: 0 0 1px rgba(0, 0, 0, 0);}
 .btn-edit-address{
+    transition: box-shadow 0.15s;
     background-color:var(--primary);
     padding:10px 5px;
     color:white;
-    float:right;
     margin-right: 7px;
     margin-bottom:7px;
     border-radius: 3px;
@@ -35,7 +39,7 @@ html body{
 .address-book>p{
     margin:5px;
 }
-.highlight{color:var(--primary)}
+.highlight,.h{color:var(--primary);}
 .heading ul{
     list-style: none;
 }
@@ -48,21 +52,26 @@ html body{
     font-weight: 500;
     margin-bottom:15px;
 }
-.heading>ul>ul{
+.menu-item{
     margin-bottom:20px;
+    transition: color 0.15s;
 }
-.heading>ul>ul>li:hover{
-    opacity: 0.80;
+.menu-item:hover{
+    color: var(--primary);
 }
-.active{color:var(--primary);}
+.active{
+    color:var(--primary);
+    font-weight: 600;
+}
 .invisible{display:none;}
 .flex{
     display:flex;
     margin-bottom: 10px;
     flex-wrap: wrap;
+    gap:10px;
 }
 .flex-item{
-    flex:1 1 calc(40%);
+    flex:1 1 calc(20%);
 }
 .form-label{
     display: block;
@@ -79,9 +88,11 @@ html body{
 
 
 /* contact us page */
+#contactMessage{font-size:14px;}
 .dim{
     color:var(--dim);
 }
+.d{background: var(--dim);}
 .sitemap{
     margin:50px 0;
 }
@@ -116,7 +127,6 @@ input[type="text"],textarea{
     background-color: var(--form-bg);
     border: none;
     resize: none;
-    width: 100%;
     font-size: 14px;
 }
 input[type="text"]::placeholder {
@@ -129,7 +139,10 @@ input[type="submit"],button{border:none;}
     background-color: var(--primary);
     color:white;
     border-radius: 3px;
-    float: right;
+}
+
+.gap{
+    gap:50px;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

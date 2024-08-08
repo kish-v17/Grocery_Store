@@ -3,13 +3,16 @@ User:
 -Home
 -Product
 -wishlist & cart including empty cart and empty wishlist
--my profile
 -my orders
--contact us
 -header & footer including how would it look without login and with login
 -checkout
 -ordered successfully page
 
+----------------------------------------------------------------------
+-my profile(add delete button)
+-contact us
+
+------------------------------------------------------------------------
 Admin:
 -dashboard
 -order management
@@ -41,3 +44,5 @@ Admin:
     -change site's name
 -display contact responses
     -update responses
+
+--------------------------------------------------------------
