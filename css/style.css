@@ -31,6 +31,8 @@ input[type="radio"],input[type="checkbox"]{
     height:15px;
     width:15px;
 }
+
+
 /* checkout page */
 .billing-details input[type="text"] {
     padding: 9px;
@@ -153,14 +155,14 @@ input[type="radio"],input[type="checkbox"]{
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10px;
 }
-input[type="text"],textarea{
+.form input[type="text"],textarea{
     padding:20px;
     background-color: var(--form-bg);
     border: none;
     resize: none;
     font-size: 14px;
 }
-input[type="text"]::placeholder {
+.form input[type="text"]::placeholder {
     color: var(--form);
     opacity: 1;
 }
@@ -186,11 +188,16 @@ input[type="submit"],button{border:none;}
 
 
 
+/* login, register and forget password */
+.login-form input[type="text"]{
+    border-width: 0px 0px 1px 0px;
+    padding:8px 0px;
+}
 
 
-
-
-
+.btn-login{
+    padding:10px 30px;
+}
 
 
 

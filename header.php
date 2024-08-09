@@ -9,7 +9,7 @@
         "checkout.php" => "Checkout",
         "cart.php" => "Cart"
     );
-
+    $title = $title_array[$caller_file];
 ?>
 
 <!-- HTML code -->
@@ -18,9 +18,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title_array[$caller_file] ?></title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
 </head>
 <body>
-    <!-- header will go here -->
+    <div class="mx-5 text-center border">
+        <h1 class="p-3">Header</h1>
+    </div>

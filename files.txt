@@ -1,12 +1,13 @@
 User:
--Register, Login, Forget password, enter otp page
+-Register, Forget password, enter otp page
 -Home
 -Product
 -wishlist & cart including empty cart and empty wishlist
 -my orders
 -header & footer including how would it look without login and with login
--checkout
 -ordered successfully page
+-product details
+-order-details
 
 ----------------------------------------------------------------------
 -my profile 
@@ -16,6 +17,8 @@ User:
 -checkout
     -add animation when shipping details open up
     -fix the styling of the line between shipping details and billing details
+-login page
+
 
 ------------------------------------------------------------------------
 Admin:

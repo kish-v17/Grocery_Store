@@ -29,7 +29,7 @@
                 <div class="shadow-sm p-4">
                     <div id="my-profile" class="invisible">
                         <p class="highlight title">Edit Your Profile</p>
-                        <form action="" class="edit-profile">
+                        <form action="" class="edit-profile form">
                             <div class="row g-2">
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">First Name</label>
@@ -139,7 +139,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" class="edit-profile">
+                <form action="" class="edit-profile form">
                     <div class="row g-2">
                         <div class="col-12">
                             <label for="" class="form-label">First Name</label>

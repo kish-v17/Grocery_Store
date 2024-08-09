@@ -24,7 +24,7 @@
             <div class="col-12 col-sm-8 p-2">
                 <div class="shadow-sm p-4">
                     <form action="">
-                        <div class="flex">
+                        <div class="flex form">
                             <input type="text" placeholder="Your Name*" class="flex-item">
                             <input type="text" placeholder="Your Email*" class="flex-item">
                             <input type="text" placeholder="Your Phone*" class="flex-item">

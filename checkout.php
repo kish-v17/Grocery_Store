@@ -9,9 +9,9 @@
     <div class="container">
         <h2 class="mb-4">Billing Details</h2>
         <div class="row g-5">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="mb-4">
-                    <form action="" class="billing-details">
+                    <form action="" class="billing-details form">
                         <div class="row gx-2 gy-3">
                             <div class="col-12 col-sm-6">
                                 <label for="" class="form-label">First Name<span class="required">*</span></label>
@@ -64,7 +64,7 @@
                 <div class="js-shipping-details invisible">
                     <div class="line mb-4"></div>
                     <h2 class="mb-4">Shipping Details</h2>
-                    <form action="" class="billing-details">
+                    <form action="" class="billing-details form">
                         <div class="row gx-2 gy-3">
                             <div class="col-12 col-sm-6">
                                 <label for="" class="form-label">First Name<span class="required">*</span></label>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="mt-4 line mb-4"></div>
             </div>
-            <div class="col-6 font-black">
+            <div class="col-md-6 font-black">
                 <div class="mb-2">
                     <div class="d-flex align-items-center p-2">
                         <img src="img\items\chocolate.webp" class="checkout-image" alt="">
