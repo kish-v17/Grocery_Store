@@ -4,10 +4,12 @@
     <meta chars-et="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,5 +39,10 @@
             <!-- footer will be here -->
         </footer>
     </div>
+
+    <!-- scripts -->
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- scripts -->
 </body>
 </html>
