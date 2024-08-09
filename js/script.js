@@ -18,4 +18,19 @@ menuItems.forEach(menuItem=>{
     });
 });
 //for printing my profile section by default on account page
-document.querySelector('#my-profile').classList.remove('invisible');
+const profile = document.querySelector('#my-profile');
+if(profile)
+    profile.classList.remove('invisible');
+
+
+//checkout page - different shipping address feature
+const choice = document.querySelector('#choice');
+
+choice.addEventListener('change',()=>{
+    if(choice.checked){
+        document.querySelector('.js-shipping-details').classList.remove('invisible');
+    }
+    else{
+        document.querySelector('.js-shipping-details').classList.add('invisible');
+    }
+});

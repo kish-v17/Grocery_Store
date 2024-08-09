@@ -1,6 +1,6 @@
 <?php include('header.php'); ?>
     <div class="container sitemap">
-    <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
+        <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
     </div>
     <div class="container">
         <div class="row">

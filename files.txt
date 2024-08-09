@@ -9,8 +9,13 @@ User:
 -ordered successfully page
 
 ----------------------------------------------------------------------
--my profile``   
+-my profile 
+    -main menu item is not highlighted when other than 1st menuitem is active
+    -not responsive properly
 -contact us
+-checkout
+    -add animation when shipping details open up
+    -fix the styling of the line between shipping details and billing details
 
 ------------------------------------------------------------------------
 Admin:
