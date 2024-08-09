@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="header">
-        <!-- header will be here -->
-    </div>
+<?php include('header.php') ?>
     <div class="container ">
         <div class=" d-flex justify-content-between sitemap">
-            <p><a href="index.html" class="text-decoration-none dim link">Home /</a> Account</p>
+            <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Account</p>
             <p>Welcome! <span class="highlight">Username</span></p>
         </div>
     </div>
@@ -185,8 +173,4 @@
           </div>
         </div>
       </div>
-    
-    <script src="js/scipt.js"></script>
-    <script src="js/bootstrap/bootstrap.js"></script>
-</body>
-</html>
+<?php include('footer.php'); ?>

@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-</head>
-<body>
-    <?php include('header.php') ?>
+<?php include('header.php'); ?>
     <div class="container sitemap">
-        <p><span class="dim">Home / </span>Contact</p>
+        <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
     </div>
     <div class="container">
         <div class="row">
@@ -50,10 +40,4 @@
             </div> 
         </div>
     </div>
-    <div class="container ">
-        <footer class="py-5">
-            <!-- footer will be here -->
-        </footer>
-    </div>
-
 <?php include('footer.php') ?>

@@ -5,6 +5,7 @@
     --form:#7B7B7B;
     --primary:#DB4444;
     --delete: red;
+    --form-label:#999999;
 }
 *{
    
@@ -20,6 +21,37 @@ html body{
 /* common */
 .link{transition: color 0.15s;}
 .link:hover{color:var(--primary);}
+.required{color:hsla(0, 100%, 50%,0.8);}
+input[type="checkbox"]{
+    accent-color:var(--primary);
+}
+.font-black{color:black;}
+input[type="radio"]{accent-color: black;}
+input[type="radio"],input[type="checkbox"]{
+    height:15px;
+    width:15px;
+}
+/* checkout page */
+.billing-details input[type="text"] {
+    padding: 9px;
+    border-radius:2px;
+    font-size:15px;
+}
+.billing-details textarea{
+    resize: none;
+}
+.billing-details .form-label{
+    font-size: 15px;
+    color:var(--dim);
+}
+#confirmation+label,#choice+label{color:black;margin-bottom: 5px;}
+.checkout-image{
+    width:50px;
+    height:50px;
+}
+.price{
+    margin-left: auto;
+}
 
 /* account page */
 .primary-btn:hover{box-shadow: 0 0 1px rgba(0, 0, 0, 0);}
@@ -73,7 +105,7 @@ html body{
     flex:1 1 calc(20%);
 }
 .form-label{
-    display: block;
+    /* display: block; */
     font-size:16px;
 }
 .edit-profile input[type="text"]{
