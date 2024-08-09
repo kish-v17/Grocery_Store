@@ -4,8 +4,10 @@
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
     --primary:#DB4444;
+    --delete: red;
 }
 *{
+   
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,17 +22,14 @@ html body{
 .link:hover{color:var(--primary);}
 
 /* account page */
-.btn-edit-address:hover{box-shadow: 0 0 1px rgba(0, 0, 0, 0);}
-.btn-edit-address{
+.primary-btn:hover{box-shadow: 0 0 1px rgba(0, 0, 0, 0);}
+.primary-btn{
     transition: box-shadow 0.15s;
     background-color:var(--primary);
-    padding:10px 5px;
+    padding:10px;
     color:white;
-    margin-right: 7px;
-    margin-bottom:7px;
     border-radius: 3px;
     font-size: 14px;
-    padding: 10px;
 }
 .border-red{
     border:1px solid var(--dim);
@@ -141,9 +140,33 @@ input[type="submit"],button{border:none;}
     border-radius: 3px;
 }
 
-.gap{
-    gap:50px;
+.gap-row{
+    row-gap: 10px;
 }
+
+.dlt-btn{
+    background-color:var(--delete);
+}
+.gap{
+    gap:7px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
