@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
 </head>
 <body>
-    <div class="header">
-        <!-- header will be here -->
-    </div>
+    <?php include('header.php') ?>
     <div class="container sitemap">
         <p><span class="dim">Home / </span>Contact</p>
     </div>
@@ -57,7 +55,5 @@
             <!-- footer will be here -->
         </footer>
     </div>
-    
-    <script src="js/scipt.js"></script>
-</body>
-</html>
+
+<?php include('footer.php') ?>
