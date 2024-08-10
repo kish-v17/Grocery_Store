@@ -1,13 +1,12 @@
 User:
--Forget password, enter otp page
 -Home
 -Product
+-product details
 -wishlist & cart including empty cart and empty wishlist
 -my orders
+-order-details
 -header & footer including how would it look without login and with login
 -ordered successfully page
--product details
--order-details
 
 ----------------------------------------------------------------------
 -my profile 
@@ -17,30 +16,27 @@ User:
 -checkout
     -add animation when shipping details open up
     -fix the styling of the line between shipping details and billing details
--login page, register page
+-login, register ,Forget password, enter otp page
 
 
 ------------------------------------------------------------------------
 Admin:
 -dashboard
 -order management
-    -update order
-    -add order
-    -display orders-delete included
+    -update order status
+    -display orders -delete included
     -display order details
 -product management
     -add product
     -update product
     -display product -delete included
 -review management
-    -add review 
-    -update review
+    -add review
     -display reviews & delete review
 -category management
     -add category
     -update category
-    -delete category
-    -display category
+    -display category -delete category
 -user management
     -add user
     -update user info & delete user
@@ -51,6 +47,6 @@ Admin:
     -contact page number and email field display update
     -change site's name
 -display contact responses
-    -update responses
+    -delete responses
 
 --------------------------------------------------------------
