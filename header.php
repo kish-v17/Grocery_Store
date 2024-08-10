@@ -23,6 +23,29 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
 </head>
 <body>
-    <div class="mx-5 text-center border">
-        <h1 class="p-3">Header</h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand fs-1 fw-bold" href="index.php">PureBite</a>
+                <ul class="links navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Product</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex justify-content-end">
+                    <button class="btn btn-outline-success me-2" type="button">Register</button>
+                    <button class="btn btn-outline-success me-2" type="button">Login</button>
+                </form>
+            </div>
+        </div>
+    </nav>
