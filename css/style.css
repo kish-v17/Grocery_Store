@@ -188,17 +188,28 @@ input[type="submit"],button{border:none;}
 
 
 
-/* login, register and forget password */
-.login-form input[type="text"]{
+/* login, register and forgot password,otp page */
+.login-form input[type="text"],.login-form input[type="number"]{
     border-width: 0px 0px 1px 0px;
     padding:8px 0px;
 }
-
+/* .login-form{
+    padding:100px;
+} */
+.arrow{
+    height:20px;
+    width:20px;
+}
 
 .btn-login{
     padding:10px 30px;
 }
-
+/* to hide arrows/spinner */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 
 

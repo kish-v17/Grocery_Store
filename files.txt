@@ -1,5 +1,5 @@
 User:
--Register, Forget password, enter otp page
+-Forget password, enter otp page
 -Home
 -Product
 -wishlist & cart including empty cart and empty wishlist
@@ -17,7 +17,7 @@ User:
 -checkout
     -add animation when shipping details open up
     -fix the styling of the line between shipping details and billing details
--login page
+-login page, register page
 
 
 ------------------------------------------------------------------------
