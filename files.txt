@@ -1,6 +1,5 @@
 User:
 -Home
--order-details
 -header & footer including how would it look without login and with login
 -ordered successfully page
 -optional
@@ -26,6 +25,8 @@ User:
 -Product
     -make like button interactive
     -change some styles
+-order-details
+    -make it responsive
 
 
 
