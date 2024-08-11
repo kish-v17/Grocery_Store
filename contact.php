@@ -21,7 +21,7 @@
                     <p class="m-0">Emails: customer@exclusive.com</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-8 p-2">
+            <div class="col-12 col-sm-8  p-2">
                 <div class="shadow-sm p-4">
                     <form action="">
                         <div class="flex form">
