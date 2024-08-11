@@ -8,6 +8,7 @@
         "account.php" => "My Profile",
         "checkout.php" => "Checkout",
         "cart.php" => "Cart",
+        "shop.php" => "Shop",
         "login.php" => "Log in to PureBite",
         "register.php" => "Register to PureBite"
     );
@@ -35,16 +36,15 @@
                 <a class="navbar-brand fs-1 fw-bold" href="index.php">PureBite</a>
                 <ul class="links navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link <?php echo $title=="Home"?"active":""?>" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Product</a>
+                    <a class="nav-link <?php echo $title=="Shop"?"active":""?>" href="shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link <?php echo $title=="Contact"?"active":""?>" href="contact.php">Contact</a>
                     </li>
                 </ul>
-
                 <form class="d-flex justify-content-end">
                     <a class="btn btn-outline-success me-2" type="button" href="register.php">Register</a>
                     <a class="btn btn-outline-success me-2" type="button" href="login.php">Login</a>

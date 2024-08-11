@@ -6,6 +6,8 @@
     --primary:#3BB77E;
     --delete: red;
     --form-label:#999999;
+    --secondary:#DEF9EC;
+    --discount:#FFD480;
 }
 *{
     margin: 0;
@@ -30,15 +32,27 @@ input[type="radio"],input[type="checkbox"]{
     height:15px;
     width:15px;
 }
+input[type="checkbox"]:checked {
+    border-color:white;
+}
 .bold-border{
     border:2px solid black;
 }
+.active{
+    color:var(--primary) !important;
+}
+
+
 
 
 /* index page */
 
 
 /* checkout page */
+.checkout .price{
+    margin-left: auto;
+    font-size:16px;
+}
 .billing-details input[type="text"] {
     padding: 9px;
     border-radius:2px;
@@ -178,19 +192,15 @@ input[type="submit"],button{border:none;}
     color:white;
     border-radius: 3px;
 }
-
 .gap-row{
     row-gap: 10px;
 }
-
 .dlt-btn{
     background-color:var(--delete);
 }
 .gap{
     gap:7px;
-  }
-
-
+}
 
 
 /* login, register and forgot password,otp page */
@@ -205,7 +215,6 @@ input[type="submit"],button{border:none;}
     height:20px;
     width:20px;
 }
-
 .btn-login{
     padding:10px 30px;
 }
@@ -217,8 +226,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* cart */
-
-
 .cart-table>div.row{
     border-bottom-width: 0px !important;
     align-items: center;
@@ -227,6 +234,9 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     min-height: 65px;
     margin-bottom: 23px;
+}
+.font-bold>*{
+    font-weight: 500;
 }
 .cart-table div:nth-child(1){
     justify-content: flex-start;
@@ -263,11 +273,12 @@ input::-webkit-inner-spin-button {
 }
 .cart-page button,.cart-page a{
     background-color: white;
-    color:black;
-    border: 1px solid black;
-    font-weight: 500;
+    color:var(--primary);
+    border: 1px solid var(--primary);
+    font-weight: 600;
     transition:  color 0.15s,background-color 0.15s;
 }
+.price{margin-left: auto;}
 .cart-page a{
     text-decoration: none;
     cursor: pointer;
@@ -288,7 +299,17 @@ input::-webkit-inner-spin-button {
     color:white;
 }
 
-/* products page */
+
+
+
+
+/* shop page */
+.product-body .category-name{
+    color:var(--dim);
+    font-size: 13px;
+    margin-bottom: 2px;
+    font-weight: 300;
+} 
 .product-image>button {
     position: absolute;
     bottom: 0;
@@ -309,6 +330,23 @@ input::-webkit-inner-spin-button {
 }
 .product-body .price{
     color:var(--primary);
+    margin-top:4px;
+    font-size:16px;
+}
+.product-body .striked-price{
+    color:var(--dim);
+    font-size:12px;
+    text-decoration: line-through;
+    padding-left: 8px;
+}
+.product-body .primary-btn,.like{
+    color:var(--primary);
+    background-color: var(--secondary);
+    transition:  background-color 0.15s, color 0.15s;
+}
+.product-body .primary-btn:hover, .like:hover{
+    color:white;
+    background-color: var(--primary);
 }
 .fa-star{
     color: #BFBFBF;
@@ -320,23 +358,20 @@ input::-webkit-inner-spin-button {
     color:#808080;
 }
 .card-title{
-    font-size: 15px;
+    font-size: 17px;
 }
 .rating-section,.rating-section-description{
     display: flex;
     font-size:13px;
 }
-.card{
-    border:none !important;
-}
 .card .img-thumbnail{
-    border: 1px solid var(--form-label);
+    border:none;
 }
+
 .like{
-    background-color: whitesmoke;
     border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -349,16 +384,19 @@ input::-webkit-inner-spin-button {
     transition: opacity 0.3s ease;
 }
 .product-image .label{
-    background-color: #00ff66;
-    color:White;
-    border-radius: 5px;
+    background-color: var(--discount);
+    color:white;
+    border-radius: 3px 0px;
     position: absolute;
-    top:10px;
-    left:10px;
-    font-size: 10px;
-    padding:4px 7px;
+    top:0;
+    left:0;
+    font-size: 15px;
+    padding: 8px 16px;
     text-transform: uppercase;
 }
+
+
+
 
 /* order history page */
 .order-link{
@@ -401,14 +439,16 @@ input::-webkit-inner-spin-button {
     font-size:16px;
 }
 .quantity div:hover {
-    background-color: #e0e0e0;
+    background-color:var(--secondary);
 }
-
 .quantity div.selected {
     background-color: var(--primary);
     color: white;
     border: none;
 }
+
+
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
     .grid{

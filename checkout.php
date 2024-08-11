@@ -103,7 +103,7 @@
                 </div>
                 <div class="mt-4 line mb-4"></div>
             </div>
-            <div class="col-md-6 font-black">
+            <div class="col-md-6 font-black checkout">
                 <div class="mb-2">
                     <div class="d-flex align-items-center p-2">
                         <img src="img\items\chocolate.webp" class="checkout-image" alt="">

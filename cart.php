@@ -2,7 +2,7 @@
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>
         <!-- table start -->
-        <div class="row">
+        <div class="row font-bold">
             <div class="col-4">
                 Product
             </div>
@@ -50,7 +50,7 @@
             <a class="btn-msg" href="shop.php">Return to shop</a>
             <button class="btn-msg">Update Cart</button>
         </div>
-        <div class="row justify-content-end ">
+        <div class="row justify-content-end">
             <div class="col-md-5">
                 <div class="bold-border p-4">
                     <h5 class="mb-3">Cart Total</h5>

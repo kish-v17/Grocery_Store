@@ -7,10 +7,10 @@
         </p>
 
         <div class="row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <img src="img/items/chocolate.webp" alt="Product image" class="img-thumbnail p-3">
             </div>
-            <div class="col-7 d-flex flex-column px-5 align-items-start">
+            <div class="col-md-7 d-flex flex-column px-5 align-items-start">
                 <h4 class="product-title">5-Star Chocolate</h4>
                 <div class="rating-section-description">
                     <div class="ratings">
@@ -33,19 +33,20 @@
                     <div class="col-3">Price</div>
                     <div class="col-9 price">₹100.00</div>
                 </div>
-                <div class="row align-items-center mt-2 w-100">
+                <div class="row align-items-center mt-3 w-100">
                     <div class="col-3 mt-">Quantity</div>
-                    <div class="col-9 quantity d-flex">
+                    <div class="col-9 quantity d-flex flex-wrap">
                         <div onclick="selectQuantity(this, 1)">1</div>
                         <div onclick="selectQuantity(this, 2)">2</div>
                         <div onclick="selectQuantity(this, 3)">3</div>
                         <div onclick="selectQuantity(this, 4)">4</div>
                         <div onclick="selectQuantity(this, 5)">5</div>
                     </div>
-                    <input type="hidden" id="selectedQuantity" name="quantity" value="">
                 </div>
-                
-                <button class="add-to-cart-btn primary-btn mt-4 w-100 ">Add to cart</button>
+                <form action="cart.php" class="w-100 mt-4">
+                    <input type="hidden" id="selectedQuantity" name="quantity" value="">
+                    <button class="add-to-cart-btn primary-btn w-100" type="submit">Add to cart</button>
+                </form>
             </div>
         </div>
     </div>

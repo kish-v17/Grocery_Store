@@ -1,6 +1,5 @@
 User:
 -Home
--product details
 -order-details
 -header & footer including how would it look without login and with login
 -ordered successfully page
@@ -11,19 +10,24 @@ User:
 
 ----------------------------------------------------------------------
 
+-login, register ,Forget password, enter otp page
+-contact us 
+-product details
+    -need some changes
 -my profile 
     -main menu item is not highlighted when other than 1st menuitem is active
     -not responsive properly
--contact us
 -checkout
     -add animation when shipping details open up
     -fix the styling of the line between shipping details and billing details
--login, register ,Forget password, enter otp page
+    -change the color of the tick mark when it is checked
 -cart page
+-my orders
 -Product
     -make like button interactive
     -change some styles
--my orders
+
+
 
 ------------------------------------------------------------------------
 Admin:
