@@ -1,17 +1,16 @@
 User:
 -Home
 -product details
--my orders
 -order-details
 -header & footer including how would it look without login and with login
 -ordered successfully page
-
 -optional
     -empty cart
     -empty wishlist and wishlist
 
 
 ----------------------------------------------------------------------
+
 -my profile 
     -main menu item is not highlighted when other than 1st menuitem is active
     -not responsive properly
@@ -24,6 +23,7 @@ User:
 -Product
     -make like button interactive
     -change some styles
+-my orders
 
 ------------------------------------------------------------------------
 Admin:

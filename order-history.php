@@ -32,7 +32,7 @@
                 <div class="col-2 ">Pending</div>
                 <div class="col-2 text-center">2</div>
                 <div class="col-2 text-center">100.00</div>
-                <div class="col-2 text-center"><button class="primary-btn">View Order</button></div>
+                <div class="col-2 text-center"><a class="primary-btn order-link">View Order</a></div>
             </div>
     
             ';

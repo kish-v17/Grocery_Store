@@ -22,7 +22,7 @@
             <div class="col-2 ">
                 <div class="d-flex qty-mod">
                     <button class="number-button qty-minus">-</button>
-                    <input type="number" class="qty name="qty" id="" value="3">
+                    <input type="number" class="qty" name="qty" id="" value="3">
                     <button class="number-button qty-plus">+</button>
                 </div>
             </div>
