@@ -1,7 +1,10 @@
 <?php include('header.php'); ?>
-    <div class="row justify-content-start" style="margin:15vh 17vh">
+    <div class="container sitemap ">
+        <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
+        <div class="row justify-content-start">
             <?php display_products();?>
         </div>
+    </div>
 <?php include('footer.php'); ?>
 
 <?php
@@ -15,9 +18,9 @@
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
                         <div class="like"><i class="fa-regular fa-heart"></i></div>
                         ';
-                        // if($i%3==0){
-                        //     echo '<div class="label">Save 5%</div>';
-                        // }
+                        if($i%3==0){
+                            echo '<div class="label">Save 5%</div>';
+                        }
                         echo 
                         '
                         <!--<button class=" primary-btn">Add to cart</button>-->
