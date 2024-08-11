@@ -55,6 +55,7 @@
             </ul>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/0e8e0c1571.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap/bootstrap.js"></script>
         <script src="js/script.js"></script>
     </body>

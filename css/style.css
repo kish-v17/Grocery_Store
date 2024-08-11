@@ -289,9 +289,77 @@ input::-webkit-inner-spin-button {
     color:white;
 }
 
-
-
-
+/* products page */
+.product-image>button {
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-100%);
+    width: 100%; 
+    background-color: black;
+    border-radius: 0px 0px 3px 3px;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.product-image{
+    position: relative;
+}
+.product-image:hover button, .product-image:hover .like{
+    opacity: 1;
+    cursor: pointer;
+}
+.product-body .price{
+    color:var(--primary);
+}
+.fa-star{
+    color: #BFBFBF;
+}
+.checked{
+    color:orange;
+}
+.review-count{
+    color:#808080;
+}
+.card-title{
+    font-size: 15px;
+}
+.rating-section{
+    display: flex;
+    font-size:13px;
+}
+.card{
+    border:none !important;
+}
+.card .img-thumbnail{
+    border: 1px solid var(--form-label);
+}
+.like{
+    background-color: whitesmoke;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    top:10px;
+    font-size:17px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.product-image .label{
+    background-color: #00ff66;
+    color:White;
+    border-radius: 5px;
+    position: absolute;
+    top:10px;
+    left:10px;
+    font-size: 10px;
+    padding:4px 7px;
+    text-transform: uppercase;
+}
 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -305,8 +373,8 @@ input::-webkit-inner-spin-button {
     .flex-item{flex:1 1 100%;width: 100%;}
 }
 /*  for Extra small devices (phones, 600px and down)*/
-@media only screen and (max-width:600px) {
-
+@media only screen and (max-width:576px) {
+    
 }
 
 

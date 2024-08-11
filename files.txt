@@ -1,12 +1,15 @@
 User:
 -Home
--Product
 -product details
--wishlist & cart including empty cart and empty wishlist
 -my orders
 -order-details
 -header & footer including how would it look without login and with login
 -ordered successfully page
+
+-optional
+    -empty cart
+    -empty wishlist and wishlist
+
 
 ----------------------------------------------------------------------
 -my profile 
@@ -17,7 +20,10 @@ User:
     -add animation when shipping details open up
     -fix the styling of the line between shipping details and billing details
 -login, register ,Forget password, enter otp page
-
+-cart page
+-Product
+    -make like button interactive
+    -change some styles
 
 ------------------------------------------------------------------------
 Admin:
