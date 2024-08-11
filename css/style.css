@@ -3,7 +3,7 @@
     --dim:#808080;
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
-    --primary:#DB4444;
+    --primary:#198754;
     --delete: red;
     --form-label:#999999;
 }
@@ -35,8 +35,19 @@ input[type="radio"],input[type="checkbox"]{
 }
 
 
-/* header page */
+/* index page */
+.hero{
+    height: 70vh;
+    overflow: hidden;
+    /* position: relative; */
+    /* background-image: url("img/items/banners/hero-bg.png"); */
+    background-color: #00ff66;
+}
+.hero .hero-img{
+    /* position: absolute; */
+    z-index: 99;
 
+}
 
 
 /* checkout page */
