@@ -116,7 +116,21 @@
                             </div>
                         </div>
                     </div>
-                    <div id="all-orders" class="invisible">All orders</div>
+                    <div id="all-orders" class="invisible container cart-table">
+                    <div class="row">
+                        <div class="col-2">
+                            Order ID
+                        </div>
+                        <div class="col-2 text-center">Order Date</div>
+                        <div class="col-2 ">
+                            Order status
+                        </div>
+                        <div class="col-2 text-center">Quantity</div>
+                        <div class="col-2 text-center">Total Price</div>
+                        <div class="col-2 text-center">View Orders</div>
+                    </div>
+                        <?php display_orders(); ?>
+                    </div>
                     <div id="my-returns" class="invisible">My Returns</div>
                     <div id="my-cancellations" class="invisible">My Cancellations</div>
                     <div id="my-wishlist" class="invisible">My Wishlist</div>
@@ -174,3 +188,23 @@
         </div>
       </div>
 <?php include('footer.php'); ?>
+
+<?php 
+    function display_orders(){
+        for($i=1;$i<=5;$i++){
+            echo '
+            <div class="row">
+                <div class="col-2">
+                    123
+                </div>
+                <div class="col-2 text-center">11-08-2024</div>
+                <div class="col-2 ">Pending</div>
+                <div class="col-2 text-center">2</div>
+                <div class="col-2 text-center">100.00</div>
+                <div class="col-2 text-center"><a class="primary-btn">View Order</a></div>
+            </div>
+    
+            ';
+        } 
+    }
+?>
