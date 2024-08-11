@@ -1,10 +1,10 @@
 <?php include('header.php'); ?>
-    <div class="container sitemap ">
-        <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
-        <div class="row justify-content-start">
+    <!-- <div class="container sitemap ">
+        <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p> -->
+        <div class="row justify-content-start" style="margin:15vh 17vh">
             <?php display_products();?>
         </div>
-    </div>
+    <!-- </div> -->
 <?php include('footer.php'); ?>
 
 <?php

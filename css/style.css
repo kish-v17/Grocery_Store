@@ -3,7 +3,7 @@
     --dim:#808080;
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
-    --primary:#3BB77E;
+    --primary:#198754;
     --delete: red;
     --form-label:#999999;
     --secondary:#DEF9EC;
@@ -41,12 +41,17 @@ input[type="checkbox"]:checked {
 .active{
     color:var(--primary) !important;
 }
-
-
+.links{
+    margin-left: 3vw;
+}
 
 
 /* index page */
-
+.hero{
+    height: 80vh;
+    background-color: #51df9c;
+    background-image: url("img/items/banners/hero-bg.png");
+}
 
 /* checkout page */
 .checkout .price{

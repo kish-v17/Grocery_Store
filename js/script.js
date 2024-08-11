@@ -85,3 +85,15 @@ function selectQuantity(selectedDiv, value) {
     selectedDiv.classList.add('selected');
     document.getElementById('selectedQuantity').value = value;
 }
+
+gsap.to("#navibar",{
+    backgroundColor : '#51df9c',
+    duration:0.1,
+    scrollTrigger:{
+        trigger:'#navibar',
+        scroll:'body',
+        start:'10%',
+        end:'11%',
+        scrub:2,
+    }
+})
