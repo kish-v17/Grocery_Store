@@ -8,11 +8,8 @@
         "account.php" => "My Profile",
         "checkout.php" => "Checkout",
         "cart.php" => "Cart",
-        "register.php" => "Register",
-        "login.php" => "Login",
-        "forgot-password.php" => "Password recovery",
-        "otp-page.php" => "OTP Verification",
-        "shop.php" => "Shop"
+        "login.php" => "Log in to PureBite",
+        "register.php" => "Register to PureBite"
     );
     $title = $title_array[$caller_file];
 ?>
@@ -49,8 +46,8 @@
                 </ul>
 
                 <form class="d-flex justify-content-end">
-                    <button class="btn btn-outline-success me-2" type="button">Register</button>
-                    <button class="btn btn-outline-success me-2" type="button">Login</button>
+                    <a class="btn btn-outline-success me-2" type="button" href="register.php">Register</a>
+                    <a class="btn btn-outline-success me-2" type="button" href="login.php">Login</a>
                 </form>
             </div>
         </div>
