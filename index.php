@@ -2,7 +2,8 @@
 
 <div class="container">
     <div class="hero">
-    
+    <div class="hero-text"></div>
+    <img src="img\items\banners\Hreo-img.png" class="image" alt="imagheed e skdkj">
     </div>
     <section class=" mt-5">
         <h4>Featuerd products</h4>
@@ -22,6 +23,10 @@
         </div>
     </section>
 <?php include('footer.php'); ?>
+<div class="hero">
+    <div class="hero-text"></div>
+    <img src="img\items\banners\Hreo-img.png" class="image" alt="imagheed e skdkj">
+</div>
 
 <?php
     function display_products(){

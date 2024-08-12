@@ -87,13 +87,33 @@ function selectQuantity(selectedDiv, value) {
 }
 
 gsap.to("#navibar",{
-    backgroundColor : '#51df9c',
+    backgroundColor : '#51df9d',
     duration:0.1,
     scrollTrigger:{
         trigger:'#navibar',
         scroll:'body',
-        start:'10%',
-        end:'11%',
-        scrub:2,
+        start:'6%',
+        end:'5%',
+        scrub:1,
+    }
+})
+gsap.to(".nav-link , .active, .logo ",{
+    color:"#fff",
+    scrollTrigger:{
+        scroll:'body',
+        start:'2%',
+        end:'1%',
+        scrub:1,
+    }
+})
+
+gsap.to(".btn",{
+    color:"#fff",
+    borderColor:"#fff",
+    scrollTrigger:{
+        scroll:'body',
+        start:'8%',
+        end:'7%',
+        scrub:1,
     }
 })
