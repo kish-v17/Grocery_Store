@@ -1,0 +1,4 @@
+-profile management and field
+    -update own login info
+    -contact page number and email field display update
+    -change site's name

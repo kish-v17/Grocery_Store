@@ -2,11 +2,16 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Products</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Products</li>
-                        </ol>
+                        <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+                            <div>
+                                <h1>Products</h1>
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Products</li>
+                                </ol>
+                            </div>
+                            <a class="btn btn-primary" href="add-product.php">Add Product</a>
+                        </div>
                         <div class="card-body">
                             <table class="table border">
                                 <thead class="table-light">
@@ -16,7 +21,7 @@
                                         <th>Discount</th>
                                         <th>Sold Quantity</th>
                                         <th>Stock</th>
-                                        <th>Category</th> <!-- Extra field for Category -->
+                                        <th>Category</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -30,10 +35,10 @@
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -45,10 +50,10 @@
                                         <td>5%</td>
                                         <td>120</td>
                                         <td>30</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -60,10 +65,10 @@
                                         <td>0%</td>
                                         <td>300</td>
                                         <td>100</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -75,10 +80,10 @@
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,10 +95,10 @@
                                         <td>5%</td>
                                         <td>120</td>
                                         <td>30</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -105,10 +110,10 @@
                                         <td>0%</td>
                                         <td>300</td>
                                         <td>100</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -120,10 +125,10 @@
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -135,10 +140,10 @@
                                         <td>5%</td>
                                         <td>120</td>
                                         <td>30</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -150,10 +155,10 @@
                                         <td>0%</td>
                                         <td>300</td>
                                         <td>100</td>
-                                        <td>Bakery</td> <!-- Example category -->
+                                        <td>Bakery</td> 
                                         <td>
                                             <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -180,4 +185,21 @@
                         </div>
                     </div>
                 </main>
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this product? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="delete_product_handler.php" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include("footer.php")?>

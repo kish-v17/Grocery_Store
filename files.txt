@@ -39,10 +39,6 @@ Admin:
     -update order status
     -display orders -delete included
     -display order details
--product management
-    -add product
-    -update product
-    -display product -delete included
 -review management
     -add review
     -display reviews & delete review
@@ -63,3 +59,12 @@ Admin:
     -delete responses
 
 --------------------------------------------------------------
+
+-product management
+    -add product
+    -update product
+    -display product -delete included
+
+-login
+-register
+-password
