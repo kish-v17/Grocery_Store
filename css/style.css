@@ -47,10 +47,20 @@ input[type="checkbox"]:checked {
 
 
 /* index page */
+.banner-1{
+    background-image: url("../img/items/banners/banner-1.png");
+    height: 300px;
+}
+.banner-2{
+    background-image: url("../img/items/banners/banner-2.png");
+    height: 300px;
+    background-color: #FFF7E6;
+
+}
 .hero{
     height: 80vh;
     background-color: #51df9c;
-    background-image: url("img/items/banners/hero-bg.png");
+    background-image: url("../img/items/banners/hero-bg.png");
 }
 
 /* checkout page */
