@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap');
 :root{
     --dim:#808080;
     --form-bg:#F5F5F5;
@@ -47,15 +49,72 @@ input[type="checkbox"]:checked {
 
 
 /* index page */
+.cart-btn{
+    text-align: center;
+    background-color:var(--primary);
+    padding:10px;
+    color:white;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 300;
+}
+.product-body .sold{
+    font-size:13px;
+    margin-bottom: 8px;
+}
+.featured-products .d-flex{
+    font-size:15px;
+}
+.featured-products h4{font-weight: 600;}
+.active{
+    color:var(--primary);
+}
+.featured-products>div>div:hover{
+    cursor:pointer;
+}
 .banner-1{
     background-image: url("../img/items/banners/banner-1.png");
     height: 300px;
+    border-radius: 5px;
+    padding: 40px 50px;
+}
+.label-red{
+    background-color: #f35244;
+    color:white;
+    border-radius: 3px 0px;
+    font-size: 15px;
+    padding: 8px 12px;
+    display:inline;
+    height: 100%;
+}
+.banner-1 .label,.banner-2 .label{
+    background-color: var(--discount);
+    color:white;
+    border-radius: 3px 0px;
+    font-size: 12px;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    display:inline;
+} 
+.banner-1 .heading,.banner-2 .heading{
+    margin:20px 0 8px 0;
+    color:#253d4e;
+    font-size: 24px;
+}
+.banner-1 .content,.banner-2 .content{
+    color:#838383;
+    width:60%;
+    font-size:15px;
+}
+.banner-1 .primary-btn,.banner-2 .primary-btn{
+    font-size:16px;
+    padding:13px;
 }
 .banner-2{
     background-image: url("../img/items/banners/banner-2.png");
     height: 300px;
-    background-color: #FFF7E6;
-
+    border-radius: 5px;
+    padding: 40px 50px;
 }
 .hero{
     display: flex;
@@ -425,6 +484,10 @@ input::-webkit-inner-spin-button {
 
 
 /* order history page */
+.cart-btn{
+    color:white;
+    background-color: var(--primary);
+}
 .order-link{
     text-decoration: none;
     cursor: pointer;
