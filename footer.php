@@ -1,4 +1,4 @@
-    <div class="container mt-5">
+    <div class="footer container mt-5">
         <div class="row" bis_skin_checked="1">
             <div class="col-6 col-md-2 mb-3" bis_skin_checked="1">
             <h5>Section</h5>
@@ -40,7 +40,7 @@
                 <div class="d-flex flex-column flex-sm-row w-100 gap-2" bis_skin_checked="1">
                 <label for="newsletter1" class="visually-hidden">Email address</label>
                 <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                <button class="btn btn-primary" type="button">Subscribe</button>
+                <a class="btns" type="button">Subscribe</a>
                 </div>
             </form>
             </div>

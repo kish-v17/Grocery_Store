@@ -47,7 +47,36 @@ input[type="checkbox"]:checked {
     margin-left: 3vw;
 }
 
+#navibar{
+    border-radius: 0 0 4vh 4vh;
+}
 
+.profile{
+    border-radius: 50%;
+    height:4vw;
+    width: 4vw;
+    object-fit: cover;
+    border: 0.8vh inset #198754;
+}
+.username{
+    font-weight: 800;
+    text-decoration: none;
+    color: #198754;
+    font-size: 1.4vw;
+}
+
+.footer .nav-link{
+    color: #198754;
+}
+.btns{
+    background-color: #198754;
+    display: flex;
+    align-items: center;
+    padding: 0.3vh 1.2vh;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 0.7vh;
+}
 /* index page */
 .cart-btn{
     text-align: center;
@@ -122,11 +151,21 @@ input[type="checkbox"]:checked {
     align-items: center;
     height: 70vh;
     border-radius: 0 0 20px 20px;
-    background-color: #51df9dbb;
+    background-color: #3ed48e;
     overflow: hidden;
+}
+.hero-text span{
+    font-weight:900;
+    font-size: 12vh;
+    line-height: 1;
 }
 .hero-text{
     width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18vh;
+    font-size: 4vh;
 }
 .image{
     object-fit: cover;

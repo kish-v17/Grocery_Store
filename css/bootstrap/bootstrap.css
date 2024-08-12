@@ -3231,12 +3231,12 @@ textarea.form-control-lg {
 }
 
 .btn-outline-success {
-  color: #198754 !important;
+  color: #198754;
   border-color: #198754;
 }
 .btn-outline-success:hover {
-  color: #198754;
-  background-color: #fff;
+  color: #fff;
+  background-color: #198754;
   border-color: #198754;
 }
 .btn-check:focus + .btn-outline-success, .btn-outline-success:focus {
@@ -3249,7 +3249,6 @@ textarea.form-control-lg {
 }
 .btn-check:checked + .btn-outline-success:focus, .btn-check:active + .btn-outline-success:focus, .btn-outline-success:active:focus, .btn-outline-success.active:focus, .btn-outline-success.dropdown-toggle.show:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
-
 }
 .btn-outline-success:disabled, .btn-outline-success.disabled {
   color: #198754;
