@@ -87,7 +87,7 @@ function selectQuantity(selectedDiv, value) {
 }
 
 gsap.to("#navibar",{
-    backgroundColor : '#7FE8B7',
+    backgroundColor : '#3ED48E',
     duration:0.1,
     scrollTrigger:{
         trigger:'#navibar',
