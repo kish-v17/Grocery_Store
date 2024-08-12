@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
     <div class="hero">
-    <div class="hero-text"></div>
+    <div class="hero-text"> <span>PUREBITE</span> Taste the Goodness </div>
     <img src="img\items\banners\Hero-img.png" class="image" alt="">
     </div>
     <section class=" mt-5 container">

@@ -62,7 +62,7 @@ input[type="checkbox"]:checked {
     font-weight: 800;
     text-decoration: none;
     color: #198754;
-    font-size: 1.3vw;
+    font-size: 1.4vw;
 }
 
 .footer .nav-link{
@@ -154,8 +154,18 @@ input[type="checkbox"]:checked {
     background-color: #3ed48e;
     overflow: hidden;
 }
+.hero-text span{
+    font-weight:900;
+    font-size: 12vh;
+    line-height: 1;
+}
 .hero-text{
     width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18vh;
+    font-size: 4vh;
 }
 .image{
     object-fit: cover;
