@@ -9,7 +9,7 @@ menuItems.forEach(menuItem=>{
         document.querySelector('#'+id).classList.remove('invisible');
         this.classList.add('active');
         menuItems.forEach(menuItem2=>{
-          menuItem2.classList.add('active');
+        menuItem2.classList.add('active');
             if(id!=menuItem2.dataset.id){
                 document.querySelector('#'+menuItem2.dataset.id).classList.add('invisible'); 
                 menuItem2.classList.remove('active');

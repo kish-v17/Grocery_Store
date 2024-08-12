@@ -1,9 +1,9 @@
 <?php include('header.php'); ?>
 
-<div class="container">
+<div class="container-fluid ">
     <div class="hero">
     <div class="hero-text"></div>
-    <img src="img\items\banners\Hreo-img.png" class="image" alt="imagheed e skdkj">
+    <img src="img\items\banners\Hero-img.png" class="image" alt="">
     </div>
     <section class="mt-5 ">
         <div class="d-flex justify-content-between featured-products">
@@ -57,10 +57,6 @@
         </div>
     </section>
 <?php include('footer.php'); ?>
-<div class="hero">
-    <div class="hero-text"></div>
-    <img src="img\items\banners\Hreo-img.png" class="image" alt="imagheed e skdkj">
-</div>
 
 <?php
     function display_products(){
