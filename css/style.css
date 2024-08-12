@@ -47,6 +47,23 @@ input[type="checkbox"]:checked {
     margin-left: 3vw;
 }
 
+#navibar{
+    border-radius: 0 0 4vh 4vh;
+}
+
+.profile{
+    border-radius: 50%;
+    height:4vw;
+    width: 4vw;
+    object-fit: cover;
+    border: 0.8vh inset #198754;
+}
+.username{
+    font-weight: 800;
+    text-decoration: none;
+    color: #198754;
+    font-size: 1.3vw;
+}
 
 /* index page */
 .cart-btn{

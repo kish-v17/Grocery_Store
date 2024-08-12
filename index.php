@@ -1,6 +1,5 @@
 <?php include('header.php'); ?>
 
-<div class="container-fluid ">
     <div class="hero">
     <div class="hero-text"></div>
     <img src="img\items\banners\Hero-img.png" class="image" alt="">
