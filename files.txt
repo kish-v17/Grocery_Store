@@ -2,6 +2,8 @@ User:
 -Home
 -header & footer including how would it look without login and with login
 -ordered successfully page
+
+
 -optional
     -empty cart
     -empty wishlist and wishlist
