@@ -3231,12 +3231,12 @@ textarea.form-control-lg {
 }
 
 .btn-outline-success {
-  color: #198754;
+  color: #198754 !important;
   border-color: #198754;
 }
 .btn-outline-success:hover {
-  color: #fff;
-  background-color: #198754;
+  color: #198754;
+  background-color: #fff;
   border-color: #198754;
 }
 .btn-check:focus + .btn-outline-success, .btn-outline-success:focus {

@@ -1,5 +1,5 @@
 <?php include('header.php'); ?>
-    <div class="row justify-content-start" style="margin:15vh 17vh">
+    <div class="row justify-content-start" style="margin:2vh 17vh">
             <?php display_products();?>
         </div>
 <?php include('footer.php'); ?>
