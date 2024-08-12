@@ -5,7 +5,7 @@
     <div class="hero-text"></div>
     <img src="img\items\banners\Hero-img.png" class="image" alt="">
     </div>
-    <section class="mt-5 ">
+    <section class=" mt-5 container">
         <div class="d-flex justify-content-between featured-products">
             <h4 >Featuerd products</h4>
             <div class="d-flex gap-2">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-between featured-products mt-5">
+        <div class="d-flex justify-content-between align-items-center featured-products mt-5">
             <div class="d-flex align-items-center gap-5">
                 <h4 >Daily Best Sales</h4>
                 <div class="label-red">Expires in: 10:56:21</div>
