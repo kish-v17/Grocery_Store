@@ -65,6 +65,18 @@ input[type="checkbox"]:checked {
     font-size: 1.3vw;
 }
 
+.footer .nav-link{
+    color: #198754;
+}
+.btns{
+    background-color: #198754;
+    display: flex;
+    align-items: center;
+    padding: 0.3vh 1.2vh;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 0.7vh;
+}
 /* index page */
 .cart-btn{
     text-align: center;
