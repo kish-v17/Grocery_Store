@@ -49,20 +49,30 @@ input[type="checkbox"]:checked {
 
 #navibar{
     border-radius: 0 0 4vh 4vh;
+    border: 2px solid #e0d7d7;
+}
+.profile-menu{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-menu>a{
+    color: #198754;
+    font-weight: 700;
 }
 
-.profile{
-    border-radius: 50%;
-    height:4vw;
-    width: 4vw;
-    object-fit: cover;
-    border: 0.8vh inset #198754;
-}
-.username{
-    font-weight: 800;
-    text-decoration: none;
+.profile-menu>i{
     color: #198754;
-    font-size: 1.4vw;
+    font-size: 5vh;
+    
+}
+#pro-drop{
+    background-color: #198754;
+    
+}
+#pro-drop>li>a{
+    color: #fff;
 }
 
 .footer .nav-link{

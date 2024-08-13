@@ -47,10 +47,16 @@
                     <a class="nav-link <?php echo $title=="Contact"?"active":""?>" href="contact.php">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex justify-content-end align-items-center gap-3">
-                    <a href="profile.php"><img src="img/user-img/profile.jpg" class="profile" alt=""></a>
-                    <a class="username" href="profile.php">Tony Stark</h5>
-                </form>
+                <div class="d-flex justify-content-end">
+                    <li class="nav-item ms-lg-auto dropdown profile-menu">
+                    <i class="fa fa-user-circle"></i><a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="profile.php">Tony Strak</a>
+                        <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" href="profile.php">My Profile</a></li>
+                            <li><a class="dropdown-item" href="order-details.php">Your Orders</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                        </ul>
+                    </li>
+                </div>
             </div>
         </div>
     </nav>
