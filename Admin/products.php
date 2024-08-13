@@ -31,43 +31,30 @@
                                             <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
                                             <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$25.00</td>
+                                        <td>₹25.00</td>
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> 
+                                        <td>Bakery</td>
                                         <td>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
                                             <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Blueberry Muffin" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Blueberry Muffin</span>
+                                            <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$15.00</td>
-                                        <td>5%</td>
-                                        <td>120</td>
-                                        <td>30</td>
-                                        <td>Bakery</td> 
+                                        <td>₹25.00</td>
+                                        <td>10%</td>
+                                        <td>150</td>
+                                        <td>50</td>
+                                        <td>Bakery</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Chocolate Donut" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Chocolate Donut</span>
-                                        </td>
-                                        <td>$2.00</td>
-                                        <td>0%</td>
-                                        <td>300</td>
-                                        <td>100</td>
-                                        <td>Bakery</td> 
-                                        <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
@@ -76,43 +63,14 @@
                                             <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
                                             <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$25.00</td>
+                                        <td>₹25.00</td>
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> 
+                                        <td>Bakery</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Blueberry Muffin" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Blueberry Muffin</span>
-                                        </td>
-                                        <td>$15.00</td>
-                                        <td>5%</td>
-                                        <td>120</td>
-                                        <td>30</td>
-                                        <td>Bakery</td> 
-                                        <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Chocolate Donut" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Chocolate Donut</span>
-                                        </td>
-                                        <td>$2.00</td>
-                                        <td>0%</td>
-                                        <td>300</td>
-                                        <td>100</td>
-                                        <td>Bakery</td> 
-                                        <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
@@ -121,46 +79,67 @@
                                             <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
                                             <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$25.00</td>
+                                        <td>₹25.00</td>
                                         <td>10%</td>
                                         <td>150</td>
                                         <td>50</td>
-                                        <td>Bakery</td> 
+                                        <td>Bakery</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Blueberry Muffin" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Blueberry Muffin</span>
+                                            <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$15.00</td>
-                                        <td>5%</td>
-                                        <td>120</td>
-                                        <td>30</td>
-                                        <td>Bakery</td> 
+                                        <td>₹25.00</td>
+                                        <td>10%</td>
+                                        <td>150</td>
+                                        <td>50</td>
+                                        <td>Bakery</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <img src="../img/items/products/cookiecake.webp" alt="Chocolate Donut" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">Chocolate Donut</span>
+                                            <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <span class="ms-2">Cookie Cake</span>
                                         </td>
-                                        <td>$2.00</td>
-                                        <td>0%</td>
-                                        <td>300</td>
-                                        <td>100</td>
-                                        <td>Bakery</td> 
+                                        <td>₹25.00</td>
+                                        <td>10%</td>
+                                        <td>150</td>
+                                        <td>50</td>
+                                        <td>Bakery</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">Update</button>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <span class="ms-2">Cookie Cake</span>
+                                        </td>
+                                        <td>₹25.00</td>
+                                        <td>10%</td>
+                                        <td>150</td>
+                                        <td>50</td>
+                                        <td>Bakery</td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                        </td>
+                                    </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
