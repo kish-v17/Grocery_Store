@@ -35,24 +35,29 @@ User:
 ------------------------------------------------------------------------
 Admin:
 -dashboard
--order management
-    -update order status
-    -display orders -delete included
-    -display order details
--review management
-    -add review
-    -display reviews & delete review
--user management
-    -add user
-    -update user info & delete user
-    -display users
-    -display particular user
+
+-add particular user page
+-add particular product page
+
 -profile management and field
     -update own login info
     -contact page number and email field display update
     -change site's name
 
 --------------------------------------------------------------
+
+-user management
+    -add user
+    -update user info & delete user
+    -display users
+
+-review management
+    -display reviews & delete review
+
+-order management
+    -update order status
+    -display orders -delete included
+    -display order details
 -display contact responses
     -delete responses
 -product management
