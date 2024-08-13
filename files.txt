@@ -42,10 +42,6 @@ Admin:
 -review management
     -add review
     -display reviews & delete review
--category management
-    -add category
-    -update category
-    -display category -delete category
 -user management
     -add user
     -update user info & delete user
@@ -55,16 +51,19 @@ Admin:
     -update own login info
     -contact page number and email field display update
     -change site's name
--display contact responses
-    -delete responses
 
 --------------------------------------------------------------
-
+-display contact responses
+    -delete responses
 -product management
     -add product
     -update product
     -display product -delete included
 
+-category management
+    -add category
+    -update category
+    -display category -delete category
 -login
 -register
 -password

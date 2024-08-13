@@ -1,0 +1,133 @@
+<?php include("sidebar.php") ?>
+            <div id="layoutSidenav_content">
+            <main>
+        <div class="container-fluid px-4">
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+                <div>
+                    <h1>View Order</h1>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="orders.php">Orders</a></li>
+                        <li class="breadcrumb-item active">View Order</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Order Details -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Order Details</h5>
+                </div>
+                <div class="card-body">
+                    <h6><strong>Order ID:</strong> 1001</h6>
+                    <h6><strong>Status:</strong> Pending</h6>
+                    <h6><strong>Order Date:</strong> 2024-08-10</h6>
+                </div>
+            </div>
+
+            <!-- Addresses -->
+            <div class="row">
+                <!-- Shipping Address -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>Shipping Address</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Street:</strong> 56 Lotus Avenue</p>
+                            <p><strong>City:</strong> New Delhi</p>
+                            <p><strong>State:</strong> john.doe@example.com</p>
+                            <p><strong>Zip Code:</strong> 110001</p>
+                            <p><strong>Phone:</strong> (123) 456-7890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Address -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>Billing Address</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Street:</strong> 56 Lotus Avenue</p>
+                            <p><strong>City:</strong> New Delhi</p>
+                            <p><strong>State:</strong> john.doe@example.com</p>
+                            <p><strong>Zip Code:</strong> 110001</p>
+                            <p><strong>Phone:</strong> (123) 456-7890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Information -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>User Information</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                </div>
+            </div>
+
+            <!-- Ordered Items -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Ordered Ispootems</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table border">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Item Image</th>
+                                <th>Item Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="path_to_image1.jpg" alt="Item 1" width="50"></td>
+                                <td>Item 1</td>
+                                <td>$10.00</td>
+                                <td>2</td>
+                                <td>$20.00</td>
+                            </tr>
+                            <tr>
+                                <td><img src="path_to_image2.jpg" alt="Item 2" width="50"></td>
+                                <td>Item 2</td>
+                                <td>$15.00</td>
+                                <td>1</td>
+                                <td>$15.00</td>
+                            </tr>
+                            <!-- Add more items as needed -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" class="text-end">Subtotal:</th>
+                                <td>$35.00</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-end">Shipping Charge:</th>
+                                <td>$5.00</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-end">Total:</th>
+                                <td>$40.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+        </div>
+    </div>
+</div>
+<?php include("footer.php") ?>
+
