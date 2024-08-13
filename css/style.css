@@ -40,14 +40,35 @@ input[type="checkbox"]:checked {
 .bold-border{
     border:2px solid black;
 }
-/* .active{
-    color:var(--primary) !important;
-} */
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 1.5vh; /* Width of the entire scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #9cecc7; /* Background color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #198754; /* Color of the scrollbar handle */
+    border-radius: 6px; /* Rounded corners of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color on hover */
+}
+
+/* header */
 .links{
     margin-left: 3vw;
 }
 
 #navibar{
+    background-color: white;
     border-radius: 0 0 4vh 4vh;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -75,8 +96,12 @@ input[type="checkbox"]:checked {
     color: #fff;
 }
 
-.footer .nav-link{
+.footer .nav-link, .footer .logo p{
     color: #198754;
+}
+.footer .logo  span{
+    font-weight: 900;
+    font-size: 7vh;
 }
 .btns{
     background-color: #198754;
@@ -159,7 +184,7 @@ input[type="checkbox"]:checked {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70vh;
+    height: 80vh;
     border-radius: 0 0 20px 20px;
     background-color: #3ed48e;
     overflow: hidden;
@@ -179,7 +204,8 @@ input[type="checkbox"]:checked {
 }
 .image{
     object-fit: cover;
-    height: 70vh;
+    height: 65vh;
+    margin-top: 12vh;
 }
 
 /* checkout page */
