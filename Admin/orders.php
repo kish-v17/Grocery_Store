@@ -28,7 +28,7 @@
                     <tbody>
                         <tr>
                             <td>1001</td>
-                            <td>John Doe</td>
+                            <td><a href="user_profile.php?username=JohnDoe">John Doe</a></td>
                             <td>2024-08-10</td>
                             <td>2</td>
                             <td>$50.00</td>
