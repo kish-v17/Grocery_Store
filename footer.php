@@ -1,7 +1,7 @@
     <div class="footer container mt-5">
         <div class="row" bis_skin_checked="1">
             <div class="col-6 col-md-2 mb-3 w-25" bis_skin_checked="1">
-                <div class="logo">
+                <div class="logo d-flex flex-column justify-content-center align-items-center align-self-center">
                 <a href="index.php" class="nav-link p-0 text-body-secondary"><span>PUREBITE</span></a>
                     <p>Taste the Goodness</p> 
                 </div>
