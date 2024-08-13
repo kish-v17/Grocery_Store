@@ -1,5 +1,5 @@
 <?php include("sidebar.php"); ?>
-<div id="layoutSidenav_content">
+<!-- Amdmin Side Start --><div id="layoutSidenav_content">
 <div class="container-fluid px-4">
     <h1 class="mt-4">Admin Dashboard</h1>
     <ol class="breadcrumb mb-4">
