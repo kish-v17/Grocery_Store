@@ -381,8 +381,8 @@ input[type="submit"],button{border:none;}
 /* to hide arrows/spinner */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 #register{
     background-color: #3ed48e;
