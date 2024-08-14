@@ -17,6 +17,7 @@ menuItems.forEach(menuItem=>{
         });
     });
 });
+
 //for printing my profile section by default on account page
 const profile = document.querySelector('#my-profile');
 if(profile)
