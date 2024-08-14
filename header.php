@@ -1,19 +1,4 @@
-<?php
-    error_reporting(0);
-    $backtrace = debug_backtrace();
-    $caller_file = basename($backtrace[0]['file']);
-    $title_array = array(
-        "index.php" => "Home",
-        "contact.php" => "Contact",
-        "account.php" => "My Profile",
-        "checkout.php" => "Checkout",
-        "cart.php" => "Cart",
-        "shop.php" => "Shop",
-        "login.php" => "Log in to PureBite",
-        "register.php" => "Register to PureBite"
-    );
-    $title = $title_array[$caller_file];
-?>
+
 
 <!-- HTML code -->
 <!DOCTYPE html>

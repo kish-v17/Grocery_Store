@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $title="Forgot password?"; include('header.php'); ?>
     <div class="container">
         <div class="row p-3 g-3">
             <div class="col-md-6 mb-3">

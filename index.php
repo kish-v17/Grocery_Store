@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $title="Login"; include('header.php'); ?>
 
     <div class="hero">
     <div class="hero-text"> <span>PUREBITE</span> Taste the Goodness </div>

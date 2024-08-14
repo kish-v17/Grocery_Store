@@ -563,6 +563,19 @@ input::-webkit-inner-spin-button {
 }
 
 
+.rating {
+    direction: ltr;
+    font-size: 24px;
+}
+
+.star {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star.selected, .star:hover{
+    color: orange;
+}
 
 
 /* order history page */
