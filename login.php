@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $title="Login"; include('header.php'); ?>
     <div class="hero">
     <div class="container mt-4">
         <div class="row p-3 g-3 d-flex justify-content-center align-content-lg-center">
