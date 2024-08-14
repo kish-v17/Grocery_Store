@@ -1,9 +1,7 @@
 <?php include('header.php'); ?>
-    <div class="container">
-        <div class="row p-3 g-3">
-            <div class="col-md-6 mb-3">
-                <img src="img/items/chocolate.webp" alt="It is an chocolate image" class="img-fluid">
-            </div>
+    <div class="hero">
+    <div class="container mt-4">
+        <div class="row p-3 g-3 d-flex justify-content-center align-content-lg-center">
             <div class="col-md-6">
                 <div class="login-form d-flex flex-column d-flex justify-content-center h-100 align-items-center">
                     <div class="mb-3 w-75">
@@ -24,4 +22,7 @@
             </div>
         </div>
     </div>
+        <img src="img\items\banners\Hero-img.png" class="image" alt="">
+    </div>
+    
 <?php include('footer.php'); ?>
