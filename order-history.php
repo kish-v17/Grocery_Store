@@ -1,4 +1,4 @@
-<?php $title="Order history"; include('header.php'); ?>
+<?php include('header.php'); ?>
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Orders</p>
         <!-- table start -->

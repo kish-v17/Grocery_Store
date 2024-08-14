@@ -1,4 +1,4 @@
-<?php $title="Contact"; include('header2.php'); ?>
+<?php include('header2.php'); ?>
     <div class="container sitemap">
         <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
     </div>

@@ -1,4 +1,4 @@
-<?php $title="Order details"; include('header.php'); ?>
+<?php include('header.php'); ?>
 
 <div class="container sitemap">
     <p>

@@ -1,4 +1,4 @@
-<?php  $title="Product Details"; include('header.php'); ?>
+<?php include('header.php'); ?>
     <div class="container sitemap">
         <p>
             <a href="index.php" class="text-decoration-none dim link">Home /</a>
@@ -48,34 +48,6 @@
                     <button class="add-to-cart-btn primary-btn w-100" type="submit">Add to cart</button>
                 </form>
             </div>
-            <div class="review-section my-5 col-6">
-            <h3>Leave a Review</h3>
-            <form action="" method="">
-                <div class="mb-3">
-                    <label for="rating" class="form-label">Your Rating:</label>
-                    <div class="rating">
-                        <i class="fa fa-star star" data-value="1"></i>
-                        <i class="fa fa-star star" data-value="2"></i>
-                        <i class="fa fa-star star" data-value="3"></i>
-                        <i class="fa fa-star star" data-value="4"></i>
-                        <i class="fa fa-star star" data-value="5"></i>
-                    </div>
-                    <input type="hidden" id="rating" name="rating" value="0">
-
-                </div>
-                <div class="mb-3">
-                    <label for="review" class="form-label">Your Review:</label>
-                    <div class="flex">
-                            <textarea name="message" id="contactMessage" class="flex-item"  rows="5" placeholder="Your Message*"></textarea>
-                    </div>              
-                 </div>
-                <button type="submit" class="primary-btn">Submit Review</button>
-            </form>
         </div>
-        
-</div>
-
-        </div>
-        
     </div>
 <?php include('footer.php'); ?>
