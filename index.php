@@ -1,9 +1,12 @@
 <?php include('header.php'); ?>
-
     <div class="hero">
-        <div class="hero-text"> <span>PUREBITE</span> Taste the Goodness </div>
-        <img src="img\items\banners\Hero-img.png" class="image" alt="">
-    </div>
+        <div class="content ms-5 ps-5">
+            <span>Welcome to</span>
+            <h1>PureBite</h1>
+            <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>
+            <a href="shop.php" class="cta-button order-link">Explore</a>
+        </div>
+    </div>
     <section class=" mt-5 container">
         <div class="d-flex justify-content-between featured-products">
             <h4 >Featuerd products</h4>
