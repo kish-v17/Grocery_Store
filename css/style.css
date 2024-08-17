@@ -6,6 +6,8 @@
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
     --primary:#198754;
+    --light-green: #3ED48E;
+    --delete: red;
     --delete: #FF4C4C;
     --form-label:#999999;
     --secondary:#DEF9EC;
@@ -102,17 +104,26 @@ input[type="checkbox"]:checked {
 }
 .footer .logo  span{
     font-weight: 900;
-    font-size: 7vh;
+    font-size: 7vw;
 }
 .btns{
     background-color: #198754;
     display: flex;
     align-items: center;
+    text-align: center;
     padding: 0.3vh 1.2vh;
     text-decoration: none;
     color: #fff;
     border-radius: 0.7vh;
 }
+
+@media (max-width:600px) {
+    .btns{
+        align-content: center;
+        justify-content: center;
+    }
+}
+
 /* index page */
 .cart-btn{
     text-align: center;
@@ -181,32 +192,65 @@ input[type="checkbox"]:checked {
     border-radius: 5px;
     padding: 40px 50px;
 }
-.hero{
+
+.hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80vh;
-    border-radius: 0 0 20px 20px;
-    background-color: #3ed48e;
-    overflow: hidden;
+    background-image: url('../img/items/banners/banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0 2rem;
+    color: #fff;
 }
-.hero-text span{
-    font-weight:900;
-    font-size: 12vh;
-    line-height: 1;
-}
-.hero-text{
-    width: 50vw;
+
+.hero .content {
+    max-width: 50%;
+    color: black;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 18vh;
-    font-size: 4vh;
 }
+
+.hero span{
+    font-size: 1.2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    text-align: justify;
+}
+
+.hero .cta-button {
+    background-color: var(--primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+.hero .cta-button i{
+    color: #fff;
+}
+
+
+.hero .cta-button:hover {
+    background-color: var(--light-green);
+}
+
 .image{
     object-fit: cover;
-    height: 65vh;
-    margin-top: 12vh;
+    height: 80vh;
 }
 /* checkout page */
 .checkout .price{
@@ -368,9 +412,7 @@ input[type="submit"],button{border:none;}
     border-width: 0px 0px 1px 0px;
     padding:8px 0px;
 }
-/* .login-form{
-    padding:100px;
-} */
+
 .arrow{
     height:20px;
     width:20px;
