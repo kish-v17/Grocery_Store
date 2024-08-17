@@ -10,17 +10,9 @@
             <div class="col-3 p-2">
                 <div class="shadow-sm p-4 d-flex flex-column heading">
                     <ul>
-                        <li class="menu-item active js-account-main" data-id="my-profile">Manage My Account</li>
-                        <ul>
-                            <li class="active menu-item js-account" data-id="my-profile">My Profile</li>
-                            <li class="menu-item js-account" data-id="address-book">Address Book</li>
-                        </ul>
+                        <li class="active menu-item js-account" data-id="my-profile">My Profile</li>
+                        <li class=" menu-item js-account" data-id="address-book">Address Book</li>
                         <li class="menu-item my-orders-main" data-id="all-orders">My Orders</li>
-                        <ul>
-                            <li class="menu-item my-orders" data-id="all-orders">All Orders</li>
-                            <li class="menu-item my-orders" data-id="my-returns">My Returns</li>
-                            <li class="menu-item my-orders" data-id="my-cancellations">My Cancellations</li>
-                        </ul>
                         <li class="menu-item" data-id="my-wishlist">My Wishlist</li>
                     </ul>
                 </div>
@@ -29,30 +21,37 @@
                 <div class="shadow-sm p-4">
                     <div id="my-profile" class="invisible">
                         <p class="highlight title">Edit Your Profile</p>
-                        <form action="" class="edit-profile form">
+                        <form action="" class="edit-profile form" onsubmit = "return validateMyAccountForm();">
                             <div class="row g-2">
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">First Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Name*">
+                                    <input type="text" class="w-100" placeholder="Your Name*" id="firstName">
+                                    <p id="firstNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Last Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*">
+                                    <input type="text" class="w-100" placeholder="Your Email*" id="lastName">
+                                    <p id="lastNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*">
+                                    <input type="text" class="w-100" placeholder="Your Email*" id="email">
+                                    <p id="emailError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Phone</label>
-                                    <input type="text" class="w-100" placeholder="Your Phone*">
+                                    <input type="text" class="w-100" placeholder="Your Phone*" id="phone">
+                                    <p id="phoneError" class="error"></p>
                                 </div>
                             
                                 <div class="col-12">
                                     <label for="" class="form-label">Password</label>
-                                    <input type="text" class="w-100 mb-2" placeholder="Current password">
-                                    <input type="text" class="w-100 mb-2" placeholder="New password">
-                                    <input type="text" class="w-100 mb-2" placeholder="Confirm password">
+                                    <input type="text" class="w-100 mb-2" placeholder="Current password" id="currentPassword">
+                                    <p id="currentPasswordError" class="error"></p>
+                                    <input type="text" class="w-100 mb-2" placeholder="New password" id="newPassword">
+                                    <p id="newPasswordError" class="error"></p>
+                                    <input type="text" class="w-100 mb-2" placeholder="Confirm password" id="confirmPassword">
+                                    <p id="confirmPasswordError" class="error"></p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -131,9 +130,51 @@
                     </div>
                         <?php display_orders(); ?>
                     </div>
-                    <div id="my-returns" class="invisible">My Returns</div>
-                    <div id="my-cancellations" class="invisible">My Cancellations</div>
-                    <div id="my-wishlist" class="invisible">My Wishlist</div>
+                    <div id="my-wishlist" class="invisible">
+                        <div class="container cart-table">
+                            <div class="row font-bold heading">
+                                <div class="col-4">
+                                    Product
+                                </div>
+                                <div class="col-2 text-center">Price</div>
+                                <div class="col-3 text-center">Subtotal</div>
+                                <div class="col-3">
+                                    Actions
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
+                                    <div class="d-inline-block">Chocolate</div>
+                                </div>
+                                <div class="col-2 text-center">₹100.00</div>
+                                <div class="col-3 text-center">₹300.00</div>
+                                <div class="col-3">
+                                    <a class="primary-btn update-btn">Add to cart</a>
+                                    <a class="primary-btn delete-btn">Delete</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="img/items/chocolate2.webp" alt="Chocolate image" class="image-item d-inline-block">
+                                    <div class="d-inline-block">Chocolate 2</div>
+                                </div>
+                                <div class="col-2 text-center">₹200.00</div>
+                                <div class="col-3 text-center">₹600.00</div>
+                                <div class="col-3">
+                                    <a class="primary-btn update-btn">Add to cart</a>
+                                    <a class="primary-btn delete-btn">Delete</a>
+                                </div>
+                            </div>
+                            <!-- table end -->
+                        </div>
+                        <div class="container mb-5">
+                            <div class="d-flex justify-content-end align-items-center cart-page mb-5">
+                                <button class="btn-msg">Move all to cart</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -147,46 +188,53 @@
 
     <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5 h" id="exampleModalLabel">Update Address</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="" class="edit-profile form">
-                    <div class="row g-2">
-                        <div class="col-12">
-                            <label for="" class="form-label">First Name</label>
-                            <input type="text" class="w-100" placeholder="Your Name*">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 h" id="exampleModalLabel">Update Address</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" class="edit-profile form" onsubmit="return validateEditAddressForm();">
+                <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <label for="modalFirstName" class="form-label">First Name</label>
+                                <input type="text" class="w-100" placeholder="Your Name*" id="modalFirstName">
+                                <p id="modalFirstNameError" class="error"></p>
+                            </div>
+                            <div class="col-12">
+                                <label for="modalLastName" class="form-label">Last Name</label>
+                                <input type="text" class="w-100" placeholder="Your Last Name*" id="modalLastName">
+                                <p id="modalLastNameError" class="error"></p>
+                            </div>
+                            <div class="col-12">
+                                <label for="modalPhone" class="form-label">Phone</label>
+                                <input type="text" class="w-100" placeholder="Your Phone*" id="modalPhone">
+                                <p id="modalPhoneError" class="error"></p>
+                            </div>
+                            <div class="col-12">
+                                <label for="modalPinCode" class="form-label">Pin code</label>
+                                <input type="text" class="w-100" placeholder="Your Pin code*" id="modalPinCode">
+                                <p id="modalPinCodeError" class="error"></p>
+                            </div>
+                            <div class="col-12">
+                                <label for="modalAddress" class="form-label">Address</label>
+                                <textarea name="address" class="w-100" id="modalAddress" rows="3" placeholder="Your Address*"></textarea>
+                                <p id="modalAddressError" class="error"></p>
+                            </div>
                         </div>
-                        <div class="col-12">
-                            <label for="" class="form-label">Last Name</label>
-                            <input type="text" class="w-100" placeholder="Your Email*">
-                        </div>
-                        <div class="col-12">
-                            <label for="" class="form-label">Phone</label>
-                            <input type="text" class="w-100" placeholder="Your Phone*">
-                        </div>
-                        <div class="col-12">
-                            <label for="" class="form-label">Pin code</label>
-                            <input type="text" class="w-100" placeholder="Your Pin code*">
-                        </div>
-                        <div class="col-12">
-                            <label for="" class="form-label">Address</label>
-                            <textarea name="address" class="w-100" id="address" rows="3" placeholder="Your Address*"></textarea>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end gap">
+                        <button class="primary-btn d" data-bs-dismiss="modal">Close</button>
+                        <input class="primary-btn" type="submit" value="Edit Address">
                     </div>
+                </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <div class="d-flex justify-content-end gap">
-                    <button class="primary-btn d"  data-bs-dismiss="modal">Close</button>
-                    <button class="primary-btn " data-bs-toggle="modal" data-bs-target="#Modal">Edit Address</button>
-                </div>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+
 <?php include('footer.php'); ?>
 
 <?php 

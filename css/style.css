@@ -5,7 +5,7 @@
     --dim:#808080;
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
-    --primary:#198754;
+    --primary:#3BB77E;
     --light-green: #3ED48E;
     --delete: red;
     --delete: #FF4C4C;
@@ -72,7 +72,6 @@ input[type="checkbox"]:checked {
 
 #navibar{
     background-color: white;
-    border-radius: 0 0 4vh 4vh;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 .profile-menu{
@@ -300,7 +299,6 @@ input[type="checkbox"]:checked {
     list-style: none;
 }
 .heading ul li{
-    margin: 7px 0;
     cursor: pointer;
 }
 .heading>ul>li{
@@ -309,7 +307,7 @@ input[type="checkbox"]:checked {
     margin-bottom:15px;
 }
 .menu-item{
-    margin-bottom:20px;
+    margin-bottom:25px;
     transition: color 0.15s;
 }
 .menu-item:hover{
@@ -340,8 +338,51 @@ input[type="checkbox"]:checked {
     font-weight: 500;
     font-size: 20px;
 }
-
-
+.error{
+    color:red;
+    margin:5px 0px;
+}
+.green-msg{
+    color:green;
+}
+.circle{
+    height: 100px;
+    width: 100px;
+    color:white;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size:45px;
+    margin: 40px 0px;
+}
+.content > p{
+    color:var(--dim);
+}
+.view-order-btn{
+    border:1px solid var(--primary);
+    background-color: white;
+    color:var(--primary);
+    text-decoration: none;
+}
+.view-order-btn:hover{
+    color:var(--primary);
+}
+.content{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.buttons-container{
+    display:flex;
+    justify-content: center;
+    gap:16px;
+    margin-bottom: 20px;
+}
+.buttons-container>*{
+    width:50%;
+}
 
 /* contact us page */
 #contactMessage{font-size:14px;}

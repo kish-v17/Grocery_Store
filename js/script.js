@@ -89,51 +89,587 @@ function selectQuantity(selectedDiv, value) {
 
 // shop page
 filterButton = document.querySelector('.js-filter-btn');
-filterButton.addEventListener('click',()=>{
-    document.querySelector('#filter-section').classList.toggle('invisible');
-    document.querySelectorAll('#filter-section>*').forEach(item=>{
-        item.classList.toggle('invisible');
+if(filterButton)
+{
+    filterButton.addEventListener('click',()=>{
+        document.querySelector('#filter-section').classList.toggle('invisible');
+        document.querySelectorAll('#filter-section>*').forEach(item=>{
+            item.classList.toggle('invisible');
+        })
     })
-})
-likeButtons = Array.from(document.getElementsByClassName('like'));
-likeButtons.forEach(likeButton =>{
-    likeButton.addEventListener('click',function(){
-        this.children[0].classList.remove('fa-regular');
-        this.children[0].classList.add('fa-solid');
+    likeButtons = Array.from(document.getElementsByClassName('like'));
+    likeButtons.forEach(likeButton =>{
+        likeButton.addEventListener('click',function(){
+            this.children[0].classList.remove('fa-regular');
+            this.children[0].classList.add('fa-solid');
+        });
     });
-});
+}
 
 
-// gsap
-gsap.to("#navibar",{
-    backgroundColor : '#3ED48E',
-    duration:0.1,
-    scrollTrigger:{
-        trigger:'#navibar',
-        scroll:'body',
-        start:'6%',
-        end:'5%',
-        scrub:1,
-    }
-})
-gsap.to("nav .nav-link , .active, .logo ",{
-    color:"#fff",
-    scrollTrigger:{
-        scroll:'body',
-        start:'2%',
-        end:'1%',
-        scrub:1,
-    }
-})
+// validation
+function validateMyAccountForm() {
+    const firstNameInput = document.getElementById('firstName');
+    const firstNameError = document.getElementById('firstNameError');
+    const lastNameInput = document.getElementById('lastName');
+    const lastNameError = document.getElementById('lastNameError');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const currentPasswordInput = document.getElementById('currentPassword');
+    const currentPasswordError = document.getElementById('currentPasswordError');
+    const newPasswordInput = document.getElementById('newPassword');
+    const newPasswordError = document.getElementById('newPasswordError');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
 
-gsap.to(".btn",{
-    backgroundColor:"#fff",
-    color:"#198754",
-    borderColor:"#fff",
-    scrollTrigger:{
-        scroll:'body',
-        start:'2%',
-        end:'1%',
-        scrub:1,
+    let isValid = true;
+
+    const firstNameValue = firstNameInput.value.trim();
+    if (!firstNameValue) {
+        firstNameError.innerText = 'First Name is required.';
+        isValid = false;
+    } else if (/\d/.test(firstNameValue)) {
+        firstNameError.innerText = 'First Name should not contain digits.';
+        isValid = false;
+    } else if (firstNameValue.length > 50) {
+        firstNameError.innerText = 'First Name cannot exceed 50 characters.';
+        isValid = false;
+    } else {
+        firstNameError.innerText = ''; 
     }
-})
+
+    const lastNameValue = lastNameInput.value.trim();
+    if (!lastNameValue) {
+        lastNameError.innerText = 'Last Name is required.';
+        isValid = false;
+    } else if (/\d/.test(lastNameValue)) {
+        lastNameError.innerText = 'Last Name should not contain digits.';
+        isValid = false;
+    } else if (lastNameValue.length > 50) {
+        lastNameError.innerText = 'Last Name cannot exceed 50 characters.';
+        isValid = false;
+    } else {
+        lastNameError.innerText = '';
+    }
+
+
+    const emailValue = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailValue) {
+        emailError.innerText = 'Email is required.';
+        isValid = false;
+    } else if (!emailPattern.test(emailValue)) {
+        emailError.innerText = 'Invalid email format.';
+        isValid = false;
+    } else if (emailValue.length > 100) {
+        emailError.innerText = 'Email cannot exceed 100 characters.';
+        isValid = false;
+    } else {
+        emailError.innerText = ''; 
+    }
+
+    const phoneValue = phoneInput.value.trim();
+    const phonePattern = /^\d{10}$/; 
+    if (!phoneValue) {
+        phoneError.innerText = 'Phone number is required.';
+        isValid = false;
+    } else if (!phonePattern.test(phoneValue)) {
+        phoneError.innerText = 'Phone number must be 10 digits.';
+        isValid = false;
+    } else {
+        phoneError.innerText = ''; 
+    }
+
+    const currentPasswordValue = currentPasswordInput.value.trim();
+    if (!currentPasswordValue) {
+        currentPasswordError.innerText = 'Current password is required.';
+        isValid = false;
+    } else if (currentPasswordValue.length < 8) {
+        currentPasswordError.innerText = 'Current password must be at least 8 characters long.';
+        isValid = false;
+    } else {
+        currentPasswordError.innerText = ''; 
+    }
+
+    const newPasswordValue = newPasswordInput.value.trim();
+    if (!newPasswordValue) {
+        newPasswordError.innerText = 'New password is required.';
+        isValid = false;
+    } else if (newPasswordValue.length < 8) {
+        newPasswordError.innerText = 'New password must be at least 8 characters long.';
+        isValid = false;
+    } else {
+        newPasswordError.innerText = ''; 
+    }
+
+
+    const confirmPasswordValue = confirmPasswordInput.value.trim();
+    if (!confirmPasswordValue) {
+        confirmPasswordError.innerText = 'Confirm password is required.';
+        isValid = false;
+    } else if (confirmPasswordValue !== newPasswordValue) {
+        confirmPasswordError.innerText = 'Passwords do not match.';
+        isValid = false;
+    } else {
+        confirmPasswordError.innerText = '';
+    }
+
+    return isValid;
+}
+
+function validateEditAddressForm() {
+    let modalFirstName = document.getElementById('modalFirstName');
+    let modalLastName = document.getElementById('modalLastName');
+    let modalPhone = document.getElementById('modalPhone');
+    let modalPinCode = document.getElementById('modalPinCode');
+    let modalAddress = document.getElementById('modalAddress');
+
+    let modalFirstNameError = document.getElementById('modalFirstNameError');
+    let modalLastNameError = document.getElementById('modalLastNameError');
+    let modalPhoneError = document.getElementById('modalPhoneError');
+    let modalPinCodeError = document.getElementById('modalPinCodeError');
+    let modalAddressError = document.getElementById('modalAddressError');
+
+    let isValid = true;
+
+    if (modalFirstName.value.trim() === '') {
+        modalFirstNameError.innerText = 'First Name is required';
+        isValid = false;
+    } else if (/\d/.test(modalFirstName.value)) {
+        modalFirstNameError.innerText = 'First Name should not contain numbers';
+        isValid = false;
+    } else {
+        modalFirstNameError.innerText = '';
+    }
+
+    if (modalLastName.value.trim() === '') {
+        modalLastNameError.innerText = 'Last Name is required';
+        isValid = false;
+    } else if (/\d/.test(modalLastName.value)) {
+        modalLastNameError.innerText = 'Last Name should not contain numbers';
+        isValid = false;
+    } else {
+        modalLastNameError.innerText = '';
+    }
+
+    if (modalPhone.value.trim() === '') {
+        modalPhoneError.innerText = 'Phone number is required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(modalPhone.value)) {
+        modalPhoneError.innerText = 'Phone number must be 10 digits';
+        isValid = false;
+    } else {
+        modalPhoneError.innerText = '';
+    }
+
+    if (modalPinCode.value.trim() === '') {
+        modalPinCodeError.innerText = 'Pin code is required';
+        isValid = false;
+    } else if (!/^\d{6}$/.test(modalPinCode.value)) {
+        modalPinCodeError.innerText = 'Pin code must be 6 digits';
+        isValid = false;
+    } else {
+        modalPinCodeError.innerText = '';
+    }
+
+    if (modalAddress.value.trim() === '') {
+        modalAddressError.innerText = 'Address is required';
+        isValid = false;
+    } else {
+        modalAddressError.innerText = '';
+    }
+
+    return isValid;
+}
+
+function contactFormValidation() {
+    let contactName = document.getElementById('contactName');
+    let contactEmail = document.getElementById('contactEmail');
+    let contactPhone = document.getElementById('contactPhone');
+    let contactMessage = document.getElementById('contactMessage');
+
+    let contactNameError = document.getElementById('contactNameError');
+    let contactEmailError = document.getElementById('contactEmailError');
+    let contactPhoneError = document.getElementById('contactPhoneError');
+    let contactMessageError = document.getElementById('contactMessageError');
+
+    let isValid = true;
+
+    if (contactName.value.trim() === '') {
+        contactNameError.innerText = 'Name is required';
+        isValid = false;
+    } else if (/\d/.test(contactName.value)) {
+        contactNameError.innerText = 'Name should not contain numbers';
+        isValid = false;
+    } else {
+        contactNameError.innerText = '';
+    }
+
+    if (contactEmail.value.trim() === '') {
+        contactEmailError.innerText = 'Email is required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail.value)) {
+        contactEmailError.innerText = 'Invalid email format';
+        isValid = false;
+    } else {
+        contactEmailError.innerText = '';
+    }
+
+    if (contactPhone.value.trim() === '') {
+        contactPhoneError.innerText = 'Phone number is required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(contactPhone.value)) {
+        contactPhoneError.innerText = 'Phone number must be 10 digits';
+        isValid = false;
+    } else {
+        contactPhoneError.innerText = '';
+    }
+
+    if (contactMessage.value.trim() === '') {
+        contactMessageError.innerText = 'Message is required';
+        isValid = false;
+    } else {
+        contactMessageError.innerText = '';
+    }
+
+    return isValid;
+}
+
+function validateRegistrationForm() {
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let confirmPassword = document.getElementById('confirmPassword');
+
+    let nameError = document.getElementById('nameError');
+    let emailError = document.getElementById('emailError');
+    let passwordError = document.getElementById('passwordError');
+    let confirmPasswordError = document.getElementById('confirmPasswordError');
+
+    let isValid = true;
+
+    if (name.value.trim() === '') {
+        nameError.innerText = 'Name is required';
+        isValid = false;
+    } else if (/\d/.test(name.value)) {
+        nameError.innerText = 'Name should not contain numbers';
+        isValid = false;
+    } else if (name.value.length > 50) {
+        nameError.innerText = 'Name must be 50 characters or less';
+        isValid = false;
+    } else {
+        nameError.innerText = '';
+    }
+
+    if (email.value.trim() === '') {
+        emailError.innerText = 'Email is required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.innerText = 'Invalid email format';
+        isValid = false;
+    } else if (email.value.length > 100) {
+        emailError.innerText = 'Email must be 100 characters or less';
+        isValid = false;
+    } else {
+        emailError.innerText = '';
+    }
+
+    if (password.value.trim() === '') {
+        passwordError.innerText = 'Password is required';
+        isValid = false;
+    } else if (password.value.length < 6) {
+        passwordError.innerText = 'Password must be at least 6 characters long';
+        isValid = false;
+    } else if (password.value.length > 20) {
+        passwordError.innerText = 'Password must be 20 characters or less';
+        isValid = false;
+    } else {
+        passwordError.innerText = '';
+    }
+
+    if (confirmPassword.value.trim() === '') {
+        confirmPasswordError.innerText = 'Confirm Password is required';
+        isValid = false;
+    } else if (confirmPassword.value !== password.value) {
+        confirmPasswordError.innerText = 'Passwords do not match';
+        isValid = false;
+    } else {
+        confirmPasswordError.innerText = '';
+    }
+
+    return isValid;
+}
+
+
+function validateOtpForm() {
+    let otp = document.getElementById('otp');
+    let otpError = document.getElementById('otpError');
+
+    let isValid = true;
+
+    if (otp.value.trim() === '') {
+        otpError.innerText = 'OTP is required';
+        isValid = false;
+    } else if (!/^\d{6}$/.test(otp.value)) {
+        otpError.innerText = 'OTP must be exactly 6 digits';
+        isValid = false;
+    } else {
+        otpError.innerText = '';
+    }
+
+    return isValid;
+}
+
+function validateLoginForm() {
+    let loginEmail = document.getElementById('loginEmail');
+    let loginPassword = document.getElementById('loginPassword');
+
+    let loginEmailError = document.getElementById('loginEmailError');
+    let loginPasswordError = document.getElementById('loginPasswordError');
+
+    let isValid = true;
+
+    if (loginEmail.value.trim() === '') {
+        loginEmailError.innerText = 'Email is required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmail.value)) {
+        loginEmailError.innerText = 'Invalid email format';
+        isValid = false;
+    } else if (loginEmail.value.length > 100) {
+        loginEmailError.innerText = 'Email must be 100 characters or less';
+        isValid = false;
+    } else {
+        loginEmailError.innerText = '';
+    }
+
+    if (loginPassword.value.trim() === '') {
+        loginPasswordError.innerText = 'Password is required';
+        isValid = false;
+    } else if (loginPassword.value.length < 6) {
+        loginPasswordError.innerText = 'Password must be at least 6 characters long';
+        isValid = false;
+    } else if (loginPassword.value.length > 20) {
+        loginPasswordError.innerText = 'Password must be 20 characters or less';
+        isValid = false;
+    } else {
+        loginPasswordError.innerText = '';
+    }
+
+    return isValid;
+}
+
+
+function validateForgotPasswordForm() {
+    let email = document.getElementById('otpEmail');
+    let emailError = document.getElementById('otpEmailError');
+    let isValid = true;
+
+    if (email.value.trim() === '') {
+        emailError.innerText = 'Email is required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.innerText = 'Invalid email format';
+        isValid = false;
+    } else if (email.value.length > 100) {
+        emailError.innerText = 'Email must be 100 characters or less';
+        isValid = false;
+    } else {
+        emailError.innerText = '';
+    }
+
+    return isValid;
+}
+
+function validateForms() {
+    let isValid = true;
+
+    // Billing Details Validation
+    let billingFirstName = document.getElementById('billingFirstName');
+    let billingFirstNameError = document.getElementById('billingFirstNameError');
+
+    if (billingFirstName.value.trim() === '') {
+        billingFirstNameError.innerText = 'First Name is required';
+        isValid = false;
+    } else if (billingFirstName.value.length > 50) {
+        billingFirstNameError.innerText = 'First Name must be 50 characters or less';
+        isValid = false;
+    } else {
+        billingFirstNameError.innerText = '';
+    }
+
+    let billingLastName = document.getElementById('billingLastName');
+    let billingLastNameError = document.getElementById('billingLastNameError');
+
+    if (billingLastName.value.trim() === '') {
+        billingLastNameError.innerText = 'Last Name is required';
+        isValid = false;
+    } else if (billingLastName.value.length > 50) {
+        billingLastNameError.innerText = 'Last Name must be 50 characters or less';
+        isValid = false;
+    } else {
+        billingLastNameError.innerText = '';
+    }
+
+    let billingAddress = document.getElementById('billingAddress');
+    let billingAddressError = document.getElementById('billingAddressError');
+
+    if (billingAddress.value.trim() === '') {
+        billingAddressError.innerText = 'Street Address is required';
+        isValid = false;
+    } else if (billingAddress.value.length > 100) {
+        billingAddressError.innerText = 'Street Address must be 100 characters or less';
+        isValid = false;
+    } else {
+        billingAddressError.innerText = '';
+    }
+
+    let billingCity = document.getElementById('billingCity');
+    let billingCityError = document.getElementById('billingCityError');
+
+    if (billingCity.value.trim() === '') {
+        billingCityError.innerText = 'City is required';
+        isValid = false;
+    } else if (billingCity.value.length > 50) {
+        billingCityError.innerText = 'City must be 50 characters or less';
+        isValid = false;
+    } else {
+        billingCityError.innerText = '';
+    }
+
+    let billingState = document.getElementById('billingState');
+    let billingStateError = document.getElementById('billingStateError');
+
+    if (billingState.value.trim() === '') {
+        billingStateError.innerText = 'State is required';
+        isValid = false;
+    } else if (billingState.value.length > 50) {
+        billingStateError.innerText = 'State must be 50 characters or less';
+        isValid = false;
+    } else {
+        billingStateError.innerText = '';
+    }
+
+    let billingPinCode = document.getElementById('billingPinCode');
+    let billingPinCodeError = document.getElementById('billingPinCodeError');
+
+    if (billingPinCode.value.trim() === '') {
+        billingPinCodeError.innerText = 'Pin Code is required';
+        isValid = false;
+    } else if (!/^\d{6}$/.test(billingPinCode.value)) {
+        billingPinCodeError.innerText = 'Valid Pin Code is required';
+        isValid = false;
+    } else {
+        billingPinCodeError.innerText = '';
+    }
+
+    let billingPhone = document.getElementById('billingPhone');
+    let billingPhoneError = document.getElementById('billingPhoneError');
+
+    if (billingPhone.value.trim() === '') {
+        billingPhoneError.innerText = 'Phone Number is required';
+        isValid = false;
+    } else if (!/^\d{10}$/.test(billingPhone.value)) {
+        billingPhoneError.innerText = 'Valid Phone Number is required';
+        isValid = false;
+    } else {
+        billingPhoneError.innerText = '';
+    }
+
+    // Shipping Details Validation (only if checkbox is checked)
+    if (document.getElementById('choice').checked) {
+        let shippingFirstName = document.getElementById('shippingFirstName');
+        let shippingFirstNameError = document.getElementById('shippingFirstNameError');
+
+        if (shippingFirstName.value.trim() === '') {
+            shippingFirstNameError.innerText = 'First Name is required';
+            isValid = false;
+        } else if (shippingFirstName.value.length > 50) {
+            shippingFirstNameError.innerText = 'First Name must be 50 characters or less';
+            isValid = false;
+        } else {
+            shippingFirstNameError.innerText = '';
+        }
+
+        let shippingLastName = document.getElementById('shippingLastName');
+        let shippingLastNameError = document.getElementById('shippingLastNameError');
+
+        if (shippingLastName.value.trim() === '') {
+            shippingLastNameError.innerText = 'Last Name is required';
+            isValid = false;
+        } else if (shippingLastName.value.length > 50) {
+            shippingLastNameError.innerText = 'Last Name must be 50 characters or less';
+            isValid = false;
+        } else {
+            shippingLastNameError.innerText = '';
+        }
+
+        let shippingAddress = document.getElementById('shippingAddress');
+        let shippingAddressError = document.getElementById('shippingAddressError');
+
+        if (shippingAddress.value.trim() === '') {
+            shippingAddressError.innerText = 'Street Address is required';
+            isValid = false;
+        } else if (shippingAddress.value.length > 100) {
+            shippingAddressError.innerText = 'Street Address must be 100 characters or less';
+            isValid = false;
+        } else {
+            shippingAddressError.innerText = '';
+        }
+
+        let shippingCity = document.getElementById('shippingCity');
+        let shippingCityError = document.getElementById('shippingCityError');
+
+        if (shippingCity.value.trim() === '') {
+            shippingCityError.innerText = 'City is required';
+            isValid = false;
+        } else if (shippingCity.value.length > 50) {
+            shippingCityError.innerText = 'City must be 50 characters or less';
+            isValid = false;
+        } else {
+            shippingCityError.innerText = '';
+        }
+
+        let shippingState = document.getElementById('shippingState');
+        let shippingStateError = document.getElementById('shippingStateError');
+
+        if (shippingState.value.trim() === '') {
+            shippingStateError.innerText = 'State is required';
+            isValid = false;
+        } else if (shippingState.value.length > 50) {
+            shippingStateError.innerText = 'State must be 50 characters or less';
+            isValid = false;
+        } else {
+            shippingStateError.innerText = '';
+        }
+
+        let shippingPinCode = document.getElementById('shippingPinCode');
+        let shippingPinCodeError = document.getElementById('shippingPinCodeError');
+
+        if (shippingPinCode.value.trim() === '') {
+            shippingPinCodeError.innerText = 'Pin Code is required';
+            isValid = false;
+        } else if (!/^\d{6}$/.test(shippingPinCode.value)) {
+            shippingPinCodeError.innerText = 'Valid Pin Code is required';
+            isValid = false;
+        } else {
+            shippingPinCodeError.innerText = '';
+        }
+
+        let shippingPhone = document.getElementById('shippingPhone');
+        let shippingPhoneError = document.getElementById('shippingPhoneError');
+
+        if (shippingPhone.value.trim() === '') {
+            shippingPhoneError.innerText = 'Phone Number is required';
+            isValid = false;
+        } else if (!/^\d{10}$/.test(shippingPhone.value)) {
+            shippingPhoneError.innerText = 'Valid Phone Number is required';
+            isValid = false;
+        } else {
+            shippingPhoneError.innerText = '';
+        }
+    }
+
+    return isValid;
+}

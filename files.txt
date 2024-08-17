@@ -2,10 +2,7 @@ User:
 -Home
     -banners with offers
 -header & footer including how would it look without login and with login
--ordered successfully page
--empty cart and wishlist
--add filter in shop page
-
+-update filter in shop page
 
 ----------------------------------------------------------------------
 
@@ -27,7 +24,17 @@ User:
     -change some styles
 -order-details
     -make it responsive
+-ordered successfully page
+-add filter in shop page
 
+validations:
+    -checkout
+    -account
+    -contact
+    -otp-page
+    -register
+    -login
+    -forgot-password
 
 
 ------------------------------------------------------------------------

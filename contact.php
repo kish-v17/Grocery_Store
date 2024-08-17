@@ -21,23 +21,34 @@
                     <p class="m-0">Emails: customer@exclusive.com</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-8  p-2">
+            <div class="col-12 col-sm-8 p-2">
                 <div class="shadow-sm p-4">
-                    <form action="">
+                    <form id="contactForm" action="" onsubmit="return contactFormValidation()">
                         <div class="flex form">
-                            <input type="text" placeholder="Your Name*" class="flex-item">
-                            <input type="text" placeholder="Your Email*" class="flex-item">
-                            <input type="text" placeholder="Your Phone*" class="flex-item">
+                            <div class="flex-item">
+                                <input type="text" id="contactName" placeholder="Your Name*" class="w-100">
+                                <p id="contactNameError" class="error"></p>
+                            </div>
+                            <div class="flex-item">
+                                <input type="text" id="contactEmail" placeholder="Your Email*" class="w-100">
+                                <p id="contactEmailError" class="error"></p>
+                            </div>
+                            <div class="flex-item">
+                                <input type="text" id="contactPhone" placeholder="Your Phone*" class="w-100">
+                                <p id="contactPhoneError" class="error"></p>
+                            </div>
                         </div>
-                        <div class="flex">
-                            <textarea name="message" id="contactMessage" class="flex-item"  rows="7" placeholder="Your Message*"></textarea>
+                        <div class="flex flex-column align-items-start">
+                            <textarea name="message" id="contactMessage" class="flex-item w-100" rows="7" placeholder="Your Message*"></textarea>
+                            <p id="contactMessageError" class="error "></p>
                         </div>
                         <div class="d-flex justify-content-end">
                             <input type="submit" value="Send Message" class="btn-msg mt-2">
                         </div>
                     </form>
                 </div>
-            </div> 
+            </div>
+
         </div>
     </div>
 <?php include('footer.php') ?>
