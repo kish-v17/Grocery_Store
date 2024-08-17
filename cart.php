@@ -2,15 +2,18 @@
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>
         <!-- table start -->
-        <div class="row font-bold">
+        <div class="row font-bold heading">
             <div class="col-4">
                 Product
             </div>
-            <div class="col-3 text-center">Price</div>
+            <div class="col-2 text-center">Price</div>
             <div class="col-2 ">
                 Quantity
             </div>
-            <div class="col-3 text-center">Subtotal</div>
+            <div class="col-2 text-center">Subtotal</div>
+            <div class="col-2">
+                Actions
+            </div>
         </div>
 
         <div class="row">
@@ -18,7 +21,7 @@
                 <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
                 <div class="d-inline-block">Chocolate</div>
             </div>
-            <div class="col-3 text-center">₹100.00</div>
+            <div class="col-2 text-center">₹100.00</div>
             <div class="col-2 ">
                 <div class="d-flex qty-mod">
                     <button class="number-button qty-minus">-</button>
@@ -26,22 +29,30 @@
                     <button class="number-button qty-plus">+</button>
                 </div>
             </div>
-            <div class="col-3 text-center">₹300.00</div>
+            <div class="col-2 text-center">₹300.00</div>
+            <div class="col-2 ">
+                <a class="primary-btn update-btn">Update</a>
+                <a class="primary-btn delete-btn">Delete</a>
+            </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="img/items/chocolate2.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate 2</div>
+                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
+                <div class="d-inline-block">Chocolate</div>
             </div>
-            <div class="col-3 text-center">₹200.00</div>
+            <div class="col-2 text-center">₹100.00</div>
             <div class="col-2 ">
                 <div class="d-flex qty-mod">
                     <button class="number-button qty-minus">-</button>
-                    <input type="number" name="" id="" value="3">
+                    <input type="number" class="qty" name="qty" id="" value="3">
                     <button class="number-button qty-plus">+</button>
                 </div>
             </div>
-            <div class="col-3 text-center">₹600.00</div>
+            <div class="col-2 text-center">₹300.00</div>
+            <div class="col-2 ">
+                <a class="primary-btn update-btn">Update</a>
+                <a class="primary-btn delete-btn">Delete</a>
+            </div>
         </div>
         <!-- table end -->
     </div>

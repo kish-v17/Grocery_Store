@@ -86,6 +86,25 @@ function selectQuantity(selectedDiv, value) {
     document.getElementById('selectedQuantity').value = value;
 }
 
+
+// shop page
+filterButton = document.querySelector('.js-filter-btn');
+filterButton.addEventListener('click',()=>{
+    document.querySelector('#filter-section').classList.toggle('invisible');
+    document.querySelectorAll('#filter-section>*').forEach(item=>{
+        item.classList.toggle('invisible');
+    })
+})
+likeButtons = Array.from(document.getElementsByClassName('like'));
+likeButtons.forEach(likeButton =>{
+    likeButton.addEventListener('click',function(){
+        this.children[0].classList.remove('fa-regular');
+        this.children[0].classList.add('fa-solid');
+    });
+});
+
+
+// gsap
 gsap.to("#navibar",{
     backgroundColor : '#3ED48E',
     duration:0.1,

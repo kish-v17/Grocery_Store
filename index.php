@@ -19,7 +19,7 @@
             <?php display_products();?>
         </div>
         <div class="row mt-5">
-            <div class="col-6 ps-2 pe-2">
+            <div class="col-md-6 col-12 ps-2 pe-2">
                 <div class="border ms-0 banner-1">
                     <p class="label">Free delivery</p>
                     <h5 class="heading">Free shipping over ₹500</h5>
@@ -27,7 +27,7 @@
                     <button class="primary-btn">Shop Now <i class='fas fa-arrow-right ms-2'></i></button>
                 </div>
             </div>
-            <div class="col-6 pe-2 ps-2">
+            <div class="col-md-6 col-12 pe-2 ps-2">
                 <div class="border banner-2">
                     <p class="label">60% off</p>
                     <h5 class="heading">Organic Food</h5>
@@ -36,14 +36,13 @@
                 </div>
             </div>
         </div>
-
-        <div class="d-flex justify-content-between align-items-center featured-products mt-5">
+        <div class="d-flex justify-content-between align-items-center featured-products mt-5 ">
             <div class="d-flex align-items-center gap-5">
-                <h4 >Daily Best Sales</h4>
-                <div class="label-red">Expires in: 10:56:21</div>
+                <h4 >Daily Best Sales</h4> 
+                <div class="label-red">Expires in:10:56:21</div>
             </div>
 
-            <div class="d-flex gap-2">
+            <div class="d-md-flex gap-2 d-none">
                 <div class="active">All</div>
                 <div>Vegetables</div>
                 <div>Fruits</div>

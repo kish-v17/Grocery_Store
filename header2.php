@@ -54,6 +54,7 @@
                             <li><a class="dropdown-item" href="account.php">My Profile</a></li>
                             <li><a class="dropdown-item" href="order-details.php">Your Orders</a></li>
                             <li><a class="dropdown-item" href="cart.php">Cart</a></li>
+                            <li><a class="dropdown-item" href="wishlist.php">Wishlist</a></li>
                             <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                         </ul>
                     </li>

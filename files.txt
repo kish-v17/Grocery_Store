@@ -1,12 +1,10 @@
 User:
 -Home
+    -banners with offers
 -header & footer including how would it look without login and with login
 -ordered successfully page
-
-
--optional
-    -empty cart
-    -empty wishlist and wishlist
+-empty cart and wishlist
+-add filter in shop page
 
 
 ----------------------------------------------------------------------
@@ -34,8 +32,17 @@ User:
 
 ------------------------------------------------------------------------
 Admin:
--dashboard
+-update dashboard page
+-add offers module
+    -percent discount on orders
+    -free shipping  on orders above
+-add banners module
+-add cart module
+-add address module
+-add and update review
+-add and update order
 
+-add validation in all pages
 
 --------------------------------------------------------------
 

@@ -1,8 +1,22 @@
 <?php include('header.php'); ?>
     <div class="container sitemap ">
-        <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
+        <div class="row align-items-center">
+            <div class="col-6">
+                <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
+            </div>
+            <div class="col-6 justify-content-end d-flex">
+                <button class="primary-btn js-filter-btn"><i class="fa-solid fa-filter pe-2"></i>Filter</button>
+            </div>
+        </div>
+        <div>
+            <?php
+                include "filter.php";
+            ?>
+        </div>
         <div class="row justify-content-start">
-            <?php display_products();?>
+            <?php
+                display_products();
+            ?>
         </div>
     </div>
 <?php include('footer.php'); ?>
@@ -43,7 +57,7 @@
                                 <span class="price">₹100.00</span>
                                 <span class="striked-price">₹150.00</span>
                             </div>
-                            <a class="primary-btn order-link" href="cart.php"><i class="fa-solid fa-cart-shopping pe-2"></i>Add</a>
+                            <a class="primary-btn order-link" href="cart.php"><i class="fa-solid fa-cart-shopping pe-2 "></i>Add</a>
                         </div>
                     </div>
                 </div>
