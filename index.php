@@ -1,12 +1,20 @@
 <?php include('header.php'); ?>
-    <div class="hero">
-        <div class="content ms-5 ps-5">
-            <span>Welcome to</span>
-            <h1>PureBite</h1>
-            <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>
-            <a href="shop.php" class="cta-button order-link">Explore</a>
+<div class="hero d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12 content">
+                <span>Welcome to</span>
+                <h1>PureBite</h1>
+                <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>
+                <a href="shop.php" class="cta-button btn btn-primary">Explore</a>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12 position-relative">
+                <img src="img/items/banners/hero.png" alt="Bag and Fruits" class="top-right-image img-fluid">
+            </div>
         </div>
-    </div>
+    </div>
+</div>
+
     <section class=" mt-5 container">
         <div class="d-flex justify-content-between featured-products">
             <h4 >Featuerd products</h4>
