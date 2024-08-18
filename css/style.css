@@ -45,28 +45,24 @@ input[type="checkbox"]:checked {
     border:2px solid black;
 }
 
-/* Scrollbar width */
+/* Scrollbar*/
 ::-webkit-scrollbar {
-    width: 1.5vh; /* Width of the entire scrollbar */
+    width: 1.5vh;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-    background: #9cecc7; /* Background color of the track */
+    background: #9cecc7;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #198754; /* Color of the scrollbar handle */
-    border-radius: 6px; /* Rounded corners of the handle */
+    background: #198754;
+    border-radius: 6px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Darker color on hover */
+    background: #555;
 }
 
-/* header */
 .links{
     margin-left: 3vw;
 }
@@ -193,28 +189,36 @@ input[type="checkbox"]:checked {
     padding: 40px 50px;
 }
 
-.hero {
+/* .hero {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 80vh;
-    background-image: url('../img/items/banners/banner.png');
+    height: 70vh;
+    position: relative;
+    padding: 0 2rem;
+    color: #000;
+    background-image: url('../img/items/banners/hero-bg-img.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    padding: 0 2rem;
-    color: #fff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 218, 220, 0.7); 
+    z-index: 1;
 }
 
 .hero .content {
+    position: relative;
+    z-index: 3;
     max-width: 50%;
-    color: black;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
-.hero span{
+.hero span {
     font-size: 1.2rem;
 }
 
@@ -229,7 +233,7 @@ input[type="checkbox"]:checked {
 }
 
 .hero .cta-button {
-    background-color: var(--primary);
+    background-color: var(--primary, #2a9d8f);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -239,18 +243,108 @@ input[type="checkbox"]:checked {
     transition: background-color 0.3s ease;
     width: fit-content;
 }
-.hero .cta-button i{
-    color: #fff;
+
+.hero .cta-button:hover {
+    background-color: var(--light-green, #e76f51);
 }
 
+.hero img.top-right-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 40%; 
+    height: auto;
+    z-index: 3; 
+} */
+
+
+.hero {
+    position: relative;
+    height: 70vh;
+    background-image: url('../img/items/banners/hero-bg-img.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    color: #000;
+}
+
+/* Layer the blue background with opacity over the vegetables image */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 218, 220, 0.7); /* Blue background with 70% opacity */
+    z-index: 1;
+}
+
+.hero .content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.25rem;
+}
+
+.hero .cta-button {
+    background-color: var(--primary, #2a9d8f);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
 
 .hero .cta-button:hover {
     background-color: var(--light-green);
 }
 
-.image{
-    object-fit: cover;
-    height: 80vh;
+.hero .top-right-image {
+    position: absolute;
+    top: -15vh;
+    right: -7.96vw;
+    max-width: 90%; 
+    height: auto;
+    z-index: 3; 
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .top-right-image {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .top-right-image {
+        max-width: 80%;
+    }
 }
 /* checkout page */
 .checkout .price{
