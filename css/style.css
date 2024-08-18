@@ -189,75 +189,6 @@ input[type="checkbox"]:checked {
     padding: 40px 50px;
 }
 
-/* .hero {
-    display: flex;
-    align-items: center;
-    height: 70vh;
-    position: relative;
-    padding: 0 2rem;
-    color: #000;
-    background-image: url('../img/items/banners/hero-bg-img.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(168, 218, 220, 0.7); 
-    z-index: 1;
-}
-
-.hero .content {
-    position: relative;
-    z-index: 3;
-    max-width: 50%;
-}
-
-.hero span {
-    font-size: 1.2rem;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    text-align: justify;
-}
-
-.hero .cta-button {
-    background-color: var(--primary, #2a9d8f);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: fit-content;
-}
-
-.hero .cta-button:hover {
-    background-color: var(--light-green, #e76f51);
-}
-
-.hero img.top-right-image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    max-width: 40%; 
-    height: auto;
-    z-index: 3; 
-} */
-
-
 .hero {
     position: relative;
     height: 70vh;
@@ -485,9 +416,7 @@ input[type="checkbox"]:checked {
     color:var(--dim);
 }
 .d{background: var(--dim);}
-.sitemap{
-    margin:50px 0;
-}
+
 .grid{
     display: grid;
     grid-template-columns: 1fr 2.5fr;

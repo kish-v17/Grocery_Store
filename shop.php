@@ -1,5 +1,5 @@
-<?php include('header.php'); ?>
-    <div class="container sitemap ">
+<?php include('customs.php'); ?>
+    <div class="container sitemap">
         <div class="row align-items-center">
             <div class="col-6">
                 <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
