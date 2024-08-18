@@ -14,23 +14,23 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="bannerImage" class="form-label">Banner Image</label>
-                                <input type="file" class="form-control" id="bannerImage" name="banner_image" required>
-                                <div id="bannerImageError" class="error-message"></div> <!-- Error message div -->
+                                <input type="file" class="form-control" id="bannerImage" name="banner_image" >
+                                <div id="bannerImageError" class="error-message"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="bannerURL" class="form-label">Banner URL</label>
-                                <input type="url" class="form-control" id="bannerURL" name="banner_url" placeholder="https://example.com" required>
-                                <div id="bannerImageError" class="error-message"></div> <!-- Error message div -->
+                                <input type="url" class="form-control" id="bannerURL" name="banner_url" placeholder="https://example.com" >
+                                <div id="bannerURLError" class="error-message"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="bannerOrder" class="form-label">View Order</label>
-                        <input type="number" class="form-control" id="bannerOrder" name="banner_order" required>
-                        <div id="bannerImageError" class="error-message"></div> <!-- Error message div -->
+                        <input type="number" class="form-control" id="bannerOrder" name="banner_order" >
+                        <div id="bannerOrderError" class="error-message"></div>
                     </div>
 
                     <div class="mb-3">
