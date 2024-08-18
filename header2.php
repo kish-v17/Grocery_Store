@@ -10,7 +10,8 @@
         "cart.php" => "Cart",
         "shop.php" => "Shop",
         "login.php" => "Log in to PureBite",
-        "register.php" => "Register to PureBite"
+        "register.php" => "Register to PureBite",
+        "wishlist.php" => "Your Favourites"
     );
     $title = $title_array[$caller_file];
 ?>
