@@ -147,7 +147,7 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
             <h4>Recent Products</h4>
-            <a href="products.php" class="btn btn-secondary">See All Orders</a>
+            <a href="products.php" class="btn btn-secondary">See All Products</a>
         </div>
         <div class="card-body">
             <table class="table border">

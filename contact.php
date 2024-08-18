@@ -1,5 +1,5 @@
 <?php include('header2.php'); ?>
-    <div class="container sitemap">
+    <div class="container mt-4">
         <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
     </div>
     <div class="container">

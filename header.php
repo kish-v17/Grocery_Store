@@ -12,7 +12,7 @@
         "login.php" => "Log in to PureBite",
         "register.php" => "Register to PureBite",
         "wishlist.php" => "Your Favourites",
-        "order-history.php" => "Order History",
+        "order-history.php" => "Order History"
     );
     $title = $title_array[$caller_file];
 ?>
