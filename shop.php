@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('customs.php'); ?>
     <div class="container ">
         <div class="row align-items-center sitemap">
             <div class="col-6">
