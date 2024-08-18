@@ -9,12 +9,13 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="">
+                <form action="" method="POST" onsubmit="return validateAddCategoryForm()">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="categoryName" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" id="categoryName" name="category_name" required>
+                                <input type="text" class="form-control" id="categoryName" name="category_name">
+                                <div id="categoryNameError" class="error-message"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -31,6 +32,7 @@
                                     <option value="Personal Care">Personal Care</option>
                                     <option value="Household Supplies">Household Supplies</option>
                                 </select>
+                                <div id="parentCategoryError" class="error-message"></div>
                             </div>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ validations:
 
 ------------------------------------------------------------------------
 Admin:
--add validation in all pages
+-add validation in offers page
 
 --------------------------------------------------------------
 
@@ -74,6 +74,4 @@ Admin:
     -add category
     -update category
     -display category -delete category
--login
--register
--password
+-add validation in some pages

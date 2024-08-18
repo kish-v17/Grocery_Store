@@ -1,6 +1,6 @@
-<?php include('customs.php'); ?>
-    <div class="container sitemap">
-        <div class="row align-items-center">
+<?php include('header.php'); ?>
+    <div class="container ">
+        <div class="row align-items-center sitemap">
             <div class="col-6">
                 <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
             </div>
