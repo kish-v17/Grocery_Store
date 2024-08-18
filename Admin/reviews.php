@@ -1,12 +1,16 @@
 <?php include("sidebar.php"); ?>
 <div id="layoutSidenav_content">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Review Management</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Reviews</li>
-        </ol>
-
+        <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+                <div>
+                    <h1 class="mt-4">Review Management</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Reviews</li>
+                    </ol>
+                </div>
+                <a class="btn btn-primary" href="add-review.php">Add Review</a>
+            </div>
         <div class="card-body">
             <table class="table border">
                 <thead class="table-light">

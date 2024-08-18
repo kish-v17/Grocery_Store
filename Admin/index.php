@@ -73,40 +73,73 @@
             <a href="orders.php" class="btn btn-secondary">See All Orders</a>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead class="table-light">
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Order Date</th>
-                        <th>Customer</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1001</td>
-                        <td>2024-08-10</td>
-                        <td>John Doe</td>
-                        <td>₹150.00</td>
-                        <td><span class="badge bg-success">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td>1002</td>
-                        <td>2024-08-11</td>
-                        <td>Jane Smith</td>
-                        <td>₹85.00</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>1003</td>
-                        <td>2024-08-12</td>
-                        <td>Emily Johnson</td>
-                        <td>₹45.00</td>
-                        <td><span class="badge bg-danger">Cancelled</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <table class="table border">
+            <thead class="table-light">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Order Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1001</td>
+                    <td><a href="user_profile.php?username=JohnDoe">John Doe</a></td>
+                    <td>2024-08-10</td>
+                    <td>2</td>
+                    <td>₹50.00</td>
+                    <td>Pending</td>
+                    <td>
+                        <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td><a href="user_profile.php?username=JaneSmith">Jane Smith</a></td>
+                    <td>2024-08-11</td>
+                    <td>3</td>
+                    <td>₹75.00</td>
+                    <td>Processing</td>
+                    <td>
+                        <a href="view_order.php?id=1002" class="btn btn-info btn-sm">View</a>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td><a href="user_profile.php?username=EmilyJohnson">Emily Johnson</a></td>
+                    <td>2024-08-12</td>
+                    <td>1</td>
+                    <td>₹25.00</td>
+                    <td>Shipped</td>
+                    <td>
+                        <a href="view_order.php?id=1003" class="btn btn-info btn-sm">View</a>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1004</td>
+                    <td><a href="user_profile.php?username=MichaelBrown">Michael Brown</a></td>
+                    <td>2024-08-13</td>
+                    <td>4</td>
+                    <td>₹100.00</td>
+                    <td>Delivered</td>
+                    <td>
+                        <a href="view_order.php?id=1004" class="btn btn-info btn-sm">View</a>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </div>
     </div>
 
@@ -117,7 +150,7 @@
             <a href="products.php" class="btn btn-secondary">See All Orders</a>
         </div>
         <div class="card-body">
-            <table class="table">
+            <table class="table border">
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>

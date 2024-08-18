@@ -39,16 +39,6 @@ validations:
 
 ------------------------------------------------------------------------
 Admin:
--update dashboard page
--add offers module
-    -percent discount on orders
-    -free shipping  on orders above
--add banners module
--add cart module
--add address module
--add and update review
--add and update order
-
 -add validation in all pages
 
 --------------------------------------------------------------

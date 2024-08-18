@@ -6,6 +6,7 @@
     --form-bg:#F5F5F5;
     --form:#7B7B7B;
     --primary:#3BB77E;
+    --dark-primary:#2E8A5F;
     --light-green: #3ED48E;
     --delete: red;
     --delete: #FF4C4C;
@@ -278,7 +279,7 @@ input[type="checkbox"]:checked {
 }
 
 /* account page */
-.primary-btn:hover{box-shadow: 0 0 1px rgba(0, 0, 0, 0);}
+.primary-btn:hover{background-color: var(--dark-primary);}
 .primary-btn{
     transition: box-shadow 0.15s;
     background-color:var(--primary);
