@@ -2,7 +2,7 @@
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Orders</p>
         <!-- table start -->
-        <div class="row">
+        <div class="row bg-grey">
             <div class="col-2">
                 Order ID
             </div>
@@ -32,7 +32,7 @@
                 <div class="col-2 ">Pending</div>
                 <div class="col-2 text-center">2</div>
                 <div class="col-2 text-center">100.00</div>
-                <div class="col-2 text-center"><a class="primary-btn order-link">View Order</a></div>
+                <div class="col-2 text-center"><a class="primary-btn order-link" href="order-details.php">View Order</a></div>
             </div>
     
             ';

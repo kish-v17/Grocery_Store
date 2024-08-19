@@ -46,20 +46,32 @@
                     <a class="nav-link <?php echo $title=="Contact"?"active":""?>" href="contact.php">Contact</a>
                 </li>
             </ul>
-            <div class="d-flex justify-content-end">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn primary-btn me-4 fw-light d-flex align-items-center" type="submit">Search</button>
+            <div class="d-flex justify-content-end align-items-center">
+                    <form class="d-flex justify-content-end">
+                        <input class="search-input" type="search" placeholder="Search for items..." size="25" >
+                        <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
 
                     <li class="nav-item ms-lg-auto dropdown profile-menu">
                     <i class="fa fa-user-circle"></i><a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="profile.php">Tony Strak</a>
                         <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
                             <li><a class="dropdown-item" href="account.php">My Profile</a></li>
-                            <li><a class="dropdown-item" href="order-details.php">Your Orders</a></li>
-                            <li><a class="dropdown-item" href="cart.php">Cart</a></li>
-                            <li><a class="dropdown-item" href="wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
                             <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                         </ul>
                     </li>
+                    <a href="wishlist.php" class="icon-link">
+                        <div class="icon me-1">
+                            <i class="fa-regular fa-heart"></i>
+                            <span class="badge-class">3</span>
+                        </div>
+                    </a>
+                    <a href="cart.php" class="icon-link">
+                        <div class="icon me-1">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge-class">3</span>
+                        </div>
+                    </a>
                 </div>
         </div>
     </div>

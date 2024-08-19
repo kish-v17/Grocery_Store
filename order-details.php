@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 
 <div class="container sitemap">
-    <p>
+    <p class="my-5">
         <a href="index.php" class="text-decoration-none dim link">Home /</a>
         <a href="order-history.php" class="text-decoration-none dim link">Orders /</a>
         Order# 123456

@@ -1,18 +1,16 @@
-<?php include('customs.php'); ?>
+<?php include('header2.php'); ?>
     <div class="container ">
         <div class="row align-items-center sitemap">
             <div class="col-6">
-                <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
+                <p class="mt-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Shop</p>
             </div>
             <div class="col-6 justify-content-end d-flex">
                 <button class="primary-btn js-filter-btn"><i class="fa-solid fa-filter pe-2"></i>Filter</button>
             </div>
         </div>
-        <div>
-            <?php
-                include "filter.php";
-            ?>
-        </div>
+        <?php
+            include "filter.php";
+        ?>
         <div class="row justify-content-start">
             <?php
                 display_products();
@@ -26,7 +24,7 @@
         for($i=1;$i<=8;$i++)
         {
             echo '
-            <div class=" col-md-3 gap col-sm-4 p-2 col-6">
+            <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
