@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="addProductForm" action="add_product_handler.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddProductForm();">
+                <form id="addProductForm" action="products.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddProductForm();">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">

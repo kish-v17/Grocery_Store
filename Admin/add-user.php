@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="addUserForm" action="add_user_handler.php" method="POST" onsubmit="return validateAddUserForm();">
+                <form id="addUserForm" action="users.php" method="POST" onsubmit="return validateAddUserForm();">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">

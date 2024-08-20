@@ -10,7 +10,7 @@
             </ol>
 
             <!-- Update Offer Form -->
-            <form action="" method="POST" onsubmit="return validateAddOfferForm()">
+            <form action="offers.php" method="POST" onsubmit="return validateAddOfferForm()">
                 <div class="mb-3">
                     <label for="offerDescription" class="form-label">Offer Description</label>
                     <input type="text" class="form-control" id="offerDescription" name="offerDescription" value="Existing Offer Description">

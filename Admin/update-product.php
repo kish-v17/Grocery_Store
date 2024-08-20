@@ -10,7 +10,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="updateProductForm" action="update_product_handler.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddProductForm();">
+                <form id="updateProductForm" action="products.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddProductForm();">
                     <input type="hidden" name="product_id" value="123"> <!-- Static Product ID -->
 
                     <div class="row">

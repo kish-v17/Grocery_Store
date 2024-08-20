@@ -27,7 +27,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Product 1</a>
+                                <a href="product_details.php">Turmeric Powder</a>
                             </div>
                         </td>
                         <td><a href="user_profile.php">John Doe</a></td>
@@ -37,7 +37,7 @@
                             </span>
                         </td>
                         <td  style="max-width: 250px;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
+                        A pantry essential, turmeric powder adds vibrant color and earthy flavor to dishes, while offering health benefits like anti-inflammatory properties.
                         </td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
@@ -48,7 +48,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 2" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Product 2</a>
+                                <a href="product_details.php">Basmati Rice</a>
                             </div>
                         </td>
                         <td><a href="user_profile.php">Jane Smith</a></td>
@@ -58,7 +58,7 @@
                             </span>
                         </td>
                         <td  style="max-width: 250px;">
-                            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        Fragrant and fluffy, basmati rice enhances any meal with its delicate aroma and long, slender grains that cook to perfection.
                         </td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
@@ -69,7 +69,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 3" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Product 3</a>
+                                <a href="product_details.php">Toor Dal</a>
                             </div>
                         </td>
                         <td><a href="user_profile.php">Emily Johnson</a></td>
@@ -79,7 +79,7 @@
                             </span>
                         </td>
                         <td  style="max-width: 250px;">
-                            Sed euismod nisi porta lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor id eu nisl nunc.
+                        Mild and earthy, toor dal is a staple in Indian kitchens, perfect for making rich, hearty dals that pair beautifully with rice or rotis. It's also a great source of protein and fiber.
                         </td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>

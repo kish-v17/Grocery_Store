@@ -9,7 +9,7 @@
         </ol>
         <div class="card">
             <div class="card-body">
-                <form id="updateReviewForm" action="update_review_handler.php" method="post" onsubmit="return validateAddReviewForm();">
+                <form id="updateReviewForm" action="reviews.php" method="post" onsubmit="return validateAddReviewForm();">
                     <input type="hidden" name="review_id" value="456"> <!-- Static Review ID -->
 
                     <div class="mb-3">

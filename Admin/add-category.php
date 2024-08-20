@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="" method="POST" onsubmit="return validateAddCategoryForm()">
+                <form action="categories.php" method="POST" onsubmit="return validateAddCategoryForm()">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">

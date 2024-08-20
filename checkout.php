@@ -6,7 +6,7 @@
         Checkout
     </p>
 </div>
-<form action="order-page.php" id="billingForm" class="billing-details form" onsubmit="return validateForms();">
+<form action="order-success.php" id="billingForm" class="billing-details form" onsubmit="return validateForms();">
 <div class="container">
     <h2 class="mb-4">Billing Details</h2>
     <div class="row g-5">
@@ -139,7 +139,7 @@
                 <div class="price">₹300.00</div>
             </div>
             <div class="d-flex justify-content-end">
-                <input type="submit" value="Place order" class="btn-msg mt-2">
+                <input type="submit" value="Pay Now" class="btn-msg mt-2">
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
             </ol>
 
             <!-- Add Offer Form -->
-            <form action="add_offer_handler.php" method="post" onsubmit="return validateAddOfferForm()">
+            <form action="offers.php" method="post" onsubmit="return validateAddOfferForm()">
                 <div class="mb-3">
                     <label for="offerDescription" class="form-label">Offer Description</label>
                     <input type="text" class="form-control" id="offerDescription" name="offerDescription">

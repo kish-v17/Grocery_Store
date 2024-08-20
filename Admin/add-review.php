@@ -8,7 +8,7 @@
         </ol>
         <div class="card">
             <div class="card-body">
-                <form id="addReviewForm" action="add_review_handler.php" method="post" onsubmit="return validateAddReviewForm();">
+                <form id="addReviewForm" action="reviews.php" method="post" onsubmit="return validateAddReviewForm();">
                     <div class="mb-3">
                         <label for="productid" class="form-label">Product ID</label>
                         <input type="text" class="form-control" id="productid" name="productid" placeholder="Enter Product ID">

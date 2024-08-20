@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="updateUserForm" action="update_user_handler.php" method="POST" onsubmit="return validateAddUserForm();">
+                <form id="updateUserForm" action="users.php" method="POST" onsubmit="return validateAddUserForm();">
                     <input type="hidden" name="user_id" id="userId" value="">
 
                     <div class="row">
