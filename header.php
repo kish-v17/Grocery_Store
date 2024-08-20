@@ -46,11 +46,15 @@
                     <a class="nav-link <?php echo $title=="Contact"?"active":""?>" href="contact.php">Contact</a>
                 </li>
             </ul>
-            <form class="d-flex justify-content-end">
-                <input class="search-input" type="search" placeholder="Search for items..." size="25" >
-                <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                <a class="header-btn"  href="register.php">Register</a>
-                <a class="header-btn"  href="login.php">Login</a>
+            <form class="d-flex flex-wrap justify-content-end">
+                <div class="search d-flex justify-content-center align-items-center ">
+                    <input class="search-input" type="search" placeholder="Search for items..." size="25" >
+                    <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+                <div class="log-reg d-flex justify-content-center align-items-center">
+                    <a class="header-btn"  href="register.php">Register</a>
+                    <a class="header-btn"  href="login.php">Login</a>
+                </div>
             </form>
         </div>
     </div>

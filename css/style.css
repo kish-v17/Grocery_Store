@@ -281,31 +281,23 @@ input[type="checkbox"]:checked {
     padding: 40px 50px;
 }
 
-.hero {
+.hero-banner {
     position: relative;
-    height: 70vh;
+    min-height: 25rem;
     background-image: url('../img/items/banners/hero-bg-img.png');
     background-size: cover;
+    background-color: rgba(144, 223, 148, 0.7);
     background-position: center;
-    padding: 2rem;
     color: #000;
+    padding-left:9.2vw ;
 }
-
-/* Layer the blue background with opacity over the vegetables image */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(144, 223, 148, 0.7); /* Blue background with 70% opacity */
-    z-index: 1;
-}
-
 .hero .content {
-    position: relative;
+    width: 50%;
+    display: flex;
+    align-items: center;
     z-index: 2;
+    justify-content: center;
+
 }
 
 .hero h1 {
@@ -313,61 +305,64 @@ input[type="checkbox"]:checked {
     font-weight: 800;
 }
 
-.hero p {
+.hero .content p {
     font-size: 1rem;
-    color: #fff;
+    color: #000;
 }
 
-.hero .cta-button {
-    background-color: var(--primary, #2a9d8f);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
+.cta-button {
+    padding: 10px 30px;
+    background-color: #fa5252;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
     width: fit-content;
 }
 
-.hero .cta-button:hover {
-    background-color: var(--light-green);
+.cta-button:hover {
+    background-color: #f03e3e;
 }
 
-.hero .top-right-image {
-    position: absolute;
-    top: -15vh;
-    right: -7.96vw;
-    max-width: 90%; 
+.image-container img {
+    margin-right:-11.6px;
+    max-width: 80%;
     height: auto;
-    z-index: 3; 
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+@media (max-width: 767.98px) {
+    .hero-banner {
+        text-align: center;
+    }
+    
+    .content h1 {
+        font-size: 3rem;
     }
 
-    .hero p {
-        font-size: 1rem;
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 3rem;
+        text-align: center;
     }
 
-    .top-right-image {
-        max-width: 60%;
+    .image-container {
+        /* margin-top: 20px; */
+        margin-right: -101px;
     }
 }
 
-@media (max-width: 576px) {
-    .hero h1 {
-        font-size: 2rem;
+@media (max-width: 991.98px) {
+    .content h1 {
+        font-size: 2.2rem;
     }
-
-    .hero p {
-        font-size: 0.9rem;
+    .content{
+        align-self: center;
+        justify-self: center;
+        padding-top: 2rem;
     }
-
-    .top-right-image {
-        max-width: 80%;
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 1.1rem;
     }
 }
 /* checkout page */
