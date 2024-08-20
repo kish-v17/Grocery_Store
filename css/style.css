@@ -236,12 +236,7 @@ input[type="checkbox"]:checked {
 .featured-products>div>div:hover{
     cursor:pointer;
 }
-.banner-1{
-    background-image: url("../img/items/banners/banner-1.png");
-    height: 300px;
-    border-radius: 5px;
-    padding: 40px 50px;
-}
+
 .label-red{
     background-color: #f35244;
     color:white;
@@ -251,28 +246,43 @@ input[type="checkbox"]:checked {
     display:inline;
     height: 100%;
 }
-.banner-1 .label,.banner-2 .label{
+.banner-content{
+    position:absolute;
+    top:0;
+    width:fit-content;
+    height:100%;
+    display:flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+    padding-left: 10%;
+}
+.banner-content .label{
     background-color: var(--discount);
     color:white;
     border-radius: 3px 0px;
-    font-size: 12px;
+    font-size: 13px;
     padding: 8px 12px;
     text-transform: uppercase;
     display:inline;
 } 
-.banner-1 .heading,.banner-2 .heading{
+.banner-content .heading{
     margin:20px 0 8px 0;
     color:#253d4e;
-    font-size: 24px;
+    font-size: 18px;
 }
-.banner-1 .content,.banner-2 .content{
+.banner-content .content{
     color:#838383;
     width:60%;
     font-size:15px;
 }
-.banner-1 .primary-btn,.banner-2 .primary-btn{
-    font-size:16px;
+.banner-content .primary-btn{
+    font-size:15px;
     padding:13px;
+}
+.banner-content *{
+    margin:0;
 }
 .banner-2{
     background-image: url("../img/items/banners/banner-2.png");
@@ -941,4 +951,23 @@ sidebar h6{
     
 }
 
+@media only screen and (max-width:992px) and (min-width:576px){
+    .banner-content .label{
+        font-size: 10px;
+        padding: 8px 12px;
+        margin-top:30px;
+    } 
+    .banner-content .heading{
+        margin:5px 0 3px 0;
+        font-size: 15px;
+    }
+    .banner-content .content{
+        font-size:12px;
+    }
+    .banner-content .primary-btn{
+        font-size:10px;
+        padding:8px;
+        margin-bottom:20px;
+    }
 
+}

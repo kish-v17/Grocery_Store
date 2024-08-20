@@ -31,19 +31,25 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-6 col-12 ps-2 pe-2">
-                <div class="border ms-0 banner-1">
-                    <p class="label">Free delivery</p>
-                    <h5 class="heading">Free shipping over ₹500</h5>
-                    <p class="content">Shop ₹500 products and get free delivery anywhere</p>
-                    <button class="primary-btn">Shop Now <i class='fas fa-arrow-right ms-2'></i></button>
+                <div class="border position-relative banner">
+                    <img src="img/items/banners/banner-1.png" alt="" class="img-fluid">
+                    <div class="banner-content">
+                        <p class="label">Free delivery</p>
+                        <h5 class="heading">Free shipping over ₹500</h5>
+                        <p class="content">Shop ₹500 products and get free delivery anywhere</p>
+                        <button class="primary-btn">Shop Now <i class='fas fa-arrow-right ms-2'></i></button>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 col-12 pe-2 ps-2">
-                <div class="border banner-2">
-                    <p class="label">60% off</p>
-                    <h5 class="heading">Organic Food</h5>
-                    <p class="content">Save up to 60% off on your first order</p>
-                    <button class="primary-btn">Order Now <i class='fas fa-arrow-right ms-2'></i></button>
+                <div class="border position-relative banner">
+                    <img src="img/items/banners/banner-2.png" alt="" class="img-fluid">
+                    <div class="banner-content">
+                        <p class="label">60% off</p>
+                        <h5 class="heading">Organic Food</h5>
+                        <p class="content">Save up to 60% off on your first order</p>
+                        <button class="primary-btn">Order Now <i class='fas fa-arrow-right ms-2'></i></button>
+                    </div>
                 </div>
             </div>
         </div>
