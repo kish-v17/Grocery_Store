@@ -44,11 +44,12 @@
                             <h5>Total Revenue</h5>
                             <h2>₹58,000</h2>
                         </div>
-                        <i class="fas fa-dollar-sign fa-2x"></i>
+                        <span style="font-size: 2em;">₹</span>
                     </div>
                 </div>
             </a>
         </div>
+
 
         <div class="col-xl-3 col-md-6 mb-4">
             <a href="users.php" class="text-decoration-none">
