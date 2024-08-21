@@ -32,7 +32,7 @@ html body{
 input[type="checkbox"]{
     accent-color:var(--primary);
 }
-input:focus,textarea:focus {
+input:focus,textarea:focus,select:focus {
     outline: none; 
 }
 
@@ -749,6 +749,7 @@ input[type="radio"] , input[type="radio"]:hover{
     color:var(--primary);
     background-color: var(--secondary);
     transition:  background-color 0.15s, color 0.15s;
+    width:max-content;
 }
 .product-body .primary-btn:hover, .like:hover{
     color:white;

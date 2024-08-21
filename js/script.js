@@ -670,3 +670,23 @@ function validateForms() {
 
     return isValid;
 }
+function validateReviewForm() {
+    let isValid = true;
+
+    const userRating = document.getElementById('userRating').value;
+    const userReview = document.getElementById('userReview').value.trim();
+    document.getElementById('userRatingError').innerText = '';
+    document.getElementById('userReviewError').innerText = '';
+
+    if (!userRating) {
+        document.getElementById('userRatingError').innerText = 'Rating is required.';
+        isValid = false;
+    }
+
+    if (!userReview) {
+        document.getElementById('userReviewError').innerText = 'Review is required.';
+        isValid = false;
+    }
+
+    return isValid;
+}

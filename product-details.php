@@ -53,13 +53,37 @@
 
     <div class="container my-5">
         <h4 class="mb-4 text-center fw-bold">Customer Reviews</h4>
-        <div class="row d-flex">
-            <?php display_review();?>
+        <div class="row">
+            <div class="col-6">
+            <form  onsubmit="return validateReviewForm();">
+                <div >
+                    <label for="userRating" class="d-block">Rating</label>
+                    <select class="form w-100 p-2 rounded" id="userRating">
+                        <option value="">Select rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <p id="userRatingError" class="text-danger"></p>
+                </div>
+                <div >
+                    <label for="userReview " class="d-block">Review</label>
+                    <textarea  id="userReview" class="w-100" rows="3" placeholder="Write your review"></textarea>
+                    <p id="userReviewError" class="text-danger"></p>
+                </div>
+                <button class="primary-btn">Leave a review</button>
+            </form>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <?php display_review();?>
+                </div>
+            </div>
         </div>
-
-        <div class="text-end mt-2">
-            <button class="btn btn-primary">Leave a Review</button>
-        </div>
+       
+        
 
         <h4 class="mt-5 mb-4 text-center fw-bold">More from PureBite</h4>
         <div class="d-flex justify-content-start mt-3">
@@ -118,7 +142,7 @@
         for($i=1;$i<=4;$i++)
         {
             echo '
-            <div class="col-md-4 col-sm-6 card mb-4 review-card">
+            <div class="col-md-6 card mb-4 review-card">
                 <div class="card-body">
                     <h5 class="card-title">John Doe</h5>
                     <h6 class="card-subtitle mb-2 text-warning">★★★★☆</h6>

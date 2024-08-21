@@ -24,7 +24,7 @@
         for($i=1;$i<=8;$i++)
         {
             echo '
-            <div class=" col-md-3 gap col-sm-4 p-2 col-12 mt-2">
+            <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                 <div class="card">
                     <div class="product-image">
                         <a href="product-details.php?id=1">
@@ -37,7 +37,7 @@
                         }
                         echo 
                         '
-                        <!--<button class=" primary-btn">Add to cart</button>-->
+                        <!--<button class=" primary-btn ">Add to cart</button>-->
                     </div>
                     <div class="card-body product-body px-3">
                         <p class="category-name">Packed foods</p>
@@ -52,12 +52,12 @@
                             </div>
                             <div class="review-count ps-1">(95)</div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-end">
+                        <div class="d-flex justify-content-between align-items-end mt-sm-2 flex-sm-column flex-row align-items-sm-center flex-lg-row">
                             <div>
                                 <span class="price">₹100.00</span>
                                 <span class="striked-price">₹150.00</span>
                             </div>
-                            <a class="primary-btn order-link" href="cart.php"><i class="fa-solid fa-cart-shopping pe-2 "></i>Add</a>
+                            <a class="primary-btn order-link mt-sm-1" href="cart.php"><i class="fa-solid fa-cart-shopping pe-2 "></i>Add</a>
                         </div>
                     </div>
                 </div>
