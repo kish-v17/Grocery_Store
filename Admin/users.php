@@ -33,8 +33,8 @@
                             <td>123-456-7890</td>
                             <td>Active</td>
                             <td>
-                                <a href="user_profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
                             </td>
                         </tr>
@@ -45,8 +45,8 @@
                             <td>987-654-3210</td>
                             <td>Inactive</td>
                             <td>
-                                <a href="user_profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
                             </td>
                         </tr>
@@ -57,8 +57,8 @@
                             <td>123-456-7890</td>
                             <td>Active</td>
                             <td>
-                                <a href="user_profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
                             </td>
                         </tr>
@@ -69,8 +69,8 @@
                             <td>987-654-3210</td>
                             <td>Inactive</td>
                             <td>
-                                <a href="user_profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
                             </td>
                         </tr>
@@ -81,8 +81,8 @@
                             <td>123-456-7890</td>
                             <td>Active</td>
                             <td>
-                                <a href="user_profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
                             </td>
                         </tr>
@@ -93,8 +93,8 @@
                             <td>987-654-3210</td>
                             <td>Inactive</td>
                             <td>
-                                <a href="user_profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
                             </td>
                         </tr>
@@ -105,8 +105,8 @@
                             <td>123-456-7890</td>
                             <td>Active</td>
                             <td>
-                                <a href="user_profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
                             </td>
                         </tr>
@@ -117,8 +117,8 @@
                             <td>987-654-3210</td>
                             <td>Inactive</td>
                             <td>
-                                <a href="user_profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
                             </td>
                         </tr>
@@ -129,8 +129,8 @@
                             <td>123-456-7890</td>
                             <td>Active</td>
                             <td>
-                                <a href="user_profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
                             </td>
                         </tr>
@@ -141,8 +141,8 @@
                             <td>987-654-3210</td>
                             <td>Inactive</td>
                             <td>
-                                <a href="user_profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update_user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
+                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
                             </td>
                         </tr>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="deactivate_user_handler.php?id=1" class="btn btn-danger">Deactivate</a>
+                    <a href="deactivate-user-handler.php?id=1" class="btn btn-danger">Deactivate</a>
                 </div>
             </div>
         </div>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="activate_user_handler.php?id=2" class="btn btn-success">Activate</a>
+                    <a href="activate-user-handler.php?id=2" class="btn btn-success">Activate</a>
                 </div>
             </div>
         </div>

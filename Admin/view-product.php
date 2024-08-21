@@ -70,7 +70,7 @@
                                 </select>
                             </td>
                             <td>
-                                <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
                                 <button class="btn btn-primary btn-sm">Save</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                             </td>
@@ -98,7 +98,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="user_profile.php">John Doe</a></td>
+                            <td><a href="user-profile.php">John Doe</a></td>
                             <td>
                                 <span class="text-warning">
                                     &#9733; &#9733; &#9733; &#9733; &#9734;
@@ -151,7 +151,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="delete_review_handler.php" class="btn btn-danger">Delete</a>
+                    <a href="delete-review-handler.php" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>

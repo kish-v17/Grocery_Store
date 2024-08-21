@@ -38,7 +38,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -56,7 +56,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -74,7 +74,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -92,7 +92,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -110,7 +110,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -128,7 +128,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -146,7 +146,7 @@
                                         <td>Bakery</td>
                                         <td>
                                             <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-info btn-sm me-1" href="view_product.php">View</a>
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php">View</a>
                                                 <a class="btn btn-success btn-sm me-1" href="update-product.php">Update</a>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                                             </div>
@@ -190,7 +190,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a href="delete_product_handler.php" class="btn btn-danger">Delete</a>
+                <a href="deleteproducthandler.php" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>

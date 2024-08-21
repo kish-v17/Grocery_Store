@@ -89,52 +89,52 @@
             <tbody>
                 <tr>
                     <td>1001</td>
-                    <td><a href="user_profile.php?username=JohnDoe">John Doe</a></td>
+                    <td><a href="user-profile.php?username=JohnDoe">John Doe</a></td>
                     <td>2024-08-10</td>
                     <td>2</td>
                     <td>₹50.00</td>
                     <td>Pending</td>
                     <td>
-                        <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                        <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
                         <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
                 <tr>
                     <td>1002</td>
-                    <td><a href="user_profile.php?username=JaneSmith">Jane Smith</a></td>
+                    <td><a href="user-profile.php?username=JaneSmith">Jane Smith</a></td>
                     <td>2024-08-11</td>
                     <td>3</td>
                     <td>₹75.00</td>
                     <td>Processing</td>
                     <td>
-                        <a href="view_order.php?id=1002" class="btn btn-info btn-sm">View</a>
+                        <a href="view-order.php?id=1002" class="btn btn-info btn-sm">View</a>
                         <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
                 <tr>
                     <td>1003</td>
-                    <td><a href="user_profile.php?username=EmilyJohnson">Emily Johnson</a></td>
+                    <td><a href="user-profile.php?username=EmilyJohnson">Emily Johnson</a></td>
                     <td>2024-08-12</td>
                     <td>1</td>
                     <td>₹25.00</td>
                     <td>Shipped</td>
                     <td>
-                        <a href="view_order.php?id=1003" class="btn btn-info btn-sm">View</a>
+                        <a href="view-order.php?id=1003" class="btn btn-info btn-sm">View</a>
                         <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
                 <tr>
                     <td>1004</td>
-                    <td><a href="user_profile.php?username=MichaelBrown">Michael Brown</a></td>
+                    <td><a href="user-profile.php?username=MichaelBrown">Michael Brown</a></td>
                     <td>2024-08-13</td>
                     <td>4</td>
                     <td>₹100.00</td>
                     <td>Delivered</td>
                     <td>
-                        <a href="view_order.php?id=1004" class="btn btn-info btn-sm">View</a>
+                        <a href="view-order.php?id=1004" class="btn btn-info btn-sm">View</a>
                         <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
@@ -175,7 +175,7 @@
                         <td>50</td>
                         <td>Bakery</td>
                         <td>
-                            <a class="btn btn-info btn-sm" href="view_product.php">View</a>
+                            <a class="btn btn-info btn-sm" href="view-product.php">View</a>
                             <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                         </td>
