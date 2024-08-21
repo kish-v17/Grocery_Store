@@ -1,5 +1,3 @@
-
-
 // account page
 const menuItems = document.querySelectorAll('.menu-item');
 menuItems.forEach(menuItem=>{
@@ -17,11 +15,11 @@ menuItems.forEach(menuItem=>{
         });
     });
 });
+
 //for printing my profile section by default on account page
 const profile = document.querySelector('#my-profile');
 if(profile)
     profile.classList.remove('invisible');
-
 
 //checkout page - different shipping address feature
 const choice = document.querySelector('#choice');
@@ -105,7 +103,6 @@ if(filterButton)
         });
     });
 }
-
 
 // validation
 function validateMyAccountForm() {

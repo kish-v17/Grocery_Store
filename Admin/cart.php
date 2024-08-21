@@ -29,10 +29,10 @@
                             <td><a href="user-profile.php?user_id=1">John Doe</a></td>
                             <td><a href="product-detail.php?product_id=101">Product 1</a></td>
                             <td>2</td>
-                            <td>$50.00</td>
-                            <td>$100.00</td>
+                            <td>₹50.00</td>
+                            <td>₹100.00</td>
                             <td>
-                                <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                                <a href="update-cart.php" class="btn btn-secondary btn-sm">Edit</a>
                                 <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
                             </td>
                         </tr>
@@ -40,10 +40,10 @@
                             <td><a href="user-profile.php?user_id=2">Jane Smith</a></td>
                             <td><a href="product-detail.php?product_id=102">Product 2</a></td>
                             <td>1</td>
-                            <td>$30.00</td>
-                            <td>$30.00</td>
+                            <td>₹30.00</td>
+                            <td>₹30.00</td>
                             <td>
-                                <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="update-cart.php" class="btn btn-secondary btn-sm">Edit</a>
                                 <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
                             </td>
                         </tr>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="remove_cart_item_handler.php" class="btn btn-danger">Remove</a>
+                    <a href="" class="btn btn-danger">Remove</a>
                 </div>
             </div>
         </div>

@@ -12,7 +12,8 @@
         "login.php" => "Log in to PureBite",
         "register.php" => "Register to PureBite",
         "wishlist.php" => "Your Favourites",
-        "order-history.php" => "Order History"
+        "order-history.php" => "Order History",
+        "about.php" => "About us"
     );
     $title = $title_array[$caller_file];
 ?>
@@ -44,6 +45,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $title=="Contact"?"active":""?>" href="contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $title=="About"?"active":""?>" href="about.php">About</a>
                 </li>
             </ul>
             <form class="d-flex flex-wrap justify-content-end">
