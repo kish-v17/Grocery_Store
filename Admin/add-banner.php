@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="banner.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddBannerForm()"> 
+                <form action="banners.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddBannerForm()"> 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
