@@ -1,7 +1,6 @@
 <?php include('header.php'); ?>
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Orders</p>
-        <!-- table start -->
         <div class="row bg-grey">
             <div class="col-2">
                 Order ID
@@ -15,7 +14,6 @@
             <div class="col-2 text-center">View Orders</div>
         </div>
         <?php display_orders(); ?>
-        <!-- table end -->
     </div>
     
 <?php include('footer.php'); ?>

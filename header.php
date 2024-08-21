@@ -12,8 +12,13 @@
         "login.php" => "Log in to PureBite",
         "register.php" => "Register to PureBite",
         "wishlist.php" => "Your Favourites",
-        "order-history.php" => "Order History",
-        "about.php" => "About us"
+        "about.php" => "About PureBite",
+        "order-histroy.php" => "Your orders",
+        "order-details.php" => "Order details",
+        "order-success.php" => "Order successful",
+        "forgot-password.php" => "Forgot password?",
+        "otp-page.php" => "OTP page",
+        "product-details.php" => "Chocolate"
     );
     $title = $title_array[$caller_file];
 ?>

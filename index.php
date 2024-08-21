@@ -12,6 +12,60 @@
             </div>
         </div>
     </div>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Exclusive Offers</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">10% Discount</h5>
+                        <p class="card-text">On orders above ₹300</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">15% Discount</h5>
+                        <p class="card-text">On orders above ₹500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">20% Discount</h5>
+                        <p class="card-text">On orders above ₹1000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">25% Discount</h5>
+                        <p class="card-text">On orders above ₹1500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">30% Discount</h5>
+                        <p class="card-text">On orders above ₹2000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">50% Discount</h5>
+                        <p class="card-text">On orders above ₹5000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class=" mt-5 container">
         <div class="d-flex justify-content-between featured-products">
             <h4 >Featuerd products</h4>

@@ -25,22 +25,22 @@
                             <div class="row g-2">
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">First Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Name*" id="firstName">
+                                    <input type="text" class="w-100" placeholder="Your Name*" id="firstName" value="Rixit">
                                     <p id="firstNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Last Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*" id="lastName">
+                                    <input type="text" class="w-100" placeholder="Your Email*" id="lastName" value="Dobariya">
                                     <p id="lastNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*" id="email">
+                                    <input type="text" class="w-100" placeholder="Your Email*" id="email" value="rixitdoabariya05@gmail.com">
                                     <p id="emailError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Phone</label>
-                                    <input type="text" class="w-100" placeholder="Your Phone*" id="phone">
+                                    <input type="text" class="w-100" placeholder="Your Phone*" id="phone" value="87329 65892">
                                     <p id="phoneError" class="error"></p>
                                 </div>
                             
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div id="all-orders" class="invisible container cart-table">
-                    <div class="row">
+                    <div class="row bg-grey">
                         <div class="col-2">
                             Order ID
                         </div>

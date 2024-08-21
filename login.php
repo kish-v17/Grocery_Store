@@ -6,7 +6,7 @@
                     <div class="mb-3 w-75">
                         <h2 class="mb-3">Log in to PureBite</h2>
                         <div class="mb-4 font-black">Enter your details below</div>
-                        <form id="loginForm" action="" onsubmit="return validateLoginForm();">
+                        <form id="loginForm" action="index.php" onsubmit="return validateLoginForm();">
                             <input type="text" id="loginEmail" class="w-100 p-2" placeholder="Email">
                             <p id="loginEmailError" class="error mb-4"></p>
                             <input type="text" id="loginPassword" class="w-100 p-2" placeholder="Password">
