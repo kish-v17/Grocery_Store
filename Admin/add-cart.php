@@ -10,7 +10,7 @@
 
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="add_to_cart_handler.php" method="POST" onsubmit="return validateAddToCartForm()">
+                    <form action="cart.php" method="POST" onsubmit="return validateAddToCartForm()">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">

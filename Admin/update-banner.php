@@ -9,7 +9,7 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="update_banner_handler.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddBannerForm()">
+                <form action="banner.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddBannerForm()">
                     <input type="hidden" name="banner_id" value="static_banner_id">
 
                     <div class="row">

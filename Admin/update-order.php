@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="" method="POST" onsubmit="return validateAddOrderForm()">
+                <form action="orders.php" method="POST" onsubmit="return validateAddOrderForm()">
                     <div class="mb-3">
                         <label for="userId" class="form-label">User ID</label>
                         <input type="text" class="form-control" id="userId" name="userId" value="12345">
