@@ -4,7 +4,7 @@
         <h1 class="mt-4">Update Product</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="product-management.php">Products</a></li>
+            <li class="breadcrumb-item"><a href="products.php">Products</a></li>
             <li class="breadcrumb-item active">Update Product</li>
         </ol>
 
