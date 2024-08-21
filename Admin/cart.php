@@ -10,12 +10,12 @@
                         <li class="breadcrumb-item active">Carts</li>
                     </ol>
                 </div>
-                <a class="btn btn-primary" href="add-cart.php">Add Product into Cart</a>
+                <a class="btn btn-primary text-nowrap" href="add-cart.php">Add Product into Cart</a>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
-                        <tr>
+                        <tr class="text-nowrap">
                             <th>User</th>
                             <th>Product</th>
                             <th>Quantity</th>
@@ -32,8 +32,10 @@
                             <td>₹50.00</td>
                             <td>₹100.00</td>
                             <td>
-                                <a href="update-cart.php" class="btn btn-secondary btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="update-cart.php" class="btn btn-secondary btn-sm me-1">Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
+                                </div>    
                             </td>
                         </tr>
                         <tr>
@@ -43,8 +45,10 @@
                             <td>₹30.00</td>
                             <td>₹30.00</td>
                             <td>
-                            <a href="update-cart.php" class="btn btn-secondary btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="update-cart.php" class="btn btn-secondary btn-sm me-1">Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
+                                </div>    
                             </td>
                         </tr>
                     </tbody>

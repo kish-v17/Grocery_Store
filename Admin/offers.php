@@ -15,79 +15,88 @@
             </div>
             <!-- Discount Offers Table -->
             <h4 class="mt-4">Discount Offers</h4>
-            <table class="table border">
-                <thead class="table-light">
-                    <tr>
-                        <th>Offer Description</th>
-                        <th>Discount</th>
-                        <th>Minimum Order</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10% discount on orders above ₹1000</td>
-                        <td>10%</td>
-                        <td>₹1000</td>
-                        <td>
-                            <a href="update-offer.php" class="btn btn-secondary btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5% discount on orders above ₹500</td>
-                        <td>5%</td>
-                        <td>₹500</td>
-                        <td>
-                            <a href="update-offer.php" class="btn btn-secondary btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card-body">
+                <table class="table border text-nowrap">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Offer Description</th>
+                            <th>Discount</th>
+                            <th>Minimum Order</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10% discount on orders above ₹1000</td>
+                            <td>10%</td>
+                            <td>₹1000</td>
+                            <td>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="update-offer.php" class="btn btn-secondary btn-sm me-1">Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                </div>                           
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5% discount on orders above ₹500</td>
+                            <td>5%</td>
+                            <td>₹500</td>
+                            <td>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="update-offer.php" class="btn btn-secondary btn-sm me-1">Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                </div>                           
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- First Purchase Discount Table -->
             <h4 class="mt-4">First Purchase Discounts</h4>
-            <table class="table border">
-                <thead class="table-light">
-                    <tr>
-                        <th>Offer Description</th>
-                        <th>Discount</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" value="10% discount on first purchase"></td>
-                        <td><input type="text" class="form-control" value="10"></td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-sm">Update</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card-body">
+                <table class="table border text-nowrap">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Offer Description</th>
+                            <th>Discount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" value="10% discount on first purchase"></td>
+                            <td><input type="text" class="form-control" value="10"></td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">Update</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Free Shipping Table -->
             <h4 class="mt-4">Free Shipping Offers</h4>
-            <table class="table border">
-                <thead class="table-light">
-                    <tr>
-                        <th>Offer Description</th>
-                        <th>Minimum Order</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" value="Free shipping on orders above ₹1500"></td>
-                        <td><input type="text" class="form-control" value="1500"></td>
-                        <td>
-                            <a href="#" class="btn btn-success btn-sm">Update</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <div class="card-body">
+                <table class="table border text-nowrap">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Offer Description</th>
+                            <th>Minimum Order</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" value="Free shipping on orders above ₹1500"></td>
+                            <td><input type="text" class="form-control" value="1500"></td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm">Update</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 

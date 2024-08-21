@@ -10,10 +10,10 @@
                         <li class="breadcrumb-item active">Orders</li>
                     </ol>
                 </div>
-                <a class="btn btn-primary" href="add-order.php">Add Order</a>
+                <a class="btn btn-primary text-nowrap" href="add-order.php">Add Order</a>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -34,9 +34,11 @@
                             <td>₹50.00</td>
                             <td>Pending</td>
                             <td>
-                                <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
-                                <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="view_order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
+                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -47,9 +49,11 @@
                             <td>₹75.00</td>
                             <td>Processing</td>
                             <td>
-                                <a href="view_order.php?id=1002" class="btn btn-info btn-sm">View</a>
-                                <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="view_order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
+                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -60,9 +64,11 @@
                             <td>₹25.00</td>
                             <td>Shipped</td>
                             <td>
-                                <a href="view_order.php?id=1003" class="btn btn-info btn-sm">View</a>
-                                <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="view_order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
+                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -73,9 +79,11 @@
                             <td>₹100.00</td>
                             <td>Delivered</td>
                             <td>
-                                <a href="view_order.php?id=1004" class="btn btn-info btn-sm">View</a>
-                                <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="view_order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
+                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

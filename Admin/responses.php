@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Username</th>
@@ -29,8 +29,10 @@
                             <td>123-456-7890</td>
                             <td>This is a sample message.</td>
                             <td>
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -39,8 +41,10 @@
                             <td>123-456-7890</td>
                             <td>This is a sample message.</td>
                             <td>
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -49,8 +53,10 @@
                             <td>123-456-7890</td>
                             <td>This is a sample message.</td>
                             <td>
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <div class="d-flex flex-nowrap">
+                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

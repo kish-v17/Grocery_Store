@@ -10,12 +10,12 @@
                                     <li class="breadcrumb-item active">Categories</li>
                                 </ol>
                             </div>
-                            <a class="btn btn-primary" href="add-category.php">Add Category</a>
+                            <a class="btn btn-primary text-nowrap" href="add-category.php">Add Category</a>
                         </div>
                         <div class="card-body">
-                            <table class="table border">
+                            <table class="table border text-nowrap">
                                 <thead class="table-light">
-                                    <tr>
+                                    <tr class="text-nowrap">
                                         <th>Category ID</th>
                                         <th>Category Name</th>
                                         <th>Parent Category</th>
@@ -30,8 +30,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -40,8 +42,10 @@
                                         <td>Bakery</td>
                                         <td>10</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -50,8 +54,10 @@
                                         <td>Bakery</td>
                                         <td>15</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -60,8 +66,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -70,8 +78,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -80,8 +90,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,8 +102,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -100,8 +114,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -110,8 +126,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -120,8 +138,10 @@
                                         <td>None</td>
                                         <td>5</td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" href="update-category.php">Edit</a>
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            <div class="d-flex flex-nowrap ">
+                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

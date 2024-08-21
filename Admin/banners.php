@@ -16,7 +16,7 @@
             </div>
 
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Image</th>
@@ -31,9 +31,11 @@
                             <td>1</td>
                             <td><a href="https://example.com/banner1">https://example.com/banner1</a></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-success">Active</a>
-                                <a href="update-banner.php" class="btn btn-sm btn-secondary ms-2">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="#" class="btn btn-sm btn-success">Active</a>
+                                    <a href="update-banner.php" class="btn btn-sm btn-secondary ms-2">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -41,9 +43,11 @@
                             <td>2</td>
                             <td><a href="https://example.com/banner2">https://example.com/banner2</a></td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-danger">Inactive</a>
-                                <a href="update-banner.php" class="btn btn-sm btn-secondary ms-2">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                <div class="d-flex flex-nowrap">
+                                    <a href="#" class="btn btn-sm btn-success">Active</a>
+                                    <a href="update-banner.php" class="btn btn-sm btn-secondary ms-2">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

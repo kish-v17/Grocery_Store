@@ -9,10 +9,10 @@
                         <li class="breadcrumb-item active">Reviews</li>
                     </ol>
                 </div>
-                <a class="btn btn-primary" href="add-review.php">Add Review</a>
+                <a class="btn btn-primary text-nowrap" href="add-review.php">Add Review</a>
             </div>
         <div class="card-body">
-            <table class="table border">
+            <table class="table border text-nowrap">
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
@@ -36,12 +36,14 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td  style="max-width: 250px;">
+                        <td  style="max-width: 250px;" class="text-wrap">
                         A pantry essential, turmeric powder adds vibrant color and earthy flavor to dishes, while offering health benefits like anti-inflammatory properties.
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            <div class="d-flex flex-nowrap">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -57,12 +59,14 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9733;
                             </span>
                         </td>
-                        <td  style="max-width: 250px;">
+                        <td  style="max-width: 250px;" class="text-wrap">
                         Fragrant and fluffy, basmati rice enhances any meal with its delicate aroma and long, slender grains that cook to perfection.
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            <div class="d-flex flex-nowrap">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -78,12 +82,14 @@
                                 &#9733; &#9733; &#9733; &#9734; &#9734;
                             </span>
                         </td>
-                        <td  style="max-width: 250px;">
+                        <td  style="max-width: 250px;" class="text-wrap">
                         Mild and earthy, toor dal is a staple in Indian kitchens, perfect for making rich, hearty dals that pair beautifully with rice or rotis. It's also a great source of protein and fiber.
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            <div class="d-flex flex-nowrap">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
