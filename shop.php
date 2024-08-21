@@ -27,7 +27,9 @@
             <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                 <div class="card">
                     <div class="product-image">
-                        <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
+                        <a href="product-details.php?id=1">
+                            <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
+                        </a>
                         <div class="like"><i class="fa-regular fa-heart"></i></div>
                         ';
                         if($i%3==0){
@@ -39,7 +41,7 @@
                     </div>
                     <div class="card-body product-body px-3">
                         <p class="category-name">Packed foods</p>
-                        <h6 class="card-title">Chocolate</h6>
+                            <h6 class="card-title not-link text-decoration-none">Chocolate</h6>
                         <div class="rating-section">
                             <div class="ratings">
                                 <span class="fa fa-star checked"></span>
