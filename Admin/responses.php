@@ -68,14 +68,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="reply_handler.php" method="POST">
+                    <form action="" method="POST">
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" required>
+                            <input type="text" class="form-control" id="subject" name="subject" >
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="3" ></textarea>
                         </div>
                         <input type="hidden" name="response_id" value="<!-- Response ID here -->">
                         <button type="submit" class="btn btn-primary">Send</button>
