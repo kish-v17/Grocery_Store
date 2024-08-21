@@ -30,7 +30,7 @@
                         <td>10%</td>
                         <td>₹1000</td>
                         <td>
-                            <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="update-offer.php" class="btn btn-secondary btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                         </td>
                     </tr>
@@ -39,7 +39,7 @@
                         <td>5%</td>
                         <td>₹500</td>
                         <td>
-                            <a href="#" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="update-offer.php" class="btn btn-secondary btn-sm">Edit</a>
                             <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                         </td>
                     </tr>
@@ -59,7 +59,7 @@
                 <tbody>
                     <tr>
                         <td><input type="text" class="form-control" value="10% discount on first purchase"></td>
-                        <td><input type="text" class="form-control" value="10%"></td>
+                        <td><input type="text" class="form-control" value="10"></td>
                         <td>
                             <a href="#" class="btn btn-success btn-sm">Update</a>
                         </td>
@@ -80,7 +80,7 @@
                 <tbody>
                     <tr>
                         <td><input type="text" class="form-control" value="Free shipping on orders above ₹1500"></td>
-                        <td><input type="text" class="form-control" value="₹1500"></td>
+                        <td><input type="text" class="form-control" value="1500"></td>
                         <td>
                             <a href="#" class="btn btn-success btn-sm">Update</a>
                         </td>

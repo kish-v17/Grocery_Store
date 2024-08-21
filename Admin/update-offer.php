@@ -18,8 +18,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="discount" class="form-label">Discount</label>
-                    <input type="text" class="form-control" id="discount" name="discount" value="10%">
+                    <label for="discount" class="form-label">Discount(%)</label>
+                    <input type="text" class="form-control" id="discount" name="discount" value="10">
                     <div id="discountError" class="error-message"></div>
                 </div>
 
