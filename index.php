@@ -129,7 +129,7 @@
         for($i=1;$i<=4;$i++)
         {
             echo '
-            <div class="col-md-3 gap col-sm-4 p-2 col-6">
+            <div class="col-md-3 gap col-sm-4 p-2 col-12">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
@@ -172,7 +172,7 @@
         for($i=1;$i<=4;$i++)
         {
             echo '
-            <div class=" col-md-3 gap col-sm-4 p-2 col-6">
+            <div class=" col-md-3 gap col-sm-4 p-2 col-12">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">

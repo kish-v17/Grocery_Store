@@ -44,11 +44,12 @@
                             <h5>Total Revenue</h5>
                             <h2>₹58,000</h2>
                         </div>
-                        <i class="fas fa-dollar-sign fa-2x"></i>
+                        <span style="font-size: 2em;">₹</span>
                     </div>
                 </div>
             </a>
         </div>
+
 
         <div class="col-xl-3 col-md-6 mb-4">
             <a href="users.php" class="text-decoration-none">
@@ -95,7 +96,7 @@
                     <td>Pending</td>
                     <td>
                         <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
-                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
@@ -108,7 +109,7 @@
                     <td>Processing</td>
                     <td>
                         <a href="view_order.php?id=1002" class="btn btn-info btn-sm">View</a>
-                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
@@ -121,7 +122,7 @@
                     <td>Shipped</td>
                     <td>
                         <a href="view_order.php?id=1003" class="btn btn-info btn-sm">View</a>
-                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
@@ -134,7 +135,7 @@
                     <td>Delivered</td>
                     <td>
                         <a href="view_order.php?id=1004" class="btn btn-info btn-sm">View</a>
-                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                     </td>
                 </tr>
