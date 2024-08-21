@@ -24,7 +24,7 @@
         for($i=1;$i<=8;$i++)
         {
             echo '
-            <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
+            <div class=" col-md-3 gap col-sm-4 p-2 col-12 mt-2">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
