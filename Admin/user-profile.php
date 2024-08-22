@@ -24,7 +24,7 @@
                         <p><strong>Status:</strong> Active</p>
                     </div>
                 </div>
-                <a href="update_user.php" class="btn btn-primary mt-3">Edit User Info</a>
+                <a href="update-user.php" class="btn btn-primary mt-3">Edit User Info</a>
                 <button class="btn btn-danger mt-3">Deactivate Account</button>
             </div>
         </div>
@@ -63,7 +63,7 @@
                                 </select>
                             </td>
                             <td>
-                                <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
                                 <button class="btn btn-primary btn-sm">Save</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                             </td>
@@ -84,7 +84,7 @@
                                 </select>
                             </td>
                             <td>
-                                <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
                                 <button class="btn btn-primary btn-sm">Save</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                             </td>
@@ -105,7 +105,7 @@
                                 </select>
                             </td>
                             <td>
-                                <a href="view_order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
                                 <button class="btn btn-primary btn-sm">Save</button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                             </td>
@@ -136,7 +136,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Product 1</a>
+                                <a href="product-details.php">Product 1</a>
                             </div>
                         </td>
                         <td style="width: 110px;">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="delete_review_handler.php" class="btn btn-danger">Delete</a>
+                    <a href="delete-review-handler.php" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
                                 <a href="product_details.php">Turmeric Powder</a>
                             </div>
                         </td>
-                        <td><a href="user_profile.php">John Doe</a></td>
+                        <td><a href="user-profile.php">John Doe</a></td>
                         <td style="width: 100px;">
                             <span class="text-warning">
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
@@ -50,10 +50,10 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 2" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Basmati Rice</a>
+                                <a href="product-details.php">Basmati Rice</a>
                             </div>
                         </td>
-                        <td><a href="user_profile.php">Jane Smith</a></td>
+                        <td><a href="user-profile.php">Jane Smith</a></td>
                         <td style="width: 100px;">
                             <span class="text-warning">
                                 &#9733; &#9733; &#9733; &#9733; &#9733;
@@ -73,11 +73,11 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 3" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Toor Dal</a>
+                                <a href="product-details.php">Toor Dal</a>
                             </div>
                         </td>
-                        <td><a href="user_profile.php">Emily Johnson</a></td>
-                        <td style="width: 110px;">
+                        <td><a href="user-profile.php">Emily Johnson</a></td>
+                        <td style="width:110px;">
                             <span class="text-warning">
                                 &#9733; &#9733; &#9733; &#9734; &#9734;
                             </span>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="delete_review_handler.php" class="btn btn-danger">Delete</a>
+                    <a href="delete_review-handler.php" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
