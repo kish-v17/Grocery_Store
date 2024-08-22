@@ -1,7 +1,7 @@
 <?php include('header.php'); ?>
 <div class="container-fluid hero-banner">
         <div class="row align-items-center">
-            <div class="content col-md-6 order-md-1 order-2 text-center text-md-start text-wrap">
+            <div class="hero-content col-md-6 order-md-1 order-2 text-center text-md-start text-wrap">
                 <span>Welcome to</span>
                 <h1>PureBite</h1>
                 <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>

@@ -14,7 +14,7 @@
             </div>
 
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>User ID</th>

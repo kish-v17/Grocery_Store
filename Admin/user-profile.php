@@ -34,7 +34,7 @@
                 <h4>User Orders</h4>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap ">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -117,7 +117,11 @@
        
 
         <!-- User Reviews Section -->
-        <div class="card-body">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>User Reviews</h4>
+            </div>
+            <div class="card-body">
             <table class="table border text-nowrap">
                 <thead class="table-light">
                     <tr>
@@ -133,7 +137,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Turmeric Powder</a>
+                                <a href="product-details.php">Product 1</a>
                             </div>
                         </td>
                         <td><a href="user-profile.php">John Doe</a></td>
@@ -142,54 +146,8 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td  style="max-width: 250px;" class="text-wrap">
-                        A pantry essential, turmeric powder adds vibrant color and earthy flavor to dishes, while offering health benefits like anti-inflammatory properties.
-                        </td>
-                        <td>
-                            <div class="d-flex flex-nowrap">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="../img/items/chocolate.webp" alt="Product 2" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Basmati Rice</a>
-                            </div>
-                        </td>
-                        <td><a href="user-profile.php">Jane Smith</a></td>
-                        <td style="width: 100px;">
-                            <span class="text-warning">
-                                &#9733; &#9733; &#9733; &#9733; &#9733;
-                            </span>
-                        </td>
-                        <td  style="max-width: 250px;" class="text-wrap">
-                        Fragrant and fluffy, basmati rice enhances any meal with its delicate aroma and long, slender grains that cook to perfection.
-                        </td>
-                        <td>
-                            <div class="d-flex flex-nowrap">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="../img/items/chocolate.webp" alt="Product 3" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Toor Dal</a>
-                            </div>
-                        </td>
-                        <td><a href="user-profile.php">Emily Johnson</a></td>
-                        <td style="width:110px;">
-                            <span class="text-warning">
-                                &#9733; &#9733; &#9733; &#9734; &#9734;
-                            </span>
-                        </td>
-                        <td  style="max-width: 250px;" class="text-wrap">
-                        Mild and earthy, toor dal is a staple in Indian kitchens, perfect for making rich, hearty dals that pair beautifully with rice or rotis. It's also a great source of protein and fiber.
+                        <td style="max-width: 250px;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                         </td>
                         <td>
                             <div class="d-flex flex-nowrap">

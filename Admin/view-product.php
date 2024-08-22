@@ -41,7 +41,7 @@
                 <h4>Order History</h4>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -87,7 +87,7 @@
                 <h4>Ratings and Reviews</h4>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Username</th>
@@ -104,7 +104,7 @@
                                     &#9733; &#9733; &#9733; &#9733; &#9734;
                                 </span>
                             </td>
-                            <td >
+                            <td class=text-wrap>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                             </td>
                             <td>
