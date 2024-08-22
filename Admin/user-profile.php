@@ -136,7 +136,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Product 1</a>
+                                <a href="view-product.php?product_Id=1">Product 1</a>
                             </div>
                         </td>
                         <td style="width: 110px;">
