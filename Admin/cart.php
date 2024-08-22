@@ -27,7 +27,7 @@
                     <tbody>
                         <tr>
                             <td><a href="user-profile.php?user_id=1">John Doe</a></td>
-                            <td><a href="product-detail.php?product_id=101">Product 1</a></td>
+                            <td><a href="view-product.php?product_id=101">Product 1</a></td>
                             <td>2</td>
                             <td>₹50.00</td>
                             <td>₹100.00</td>
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td><a href="user-profile.php?user_id=2">Jane Smith</a></td>
-                            <td><a href="product-detail.php?product_id=102">Product 2</a></td>
+                            <td><a href="view-product.php?product_id=102">Product 2</a></td>
                             <td>1</td>
                             <td>₹30.00</td>
                             <td>₹30.00</td>
