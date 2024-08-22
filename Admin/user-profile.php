@@ -144,7 +144,7 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td style="max-width: 250px;" class=text-wrap>
+                        <td>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                         </td>
                         <td>

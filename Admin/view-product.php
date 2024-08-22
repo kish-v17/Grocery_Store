@@ -82,7 +82,7 @@
         </div>
 
         <!-- Ratings and Reviews Section -->
-        <div class="card mb-4">
+        <div class="card mb-4 text-nowrap">
             <div class="card-header">
                 <h4>Ratings and Reviews</h4>
             </div>
@@ -104,7 +104,7 @@
                                     &#9733; &#9733; &#9733; &#9733; &#9734;
                                 </span>
                             </td>
-                            <td class=text-wrap>
+                            <td>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                             </td>
                             <td>
