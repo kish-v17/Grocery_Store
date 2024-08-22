@@ -60,10 +60,8 @@
                     <input class="search-input" type="search" placeholder="Search for items..." size="25" >
                     <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </div>
-                <div class="log-reg d-flex justify-content-center align-items-center">
                     <a class="header-btn"  href="register.php">Register</a>
                     <a class="header-btn"  href="login.php">Login</a>
-                </div>
             </form>
         </div>
     </div>

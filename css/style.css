@@ -301,22 +301,26 @@ input[type="checkbox"]:checked {
     color: #000;
     padding-left:9.2vw ;
 }
-.hero .content {
+.hero-content {
     width: 50%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     z-index: 2;
     justify-content: center;
 
 }
 
-.hero h1 {
+.hero-content span{
+    color: #000;
+    font-size:1.2rem;
+}
+.hero-content h1 {
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-.hero .content p {
-    font-size: 1rem;
+.hero-content p {
+    font-size: 1.1rem;
     color: #000;
 }
 
