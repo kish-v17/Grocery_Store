@@ -74,7 +74,7 @@
             <a href="orders.php" class="btn btn-secondary">See All Orders</a>
         </div>
         <div class="card-body">
-        <table class="table border">
+        <table class="table border text-nowrap">
             <thead class="table-light">
                 <tr>
                     <th>Order ID</th>
@@ -151,7 +151,7 @@
             <a href="products.php" class="btn btn-secondary">See All Products</a>
         </div>
         <div class="card-body">
-            <table class="table border">
+            <table class="table border text-nowrap">
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
