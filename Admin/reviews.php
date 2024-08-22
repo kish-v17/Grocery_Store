@@ -27,7 +27,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product_details.php">Turmeric Powder</a>
+                                <a href="view-product.php?productId=">Turmeric Powder</a>
                             </div>
                         </td>
                         <td><a href="user-profile.php">John Doe</a></td>
