@@ -1,27 +1,27 @@
 <?php include('header.php') ?>
     <div class="container ">
-        <div class=" d-flex justify-content-between sitemap">
+        <div class=" d-flex justify-content-between sitemap mt-5">
             <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Account</p>
             <p>Welcome! <span class="highlight">Username</span></p>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-3 p-2">
-                <div class="shadow-sm p-4 d-flex flex-column heading">
-                    <ul>
-                        <li class="active menu-item js-account" data-id="my-profile">My Profile</li>
-                        <li class=" menu-item js-account" data-id="address-book">Address Book</li>
-                        <li class="menu-item my-orders-main" data-id="all-orders">My Orders</li>
-                        <li class="menu-item" data-id="my-wishlist">My Wishlist</li>
+            <div class="col-12 col-md-4 p-2 d-flex flex-row flex-sm-column ">
+                <div class="shadow-sm p-4 d-flex heading text-nowrap">
+                    <ul class="d-flex flex-row flex-md-column gap-3 heading">
+                        <li class="active menu-item js-account mb-0" data-id="my-profile">My Profile</li>
+                        <li class=" menu-item js-account mb-0" data-id="address-book">Address Book</li>
+                        <li class="menu-item my-orders-main mb-0" data-id="all-orders">My Orders</li>
+                        <li class="menu-item mb-0" data-id="my-wishlist">My Wishlist</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-9 p-2">
+            <div class="col-12 col-md-8 p-2">
                 <div class="shadow-sm p-4">
                     <div id="my-profile" class="invisible">
                         <p class="highlight title">Edit Your Profile</p>
-                        <form action="" class="edit-profile form" onsubmit = "return validateMyAccountForm();">
+                        <form class="edit-profile form" onsubmit = "return validateMyAccountForm();">
                             <div class="row g-2">
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">First Name</label>
@@ -34,18 +34,24 @@
                                     <p id="lastNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label for="" class="form-label">Email</label>
+                                    <label for="" class="form-label d-block">Email</label>
                                     <input type="text" class="w-100" placeholder="Your Email*" id="email" value="rixitdoabariya05@gmail.com">
                                     <p id="emailError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label for="" class="form-label">Phone</label>
+                                    <label for="" class="form-label d-block">Phone</label>
                                     <input type="text" class="w-100" placeholder="Your Phone*" id="phone" value="87329 65892">
                                     <p id="phoneError" class="error"></p>
                                 </div>
-                            
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <input type="submit" value="Send Message" class="btn-msg mt-2 ">
+                            </div>
+                        </form>
+                        <form  class="edit-profile form" onsubmit="return validateChangePassword();">
+                            <div class="row g-2">                            
                                 <div class="col-12">
-                                    <label for="" class="form-label">Password</label>
+                                    <label for="" class="form-label d-block">Password</label>
                                     <input type="text" class="w-100 mb-2" placeholder="Current password" id="currentPassword">
                                     <p id="currentPasswordError" class="error"></p>
                                     <input type="text" class="w-100 mb-2" placeholder="New password" id="newPassword">
@@ -55,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <input type="submit" value="Send Message" class="btn-msg mt-2 ">
+                                <input type="submit" value="Change Password" class="btn-msg mt-2 ">
                             </div>
                         </form>
                     </div>
@@ -116,64 +122,57 @@
                         </div>
                     </div>
                     <div id="all-orders" class="invisible container cart-table">
-                    <div class="row bg-grey">
-                        <div class="col-2">
-                            Order ID
-                        </div>
-                        <div class="col-2 text-center">Order Date</div>
-                        <div class="col-2 ">
-                            Order status
-                        </div>
-                        <div class="col-2 text-center">Quantity</div>
-                        <div class="col-2 text-center">Total Price</div>
-                        <div class="col-2 text-center">View Orders</div>
-                    </div>
-                        <?php display_orders(); ?>
-                    </div>
-                    <div id="my-wishlist" class="invisible">
-                        <div class="container cart-table">
-                            <div class="row font-bold heading">
-                                <div class="col-4">
-                                    Product
-                                </div>
-                                <div class="col-2 text-center">Price</div>
-                                <div class="col-3 text-center">Subtotal</div>
-                                <div class="col-3">
-                                    Actions
-                                </div>
-                            </div>
+                        <table class="table cart-table  text-nowrap">
+                            <tr class="heading">
+                                <th>Order ID</th>
+                                <th>Order status</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>View Orders</th>
+                            </tr>
 
-                            <div class="row">
-                                <div class="col-4">
+                            <?php display_orders(); ?>
+                        </table>
+                    </div>
+                    <div id="my-wishlist" class="invisible container cart-table">
+                        <table class="table cart-table text-nowrap">
+                            <tr class="heading">
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                                <th>Actions</th>
+                            </tr>
+
+                            <tr>
+                                <td>
                                     <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
                                     <div class="d-inline-block">Chocolate</div>
-                                </div>
-                                <div class="col-2 text-center">₹100.00</div>
-                                <div class="col-3 text-center">₹300.00</div>
-                                <div class="col-3">
+                                </td>
+                                <td>₹100.00</td>
+                                <td>₹300.00</td>
+                                <td>
                                     <a class="primary-btn update-btn">Add to cart</a>
                                     <a class="primary-btn delete-btn">Delete</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="img/items/chocolate2.webp" alt="Chocolate image" class="image-item d-inline-block">
-                                    <div class="d-inline-block">Chocolate 2</div>
-                                </div>
-                                <div class="col-2 text-center">₹200.00</div>
-                                <div class="col-3 text-center">₹600.00</div>
-                                <div class="col-3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
+                                    <div class="d-inline-block">Chocolate</div>
+                                </td>
+                                <td>₹100.00</td>
+                                <td>₹300.00</td>
+                                <td>
                                     <a class="primary-btn update-btn">Add to cart</a>
                                     <a class="primary-btn delete-btn">Delete</a>
-                                </div>
-                            </div>
-                            <!-- table end -->
-                        </div>
-                        <div class="container mb-5">
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- <div class="container mb-5">
                             <div class="d-flex justify-content-end align-items-center cart-page mb-5">
                                 <button class="btn-msg">Move all to cart</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -241,17 +240,17 @@
     function display_orders(){
         for($i=1;$i<=5;$i++){
             echo '
-            <div class="row">
-                <div class="col-2">
-                    123
-                </div>
-                <div class="col-2 text-center">11-08-2024</div>
-                <div class="col-2 ">Pending</div>
-                <div class="col-2 text-center">2</div>
-                <div class="col-2 text-center">100.00</div>
-                <div class="col-2 text-center"><a class="primary-btn order-link">View Order</a></div>
-            </div>
-    
+            <tr>
+                <td>123</td>
+                <td>11-08-2024</td>
+                <td>
+                    2
+                </td>
+                <td>₹100.00</td>
+                <td>
+                    <a class="primary-btn order-link" href="order-details.php">View Order</a>
+                </td>
+            </tr>
             ';
         } 
     }

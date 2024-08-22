@@ -656,6 +656,9 @@ input::-webkit-inner-spin-button {
 .cart-table .qty-minus{
     border-radius: 3px 0px 0px 3px;
 }
+.cart-table{
+    overflow-x: auto;
+}
 .price{margin-left: auto;}
 .cart-page a{
     text-decoration: none;
@@ -990,7 +993,12 @@ sidebar h6{
     justify-content: space-between;
     cursor: pointer;
 }
-
+.hidden{
+    display: none !important;
+}
+.not-hidden{
+    display:inline-block !important;
+}
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
     .grid{
@@ -1000,6 +1008,8 @@ sidebar h6{
         flex-direction: column;
     }
     .flex-item{flex:1 1 100%;width: 100%;}
+
+   
 }
 /*  for Extra small devices (phones, 600px and down)*/
 @media only screen and (max-width:576px) {
@@ -1026,3 +1036,73 @@ sidebar h6{
     }
 
 }
+@media only screen and (max-width:992px){  
+    .hidden{
+        display: inline !important;
+    }
+    .not-hidden{
+        display:none !important;
+    }
+    .w-100{
+        width:80% !important;
+    }
+    .me-3{
+        margin-right: 0px !important;
+    }
+}
+
+.width-100{
+    width:100%;
+}
+
+.cart-table>:not(caption)>*>*{/*to remove bottom border*/
+    border-bottom-width: 0px !important;
+    /* padding:20px; */
+}
+.cart-table tr{
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.075);
+    border-radius: 5px;
+    vertical-align: middle;
+
+}
+.cart-table>tbody>tr>th{
+    padding:20px;
+    font-weight: normal;
+    color:black;
+    vertical-align: middle;
+}
+
+.cart-table .image-item{
+    width:75px;
+    padding:10px;
+}
+.cart-table>tbody>tr>td:not(:first-child),.cart-table>tbody>tr>th:not(:first-child){
+    text-align: center;
+}
+.cart-table .d-flex input[type="number"]{
+    width:30px;
+    text-align: center;
+    border-width:1px 0px;
+    border-color:var(--dim);
+    height:30px;
+}
+.cart-table .d-flex button{
+    align-self: stretch;
+    width:25px;
+    background-color: white;
+    border:1px solid var(--dim);
+
+}
+.cart-table td:nth-child(3) {
+    height:inherit;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 91px;
+}
+.cart-table .qty-plus{
+    border-radius: 0px 3px 3px 0px;
+}
+.cart-table .qty-minus{
+    border-radius: 3px 0px 0px 3px;
+} 

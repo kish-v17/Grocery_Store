@@ -1,19 +1,20 @@
 <?php include('header.php'); ?>
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Orders</p>
-        <div class="row bg-grey">
-            <div class="col-2">
-                Order ID
-            </div>
-            <div class="col-2 text-center">Order Date</div>
-            <div class="col-2 ">
-                Order status
-            </div>
-            <div class="col-2 text-center">Quantity</div>
-            <div class="col-2 text-center">Total Price</div>
-            <div class="col-2 text-center">View Orders</div>
-        </div>
-        <?php display_orders(); ?>
+        <table class="table cart-table text-nowrap">
+            <tr class="heading">
+                <th>Order ID</th>
+                <th>Order status</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>View Orders</th>
+            </tr>
+
+
+            <?php display_orders(); ?>
+        </table>
+
+        
     </div>
     
 <?php include('footer.php'); ?>
@@ -22,17 +23,17 @@
     function display_orders(){
         for($i=1;$i<=5;$i++){
             echo '
-            <div class="row">
-                <div class="col-2">
-                    123
-                </div>
-                <div class="col-2 text-center">11-08-2024</div>
-                <div class="col-2 ">Pending</div>
-                <div class="col-2 text-center">2</div>
-                <div class="col-2 text-center">100.00</div>
-                <div class="col-2 text-center"><a class="primary-btn order-link" href="order-details.php">View Order</a></div>
-            </div>
-    
+            <tr>
+                <td>123</td>
+                <td>11-08-2024</td>
+                <td>
+                    2
+                </td>
+                <td>₹100.00</td>
+                <td>
+                    <a class="primary-btn order-link" href="order-details.php">View Order</a>
+                </td>
+            </tr>
             ';
         } 
     }

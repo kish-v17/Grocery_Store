@@ -14,41 +14,41 @@
             <div class="mb-4">
                     <div class="row gx-2 gy-3">
                         <div class="col-12 col-sm-6">
-                            <label for="billingFirstName" class="form-label">First Name<span class="required">*</span></label>
+                            <label for="billingFirstName" class="form-label d-block">First Name<span class="required">*</span></label>
                             <input type="text" id="billingFirstName" class="w-100" placeholder="First Name">
                             <p id="billingFirstNameError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="billingLastName" class="form-label">Last Name<span class="required">*</span></label>
+                            <label for="billingLastName" class="form-label d-block">Last Name<span class="required">*</span></label>
                             <input type="text" id="billingLastName" class="w-100" placeholder="Last Name">
                             <p id="billingLastNameError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-12">
-                            <label for="billingAddress" class="form-label">Street Address<span class="required">*</span></label>
+                            <label for="billingAddress" class="form-label d-block">Street Address<span class="required">*</span></label>
                             <textarea id="billingAddress" class="w-100" rows="2" placeholder="Street Address"></textarea>
                             <p id="billingAddressError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-12">
-                            <label for="billingApartment" class="form-label">Apartment, Floor, etc.(Optional)</label>
+                            <label for="billingApartment" class="form-label d-block">Apartment, Floor, etc.(Optional)</label>
                             <textarea id="billingApartment" class="w-100" rows="2" placeholder="Apartment, Floor, etc."></textarea>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="billingCity" class="form-label">City<span class="required">*</span></label>
+                            <label for="billingCity" class="form-label d-block">City<span class="required">*</span></label>
                             <input type="text" id="billingCity" class="w-100" placeholder="City">
                             <p id="billingCityError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="billingState" class="form-label">State<span class="required">*</span></label>
+                            <label for="billingState" class="form-label d-block">State<span class="required">*</span></label>
                             <input type="text" id="billingState" class="w-100" placeholder="State">
                             <p id="billingStateError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="billingPinCode" class="form-label">Pin Code<span class="required">*</span></label>
+                            <label for="billingPinCode" class="form-label d-block">Pin Code<span class="required">*</span></label>
                             <input type="text" id="billingPinCode" class="w-100" placeholder="Pin Code">
                             <p id="billingPinCodeError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="billingPhone" class="form-label">Phone<span class="required">*</span></label>
+                            <label for="billingPhone" class="form-label d-block">Phone<span class="required">*</span></label>
                             <input type="text" id="billingPhone" class="w-100" placeholder="Phone Number">
                             <p id="billingPhoneError" class="error"></p>
                         </div>
@@ -69,41 +69,41 @@
                 <h2 class="mb-4">Shipping Details</h2>
                     <div class="row gx-2 gy-3">
                         <div class="col-12 col-sm-6">
-                            <label for="shippingFirstName" class="form-label">First Name<span class="required">*</span></label>
+                            <label for="shippingFirstName" class="form-label d-block">First Name<span class="required">*</span></label>
                             <input type="text" id="shippingFirstName" class="w-100" placeholder="First Name">
                             <p id="shippingFirstNameError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="shippingLastName" class="form-label">Last Name<span class="required">*</span></label>
+                            <label for="shippingLastName" class="form-label d-block">Last Name<span class="required">*</span></label>
                             <input type="text" id="shippingLastName" class="w-100" placeholder="Last Name">
                             <p id="shippingLastNameError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-12">
-                            <label for="shippingAddress" class="form-label">Street Address<span class="required">*</span></label>
+                            <label for="shippingAddress" class="form-label d-block">Street Address<span class="required">*</span></label>
                             <textarea id="shippingAddress" class="w-100" rows="2" placeholder="Street Address"></textarea>
                             <p id="shippingAddressError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-12">
-                            <label for="shippingApartment" class="form-label">Apartment, Floor, etc.(Optional)</label>
+                            <label for="shippingApartment" class="form-label d-block">Apartment, Floor, etc.(Optional)</label>
                             <textarea id="shippingApartment" class="w-100" rows="2" placeholder="Apartment, Floor, etc."></textarea>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="shippingCity" class="form-label">City<span class="required">*</span></label>
+                            <label for="shippingCity" class="form-label d-block">City<span class="required">*</span></label>
                             <input type="text" id="shippingCity" class="w-100" placeholder="City">
                             <p id="shippingCityError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="shippingState" class="form-label">State<span class="required">*</span></label>
+                            <label for="shippingState" class="form-label d-block">State<span class="required">*</span></label>
                             <input type="text" id="shippingState" class="w-100" placeholder="State">
                             <p id="shippingStateError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="shippingPinCode" class="form-label">Pin Code<span class="required">*</span></label>
+                            <label for="shippingPinCode" class="form-label d-block">Pin Code<span class="required">*</span></label>
                             <input type="text" id="shippingPinCode" class="w-100" placeholder="Pin Code">
                             <p id="shippingPinCodeError" class="error"></p>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <label for="shippingPhone" class="form-label">Phone<span class="required">*</span></label>
+                            <label for="shippingPhone" class="form-label d-block">Phone<span class="required">*</span></label>
                             <input type="text" id="shippingPhone" class="w-100" placeholder="Phone Number">
                             <p id="shippingPhoneError" class="error"></p>
                         </div>

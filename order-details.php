@@ -6,7 +6,7 @@
         <a href="order-history.php" class="text-decoration-none dim link">Orders /</a>
         Order# 123456
     </p>
-    <div class="row order-border p-3 mb-4">
+    <div class="row order-border p-3 mb-4 m-1">
         <div class="col-6">
             <h4 class="mb-2">Order# 123456</h4>
             <div class="order-status mb-3">
@@ -20,8 +20,8 @@
             <button class="primary-btn">Re-order</button>
         </div>
     </div>
-    <div class="row align-items-stretch mb-4">
-        <div class="col-md-4 col-sm-6 ps-0">
+    <div class="row align-items-stretch mb-4 gap-2 gap-md-0">
+        <div class="col-md-4 col-12 ps-md-0">
             <div class="order-border p-3 h-100">
                 <h5 class="mb-3">Customer & Order</h5>
 
@@ -48,10 +48,9 @@
                 
             </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-12">
             <div class="order-border p-3">
                 <h5 class="mb-3">Shipping Address</h5>
-                
                 <address class="address-book">
                     <p>Tony Stark</p>
                     <p> Street: 56 Lotus Avenue</p>
@@ -62,7 +61,7 @@
                 </address>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-12">
             <div class="order-border p-3">
                 <h5 class="mb-3">Billing Address</h5>
 
@@ -80,7 +79,7 @@
     <div class="row order-border py-4 mb-4 order-item-list">
         <h5 class="mb-3">Items ordered</h5>
         <div class="row py-3 order-item-list-header mx-0 my-2">
-            <div class="col-4 p-0">
+            <div class="col-4 p-md-0">
                 Item name
             </div>
             <div class="col-2 text-center">Quantity</div>

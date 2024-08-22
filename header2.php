@@ -37,8 +37,8 @@
 </head>
 <body>
 <nav id="navibar" class="navbar navbar-expand-lg navbar-light sticky-top container-fluid">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container-fluid">
+        <button id="collapse-btn" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -57,33 +57,45 @@
                     <a class="nav-link <?php echo $title=="About PureBite"?"active":""?>" href="about.php">About</a>
                 </li>
             </ul>
-            <div class="d-flex justify-content-end align-items-center">
-                    <form class="d-flex justify-content-end">
-                        <input class="search-input" type="search" placeholder="Search for items..." size="25" >
-                        <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-
-                    <li class="nav-item ms-lg-auto dropdown profile-menu">
-                    <i class="fa fa-user-circle"></i><a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="profile.php">Tony Strak</a>
-                        <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="account.php">My Profile</a></li>
-                            <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
-                            <li><a class="dropdown-item" href="logout.php">Log out</a></li>
-                        </ul>
-                    </li>
-                    <a href="wishlist.php" class="icon-link">
-                        <div class="icon me-1">
-                            <i class="fa-regular fa-heart"></i>
-                            <span class="badge-class">3</span>
+            <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
+                    <div class="d-flex justify-content-end align-items-center w-100 not-hidden"  id="SearchSection2">
+                        <form class="d-flex justify-content-end  w-100">
+                            <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" >
+                            <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center justify-content-sm-between w-100">
+                        <li class="nav-item ms-lg-auto dropdown profile-menu">
+                            <i class="fa fa-user-circle"></i><a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tony Strak</a>
+                            <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="account.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
+                                <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                            </ul>
+                        </li>
+                        <div class="d-flex justify-content-end align-items-center justify-content-sm-center w-100">
+                            <a href="wishlist.php" class="icon-link">
+                                <div class="icon me-1">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <span class="badge-class">3</span>
+                                </div>
+                            </a>
+                            <a href="cart.php" class="icon-link">
+                                <div class="icon me-1">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="badge-class">3</span>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                    <a href="cart.php" class="icon-link">
-                        <div class="icon me-1">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="badge-class">3</span>
-                        </div>
-                    </a>
+                        
+                    </div>
                 </div>
+        </div>
+        <div class="d-flex justify-content-end align-items-center w-100 hidden" id="SearchSection">
+            <form class="d-flex justify-content-end width-100">
+                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" >
+                <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
         </div>
     </div>
 </nav>

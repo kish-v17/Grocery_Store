@@ -105,6 +105,50 @@ if(filterButton)
 }
 
 // validation
+function validateChangePassword(){
+    const currentPasswordInput = document.getElementById('currentPassword');
+    const currentPasswordError = document.getElementById('currentPasswordError');
+    const newPasswordInput = document.getElementById('newPassword');
+    const newPasswordError = document.getElementById('newPasswordError');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    let isValid = true;
+
+    const currentPasswordValue = currentPasswordInput.value.trim();
+    if (!currentPasswordValue) {
+        currentPasswordError.innerText = 'Current password is required.';
+        isValid = false;
+    } else if (currentPasswordValue.length < 8) {
+        currentPasswordError.innerText = 'Current password must be at least 8 characters long.';
+        isValid = false;
+    } else {
+        currentPasswordError.innerText = ''; 
+    }
+
+    const newPasswordValue = newPasswordInput.value.trim();
+    if (!newPasswordValue) {
+        newPasswordError.innerText = 'New password is required.';
+        isValid = false;
+    } else if (newPasswordValue.length < 8) {
+        newPasswordError.innerText = 'New password must be at least 8 characters long.';
+        isValid = false;
+    } else {
+        newPasswordError.innerText = ''; 
+    }
+
+
+    const confirmPasswordValue = confirmPasswordInput.value.trim();
+    if (!confirmPasswordValue) {
+        confirmPasswordError.innerText = 'Confirm password is required.';
+        isValid = false;
+    } else if (confirmPasswordValue !== newPasswordValue) {
+        confirmPasswordError.innerText = 'Passwords do not match.';
+        isValid = false;
+    } else {
+        confirmPasswordError.innerText = '';
+    }
+    
+}
 function validateMyAccountForm() {
     const firstNameInput = document.getElementById('firstName');
     const firstNameError = document.getElementById('firstNameError');
@@ -114,12 +158,6 @@ function validateMyAccountForm() {
     const emailError = document.getElementById('emailError');
     const phoneInput = document.getElementById('phone');
     const phoneError = document.getElementById('phoneError');
-    const currentPasswordInput = document.getElementById('currentPassword');
-    const currentPasswordError = document.getElementById('currentPasswordError');
-    const newPasswordInput = document.getElementById('newPassword');
-    const newPasswordError = document.getElementById('newPasswordError');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
-    const confirmPasswordError = document.getElementById('confirmPasswordError');
 
     let isValid = true;
 
@@ -177,40 +215,6 @@ function validateMyAccountForm() {
         isValid = false;
     } else {
         phoneError.innerText = ''; 
-    }
-
-    const currentPasswordValue = currentPasswordInput.value.trim();
-    if (!currentPasswordValue) {
-        currentPasswordError.innerText = 'Current password is required.';
-        isValid = false;
-    } else if (currentPasswordValue.length < 8) {
-        currentPasswordError.innerText = 'Current password must be at least 8 characters long.';
-        isValid = false;
-    } else {
-        currentPasswordError.innerText = ''; 
-    }
-
-    const newPasswordValue = newPasswordInput.value.trim();
-    if (!newPasswordValue) {
-        newPasswordError.innerText = 'New password is required.';
-        isValid = false;
-    } else if (newPasswordValue.length < 8) {
-        newPasswordError.innerText = 'New password must be at least 8 characters long.';
-        isValid = false;
-    } else {
-        newPasswordError.innerText = ''; 
-    }
-
-
-    const confirmPasswordValue = confirmPasswordInput.value.trim();
-    if (!confirmPasswordValue) {
-        confirmPasswordError.innerText = 'Confirm password is required.';
-        isValid = false;
-    } else if (confirmPasswordValue !== newPasswordValue) {
-        confirmPasswordError.innerText = 'Passwords do not match.';
-        isValid = false;
-    } else {
-        confirmPasswordError.innerText = '';
     }
 
     return isValid;
@@ -690,3 +694,17 @@ function validateReviewForm() {
 
     return isValid;
 }
+document.querySelector('#collapse-btn').addEventListener('click',function(){
+    if(this.classList.contains('collapsed')){
+        document.querySelector('#SearchSection').classList.add('hidden');
+        document.querySelector('#SearchSection').classList.remove('not-hidden');
+        document.querySelector('#SearchSectio2').classList.add('hidden');
+        document.querySelector('#SearchSection2').classList.remove('not-hidden');
+    }
+    else{
+        document.querySelector('#SearchSection').classList.remove('hidden');
+        document.querySelector('#SearchSection').classList.add('not-hidden');
+        document.querySelector('#SearchSection2').classList.remove('hidden');
+        document.querySelector('#SearchSection2').classList.add('not-hidden');
+    }
+});

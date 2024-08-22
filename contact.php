@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-4 p-2">
+            <div class="col-12 col-md-4 col-sm-12 p-2">
                 <div class="shadow-sm p-4 flex-col">
                     <div class="flex">
                         <img src="img/icons/icons-phone.png" alt="">
@@ -21,7 +21,7 @@
                     <p class="m-0">Emails: customer@exclusive.com</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-8 p-2">
+            <div class="col-12 col-md-8 col-sm-12 p-2">
                 <div class="shadow-sm p-4">
                     <form id="contactForm" action="" onsubmit="return contactFormValidation()">
                         <div class="flex form">
