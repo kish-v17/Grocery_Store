@@ -34,7 +34,7 @@
                 <h4>User Orders</h4>
             </div>
             <div class="card-body">
-                <table class="table border">
+                <table class="table border text-nowrap ">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
@@ -122,7 +122,7 @@
                 <h4>User Reviews</h4>
             </div>
             <div class="card-body">
-            <table class="table border">
+            <table class="table border text-nowrap">
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
@@ -144,7 +144,7 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td style="max-width: 250px;">
+                        <td style="max-width: 250px;" class=text-wrap>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                         </td>
                         <td>
