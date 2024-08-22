@@ -126,6 +126,7 @@
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
+                        <th>Username</th>
                         <th>Rating</th>
                         <th>Review</th>
                         <th>Actions</th>
@@ -136,26 +137,27 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="view-product.php?product_Id=1">Product 1</a>
+                                <a href="product-details.php">Product 1</a>
                             </div>
                         </td>
-                        <td style="width: 110px;">
+                        <td><a href="user-profile.php">John Doe</a></td>
+                        <td style="width: 100px;">
                             <span class="text-warning">
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td>
+                        <td style="max-width: 250px;" class=text-wrap>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            <div class="d-flex flex-nowrap">
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            </div>
         </div>
 
         
