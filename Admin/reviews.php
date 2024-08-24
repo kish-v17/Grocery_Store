@@ -11,7 +11,7 @@
                 </div>
                 <a class="btn btn-primary text-nowrap" href="add-review.php">Add Review</a>
             </div>
-        <div class="card-body">
+        <div class="card-body ">
             <table class="table border text-nowrap">
                 <thead class="table-light">
                     <tr>
@@ -36,7 +36,7 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td  style="max-width: 250px;" class="text-wrap">
+                        <td  class="">
                         A pantry essential, turmeric powder adds vibrant color and earthy flavor to dishes, while offering health benefits like anti-inflammatory properties.
                         </td>
                         <td>
@@ -50,7 +50,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 2" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Basmati Rice</a>
+                                <a href="view-product.php?productId=2">Basmati Rice</a>
                             </div>
                         </td>
                         <td><a href="user-profile.php">Jane Smith</a></td>
@@ -73,7 +73,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 3" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Toor Dal</a>
+                                <a href="view-product.php?productId=3">Toor Dal</a>
                             </div>
                         </td>
                         <td><a href="user-profile.php">Emily Johnson</a></td>

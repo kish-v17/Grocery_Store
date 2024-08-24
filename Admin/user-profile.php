@@ -137,7 +137,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="product-details.php">Product 1</a>
+                                <a href="view-product.php?Product_Id=1">Product 1</a>
                             </div>
                         </td>
                         <td><a href="user-profile.php">John Doe</a></td>
@@ -146,7 +146,7 @@
                                 &#9733; &#9733; &#9733; &#9733; &#9734;
                             </span>
                         </td>
-                        <td >
+                        <td>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
                         </td>
                         <td>
