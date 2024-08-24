@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('header2.php'); ?>
 <div class="container-fluid hero-banner">
         <div class="row align-items-center">
             <div class="hero-content col-md-6 order-md-1 order-2 text-center text-md-start text-wrap">
@@ -81,7 +81,7 @@
             <?php display_products();?>
         </div>
         <div class="row mt-5">
-            <div class="col-md-6 col-12 ps-2 pe-2">
+            <div class="col-md-6 col-6 ps-2 pe-2">
                 <div class="border position-relative banner">
                     <img src="img/items/banners/banner-1.png" alt="" class="img-fluid">
                     <div class="banner-content">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-12 pe-2 ps-2">
+            <div class="col-md-6 col-6 pe-2 ps-2">
                 <div class="border position-relative banner">
                     <img src="img/items/banners/banner-2.png" alt="" class="img-fluid">
                     <div class="banner-content">
@@ -129,7 +129,7 @@
         for($i=1;$i<=4;$i++)
         {
             echo '
-            <div class="col-md-3 gap col-sm-4 p-2 col-12">
+            <div class="col-md-3 gap col-sm-4 p-2 col-6">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">
@@ -172,7 +172,7 @@
         for($i=1;$i<=4;$i++)
         {
             echo '
-            <div class=" col-md-3 gap col-sm-4 p-2 col-12">
+            <div class=" col-md-3 gap col-sm-4 p-2 col-6">
                 <div class="card">
                     <div class="product-image">
                         <img class="img-thumbnail p-4" src="img/items/chocolate.webp" alt="Card image cap">

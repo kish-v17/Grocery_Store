@@ -58,8 +58,8 @@
                 </li>
             </ul>
             <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
-                    <div class="d-flex justify-content-end align-items-center w-100 not-hidden"  id="SearchSection2">
-                        <form class="d-flex justify-content-end  w-100">
+                    <div class="d-flex justify-content-end align-items-center not-hidden"  id="SearchSection2">
+                        <form class="d-flex justify-content-end ">
                             <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" >
                             <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
@@ -91,8 +91,8 @@
                     </div>
                 </div>
         </div>
-        <div class="d-flex justify-content-end align-items-center w-100 hidden" id="SearchSection">
-            <form class="d-flex justify-content-end width-100">
+        <div class="d-flex justify-content-end align-items-center  hidden" id="SearchSection">
+            <form class="d-flex justify-content-end">
                 <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" >
                 <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>

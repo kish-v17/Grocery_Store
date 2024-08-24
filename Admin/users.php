@@ -26,126 +26,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>987-654-3210</td>
-                            <td>Inactive</td>
-                            <td>
-                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>987-654-3210</td>
-                            <td>Inactive</td>
-                            <td>
-                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>987-654-3210</td>
-                            <td>Inactive</td>
-                            <td>
-                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>987-654-3210</td>
-                            <td>Inactive</td>
-                            <td>
-                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>janesmith@example.com</td>
-                            <td>987-654-3210</td>
-                            <td>Inactive</td>
-                            <td>
-                                <a href="user-profile.php?id=2" class="btn btn-info btn-sm">View</a>
-                                <a href="update-user.php?id=2" class="btn btn-warning btn-sm">Edit</a>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal" data-user-id="2">Activate</button>
-                            </td>
-                        </tr>
+                        <?php display_users();?>
+                        
                     </tbody>
                 </table>
             </div>
@@ -191,3 +73,26 @@
     </div>
 
 <?php include("footer.php") ?>
+
+<?php 
+    function display_users()
+    {
+        for($i=1;$i<=10;$i++){
+            echo '
+            <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>123-456-7890</td>
+            <td>Active</td>
+                <td>
+                    <a href="user-profile.php?id=1" class="btn btn-info btn-sm">View</a>
+                    <a href="update-user.php?id=1" class="btn btn-warning btn-sm">Edit</a>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal" data-user-id="1">Deactivate</button>
+                    <a href="cart.php?id=1" class="btn btn-secondary btn-sm">Cart</a>
+                </td>
+            </tr>
+            ';   
+        }
+    }
+?>

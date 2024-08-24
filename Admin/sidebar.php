@@ -46,35 +46,31 @@
                             Dashboard
                         </a>
                         <a class="nav-link" href="products.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                             Products
                         </a>
                         <a class="nav-link" href="reviews.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                             Reviews
                         </a>
                         <a class="nav-link" href="orders.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
                             Orders
                         </a>
                         <a class="nav-link" href="categories.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                             Categories
                         </a>
                         <a class="nav-link" href="users.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Users
                         </a>
                         <a class="nav-link" href="offers.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
                             Offers
                         </a>
-                        <a class="nav-link" href="cart.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-shopping-bag"></i></div>
-                            Cart
-                        </a>
                         <a class="nav-link" href="banners.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                             Banners
                         </a>
                         

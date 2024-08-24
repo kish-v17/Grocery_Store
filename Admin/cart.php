@@ -4,53 +4,26 @@
         <div class="container-fluid px-4">
             <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
                 <div>
-                    <h1>Cart Management</h1>
+                    <h1>Cart of John Doe</h1>
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Carts</li>
+                        <li class="breadcrumb-item"><a href="users.php">Users</a></li>
+                        <li class="breadcrumb-item active">cart</li>
                     </ol>
                 </div>
-                <a class="btn btn-primary text-nowrap" href="add-cart.php">Add Product into Cart</a>
             </div>
             <div class="card-body">
-                <table class="table border text-nowrap">
+                <table class="table border text-nowrap align-middle">
                     <thead class="table-light">
                         <tr class="text-nowrap">
-                            <th>User</th>
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Total</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="user-profile.php?user_id=1">John Doe</a></td>
-                            <td><a href="view-product.php?product_id=101">Product 1</a></td>
-                            <td>2</td>
-                            <td>₹50.00</td>
-                            <td>₹100.00</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="update-cart.php" class="btn btn-secondary btn-sm me-1">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
-                                </div>    
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="user-profile.php?user_id=2">Jane Smith</a></td>
-                            <td><a href="view-product.php?product_id=102">Product 2</a></td>
-                            <td>1</td>
-                            <td>₹30.00</td>
-                            <td>₹30.00</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="update-cart.php" class="btn btn-secondary btn-sm me-1">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Remove</a>
-                                </div>    
-                            </td>
-                        </tr>
+                        <?php display_cart_records(); ?>
                     </tbody>
                 </table>
             </div>
@@ -93,3 +66,26 @@
         </div>
     </div>
 <?php include("footer.php"); ?>
+
+<?php
+    function display_cart_records(){
+        for($i=1;$i<=10;$i++)
+        {
+            echo '
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
+                            <a href="view-product.php?productId=1">Turmeric Powder</a>
+                        </div>
+                    </td>
+                    <td>
+                        2
+                    </td>
+                    <td>₹100</td>
+                    <td>₹200</td>
+                </tr>
+            ';
+        }
+    }
+?>

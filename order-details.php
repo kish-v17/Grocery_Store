@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('header2.php'); ?>
 
 <div class="container sitemap">
     <p class="my-5">
@@ -20,8 +20,8 @@
             <button class="primary-btn">Re-order</button>
         </div>
     </div>
-    <div class="row align-items-stretch mb-4 gap-2 gap-md-0">
-        <div class="col-md-4 col-12 ps-md-0">
+    <div class="row align-items-stretch mb-4 gap-md-0 m-1">
+        <div class="col-md-4 col-sm-6 col-12 ps-md-0 mb-2">
             <div class="order-border p-3 h-100">
                 <h5 class="mb-3">Customer & Order</h5>
 
@@ -48,7 +48,7 @@
                 
             </div>
         </div>
-        <div class="col-md-4 col-12">
+        <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Shipping Address</h5>
                 <address class="address-book">
@@ -61,7 +61,7 @@
                 </address>
             </div>
         </div>
-        <div class="col-md-4 col-12">
+        <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Billing Address</h5>
 
@@ -76,9 +76,9 @@
             </div>
         </div>
     </div>
-    <div class="row order-border py-4 mb-4 order-item-list">
+    <div class="row order-border py-4 mb-4 order-item-list m-1 m-md-0 cart-table">
         <h5 class="mb-3">Items ordered</h5>
-        <div class="row py-3 order-item-list-header mx-0 my-2">
+        <div class="row py-3 order-item-list-header mx-0 my-2 text-nowrap">
             <div class="col-4 p-md-0">
                 Item name
             </div>

@@ -1047,9 +1047,9 @@ sidebar h6{
     .not-hidden{
         display:none !important;
     }
-    .w-100{
+    /* .w-100{
         width:80% !important;
-    }
+    } */
     .me-3{
         margin-right: 0px !important;
     }
@@ -1110,3 +1110,6 @@ sidebar h6{
 .cart-table .qty-minus{
     border-radius: 3px 0px 0px 3px;
 } 
+.margin-half{
+    margin:12px !important;
+}

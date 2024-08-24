@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('header2.php'); ?>
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Orders</p>
         <table class="table cart-table text-nowrap">

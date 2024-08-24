@@ -35,13 +35,13 @@
 </head>
 <body>
 <nav id="navibar" class="navbar navbar-expand-lg navbar-light sticky-top container-fluid">
-    <div class="container">
+    <div class="container ">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="collapse navbar-collapse justify-content-between " id="navbarTogglerDemo01">
             <a class="logo navbar-brand fs-1 fw-bold"  href="index.php">PureBite</a>
-            <ul class="links navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="links navbar-nav mb-2 mb-lg-0 me-auto">
                 <li class="nav-item">
                     <a class="nav-link <?php echo $title=="Home"?"active":""?>" aria-current="page" href="index.php">Home</a>
                 </li>
@@ -55,13 +55,17 @@
                     <a class="nav-link <?php echo $title=="About"?"active":""?>" href="about.php">About</a>
                 </li>
             </ul>
-            <form class="d-flex flex-wrap justify-content-end">
-                <div class="search d-flex justify-content-center align-items-center ">
-                    <input class="search-input" type="search" placeholder="Search for items..." size="25" >
-                    <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
+            <form class="d-flex flex-nowrap justify-content-end">
+                    <input class="search-input" type="search" placeholder="Search for items..." size="25" id="SearchSection2">
+                    <button class="primary-btn me-3 search-button" id="SearchSection3"><i class="fa fa-search" aria-hidden="true"></i></button>
                     <a class="header-btn"  href="register.php">Register</a>
                     <a class="header-btn"  href="login.php">Login</a>
+            </form>
+        </div>
+        <div class="d-flex justify-content-end align-items-center w-100 hidden" id="SearchSection">
+            <form class="d-flex justify-content-end width-100">
+                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" >
+                <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
     </div>
