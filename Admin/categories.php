@@ -12,6 +12,9 @@
                             </div>
                             <a class="btn btn-primary text-nowrap" href="add-category.php">Add Category</a>
                         </div>
+                        <?php
+                        if(get_categories_count($con)){
+                        ?>
                         <div class="card-body">
                             <table class="table border text-nowrap">
                                 <thead class="table-light">
@@ -24,126 +27,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Pastries</td>
-                                        <td>Bakery</td>
-                                        <td>10</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Cakes</td>
-                                        <td>Bakery</td>
-                                        <td>15</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Bakery</td>
-                                        <td>None</td>
-                                        <td>5</td>
-                                        <td>
-                                            <div class="d-flex flex-nowrap ">
-                                                <a class="btn btn-success btn-sm me-1" href="update-category.php">Edit</a>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                   
+                                    <?php display_categories($con); ?>
+
                                 </tbody>
                             </table>
                         </div>
@@ -166,23 +52,65 @@
                             </ul>
                             </nav>
                         </div>
+
+                        <?php
+                        }
+                        else
+                        {
+                        ?>
+                            <h3 class="text-center">Thare are no categories!</h3>
+                        <?php
+                        }
+                        ?>
+                        
                     </div>
                 </main>
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this category? This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a href="delete_category_handler.php" class="btn btn-danger">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
 <?php include("footer.php") ?>
+
+
+<?php 
+    function get_categories_count($con){
+        $query = "select count(*) from category_details_tbl";
+        $result = mysqli_query($con,$query);
+        $category_count = mysqli_fetch_array($result);
+        return $category_count[0];
+    }
+    function display_categories($con){
+        $query = "select category.category_id, category.category_name, parent_category.category_name as 'parent_category_name',  count(product.product_id) as 'products_count' from category_details_tbl as category left join category_details_tbl as parent_category  on category.parent_category_id = parent_category.category_id left join  product_details_tbl as product  on product.category_id = category.category_id group by  category.category_id, category.category_name, parent_category.category_name;";
+        $result = mysqli_query($con,$query);
+        while($category = mysqli_fetch_assoc($result))
+        {
+        ?>
+             <tr>
+                <td><?php echo $category['category_id'] ?></td>
+                <td><?php echo $category['category_name'] ?></td>
+                <td><?php echo $category['parent_category_name']==''?'None':$category['parent_category_name'] ?></td>
+                <td><?php echo $category['products_count'] ?></td>
+                <td>
+                    <div class="d-flex flex-nowrap">
+                        <a class="btn btn-success btn-sm me-1" href="update-category.php?categoryId=<?php echo $category['category_id'] ?>">Edit</a>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $category['category_id'] ?>">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            <div class="modal fade" id="deleteModal<?php echo $category['category_id'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this category? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="delete-category.php?category_id=<?php echo $category['category_id'] ?>" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+    }
+?>

@@ -24,13 +24,7 @@
                                 <select class="form-select" id="parentCategory" name="parent_category">
                                     <option value="" disabled selected>Select a parent category</option>
                                     <option value="-">None</option>
-                                    <option value="1">Fruits and Vegetables</option>
-                                    <option value="2">Dairy and Eggs</option>
-                                    <option value="Bakery">Bakery</option>
-                                    <option value="Beverages">Beverages</option>
-                                    <option value="Snacks">Snacks</option>
-                                    <option value="Personal Care">Personal Care</option>
-                                    <option value="Household Supplies">Household Supplies</option>
+                                    <?php display_category_names($con); ?>
                                 </select>
                                 <div id="parentCategoryError" class="error-message"></div>
                             </div>
@@ -49,14 +43,33 @@
         $category_name = $_POST["category_name"];
         $parent_category = $_POST["parent_category"];
 
-        $query = "INSERT INTO `category_details_tbl`(`Category_Name`, `Parent_Category_Id`) VALUES ('$category_name',$parent_category)";
-        if(mysqli_query($con,$query)){
+        $query = $parent_category=="-"?
+        "INSERT INTO `category_details_tbl` (`Category_Name`) VALUES ('$category_name')":
+        "INSERT INTO `category_details_tbl` (`Category_Name`, `Parent_Category_Id`) VALUES ('$category_name',$parent_category)";
+
+        $sql=mysqli_query($con,$query);
+
+        if($sql){
             ?>
             <script>
                 window.location.href='categories.php';
             </script>
             <?php
         }
-
+        else{
+            echo mysqli_error($con);  
+        }   
+        
+    }
+    function display_category_names($con){
+        $query = "SELECT Category_Id,Category_Name FROM category_details_tbl where Parent_Category_Id IS NULL";
+        $result=mysqli_query($con,$query);
+        while($category= mysqli_fetch_assoc($result)){
+            ?>
+            <option value="<?php echo $category["Category_Id"]?>">
+                <?php echo $category["Category_Name"]?>
+            </option>
+            <?php
+        }
     }
 ?>
