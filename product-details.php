@@ -1,17 +1,22 @@
-<?php include('header2.php'); ?>
+<?php include 'header2.php'; 
+$query = "select product.Product_Id, product.Product_Name, product.Product_Image, product.Description, product.Sale_Price, round(product.Sale_Price-(product.Sale_Price*product.Discount/100),2) 'Price', count(Rating) as 'Review_Count', round(avg(Rating)) as 'Rating' from product_details_tbl as product left join review_details_tbl as review on product.Product_Id = review.Product_Id group by product.Product_Id";
+$result = mysqli_query($con,$query);
+$product = mysqli_fetch_assoc($result);
+
+?>
     <div class="container sitemap mt-5">
         <p>
             <a href="index.php" class="text-decoration-none dim link">Home /</a>
             <a href="shop.php" class="text-decoration-none dim link">Shop /</a>
-            Chocolate
+            <?php echo $product["Product_Name"]; ?>
         </p>
 
         <div class="row">
             <div class="col-md-5">
-                <img src="img/items/chocolate.webp" alt="Product image" class="img-thumbnail p-3">
+                <img src="img/items/products/<?php echo $product['Product_Image']?>" alt="Product image" class="img-thumbnail p-3">
             </div>
             <div class="col-md-7 d-flex flex-column px-5 align-items-start">
-                <h4 class="product-title">5-Star Chocolate</h4>
+                <h4 class="product-title"><?php echo $product['Product_Name']?></h4>
                 <div class="rating-section-description">
                     <div class="ratings">
                         <span class="fa fa-star checked"></span>
@@ -27,11 +32,11 @@
                     </div>
                 </div>
                 <div class="product-description mt-3">
-                    Five Star Cadbury is a deliciously indulgent chocolate bar with a rich, creamy caramel center wrapped in smooth Cadbury milk chocolate. Its unique combination of chewy caramel and chocolate creates a satisfyingly sweet and gooey experience. Perfect for a treat anytime you crave a little sweetness!
+                    <?php echo $product['Description']?>
                 </div>
                 <div class="row align-items-center mt-3 w-100">
                     <div class="col-3">Price</div>
-                    <div class="col-9 price">₹100.00</div>
+                    <div class="col-9 price">₹<?php echo $product['Price']?></div>
                 </div>
                 <div class="row align-items-center mt-3 w-100">
                     <div class="col-3 mt-">Quantity</div>
@@ -44,6 +49,7 @@
                     </div>
                 </div>
                 <form action="cart.php" class="w-100 mt-4">
+                    <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
                     <input type="hidden" id="selectedQuantity" name="quantity" value="">
                     <button class="add-to-cart-btn primary-btn w-100" type="submit">Add to cart</button>
                 </form>
@@ -56,7 +62,7 @@
         <div class="row">
             <div class="col-6">
             <form  onsubmit="return validateReviewForm();">
-                <div >
+                <div>
                     <label for="userRating" class="d-block">Rating</label>
                     <select class="form w-100 p-2 rounded" id="userRating">
                         <option value="">Select rating</option>
