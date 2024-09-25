@@ -339,30 +339,37 @@ function contactFormValidation() {
 }
 
 function validateRegistrationForm() {
-    let name = document.getElementById('name');
+    let fname = document.getElementById('fname');
+    let lname = document.getElementById('lname');
     let email = document.getElementById('email');
+    let phone = document.getElementById('phone');
     let password = document.getElementById('password');
     let confirmPassword = document.getElementById('confirmPassword');
 
     let nameError = document.getElementById('nameError');
     let emailError = document.getElementById('emailError');
+    let phoneError = document.getElementById('phoneError');
     let passwordError = document.getElementById('passwordError');
     let confirmPasswordError = document.getElementById('confirmPasswordError');
 
     let isValid = true;
 
-    if (name.value.trim() === '') {
-        nameError.innerText = 'Name is required';
+    if (fname.value.trim() === '' || lname.value.trim === '') {
+        nameError.innerText = 'Both first and last names are required.';
         isValid = false;
-    } else if (/\d/.test(name.value)) {
-        nameError.innerText = 'Name should not contain numbers';
+    } else if (!/^[A-Za-z\s]+$/.test(fname.value.trim())) {
+        nameError.innerText = 'First name should only contain alphabets.';
         isValid = false;
-    } else if (name.value.length > 50) {
-        nameError.innerText = 'Name must be 50 characters or less';
+    } else if (!/^[A-Za-z\s]+$/.test(lname.value.trim())) {
+        nameError.innerText = 'Last name should only contain alphabets.';
+        isValid = false;
+    } else if (fname.length > 50 || lname.length > 50) {
+        nameError.innerText = 'First and last names must be 50 characters or less.';
         isValid = false;
     } else {
-        nameError.innerText = '';
+        nameError.innerText = ''; // Clear error if all checks pass
     }
+
 
     if (email.value.trim() === '') {
         emailError.innerText = 'Email is required';
@@ -375,6 +382,18 @@ function validateRegistrationForm() {
         isValid = false;
     } else {
         emailError.innerText = '';
+    }
+
+    if (phone.value.trim() === '') {
+        phoneError.innerText = 'Mobile number is required';
+        isValid = false;
+    } else 
+    if (!/^[6-9]\d{9}$/.test(phone.value)) {
+        phoneError.innerText = 'Invalid mobile number format.';
+        isValid = false;
+    } 
+    else {
+        phoneError.innerText = '';
     }
 
     if (password.value.trim() === '') {
