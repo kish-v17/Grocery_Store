@@ -1,6 +1,7 @@
 <?php
 include('db-connection.php');
 error_reporting(0);
+include "DB/connection.php";
 $backtrace = debug_backtrace();
 $caller_file = basename($backtrace[0]['file']);
 $title_array = array(

@@ -122,35 +122,6 @@ function validateAddOfferForm() {
 
     return isValid;
 }
-let productCount = 1;
-
-document.getElementById('addProductBtn').addEventListener('click', function() {
-    productCount++;
-    const productContainer = document.getElementById('productContainer');
-    
-    const newProductEntry = document.createElement('div');
-    newProductEntry.className = 'product-entry mb-3';
-    newProductEntry.id = `productEntry${productCount}`;
-    newProductEntry.innerHTML = `
-        <h5>Product ${productCount}</h5>
-        <div class="row align-items-end">
-            <div class="col-md-5">
-                <label for="productId${productCount}" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="productId${productCount}" name="products[${productCount - 1}][productId]">
-                <div id="productId${productCount}Error" class="error-message"></div>
-            </div>
-            <div class="col-md-5">
-                <label for="quantity${productCount}" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity${productCount}" name="products[${productCount - 1}][quantity]" min="1">
-                <div id="quantity${productCount}Error" class="error-message"></div>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger mt-2 deleteProductBtn" onclick="removeProduct(this)">Delete Product</button>
-            </div>
-        </div>
-    `;
-    productContainer.appendChild(newProductEntry);
-});
 
 function removeProduct(button) {
     const productEntry = button.closest('.product-entry');
@@ -226,7 +197,6 @@ function validateAddOrderForm() {
         orderStatusError.innerText = '';
     }
 
-    return isValid;
 }
 
 function validateAddProductForm() {
@@ -252,15 +222,26 @@ function validateAddProductForm() {
         productImageError.innerText = '';
     }
 
-    // Product Price Validation
-    const productPrice = document.getElementById('productPrice');
-    const productPriceError = document.getElementById('productPriceError');
-    const priceValue = parseFloat(productPrice.value);
-    if (isNaN(priceValue) || priceValue <= 0) {
-        productPriceError.innerText = 'Price must be a number greater than 0.';
+    // Sale Price Validation
+    const salePrice = document.getElementById('salePrice');
+    const salePriceError = document.getElementById('salePriceError');
+    const salePriceValue = parseFloat(salePrice.value);
+    if (isNaN(salePriceValue) || salePriceValue <= 0) {
+        salePriceError.innerText = 'Sale Price must be a number greater than 0.';
         isValid = false;
     } else {
-        productPriceError.innerText = '';
+        salePriceError.innerText = '';
+    }
+
+    // Cost Price Validation
+    const costPrice = document.getElementById('costPrice');
+    const costPriceError = document.getElementById('costPriceError');
+    const costPriceValue = parseFloat(costPrice.value);
+    if (isNaN(costPriceValue) || costPriceValue <= 0) {
+        costPriceError.innerText = 'Cost Price must be a number greater than 0.';
+        isValid = false;
+    } else {
+        costPriceError.innerText = '';
     }
 
     // Product Discount Validation
@@ -305,8 +286,13 @@ function validateAddProductForm() {
         productDescriptionError.innerText = '';
     }
 
+    if (!isValid) {
+        event.preventDefault();
+        return false;  // Prevent form submission
+    }
     return isValid;
-};
+}
+
 
 function validateAddReviewForm() {
     let isValid = true;
@@ -493,3 +479,32 @@ function validateContactInfoForm() {
 
     return isValid;
 }
+let productCount = 1;
+
+document.getElementById('addProductBtn').addEventListener('click', function() {
+    productCount++;
+    const productContainer = document.getElementById('productContainer');
+    
+    const newProductEntry = document.createElement('div');
+    newProductEntry.className = 'product-entry mb-3';
+    newProductEntry.id = `productEntry${productCount}`;
+    newProductEntry.innerHTML = `
+        <h5>Product ${productCount}</h5>
+        <div class="row align-items-end">
+            <div class="col-md-5">
+                <label for="productId${productCount}" class="form-label">Product ID</label>
+                <input type="text" class="form-control" id="productId${productCount}" name="products[${productCount - 1}][productId]">
+                <div id="productId${productCount}Error" class="error-message"></div>
+            </div>
+            <div class="col-md-5">
+                <label for="quantity${productCount}" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity${productCount}" name="products[${productCount - 1}][quantity]" min="1">
+                <div id="quantity${productCount}Error" class="error-message"></div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger mt-2 deleteProductBtn" onclick="removeProduct(this)">Delete Product</button>
+            </div>
+        </div>
+    `;
+    productContainer.appendChild(newProductEntry);
+});
