@@ -30,7 +30,7 @@
             <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                 <div class="card">
                     <div class="product-image">
-                        <a href="product-details.php?id=1">
+                        <a href="product-details.php?Product_Id=<?php echo $product["Product_Id"]; ?>">
                             <img class="img-thumbnail p-4" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">
                         </a>
                         <div class="like"><i class="fa-regular fa-heart"></i></div>
