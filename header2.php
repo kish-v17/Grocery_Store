@@ -1,6 +1,8 @@
 <?php
 // error_reporting(0);
+session_start();
 include "DB/connection.php";
+$_SESSION['user_id']=1;
 $backtrace = debug_backtrace();
 $caller_file = basename($backtrace[0]['file']);
 $title_array = array(

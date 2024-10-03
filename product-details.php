@@ -47,7 +47,7 @@ $product = mysqli_fetch_assoc($result);
                 </div>
                 <form action="cart.php" class="w-100 mt-4">
                     <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
-                    <input type="hidden" id="selectedQuantity" name="quantity" value="">
+                    <input type="hidden" id="selectedQuantity" name="quantity">
                     <button class="add-to-cart-btn primary-btn w-100" type="submit">Add to cart</button>
                 </form>
             </div>
