@@ -1,4 +1,8 @@
-<?php include("sidebar.php") ?>
+<?php include("sidebar.php"); 
+$query = "SELECT `Response_Id`, `Name`, `Email`, `Phone`, `Message` FROM `responses_tbl`";
+$result = mysqli_query($con, $query);
+
+?>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -12,6 +16,10 @@
                 </div>
             </div>
             <div class="card-body">
+                <?php 
+                    if(mysqli_num_rows($result))
+                    {
+                        ?>
                 <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
@@ -23,50 +31,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        while($response = mysqli_fetch_assoc($result))
+                        {
+                            ?>
                         <tr>
-                            <td>JohnDoe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>This is a sample message.</td>
+                            <td><?php echo $response["Name"]; ?></td>
+                            <td><?php echo $response["Email"]; ?></td>
+                            <td><?php echo $response["Phone"]; ?></td>
+                            <td><?php echo $response["Message"]; ?></td>
                             <td>
                                 <div class="d-flex flex-nowrap">
-                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $response["Response_Id"]; ?>">Reply</button>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $response["Response_Id"]; ?>">Delete</button>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>JohnDoe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>This is a sample message.</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>JohnDoe</td>
-                            <td>johndoe@example.com</td>
-                            <td>123-456-7890</td>
-                            <td>This is a sample message.</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <!-- Reply Modal -->
-    <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+                            <!-- Reply Modal -->
+<div class="modal fade" id="replyModal<?php echo $response["Response_Id"]; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -92,7 +74,7 @@
     
 </div>
     <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal<?php echo $response["Response_Id"]; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,9 +86,26 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a href="delete_category_handler.php" class="btn btn-danger">Delete</a>
+                <a href="delete-response.php?response_id=<?php echo $response["Response_Id"]; ?>" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
 </div>
+                            <?php
+                        }
+                    ?>
+                    </tbody>
+                        <?php
+                    }
+                    else{
+                        echo "<h3>There is no response to display!</h3>";
+                    }
+                ?>
+                
+                </table>
+            </div>
+        </div>
+    </main>
+
+
 <?php include("footer.php") ?>
