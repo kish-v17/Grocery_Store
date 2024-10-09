@@ -1,4 +1,4 @@
-<?php include('header2.php'); ?>
+<?php include('header.php'); ?>
 <div class="container sitemap mt-5">
     <p>
         <a href="index.php" class="text-decoration-none dim link">Home /</a>

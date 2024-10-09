@@ -1,4 +1,71 @@
-    <?php include('header.php'); ?>
+    <?php include('header.php');
+    require 'PHPMailer/Exception.php';
+    require 'PHPMailer/PHPMailer.php';
+    require 'PHPMailer/SMTP.php';
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    if (isset($_POST['regbtn'])) {
+        $regfname = $_POST['regfname'];
+        $reglname = $_POST['reglname'];
+        $regemail = $_POST['regemail'];
+        $regphone = $_POST['regphone'];
+        $regpwd = $_POST['regpwd'];
+
+        $_SESSION['user_data'] = [
+            'fname' => $regfname,
+            'lname' => $reglname,
+            'email' => $regemail,
+            'phone' => $regphone,
+            'pwd' => $regpwd
+        ];
+
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'kish.v07@gmail.com';
+            $mail->Password = 'epjr uzfc lnfy yams';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = '587';
+
+            $mail->setFrom('kish.v07@gmail.com');
+            $mail->addAddress($regemail, $regfname);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Email Verification';
+            $otp = rand(100000, 999999);
+            $_SESSION['otp'] = $otp;
+            $_SESSION['otp_expiration'] = time() + 300;
+
+            $body = "<html>
+                        <body>
+                            <h2>Email Verification</h2>
+                            <p>Dear {$_SESSION['user_data']['fname']},</p>
+                            <p>Your OTP for email verification is: <strong>$otp</strong></p>
+                            <p>This OTP will expire in 5 minutes.</p>
+                            <p>If you didn't request this, please ignore this email.</p>
+                        </body>
+                    </html>";
+
+            $mail->Body = $body;
+
+            if (!$mail->send()) {
+                setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
+            } else {
+                setcookie('success', 'Email sent successfully. Please check your inbox for OTP.', time() + 5, "/");
+            }
+        } catch (Exception $e) {
+            setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
+        }
+
+        echo "<script> location.replace('otp-page.php');</script>";
+    }
+
+    ?>
+
     <div class="container">
         <div class="row p-3 g-3 mt-4 d-flex justify-content-center h-100 align-items-center">
             <div class="col-md-6">
@@ -35,40 +102,5 @@
             </div>
         </div>
     </div>
-    <?php include('footer.php');
 
-    // if (isset($_POST['regbtn'])) {
-    //     $regfname = $_POST['regfname'];
-    //     $reglname = $_POST['reglname'];
-    //     $regemail = $_POST['regemail'];
-    //     $regphone = $_POST['regphone'];
-    //     $regpwd = $_POST['regpwd'];
-
-    //     $sql = "insert into user_details_tbl VALUES (User_Id, User_Role_Id, '$regfname','$reglname','$regpwd','$regemail','$regphone',Active_Status)";
-    //     if (mysqli_query($con, $sql)) {
-    //         echo "<script> location.replace('otp-page.php');</script>";
-    //     } else {
-    //         echo "Error";
-    //     }
-    // }
-    session_start(); // Start the session
-
-    if (isset($_POST['regbtn'])) {
-        $regfname = $_POST['regfname'];
-        $reglname = $_POST['reglname'];
-        $regemail = $_POST['regemail'];
-        $regphone = $_POST['regphone'];
-        $regpwd = $_POST['regpwd'];
-
-        // Store user data in session
-        $_SESSION['user_data'] = [
-            'fname' => $regfname,
-            'lname' => $reglname,
-            'email' => $regemail,
-            'phone' => $regphone,
-            'pwd' => $regpwd
-        ];
-        echo "<script> location.replace('otp-page.php');</script>";
-    }
-
-    ?>
+    <?php include('footer.php'); ?>
