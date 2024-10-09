@@ -3,7 +3,6 @@ session_start();
 include('DB/connection.php');
 error_reporting(0);
 $backtrace = debug_backtrace();
-error_reporting(0);
 $caller_file = basename($backtrace[0]['file']);
 $title_array = array(
     "index.php" => "Home",
