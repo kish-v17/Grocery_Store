@@ -1,5 +1,4 @@
 <?php
-
     include "../db/connection.php";
     $product_id = $_GET['product_id'];
     $query = "delete from product_details_tbl where Product_Id=$product_id";

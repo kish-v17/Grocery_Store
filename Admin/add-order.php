@@ -70,9 +70,66 @@
                         <div id="orderStatusError" class="error-message"></div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit Order</button>
+                    <button type="submit" class="btn btn-primary" name="add-order">Submit Order</button>
                 </form>
             </div>
         </div>
     </main>
 <?php include("footer.php"); ?>
+<?php
+include '../DB/connection.php';
+
+if (isset($_POST["add-order"])) {
+
+    $userId = $_POST['userId'];
+    $orderDate = $_POST['orderDate'];
+    $shippingAddress = $_POST['shippingAddress'];
+    $billingAddress = $_POST['billingAddress'];
+    $orderStatus = $_POST['orderStatus'];
+    
+    $shippingCharge = 50; 
+    $total = 0; 
+
+    $insertOrderHeaderQuery = "
+        INSERT INTO order_header_tbl (User_Id, Order_Date, Order_Status, Billing_Address_Id, Shipping_Address_Id, Shipping_Charge, Total)
+        VALUES ('$userId', '$orderDate', '$orderStatus', '$billingAddress', '$shippingAddress', '$shippingCharge', '$total')
+    ";
+
+    if (mysqli_query($con, $insertOrderHeaderQuery)) {
+
+        $orderId = mysqli_insert_id($con);
+
+        $products = $_POST['products'];
+        $orderTotal = 0; 
+        foreach ($products as $product) {
+            $productId = $product['productId'];
+            $quantity = $product['quantity'];
+
+            $productPriceQuery = "SELECT Price FROM products_tbl WHERE Product_Id = '$productId'";
+            $productPriceResult = mysqli_query($con, $productPriceQuery);
+            if ($productPriceResult && mysqli_num_rows($productPriceResult) > 0) {
+                $productPriceRow = mysqli_fetch_assoc($productPriceResult);
+                $price = $productPriceRow['Price'];
+
+                $productTotal = $price * $quantity;
+
+                $orderTotal += $productTotal;
+
+                $insertOrderDetailsQuery = "
+                    INSERT INTO order_details_tbl (Order_Id, Product_Id, Quantity, Price)
+                    VALUES ('$orderId', '$productId', '$quantity', '$price')
+                ";
+                mysqli_query($con, $insertOrderDetailsQuery);
+            }
+        }
+
+        $updateTotalQuery = "UPDATE order_header_tbl SET Total = '$orderTotal' WHERE Order_Id = '$orderId'";
+        mysqli_query($con, $updateTotalQuery);
+
+        echo "<script>alert('Order added successfully!');</script>";
+        echo "<script>window.location.href = 'order-management.php';</script>";
+    } else {
+        echo "<script>alert('Error inserting order: " . mysqli_error($con) . "');</script>";
+    }
+}
+?>

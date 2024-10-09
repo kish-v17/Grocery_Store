@@ -38,7 +38,7 @@ $product = mysqli_fetch_assoc($result);
                         <p><strong>Price After Discount:</strong> ₹<?php echo $product["Price"]; ?></p>
                         <p><strong>Category:</strong> Bakery > Desserts</p>
                         <p><strong>Total Sales:</strong>  <?php echo $product["Sold_Quantity"]; ?></p>
-                        <a class="btn btn-success" href="update-product.php?id=<?php echo $product["Product_Id"]; ?>">Update Product</a>
+                        <a class="btn btn-success" href="update-product.php?product_id=<?php echo $product["Product_Id"]; ?>">Update Product</a>
                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Product</button>
                     </div>
                 </div>

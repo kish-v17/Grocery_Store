@@ -1,3 +1,93 @@
+<?php include 'header.php' ;
+$user_id = $_SESSION['user_id'];
+if (isset($_GET['product_id'])) 
+{
+    if (isset($_SESSION['user_id'])) 
+    {
+        $user_id = $_SESSION['user_id'];
+    } 
+    else 
+    {
+        echo "<script>location.href='login.php';</script>";
+        exit;
+    }
+    $product_id = $_GET['product_id'];
+    $quantity = isset($_GET['quantity']) ? $_GET['quantity'] : 1;  
+    if(record_exists($user_id, $product_id,$con))
+    {
+        $query = "update cart_details_tbl set quantity = quantity+1 where Product_Id = '$product_id' and User_Id = '$user_id'";
+        mysqli_query($con,$query);
+    }
+    else
+    {
+        $query = "INSERT INTO cart_details_tbl(Product_Id, Quantity, User_Id) VALUES ('$product_id', '$quantity', '$user_id')"; 
+        if (mysqli_query($con, $query)) {
+            echo "<script>alert('Product added to cart successfully!');
+            location.href='cart.php';</script>";
+            exit;
+        } 
+        else 
+        {
+            echo "Error: " . mysqli_error($con);
+        }
+    }
+
+
+    
+}
+$query = "select p.Product_Name,c.Product_Id, p.Product_Image, round(p.Sale_Price-p.Sale_Price*p.Discount/100,2) as 'Price',round(p.Sale_Price-p.Sale_Price*p.Discount/100*c.Quantity,2) as 'Subtotal',c.Quantity from cart_details_tbl as c left join product_details_tbl as p on c.Product_Id = p.Product_Id where User_Id = ".$user_id;
+$result = mysqli_query($con,$query);
+
+?>
+    <div class="container sitemap cart-table">
+        <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>
+        <?php
+            if(mysqli_num_rows($result) > 0){
+                ?>
+                <table class="table cart-table  text-nowrap">
+                    <tr class="heading">
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Actions</th>
+                    </tr>
+                <?php
+                while($product = mysqli_fetch_assoc($result)){
+                    ?>
+                        <tr>
+                        <form action="php/update-cart.php" method="post">
+                            <td>
+                                <img src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="<?php echo $product["Product_Name"]; ?>" class="image-item d-inline-block">
+                                <div class="d-inline-block"><?php echo $product["Product_Name"]; ?></div>
+                            </td>
+                            <td>₹100.00</td>
+                            <td>
+                                <div class="d-flex">
+                                    <button class="number-button qty-minus">-</button>
+                                    <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
+                                    <input type="number" name="quantity" id="" value="<?php echo $product["Quantity"]; ?>">
+                                    <button class="number-button qty-plus">+</button>
+                                </div>
+                            </td>
+                            <td>₹<?php echo $product["Price"]; ?></td>
+                            <td>
+                                <input type="submit" class="primary-btn update-btn" value="Update">
+                                <a class="primary-btn delete-btn" href="php/remove-from-cart.php?product_id=<?php echo $product["Product_Id"]; ?>">Delete</a>
+                            </td>
+                        </form>
+                        </tr>
+                    <?php
+                        }
+            }
+            else{
+                echo "There is no record to display!";
+            }
+        ?>
+        
+            
+            
+        </table>
 <?php include('header.php'); ?>
 <div class="container sitemap cart-table">
     <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>

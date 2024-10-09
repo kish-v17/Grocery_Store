@@ -1,0 +1,12 @@
+- categories
+- products
+- responses -reply is pending
+- reviews - reply is pending
+- users
+- banners
+
+-------------------------------------
+pending
+------------------------------------
+orders
+offers

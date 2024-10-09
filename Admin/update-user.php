@@ -1,4 +1,21 @@
-<?php include("sidebar.php"); ?>
+<?php include("sidebar.php"); 
+
+if (isset($_GET['user_id'])) {
+    $userId = $_GET['user_id'];
+    $sql = "SELECT * FROM user_details_tbl WHERE User_Id = $userId";
+    $result = mysqli_query($con, $sql);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+    } else {
+        echo "<script>alert('User not found!'); window.location.href = 'users.php';</script>";
+        exit();
+    }
+} else {
+    echo "<script>window.location.href = 'users.php';</script>";
+}
+?>
+
 <div id="layoutSidenav_content">
     <div class="container-fluid px-4">
         <h1 class="mt-4">Update User</h1>
@@ -9,22 +26,20 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="updateUserForm" action="users.php" method="POST" onsubmit="return validateAddUserForm();">
-                    <input type="hidden" name="user_id" id="userId" value="">
+                <form id="updateUserForm" action="update-user.php" method="POST">
+                    <input type="hidden" name="user_id" id="userId" value="<?php echo $user['User_Id']; ?>">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="first_name">
-                                <div id="firstNameError" class="error-message"></div>
+                                <input type="text" class="form-control" id="firstName" name="first_name" value="<?php echo $user['First_Name']; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="last_name">
-                                <div id="lastNameError" class="error-message"></div>
+                                <input type="text" class="form-control" id="lastName" name="last_name" value="<?php echo $user['Last_Name']; ?>">
                             </div>
                         </div>
                     </div>
@@ -33,15 +48,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email">
-                                <div id="emailError" class="error-message"></div>
+                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['Email']; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone</label>
-                                <input type="tel" class="form-control" id="phone" name="phone">
-                                <div id="phoneError" class="error-message"></div>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $user['Mobile_No']; ?>">
                             </div>
                         </div>
                     </div>
@@ -50,16 +63,36 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                <div id="passwordError" class="error-message"></div>
+                                <input type="password" class="form-control" id="password" name="password"  value="<?php echo $user['Password']; ?>">
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update User</button>
+                    <button type="submit" class="btn btn-primary" name="update-user">Update User</button>
                 </form>
             </div>
         </div>
     </div>
-
 <?php include("footer.php"); ?>
+<?php
+
+if (isset($_POST["update-user"])) {
+    $userId = $_POST['user_id'];
+    $firstName = $_POST['first_name'];
+    $lastName = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+
+    $sql = "UPDATE user_details_tbl 
+            SET First_Name = '$firstName', Last_Name = '$lastName', Email = '$email', Mobile_No = '$phone', Password = '$password' 
+            WHERE User_Id = $userId";
+
+    if (mysqli_query($con, $sql)) {
+        echo "<script>alert('User updated successfully!');</script>";
+        echo "<script>window.location.href = 'users.php';</script>";
+    } else {
+        echo "Error updating user: " . mysqli_error($con);
+    }
+}
+?>
