@@ -1,7 +1,7 @@
 <?php include "sidebar.php"; 
 $query = "
     SELECT 
-        r.Review_Id, r.Reply_To, r.Rating, r.Review, r.Review_Date, 
+        r.Review_Id, r.Rating, r.Review, r.Review_Date, 
         p.Product_Id, p.Product_Name, p.Product_Image, 
         u.User_Id, u.First_Name, u.Last_Name
     FROM review_details_tbl r

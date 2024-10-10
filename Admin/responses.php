@@ -56,7 +56,7 @@ $result = mysqli_query($con, $query);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="response-reply.php" method="POST">
                         <div class="mb-3">
                             <label for="subject" class="form-label">Subject</label>
                             <input type="text" class="form-control" id="subject" name="subject" >
@@ -65,7 +65,7 @@ $result = mysqli_query($con, $query);
                             <label for="message" class="form-label">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="3" ></textarea>
                         </div>
-                        <input type="hidden" name="response_id" value="<!-- Response ID here -->">
+                        <input type="hidden" name="email_id" value="<?php echo $response["Email"]; ?>">
                         <button type="submit" class="btn btn-primary">Send</button>
                     </form>
                 </div>

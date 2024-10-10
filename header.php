@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('DB/connection.php');
 error_reporting(0);
 $backtrace = debug_backtrace();
