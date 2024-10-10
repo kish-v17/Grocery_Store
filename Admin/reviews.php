@@ -1,7 +1,7 @@
-<?php include("sidebar.php"); 
+<?php include "sidebar.php"; 
 $query = "
     SELECT 
-        r.Rating, r.Review, r.Review_Date, 
+        r.Review_Id, r.Reply_To, r.Rating, r.Review, r.Review_Date, 
         p.Product_Id, p.Product_Name, p.Product_Image, 
         u.User_Id, u.First_Name, u.Last_Name
     FROM review_details_tbl r
@@ -40,13 +40,15 @@ $result = mysqli_query($con, $query);
                     </tr>
                 </thead>
                         <?php
+                        $temp_review_id = 0;
                         while($review = mysqli_fetch_assoc($result)) {
+                            $temp_review_id++;
                             $fullName = $review['First_Name'] . ' ' . $review['Last_Name'];
                             ?>
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="../img/items/<?php echo $review['Product_Image']; ?>" alt="<?php echo $review['Product_Name']; ?>" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
+                                        <img src="../img/items/products/<?php echo $review['Product_Image']; ?>" alt="<?php echo $review['Product_Name']; ?>" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
                                         <a href="view-product.php?product_id=<?php echo $review['Product_Id']; ?>"><?php echo $review['Product_Name']; ?></a>
                                     </div>
                                 </td>
@@ -63,13 +65,13 @@ $result = mysqli_query($con, $query);
                                 <td style="max-width: 250px;" class="text-wrap"><?php echo $review['Review']; ?></td>
                                 <td>
                                     <div class="d-flex flex-nowrap">
-                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $review['User_Id'].''.$review['Product_Id']; ?>">Reply</button>
-                                        <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $review['User_Id'].''.$review['Product_Id']; ?>">Delete</button>
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $temp_review_id; ?>">Reply</button>
+                                        <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $temp_review_id; ?>">Delete</button>
                                     </div>
                                 </td>
                             </tr>
                             <!-- Reply Modal -->
-                            <div class="modal fade" id="replyModal<?php echo $review['User_Id'].''.$review['Product_Id']; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="replyModal<?php echo $temp_review_id; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -77,10 +79,11 @@ $result = mysqli_query($con, $query);
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form action="review-reply.php" method="post">
                                                 <div class="mb-3">
+                                                    <input type="hidden" name="review_id" value="<?php echo $review["Review_Id"]; ?>">
                                                     <label for="reviewReply" class="form-label">Your Reply</label>
-                                                    <textarea class="form-control" id="reviewReply" rows="3"></textarea>
+                                                    <textarea class="form-control" id="reviewReply" rows="3" name="reply"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Send Reply</button>
                                             </form>
@@ -90,7 +93,7 @@ $result = mysqli_query($con, $query);
                             </div>
 
                             <!-- Delete Modal -->
-                            <div class="modal fade" id="deleteModal<?php echo $review['User_Id'].''.$review['Product_Id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteModal<?php echo $temp_review_id; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">

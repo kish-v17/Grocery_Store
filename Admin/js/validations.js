@@ -131,6 +131,7 @@ function removeProduct(button) {
 function validateAddOrderForm() {
     let isValid = true;
 
+    // Validate User ID
     const userId = document.getElementById('userId').value.trim();
     const userIdError = document.getElementById('userIdError');
     if (userId === '') {
@@ -140,6 +141,7 @@ function validateAddOrderForm() {
         userIdError.innerText = '';
     }
 
+    // Validate Order Date
     const orderDate = document.getElementById('orderDate').value.trim();
     const orderDateError = document.getElementById('orderDateError');
     if (orderDate === '') {
@@ -149,6 +151,8 @@ function validateAddOrderForm() {
         orderDateError.innerText = '';
     }
 
+    // Validate Products
+    const productCount = document.querySelectorAll('.product-entry').length;
     for (let i = 1; i <= productCount; i++) {
         const productId = document.getElementById(`productId${i}`).value.trim();
         const productIdError = document.getElementById(`productId${i}Error`);
@@ -170,15 +174,27 @@ function validateAddOrderForm() {
         }
     }
 
-    const shippingAddress = document.getElementById('shippingAddress').value.trim();
-    const shippingAddressError = document.getElementById('shippingAddressError');
-    if (shippingAddress === '') {
-        shippingAddressError.innerText = 'Shipping Address is required.';
+    // Validate Billing First Name
+    const billingFirstName = document.getElementById('billingFirstName').value.trim();
+    const billingFirstNameError = document.getElementById('billingFirstNameError');
+    if (billingFirstName === '') {
+        billingFirstNameError.innerText = 'Billing First Name is required.';
         isValid = false;
     } else {
-        shippingAddressError.innerText = '';
+        billingFirstNameError.innerText = '';
     }
 
+    // Validate Billing Last Name
+    const billingLastName = document.getElementById('billingLastName').value.trim();
+    const billingLastNameError = document.getElementById('billingLastNameError');
+    if (billingLastName === '') {
+        billingLastNameError.innerText = 'Billing Last Name is required.';
+        isValid = false;
+    } else {
+        billingLastNameError.innerText = '';
+    }
+
+    // Validate Billing Address
     const billingAddress = document.getElementById('billingAddress').value.trim();
     const billingAddressError = document.getElementById('billingAddressError');
     if (billingAddress === '') {
@@ -188,6 +204,121 @@ function validateAddOrderForm() {
         billingAddressError.innerText = '';
     }
 
+    // Validate Billing City
+    const billingCity = document.getElementById('billingCity').value.trim();
+    const billingCityError = document.getElementById('billingCityError');
+    if (billingCity === '') {
+        billingCityError.innerText = 'Billing City is required.';
+        isValid = false;
+    } else {
+        billingCityError.innerText = '';
+    }
+
+    // Validate Billing State
+    const billingState = document.getElementById('billingState').value.trim();
+    const billingStateError = document.getElementById('billingStateError');
+    if (billingState === '') {
+        billingStateError.innerText = 'Billing State is required.';
+        isValid = false;
+    } else {
+        billingStateError.innerText = '';
+    }
+
+    // Validate Billing Pin Code
+    const billingPinCode = document.getElementById('billingPinCode').value.trim();
+    const billingPinCodeError = document.getElementById('billingPinCodeError');
+    if (billingPinCode === '') {
+        billingPinCodeError.innerText = 'Billing Pin Code is required.';
+        isValid = false;
+    } else {
+        billingPinCodeError.innerText = '';
+    }
+
+    // Validate Billing Phone Number
+    const billingPhone = document.getElementById('billingPhone').value.trim();
+    const billingPhoneError = document.getElementById('billingPhoneError');
+    if (billingPhone === '') {
+        billingPhoneError.innerText = 'Billing Phone Number is required.';
+        isValid = false;
+    } else {
+        billingPhoneError.innerText = '';
+    }
+
+    // Validate Shipping Address only if 'sameAsBilling' is unchecked
+    const sameAsBilling = document.getElementById('sameAsBilling').checked;
+    if (!sameAsBilling) {
+        // Validate Shipping First Name
+        const shippingFirstName = document.getElementById('shippingFirstName').value.trim();
+        const shippingFirstNameError = document.getElementById('shippingFirstNameError');
+        if (shippingFirstName === '') {
+            shippingFirstNameError.innerText = 'Shipping First Name is required.';
+            isValid = false;
+        } else {
+            shippingFirstNameError.innerText = '';
+        }
+
+        // Validate Shipping Last Name
+        const shippingLastName = document.getElementById('shippingLastName').value.trim();
+        const shippingLastNameError = document.getElementById('shippingLastNameError');
+        if (shippingLastName === '') {
+            shippingLastNameError.innerText = 'Shipping Last Name is required.';
+            isValid = false;
+        } else {
+            shippingLastNameError.innerText = '';
+        }
+
+        // Validate Shipping Address
+        const shippingAddress = document.getElementById('shippingAddress').value.trim();
+        const shippingAddressError = document.getElementById('shippingAddressError');
+        if (shippingAddress === '') {
+            shippingAddressError.innerText = 'Shipping Address is required.';
+            isValid = false;
+        } else {
+            shippingAddressError.innerText = '';
+        }
+
+        // Validate Shipping City
+        const shippingCity = document.getElementById('shippingCity').value.trim();
+        const shippingCityError = document.getElementById('shippingCityError');
+        if (shippingCity === '') {
+            shippingCityError.innerText = 'Shipping City is required.';
+            isValid = false;
+        } else {
+            shippingCityError.innerText = '';
+        }
+
+        // Validate Shipping State
+        const shippingState = document.getElementById('shippingState').value.trim();
+        const shippingStateError = document.getElementById('shippingStateError');
+        if (shippingState === '') {
+            shippingStateError.innerText = 'Shipping State is required.';
+            isValid = false;
+        } else {
+            shippingStateError.innerText = '';
+        }
+
+        // Validate Shipping Pin Code
+        const shippingPinCode = document.getElementById('shippingPinCode').value.trim();
+        const shippingPinCodeError = document.getElementById('shippingPinCodeError');
+        if (shippingPinCode === '') {
+            shippingPinCodeError.innerText = 'Shipping Pin Code is required.';
+            isValid = false;
+        } else {
+            shippingPinCodeError.innerText = '';
+        }
+
+        // Validate Shipping Phone Number
+        const shippingPhone = document.getElementById('shippingPhone').value.trim();
+        const shippingPhoneError = document.getElementById('shippingPhoneError');
+        if (shippingPhone === '') {
+            shippingPhoneError.innerText = 'Shipping Phone Number is required.';
+            isValid = false;
+        } else {
+            shippingPhoneError.innerText = '';
+        }
+    }
+
+    // Validate Order Status
     const orderStatus = document.getElementById('orderStatus').value.trim();
     const orderStatusError = document.getElementById('orderStatusError');
     if (orderStatus === '') {
@@ -197,7 +328,9 @@ function validateAddOrderForm() {
         orderStatusError.innerText = '';
     }
 
+    return isValid;
 }
+
 
 function validateAddProductForm() {
     let isValid = true;
@@ -479,32 +612,3 @@ function validateContactInfoForm() {
 
     return isValid;
 }
-let productCount = 1;
-
-document.getElementById('addProductBtn').addEventListener('click', function() {
-    productCount++;
-    const productContainer = document.getElementById('productContainer');
-    
-    const newProductEntry = document.createElement('div');
-    newProductEntry.className = 'product-entry mb-3';
-    newProductEntry.id = `productEntry${productCount}`;
-    newProductEntry.innerHTML = `
-        <h5>Product ${productCount}</h5>
-        <div class="row align-items-end">
-            <div class="col-md-5">
-                <label for="productId${productCount}" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="productId${productCount}" name="products[${productCount - 1}][productId]">
-                <div id="productId${productCount}Error" class="error-message"></div>
-            </div>
-            <div class="col-md-5">
-                <label for="quantity${productCount}" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity${productCount}" name="products[${productCount - 1}][quantity]" min="1">
-                <div id="quantity${productCount}Error" class="error-message"></div>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger mt-2 deleteProductBtn" onclick="removeProduct(this)">Delete Product</button>
-            </div>
-        </div>
-    `;
-    productContainer.appendChild(newProductEntry);
-});

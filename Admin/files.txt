@@ -1,12 +1,19 @@
 - categories
-- products
-- responses -reply is pending
-- reviews - reply is pending
-- users
 - banners
+- products
 
--------------------------------------
-pending
-------------------------------------
-orders
-offers
+- responses 
+    - reply is pending
+- reviews 
+    - reply is pending
+- users 
+    - user details is pending
+    - delete means status delete
+- offers 
+    - activate/deactivate is pending 
+- orders 
+    - in the add order, if in the one dropdown one product is selected then it should be removed from other dropdowns
+    - update is pending
+    - view order is pending
+
+pagination and search in every page

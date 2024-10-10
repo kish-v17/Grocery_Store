@@ -1,4 +1,29 @@
-<?php include("sidebar.php") ?>
+<?php 
+include "sidebar.php"; 
+// Query to fetch the required data
+$sql = "
+SELECT 
+    oh.Order_Id,
+    CONCAT(u.First_Name, ' ', u.Last_Name) AS Customer_Name,
+    oh.Order_Date,
+    SUM(od.Quantity) AS Total_Quantity,
+    SUM(od.Quantity * od.Price) AS Total_Price,
+    oh.Order_Status
+FROM 
+    order_header_tbl oh
+JOIN 
+    user_details_tbl u ON oh.User_Id = u.User_Id
+JOIN 
+    order_details_tbl od ON oh.Order_Id = od.Order_Id
+GROUP BY 
+    oh.Order_Id, Customer_Name, oh.Order_Date, oh.Order_Status
+ORDER BY 
+    oh.Order_Date DESC
+";
+
+$result = mysqli_query($con, $sql);
+?>
+
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -26,66 +51,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1001</td>
-                            <td><a href="user-profile.php?username=JohnDoe">John Doe</a></td>
-                            <td>2024-08-10</td>
-                            <td>2</td>
-                            <td>₹50.00</td>
-                            <td>Pending</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="view-order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
-                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                        <?php
+                        if (mysqli_num_rows($result) > 0) 
+                        {
+                            while ($row = mysqli_fetch_assoc($result)) 
+                            {
+                                ?>
+                                <tr>
+                                <td><?php echo $row['Order_Id']; ?></td>
+                                <td><a href='user-profile.php?username=<?php echo $row["Customer_Name"]; ?>'><?php echo $row["Customer_Name"]; ?></a></td>
+                                <td><?php echo $row['Order_Date']; ?></td>
+                                <td><?php echo $row['Total_Quantity']; ?></td>
+                                <td>₹<?php echo number_format($row['Total_Price'], 2); ?></td>
+                                <td><?php echo $row['Order_Status']; ?></td>
+                                <td>
+                                    <div class='d-flex flex-nowrap'>
+                                        <a href='view-order.php?order_id=<?php echo $row["Order_Id"]; ?>' class='btn btn-info btn-sm me-1'>View</a>
+                                        <a href='update-order.php?order_id=<?php echo $row["Order_Id"]; ?>' class='btn btn-primary btn-sm me-1'>Edit</a>
+                                        <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $row["Order_Id"]; ?>'>Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <div class="modal fade" id="deleteModal<?php echo $row["Order_Id"]; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this order? This action cannot be undone.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="delete-order.php?order_id=<?php echo $row["Order_Id"]; ?>" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1002</td>
-                            <td><a href="user-profile.php?username=JaneSmith">Jane Smith</a></td>
-                            <td>2024-08-11</td>
-                            <td>3</td>
-                            <td>₹75.00</td>
-                            <td>Processing</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="view-order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
-                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1003</td>
-                            <td><a href="user-profile.php?username=EmilyJohnson">Emily Johnson</a></td>
-                            <td>2024-08-12</td>
-                            <td>1</td>
-                            <td>₹25.00</td>
-                            <td>Shipped</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="view-order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
-                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1004</td>
-                            <td><a href="user-profile.php?username=MichaelBrown">Michael Brown</a></td>
-                            <td>2024-08-13</td>
-                            <td>4</td>
-                            <td>₹100.00</td>
-                            <td>Delivered</td>
-                            <td>
-                                <div class="d-flex flex-nowrap">
-                                    <a href="view-order.php?id=1001" class="btn btn-info btn-sm me-1">View</a>
-                                    <a class="btn btn-primary btn-sm me-1" href="update-order.php">Edit</a>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
+                                <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='7' class='text-center'>No orders found.</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -111,22 +121,5 @@
         </div>
     </main>
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this order? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="delete_order-handler.php" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php include("footer.php") ?>
+    
+<?php include("footer.php"); ?>
