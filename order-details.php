@@ -1,4 +1,4 @@
-<?php include('header2.php'); ?>
+<?php include('header.php'); ?>
 
 <div class="container sitemap">
     <p class="my-5">
@@ -45,7 +45,7 @@
                         <p>Cash on delivery</p>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <div class="col-md-4 col-sm-6 col-12 mb-2">
@@ -134,7 +134,7 @@
             <div class="col-4 grey bold">Total</div>
             <div class="col-2 text-center bold">₹600.00</div>
         </div>
-        
+
     </div>
 </div>
 

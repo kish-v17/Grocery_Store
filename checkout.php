@@ -1,17 +1,17 @@
-<?php include('header2.php'); ?>
+<?php include('header.php'); ?>
 <div class="container sitemap">
     <p>
         <a href="index.php" class="text-decoration-none dim link">Home /</a>
-        <a href="cart.php" class="text-decoration-none dim link">Cart /</a> 
+        <a href="cart.php" class="text-decoration-none dim link">Cart /</a>
         Checkout
     </p>
 </div>
 <form action="order-success.php" id="billingForm" class="billing-details form" onsubmit="return validateForms();">
-<div class="container">
-    <h2 class="mb-4">Billing Details</h2>
-    <div class="row g-5">
-        <div class="col-md-6">
-            <div class="mb-4">
+    <div class="container">
+        <h2 class="mb-4">Billing Details</h2>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="mb-4">
                     <div class="row gx-2 gy-3">
                         <div class="col-12 col-sm-6">
                             <label for="billingFirstName" class="form-label d-block">First Name<span class="required">*</span></label>
@@ -63,10 +63,10 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="js-shipping-details invisible">
-                <div class="line mb-4"></div>
-                <h2 class="mb-4">Shipping Details</h2>
+                </div>
+                <div class="js-shipping-details invisible">
+                    <div class="line mb-4"></div>
+                    <h2 class="mb-4">Shipping Details</h2>
                     <div class="row gx-2 gy-3">
                         <div class="col-12 col-sm-6">
                             <label for="shippingFirstName" class="form-label d-block">First Name<span class="required">*</span></label>
@@ -108,41 +108,41 @@
                             <p id="shippingPhoneError" class="error"></p>
                         </div>
                     </div>
+                </div>
+                <div class="mt-4 line mb-4"></div>
             </div>
-            <div class="mt-4 line mb-4"></div>
-        </div>
-        <div class="col-md-6 font-black checkout">
-            <div class="mb-2">
-                <div class="d-flex align-items-center p-2">
-                    <img src="img/items/chocolate.webp" class="checkout-image" alt="">
-                    <div class="item-name ms-2">Chocolate 1</div>
-                    <div class="price">₹100.00</div>
+            <div class="col-md-6 font-black checkout">
+                <div class="mb-2">
+                    <div class="d-flex align-items-center p-2">
+                        <img src="img/items/chocolate.webp" class="checkout-image" alt="">
+                        <div class="item-name ms-2">Chocolate 1</div>
+                        <div class="price">₹100.00</div>
+                    </div>
+                    <div class="d-flex align-items-center p-2">
+                        <img src="img/items/chocolate2.webp" class="checkout-image" alt="">
+                        <div class="item-name ms-2">Chocolate 1</div>
+                        <div class="price">₹100.00</div>
+                    </div>
                 </div>
                 <div class="d-flex align-items-center p-2">
-                    <img src="img/items/chocolate2.webp" class="checkout-image" alt="">
-                    <div class="item-name ms-2">Chocolate 1</div>
+                    <div>Subtotal:</div>
+                    <div class="price">₹200.00</div>
+                </div>
+                <div class="my-2 line"></div>
+                <div class="d-flex align-items-center p-2">
+                    <div>Shipping:</div>
                     <div class="price">₹100.00</div>
                 </div>
-            </div>
-            <div class="d-flex align-items-center p-2">
-                <div>Subtotal:</div>
-                <div class="price">₹200.00</div>
-            </div>
-            <div class="my-2 line"></div>
-            <div class="d-flex align-items-center p-2">
-                <div>Shipping:</div>
-                <div class="price">₹100.00</div>
-            </div>
-            <div class="my-2 line"></div>
-            <div class="d-flex align-items-center p-2">
-                <div>Total:</div>
-                <div class="price">₹300.00</div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <input type="submit" value="Pay Now" class="btn-msg mt-2">
+                <div class="my-2 line"></div>
+                <div class="d-flex align-items-center p-2">
+                    <div>Total:</div>
+                    <div class="price">₹300.00</div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Pay Now" class="btn-msg mt-2">
+                </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 <?php include('footer.php'); ?>
