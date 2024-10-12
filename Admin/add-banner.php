@@ -44,11 +44,9 @@
 <?php 
     if(isset($_POST["add-banner"]))
     {
-
-        $banner_url = $_POST['banner_url'];
         $banner_order = $_POST['banner_order'];
         $banner_status = $_POST['banner_status'];
-        $banner_image = uniqid() . $_FILES['banner_image']['name']; // Unique image name
+        $banner_image = uniqid() . $_FILES['banner_image']['name']; 
 
     
         $insertBannerQuery = "
@@ -58,14 +56,13 @@
 
         if (mysqli_query($con, $insertBannerQuery)) {
 
-            // Upload banner image
             if (!is_dir("../img/banners/")) {
                 mkdir("../img/banners/");
             }
 
             move_uploaded_file($_FILES['banner_image']['tmp_name'], "../img/banners/" . $banner_image);
 
-            // Set success cookie and redirect
+        
             setcookie('success', 'Banner added successfully.', time() + 2);
             ?>
 
@@ -75,7 +72,6 @@
 
             <?php
         } else {
-            // Set error cookie and redirect in case of failure
             setcookie('error', 'Error in adding banner. Try again.', time() + 2);
             ?>
 

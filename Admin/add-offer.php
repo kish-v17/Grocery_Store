@@ -46,7 +46,6 @@ if (isset($_POST['add_offer'])) {
 
     if (mysqli_query($con, $insertOfferQuery)) {
         echo '<script>
-                alert("Offer added successfully.");
                 window.location.href = "offers.php"; // Redirect to offers page
               </script>';
     } else {

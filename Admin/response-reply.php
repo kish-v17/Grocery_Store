@@ -20,11 +20,9 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    // Sender and recipient settings
     $mail->setFrom('purebitegroceryshop@gmail.com');
-    $mail->addAddress($email_id); // Add the recipient from POST
+    $mail->addAddress($email_id);
 
-    // Email content
     $mail->isHTML(true);
     $mail->Subject = $subject;
     $mail->Body = "<html>
@@ -34,7 +32,6 @@ try {
                         </body>
                         </html>";
 
-    // Send email
     if (!$mail->send()) {
         echo "<script>alert('Mail sending failed')</script>";
     } else {

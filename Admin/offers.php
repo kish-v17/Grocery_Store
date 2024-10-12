@@ -39,7 +39,7 @@
                                     <td>
                                         <div class="d-flex flex-nowrap">
                                             <a href="update-offer.php?offer_id=<?php echo $offer["Offer_Id"]?>" class="btn btn-secondary btn-sm me-1">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $offer["Offer_Id"]?>">Delete</a>
+                                            <a href="" class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $offer["Offer_Id"]?>">Delete</a>
                                             <?php if($offer["active_status"] == 1) { ?>
                                                 <a href="" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#deactivateModal<?php echo $offer["Offer_Id"]?>">Deactivate</a>
                                             <?php } else { ?>

@@ -17,7 +17,7 @@ $product = mysqli_fetch_assoc($result);
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="addProductForm" method="POST" enctype="multipart/form-data" onsubmit="return validateAddProductForm();">
+                <form id="addProductForm" method="POST" enctype="multipart/form-data" onsubmit="return validateUpdateProductForm();">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -121,12 +121,15 @@ if (isset($_POST['update_product'])) {
     $stock = $_POST['product_stock'];
     $category_id = $_POST['product_category'];
     $description = $_POST['product_description'];
-
-    // Check if a new image is uploaded, else retain the old image
+    $old_image = $product['Product_Image'];
     $new_image = $_FILES['product_image']['name'];
+    
     if ($new_image) {
         $image = uniqid() . "_" . $new_image;
         move_uploaded_file($_FILES['product_image']['tmp_name'], "../img/items/products/" . $image);
+        if (!empty($old_image) && file_exists("../img/items/products/" . $old_image)) {
+            unlink("../img/items/products/" . $old_image);
+        }
     } else {
         $image = $product['Product_Image'];
     }

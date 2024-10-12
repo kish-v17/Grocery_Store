@@ -1,12 +1,10 @@
 - categories
 - banners
-- products
+- admin profile page
+- site settings
 - responses
+- reviews
 - offers
-- reviews 
-- users
 - orders
-
--admin profile page
-    -password and email
-pagination and search in every page
+- products
+- users

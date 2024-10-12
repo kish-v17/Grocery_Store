@@ -92,7 +92,7 @@ if (isset($_POST["submit"])) {
     if (mysqli_num_rows($checkResult) > 0) 
     {
         echo "<script>
-            alert('This record already exists. Try different product id and user id combination.');
+            alert('This user has already reviewed this product.');
             history.back();
         </script>";
     }

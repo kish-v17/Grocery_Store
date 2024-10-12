@@ -49,7 +49,6 @@
         $query = "update offer_details_tbl set Offer_Description = '$offer_description', Discount = '$discount', Minimum_Order='$minimum_order' where Offer_Id=$offer_id";
         if(mysqli_query($con,$query)){
             echo "<script>
-                alert('Offer Updated Successfully!');
                 location.href='offers.php';
             </script>";
         }

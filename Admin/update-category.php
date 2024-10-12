@@ -70,6 +70,7 @@ if (isset($_POST["update"])) {
 
     if (mysqli_query($con, $query)) {
         echo "<script>window.location.href='categories.php';</script>";
+        exit;
     } else {
         echo "Error updating category: " . mysqli_error($con);
     }

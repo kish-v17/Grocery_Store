@@ -1,27 +1,42 @@
 <?php 
 include "sidebar.php"; 
-// Query to fetch the required data
-$sql = "
-SELECT 
-    oh.Order_Id,
-    CONCAT(u.First_Name, ' ', u.Last_Name) AS Customer_Name,
-    oh.Order_Date,
-    SUM(od.Quantity) AS Total_Quantity,
-    SUM(od.Quantity * od.Price) AS Total_Price,
-    oh.Order_Status
-FROM 
-    order_header_tbl oh
-JOIN 
-    user_details_tbl u ON oh.User_Id = u.User_Id
-JOIN 
-    order_details_tbl od ON oh.Order_Id = od.Order_Id
-GROUP BY 
-    oh.Order_Id, Customer_Name, oh.Order_Date, oh.Order_Status
-ORDER BY 
-    oh.Order_Date DESC
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$search_query = '';
+
+if (!empty($search)) {
+    $search_query = "WHERE CONCAT(u.First_Name, ' ', u.Last_Name) LIKE '%$search%' 
+        OR oh.Order_Id LIKE '%$search%' 
+        OR oh.Order_Status LIKE '%$search%'";
+}
+
+$query = "
+    SELECT 
+        oh.Order_Id, 
+        CONCAT(u.First_Name, ' ', u.Last_Name) AS Customer_Name, 
+        oh.Order_Date, 
+        SUM(od.Quantity) AS Total_Quantity, 
+        SUM(od.Quantity * od.Price) AS Total_Price, 
+        oh.Order_Status
+    FROM order_header_tbl oh
+    JOIN user_details_tbl u ON oh.User_Id = u.User_Id
+    JOIN order_details_tbl od ON oh.Order_Id = od.Order_Id
+    $search_query
+    GROUP BY oh.Order_Id, Customer_Name, oh.Order_Date, oh.Order_Status
+    ORDER BY oh.Order_Date DESC
 ";
 
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($con, $query);
+$total_records = mysqli_num_rows($result);
+
+$records_per_page = 10;
+$total_pages = ceil($total_records / $records_per_page);
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start_from = ($page - 1) * $records_per_page;
+
+$query .= " LIMIT $start_from, $records_per_page";
+$result = mysqli_query($con, $query);
 ?>
 
 <div id="layoutSidenav_content">
@@ -100,24 +115,23 @@ $result = mysqli_query($con, $sql);
                 </table>
             </div>
             <div class="d-flex justify-content-end">
-                <nav aria-label="Page navigation example">
+               <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                        
+                        <?php 
+                            if ($page > 1) {
+                                echo "<li class='page-item'><a class='page-link' href='?page=".($page - 1)."&search=" . $search . "''>Previous</a></li>";
+                            }
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "&search=" . $search . "'>" . $i . "</a></li>";
+                            }
+                            if ($page < $total_pages) {
+                                echo "<li class='page-item'><a class='page-link' href='?page=".($page + 1)."&search=" . $search . "''>Next</a></li>";
+                            }
+                        ?>
                     </ul>
                 </nav>
-            </div>
+            </div> 
         </div>
     </main>
 

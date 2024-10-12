@@ -4,7 +4,6 @@
     if(mysqli_query($con,$query))
     {
         echo "<script>
-                alert('Offer deleted successfully!');
                 location.href='offers.php';
             </script>";
         exit();

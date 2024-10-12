@@ -18,7 +18,6 @@ if (isset($_GET['banner_id'])) {
                 unlink("../img/banners/" . $banner_image);
             }
             echo '<script>
-                    alert("Banner deleted successfully.");
                     window.location.href = "banners.php";
                   </script>';
         } else {

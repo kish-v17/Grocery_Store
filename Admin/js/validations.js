@@ -1,24 +1,39 @@
+function validateUpdateBannerForm() {
+    let isValid = true;
+
+    document.getElementById('bannerOrderError').innerText = '';
+
+    const bannerOrder = document.getElementById('bannerOrder').value.trim();
+    if (bannerOrder === '') {
+        document.getElementById('bannerOrderError').innerText = 'View order is required.';
+        isValid = false;
+    } else if (isNaN(bannerOrder) || bannerOrder <= 0) {
+        document.getElementById('bannerOrderError').innerText = 'Please enter a valid order number.';
+        isValid = false;
+    }
+
+    return isValid;
+}
 function validateAddBannerForm() {
     let isValid = true;
 
     document.getElementById('bannerImageError').innerText = '';
-    document.getElementById('bannerURLError').innerText = '';
     document.getElementById('bannerOrderError').innerText = '';
 
     const bannerImage = document.getElementById('bannerImage');
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    
     if (bannerImage.files.length === 0) {
         document.getElementById('bannerImageError').innerText = 'Please upload a banner image.';
         isValid = false;
-    }
-
-    const bannerURL = document.getElementById('bannerURL').value.trim();
-    const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
-    if (bannerURL === '') {
-        document.getElementById('bannerURLError').innerText = 'Banner URL is required.';
-        isValid = false;
-    } else if (!urlPattern.test(bannerURL)) {
-        document.getElementById('bannerURLError').innerText = 'Please enter a valid URL.';
-        isValid = false;
+    } else {
+        const fileName = bannerImage.files[0].name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        
+        if (!allowedExtensions.includes(fileExtension)) {
+            document.getElementById('bannerImageError').innerText = 'Only image files (jpg, jpeg, png, gif) are allowed.';
+            isValid = false;
+        }
     }
 
     const bannerOrder = document.getElementById('bannerOrder').value.trim();
@@ -36,26 +51,14 @@ function validateAddBannerForm() {
 function validateAddToCartForm() {
     let isValid = true;
 
-    // Clear previous error messages
-    document.getElementById('userError').innerText = '';
     document.getElementById('productError').innerText = '';
     document.getElementById('quantityError').innerText = '';
 
-    // Validate User Selection
-    const user = document.getElementById('user').value;
-    if (user === '') {
-        document.getElementById('userError').innerText = 'Please select a user.';
-        isValid = false;
-    }
-
-    // Validate Product Selection
     const product = document.getElementById('product').value;
     if (product === '') {
         document.getElementById('productError').innerText = 'Please select a product.';
         isValid = false;
     }
-
-    // Validate Quantity
     const quantity = document.getElementById('quantity').value.trim();
     if (quantity === '') {
         document.getElementById('quantityError').innerText = 'Quantity is required.';
@@ -353,6 +356,89 @@ function validateAddProductForm() {
         isValid = false;
     } else {
         productImageError.innerText = '';
+    }
+
+    // Sale Price Validation
+    const salePrice = document.getElementById('salePrice');
+    const salePriceError = document.getElementById('salePriceError');
+    const salePriceValue = parseFloat(salePrice.value);
+    if (isNaN(salePriceValue) || salePriceValue <= 0) {
+        salePriceError.innerText = 'Sale Price must be a number greater than 0.';
+        isValid = false;
+    } else {
+        salePriceError.innerText = '';
+    }
+
+    // Cost Price Validation
+    const costPrice = document.getElementById('costPrice');
+    const costPriceError = document.getElementById('costPriceError');
+    const costPriceValue = parseFloat(costPrice.value);
+    if (isNaN(costPriceValue) || costPriceValue <= 0) {
+        costPriceError.innerText = 'Cost Price must be a number greater than 0.';
+        isValid = false;
+    } else {
+        costPriceError.innerText = '';
+    }
+
+    // Product Discount Validation
+    const productDiscount = document.getElementById('productDiscount');
+    const productDiscountError = document.getElementById('productDiscountError');
+    const discountValue = parseFloat(productDiscount.value);
+    if (isNaN(discountValue) || discountValue < 0 || discountValue > 100) {
+        productDiscountError.innerText = 'Discount must be a number between 0 and 100.';
+        isValid = false;
+    } else {
+        productDiscountError.innerText = '';
+    }
+
+    // Product Stock Validation
+    const productStock = document.getElementById('productStock');
+    const productStockError = document.getElementById('productStockError');
+    const stockValue = parseInt(productStock.value, 10);
+    if (isNaN(stockValue) || stockValue < 0) {
+        productStockError.innerText = 'Stock Quantity must be a non-negative integer.';
+        isValid = false;
+    } else {
+        productStockError.innerText = '';
+    }
+
+    // Product Category Validation
+    const productCategory = document.getElementById('productCategory');
+    const productCategoryError = document.getElementById('productCategoryError');
+    if (productCategory.value === '') {
+        productCategoryError.innerText = 'Category is required.';
+        isValid = false;
+    } else {
+        productCategoryError.innerText = '';
+    }
+
+    // Product Description Validation
+    const productDescription = document.getElementById('productDescription');
+    const productDescriptionError = document.getElementById('productDescriptionError');
+    if (productDescription.value.length > 500) {
+        productDescriptionError.innerText = 'Description must be less than 500 characters.';
+        isValid = false;
+    } else {
+        productDescriptionError.innerText = '';
+    }
+
+    if (!isValid) {
+        event.preventDefault();
+        return false;  // Prevent form submission
+    }
+    return isValid;
+}
+function validateUpdateProductForm() {
+    let isValid = true;
+
+    // Product Name Validation
+    const productName = document.getElementById('productName');
+    const productNameError = document.getElementById('productNameError');
+    if (!productName.value.trim()) {
+        productNameError.innerText = 'Product Name is required.';
+        isValid = false;
+    } else {
+        productNameError.innerText = '';
     }
 
     // Sale Price Validation

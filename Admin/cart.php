@@ -24,7 +24,10 @@
                         <li class="breadcrumb-item"><a href="users.php">Users</a></li>
                         <li class="breadcrumb-item active">Cart</li>
                     </ol>
+
                 </div>
+                <a class="btn btn-primary text-nowrap" href="add-cart.php?user_id=<?php echo $userId; ?>">Add Items</a>
+
             </div>
             <div class="card-body">
                 <table class="table border text-nowrap align-middle">
@@ -59,7 +62,7 @@
                                         <td>
                                             <div class='d-flex align-items-center'>
                                                 <img src='../img/items/products/$product_image' alt='$productName' style='width: 50px; height: 50px; object-fit: cover;' class='me-2'>
-                                                <a href='view-product.php?productId=$productId'>$productName</a>
+                                                <a href='view-product.php?product_id=$productId'>$productName</a>
                                             </div>
                                         </td>
                                         <td>$quantity</td>
