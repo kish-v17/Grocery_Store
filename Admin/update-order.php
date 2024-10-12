@@ -39,11 +39,36 @@
                         $products[] = $row;
                     }
                 ?>
-                <form action="edit-order.php?order_id=<?php echo $orderId; ?>" method="POST" onsubmit="return validateAddOrderForm()||event.preventDefault()">
+                <form action="" method="POST" onsubmit="return validateAddOrderForm()||event.preventDefault()">
                     <!-- Order Details -->
+                    <?php
+                    
+                    $userQuery = "SELECT User_Id, First_Name, Last_Name FROM user_details_tbl WHERE Active_Status = 1";
+                    $userResult = mysqli_query($con, $userQuery);
+                    
+
+                    ?>
+
                     <div class="mb-3">
                         <label for="userId" class="form-label">User ID</label>
-                        <input type="text" class="form-control" id="userId" name="userId" value="<?php echo $order['User_Id']; ?>">
+                        <select class="form-select" id="userId" name="userId">
+                            <option value="">Select User</option>
+                            <?php
+                            if (mysqli_num_rows($userResult) > 0) {
+                                while ($userRow = mysqli_fetch_assoc($userResult)) {
+                                    $userId = $userRow['User_Id'];
+                                    $userName = $userRow['First_Name'] . ' ' . $userRow['Last_Name'];
+                                    $isSelected = $userId == $order['User_Id'];
+                                    ?>
+                                    <option value="<?php echo $userId; ?>" <?php echo $isSelected?'selected':''; ?>><?php echo $userId; ?> - <?php echo $userName; ?></option>
+                                    <?php
+                                }
+                            } else {
+                                echo "<option value=''>No users found</option>";
+                            }
+                            ?>
+                        </select>
+                        <div id="userIdError" class="error-message"></div>
                     </div>
                     <div class="mb-3">
                         <label for="orderDate" class="form-label">Order Date</label>
@@ -52,22 +77,69 @@
 
                     <!-- Products Section -->
                     <div id="productContainer">
-                        <?php foreach ($products as $index => $product) { ?>
-                            <div class="product-entry mb-3">
-                                <h5>Product <?php echo $index + 1; ?></h5>
-                                <div class="row align-items-end">
-                                    <div class="col-md-5">
-                                        <label for="productId<?php echo $index; ?>" class="form-label">Product ID</label>
-                                        <input type="text" class="form-control" id="productId<?php echo $index; ?>" name="products[<?php echo $index; ?>][productId]" value="<?php echo $product['Product_Id']; ?>">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="quantity<?php echo $index; ?>" class="form-label">Quantity</label>
-                                        <input type="number" class="form-control" id="quantity<?php echo $index; ?>" name="products[<?php echo $index; ?>][quantity]" value="<?php echo $product['Quantity']; ?>" min="1">
+                        <?php
+                        if (!empty($products)) {
+                            foreach ($products as $index => $product) {
+                                $productId = $product['Product_Id'];
+                                $quantity = $product['Quantity'];
+                                $productCount = $index + 1;
+
+                                // Get all active products for the dropdown
+                                $productQuery = "SELECT Product_Id, Product_Name FROM product_details_tbl WHERE is_active = 1";
+                                $productResult = mysqli_query($con, $productQuery);
+                                ?>
+                                <div class="product-entry mb-3">
+                                    <h5>Product <?php echo $productCount; ?></h5>
+                                    <div class="row align-items-end">
+                                        <!-- Product Dropdown -->
+                                        <div class="col-md-5">
+                                            <label for="productId<?php echo $productCount; ?>" class="form-label">Product ID</label>
+                                            <select class="form-select product-dropdown" id="productId<?php echo $productCount; ?>" name="products[<?php echo $index; ?>][productId]" onchange="updateProductDropdowns()">
+                                                <option value="">Select Product</option>
+                                                <?php
+                                                if (mysqli_num_rows($productResult) > 0) {
+                                                    mysqli_data_seek($productResult, 0); // Reset pointer to start
+                                                    while ($productRow = mysqli_fetch_assoc($productResult)) {
+                                                        $prodId = $productRow['Product_Id'];
+                                                        $prodName = $productRow['Product_Name'];
+                                                        $selected = ($prodId == $productId) ? "selected" : "";
+                                                        ?>
+                                                        <option value="<?php echo $prodId; ?>" <?php echo $selected; ?>>
+                                                            <?php echo $prodId . " - " . $prodName; ?>
+                                                        </option>
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    echo "<option value=''>No products found</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                            <div id="productId<?php echo $productCount; ?>Error" class="error-message"></div>
+                                        </div>
+
+                                        <!-- Quantity Input -->
+                                        <div class="col-md-5">
+                                            <label for="quantity<?php echo $productCount; ?>" class="form-label">Quantity</label>
+                                            <input type="number" class="form-control" id="quantity<?php echo $productCount; ?>" name="products[<?php echo $index; ?>][quantity]" min="1" value="<?php echo $quantity; ?>">
+                                            <div id="quantity<?php echo $productCount; ?>Error" class="error-message"></div>
+                                        </div>
+
+                                        <!-- Delete Product Button -->
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-danger mt-2 deleteProductBtn" onclick="removeProduct(this)">Delete Product</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                                <?php
+                            }
+                        } else {
+                            echo "<p>No products found for this order.</p>";
+                        }
+                        echo "<script>let productCount = $productCount;</script>";
+                        ?>
                     </div>
+                    <button type="button" class="btn btn-secondary" id="addProductBtn">Add Another Product</button>
+
 
                     <!-- Billing Details Section -->
                     <div class="mb-4 mt-4">
@@ -155,6 +227,11 @@
                         </div>
                     </div>
                     <div class="mb-3 mt-4">
+                        <label for="shippingCharge" class="form-label">Shipping Charge</label>
+                        <input type="number" step="0.01" id="shippingCharge" name="shippingCharge" class="form-control" placeholder="Enter shipping charge" value="<?php echo $order["Shipping_Charge"]; ?>">
+                        <div id="shippingChargeError" class="error-message"></div>
+                    </div>
+                    <div class="mb-3 mt-4">
                         <label for="orderStatus" class="form-label">Order Status</label>
                         <select class="form-select" id="orderStatus" name="orderStatus">
                             <option value="Pending" <?php echo ($order['Order_Status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
@@ -165,7 +242,7 @@
                         </select>
                         <div id="orderStatusError" class="error-message"></div>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Update Order</button>
+                    <button type="submit" name="update-order" class="btn btn-primary">Update Order</button>
                 </form>
                 <?php } else {
                     echo "<p>Invalid order ID.</p>";
@@ -174,12 +251,198 @@
         </div>
     </main>
 
-<script>
-    // Toggle shipping details based on checkbox status
+    <script>
     document.getElementById("sameAsBilling").addEventListener("change", function() {
         var shippingSection = document.getElementById("shippingDetailsSection");
         shippingSection.style.display = this.checked ? "none" : "block";
     });
+    
+
+    async function fetchProducts() {
+        return fetch('fetch-products.php')
+            .then(response => response.json())
+            .then(data => data)
+            .catch(error => console.error('Error fetching products:', error));
+    }
+
+    function createProductEntry(products) {
+        const productContainer = document.getElementById('productContainer');
+        const newProductEntry = document.createElement('div');
+        newProductEntry.className = 'product-entry mb-3';
+        productCount++;
+
+        newProductEntry.innerHTML = `
+            <h5>Product ${productCount}</h5>
+            <div class="row align-items-end">
+                <div class="col-md-5">
+                    <label for="productId${productCount}" class="form-label">Product ID</label>
+                    <select class="form-select product-dropdown" id="productId${productCount}" name="products[${productCount - 1}][productId]" onchange="updateProductDropdowns()">
+                        <option value="">Select Product</option>
+                        ${products.map(product => `<option value="${product.Product_Id}">${product.Product_Id} - ${product.Product_Name}</option>`).join('')}
+                    </select>
+                    <div id="productId${productCount}Error" class="error-message"></div>
+                </div>
+                <div class="col-md-5">
+                    <label for="quantity${productCount}" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity${productCount}" name="products[${productCount - 1}][quantity]" min="1">
+                    <div id="quantity${productCount}Error" class="error-message"></div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger mt-2 deleteProductBtn" onclick="removeProduct(this)">Delete Product</button>
+                </div>
+            </div>
+        `;
+
+        productContainer.appendChild(newProductEntry);
+    }
+
+    document.getElementById('addProductBtn').addEventListener('click', async function () {
+        const products = await fetchProducts();
+        createProductEntry(products);
+        updateProductDropdowns(); 
+    });
+
+    function removeProduct(button) {
+        const productEntry = button.closest('.product-entry');
+        productEntry.remove();
+        updateProductDropdowns(); 
+    }
+
+    function updateProductDropdowns() {
+        const allDropdowns = document.querySelectorAll('.product-dropdown');
+        const selectedProducts = Array.from(allDropdowns).map(dropdown => dropdown.value);
+
+        allDropdowns.forEach(dropdown => {
+            const currentSelection = dropdown.value;
+            Array.from(dropdown.options).forEach(option => {
+                if (selectedProducts.includes(option.value) && option.value !== currentSelection) {
+                    option.disabled = true;
+                } else {
+                    option.disabled = false;
+                }
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateProductDropdowns();
+    });
 </script>
 
 <?php include "footer.php"; ?>
+<?php
+if (isset($_POST['update-order'])) {
+    // Capture the form data
+    $orderId = $_GET['order_id']; // Order ID to update
+    $userId = $_POST['userId'];
+    $orderDate = $_POST['orderDate'];
+    $orderStatus = $_POST['orderStatus'];
+    $sameAsBilling = isset($_POST['sameAsBilling']) ? true : false;
+    $products = $_POST['products']; // Array of products
+    $shippingCharge = $_POST['shippingCharge']; // Shipping Charge
+
+    // Billing Address
+    $billingFirstName = $_POST['billingFirstName'];
+    $billingLastName = $_POST['billingLastName'];
+    $billingAddress = $_POST['billingAddress'];
+    $billingCity = $_POST['billingCity'];
+    $billingState = $_POST['billingState'];
+    $billingPinCode = $_POST['billingPinCode'];
+    $billingPhone = $_POST['billingPhone'];
+
+    // Shipping Address (if not same as billing)
+    if (!$sameAsBilling) {
+        $shippingFirstName = $_POST['shippingFirstName'];
+        $shippingLastName = $_POST['shippingLastName'];
+        $shippingAddress = $_POST['shippingAddress'];
+        $shippingCity = $_POST['shippingCity'];
+        $shippingState = $_POST['shippingState'];
+        $shippingPinCode = $_POST['shippingPinCode'];
+        $shippingPhone = $_POST['shippingPhone'];
+    }
+
+    // Update Billing Address
+    $billingFullName = $billingFirstName . ' ' . $billingLastName;
+    $billingAddressQuery = "UPDATE address_details_tbl SET Full_Name = '$billingFullName', Address = '$billingAddress', 
+                            City = '$billingCity', State = '$billingState', Pincode = '$billingPinCode', Phone = '$billingPhone' 
+                            WHERE Address_Id = (SELECT Billing_Address_Id FROM order_header_tbl WHERE Order_Id = '$orderId')";
+
+    if (!mysqli_query($con, $billingAddressQuery)) {
+        die("Error updating billing address: " . mysqli_error($con));
+    }
+
+    // Update Shipping Address if different from billing
+    if (!$sameAsBilling) {
+        if($order['Billing_Address_Id'] == $order['Shipping_Address_Id'])
+        {
+            $shippingFullName = $shippingFirstName . ' ' . $shippingLastName;
+            $shippingAddressQuery = "INSERT INTO address_details_tbl (User_Id, Full_Name, Address, City, State, Pincode, Phone) 
+                                 VALUES ('$userId', '$shippingFullName', '$shippingAddress', '$shippingCity', '$shippingState', '$shippingPinCode', '$shippingPhone')";
+        }
+        else
+        {
+            $shippingFullName = $shippingFirstName . ' ' . $shippingLastName;
+            $shippingAddressQuery = "UPDATE address_details_tbl SET Full_Name = '$shippingFullName', Address = '$shippingAddress', 
+                                    City = '$shippingCity', State = '$shippingState', Pincode = '$shippingPinCode', Phone = '$shippingPhone' 
+                                    WHERE Address_Id = (SELECT Shipping_Address_Id FROM order_header_tbl WHERE Order_Id = '$orderId')";
+
+        }
+        if (!mysqli_query($con, $shippingAddressQuery)) {
+            die("Error updating shipping address: " . mysqli_error($con));
+        }
+    }
+
+    // Update Order in order_header_tbl
+    $orderQuery = "UPDATE order_header_tbl SET User_Id = '$userId', Order_Date = '$orderDate', Order_Status = '$orderStatus', 
+                   Shipping_Charge = '$shippingCharge' WHERE Order_Id = '$orderId'";
+
+    if (!mysqli_query($con, $orderQuery)) {
+        die("Error updating order: " . mysqli_error($con));
+    }
+
+    // Delete existing order details
+    $deleteOrderDetailsQuery = "DELETE FROM order_details_tbl WHERE Order_Id = '$orderId'";
+    if (!mysqli_query($con, $deleteOrderDetailsQuery)) {
+        die("Error deleting existing order details: " . mysqli_error($con));
+    }
+
+    // Insert products into order_details_tbl and calculate the total price
+    $total = 0; // Initialize total
+
+    foreach ($products as $product) {
+        $productId = $product['productId'];
+        $quantity = $product['quantity'];
+
+        // Fetch product price (with discount)
+        $priceQuery = "SELECT Sale_Price - Sale_Price * Discount / 100 AS price FROM product_details_tbl WHERE Product_Id = '$productId'";
+        $priceResult = mysqli_query($con, $priceQuery);
+        $productRow = mysqli_fetch_assoc($priceResult);
+        $price = $productRow['price'];
+
+        // Calculate total for each product
+        $productTotal = $price * $quantity;
+        $total += $productTotal; // Add to total
+
+        // Insert into order_details_tbl
+        $orderDetailsQuery = "INSERT INTO order_details_tbl (Order_Id, Product_Id, Quantity, Price) 
+                              VALUES ('$orderId', '$productId', '$quantity', '$price')";
+
+        if (!mysqli_query($con, $orderDetailsQuery)) {
+            die("Error inserting order details: " . mysqli_error($con));
+        }
+    }
+
+    // Add the shipping charge to the total
+    $total += $shippingCharge;
+
+    // Update the total field in the order_header_tbl
+    $updateTotalQuery = "UPDATE order_header_tbl SET Total = '$total' WHERE Order_Id = '$orderId'";
+
+    if (!mysqli_query($con, $updateTotalQuery)) {
+        die("Error updating order total: " . mysqli_error($con));
+    }
+
+    echo "<script>alert('Order updated successfully!'); location.href='orders.php';</script>";
+}
+?>
+

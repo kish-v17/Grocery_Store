@@ -617,3 +617,49 @@ function validateAboutPageForm() {
     }
     return true;
 }
+function validateEmailForm() {
+    const emailField = document.getElementById('adminEmail');
+    const emailError = document.getElementById('adminEmailError');
+    const emailValue = emailField.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailValue === '') {
+        emailError.textContent = "Email cannot be empty.";
+        return false;
+    } else if (!emailPattern.test(emailValue)) {
+        emailError.textContent = "Please enter a valid email address.";
+        return false;
+    } else {
+        emailError.textContent = "";
+        return true;
+    }
+}
+
+function validatePasswordForm() {
+    const passwordField = document.getElementById('adminPassword');
+    const confirmPasswordField = document.getElementById('confirmPassword');
+    const passwordError = document.getElementById('adminPasswordError');
+    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    const passwordValue = passwordField.value.trim();
+    const confirmPasswordValue = confirmPasswordField.value.trim();
+
+    if (passwordValue === '') {
+        passwordError.textContent = "Password cannot be empty.";
+        return false;
+    }
+
+    if (passwordValue.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters long.";
+        return false;
+    }
+
+    if (passwordValue !== confirmPasswordValue) {
+        confirmPasswordError.textContent = "Passwords do not match.";
+        return false;
+    }
+
+    passwordError.textContent = "";
+    confirmPasswordError.textContent = "";
+
+    return true;
+}

@@ -5,10 +5,8 @@
 - offers
 - reviews 
 - users
+- orders
 
-- orders 
-    - in the add order, if in the one dropdown one product is selected then it should be removed from other dropdowns
-    - update is pending
 -admin profile page
     -password and email
 pagination and search in every page
