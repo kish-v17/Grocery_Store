@@ -650,6 +650,12 @@ input::-webkit-inner-spin-button {
     border:1px solid var(--dim);
  
 }
+.otp{
+    cursor: pointer;
+    background: none; 
+    border: none; 
+    color: gray;
+}
 .cart-table .image-item{
     width:75px;
     padding:10px;
