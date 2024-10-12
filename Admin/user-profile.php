@@ -7,6 +7,15 @@
             <li class="breadcrumb-item active">User Details</li>
         </ol>
 
+        <!-- Fetching User Information -->
+        <?php
+            $user_id = $_GET['user_id']; // Assuming the user_id is passed as a query parameter
+            $query = "SELECT * FROM user_details_tbl WHERE User_Id = $user_id";
+            $result = mysqli_query($con, $query);
+            $user = mysqli_fetch_assoc($result);
+            $status = $user['Active_Status']; // Get the user's active status
+        ?>
+
         <!-- User Information Section -->
         <div class="card mb-4">
             <div class="card-header">
@@ -15,193 +24,149 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>Username:</strong> JohnDoe</p>
-                        <p><strong>Email:</strong> john.doe@example.com</p>
+                        <p><strong>Username:</strong> <?php echo $user['First_Name'] . " " . $user['Last_Name']; ?></p>
+                        <p><strong>Email:</strong> <?php echo $user['Email']; ?></p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Phone Number:</strong> +1234567890</p>
-                        <p><strong>Registration Date:</strong> 2024-01-01</p>
-                        <p><strong>Status:</strong> Active</p>
+                        <p><strong>Phone Number:</strong> <?php echo $user['Mobile_No']; ?></p>
+                        <p><strong>Status:</strong> <?php echo $status == 1 ? 'Active' : ($status == 0 ? 'Inactive' : 'Deactivated'); ?></p>
                     </div>
                 </div>
-                <a href="update-user.php" class="btn btn-primary mt-3">Edit User Info</a>
-                <button class="btn btn-danger mt-3">Deactivate Account</button>
+                <a href="update-user.php?user_id=<?php echo $user_id; ?>" class="btn btn-primary mt-3">Edit User Info</a>
+
+                <?php if ($status == 1): ?>
+                    <!-- Show Deactivate Button if the user is Active -->
+                    <button class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deactivateModal">Deactivate Account</button>
+                <?php else: ?>
+                    <!-- Show Activate Button if the user is Inactive or Deactivated -->
+                    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#activateModal">Activate Account</button>
+                <?php endif; ?>
             </div>
         </div>
 
+        <!-- Fetching User Orders -->
+        <?php
+            $order_query = "
+                SELECT 
+                    oh.Order_Id, oh.Order_Date, oh.Order_Status, oh.Total, oh.Shipping_Charge,
+                    od.Quantity, od.Price, od.Product_Id
+                FROM order_header_tbl oh
+                JOIN order_details_tbl od ON oh.Order_Id = od.Order_Id
+                WHERE oh.User_Id = $user_id
+            ";
+            $order_result = mysqli_query($con, $order_query);
+        ?>
+
+        <!-- User Orders Section -->
         <div class="card mb-4">
             <div class="card-header">
                 <h4>User Orders</h4>
             </div>
             <div class="card-body">
-                <table class="table border text-nowrap ">
+                <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
                             <th>Order ID</th>
                             <th>Order Date</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
-                            <th>Payment Mode</th>
+                            <th>Shipping Charge</th>
                             <th>Order Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            if (mysqli_num_rows($order_result) > 0) {
+                                while ($order = mysqli_fetch_assoc($order_result)) {
+                                    $order_id = $order['Order_Id'];
+                                    $order_date = $order['Order_Date'];
+                                    $quantity = $order['Quantity'];
+                                    $total_price = $order['Total'];
+                                    $shipping_charge = $order['Shipping_Charge'];
+                                    $order_status = $order['Order_Status'];
+                        ?>
                         <tr>
-                            <td>1001</td>
-                            <td>2024-08-10</td>
-                            <td>2</td>
-                            <td>$50.00</td>
-                            <td>Credit Card</td>
+                            <td><?php echo $order_id; ?></td>
+                            <td><?php echo $order_date; ?></td>
+                            <td><?php echo $quantity; ?></td>
+                            <td><?php echo "$" . number_format($total_price, 2); ?></td>
+                            <td><?php echo "$" . number_format($shipping_charge, 2); ?></td>
+                            <td><?php echo $order_status; ?></td>
                             <td>
-                                <select class="form-select form-select-sm">
-                                    <option value="Pending" selected>Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Shipped">Shipped</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                </select>
-                            </td>
-                            <td>
-                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
+                                <a href="view-order.php?id=<?php echo $order_id; ?>" class="btn btn-info btn-sm">View</a>
                                 <button class="btn btn-primary btn-sm">Save</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteOrderModal<?php echo $order_id; ?>">Delete</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>1001</td>
-                            <td>2024-08-10</td>
-                            <td>2</td>
-                            <td>$50.00</td>
-                            <td>Credit Card</td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option value="Pending" selected>Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Shipped">Shipped</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                </select>
-                            </td>
-                            <td>
-                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1001</td>
-                            <td>2024-08-10</td>
-                            <td>2</td>
-                            <td>$50.00</td>
-                            <td>Credit Card</td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option value="Pending" selected>Pending</option>
-                                    <option value="Processing">Processing</option>
-                                    <option value="Shipped">Shipped</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                </select>
-                            </td>
-                            <td>
-                                <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </td>
-                        </tr>
+
+                        <!-- Delete Order Modal -->
+                        <div class="modal fade" id="deleteOrderModal<?php echo $order_id; ?>" tabindex="-1" aria-labelledby="deleteOrderModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteOrderModalLabel">Confirm Deletion</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete this order? This action cannot be undone.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <a href="delete-order.php?order_id=<?php echo $order_id; ?>" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php
+                                }
+                            } else {
+                                echo "<tr><td colspan='7'>No orders found for this user.</td></tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
-       
 
-        <!-- User Reviews Section -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h4>User Reviews</h4>
+        <!-- Deactivate User Modal -->
+        <div class="modal fade" id="deactivateModal" tabindex="-1" aria-labelledby="deactivateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deactivateModalLabel">Confirm Deactivation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to deactivate this account? This action cannot be undone.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="deactivate-user.php?user_id=<?php echo $user_id; ?>" class="btn btn-danger">Deactivate</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-            <table class="table border text-nowrap">
-                <thead class="table-light">
-                    <tr>
-                        <th>Product</th>
-                        <th>Username</th>
-                        <th>Rating</th>
-                        <th>Review</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="../img/items/chocolate.webp" alt="Product 1" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
-                                <a href="view-product.php?Product_Id=1">Product 1</a>
-                            </div>
-                        </td>
-                        <td><a href="user-profile.php">John Doe</a></td>
-                        <td style="width: 100px;">
-                            <span class="text-warning">
-                                &#9733; &#9733; &#9733; &#9733; &#9734;
-                            </span>
-                        </td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
-                        </td>
-                        <td>
-                            <div class="d-flex flex-nowrap">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
-                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
+        <!-- Activate User Modal -->
+        <div class="modal fade" id="activateModal" tabindex="-1" aria-labelledby="activateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="activateModalLabel">Confirm Activation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to activate this account?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <a href="activate-user.php?user_id=<?php echo $user_id; ?>" class="btn btn-success">Activate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        
-
     </div>
-    <!-- Reply Modal -->
-    <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="replyModalLabel">Reply to Review</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="reviewReply" class="form-label">Your Reply</label>
-                            <textarea class="form-control" id="reviewReply" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Reply</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this review? This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="delete-review-handler.php" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 <?php include("footer.php"); ?>

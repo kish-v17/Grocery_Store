@@ -48,34 +48,6 @@
                 </form>
             </div>
         </div>
-        <div class="col-12 col-md-8 col-sm-12 p-2">
-            <div class="shadow-sm p-4">
-                <form id="contactForm" action="" onsubmit="return contactFormValidation()">
-                    <div class="flex form">
-                        <div class="flex-item">
-                            <input type="text" id="contactName" placeholder="Your Name*" class="w-100">
-                            <p id="contactNameError" class="error"></p>
-                        </div>
-                        <div class="flex-item">
-                            <input type="text" id="contactEmail" placeholder="Your Email*" class="w-100">
-                            <p id="contactEmailError" class="error"></p>
-                        </div>
-                        <div class="flex-item">
-                            <input type="text" id="contactPhone" placeholder="Your Phone*" class="w-100">
-                            <p id="contactPhoneError" class="error"></p>
-                        </div>
-                    </div>
-                    <div class="flex flex-column align-items-start">
-                        <textarea name="message" id="contactMessage" class="flex-item w-100" rows="7" placeholder="Your Message*"></textarea>
-                        <p id="contactMessageError" class="error "></p>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <input type="submit" value="Send Message" class="btn-msg mt-2">
-                    </div>
-                </form>
-            </div>
-        </div>
-
     </div>
 </div>
 

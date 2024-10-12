@@ -600,15 +600,20 @@ function validateContactInfoForm() {
         contactNumberError.innerText = '';
     }
 
-    // Site Name Validation
-    const siteName = document.getElementById('siteName');
-    const siteNameError = document.getElementById('siteNameError');
-    if (!siteName.value.trim()) {
-        siteNameError.innerText = 'Site Name is required.';
-        isValid = false;
-    } else {
-        siteNameError.innerText = '';
-    }
 
     return isValid;
+}
+
+function validateAboutPageForm() {
+    const aboutContent = document.getElementById('aboutContent').value.trim();
+    const aboutContentError = document.getElementById('aboutContentError');
+
+    aboutContentError.textContent = '';
+
+
+    if (aboutContent === '') {
+        aboutContentError.textContent = 'Content cannot be empty.';
+        return false; 
+    }
+    return true;
 }

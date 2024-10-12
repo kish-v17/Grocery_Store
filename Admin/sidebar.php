@@ -81,6 +81,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                             Response Management
                         </a>
+                        <a class="nav-link" href="site-settings.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
+                            Site Settings
+                        </a>
                     </div>
                 </nav>
             </div>

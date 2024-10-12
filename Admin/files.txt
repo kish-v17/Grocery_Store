@@ -3,14 +3,12 @@
 - products
 - responses
 - offers
-
 - reviews 
-    - reply is pending
-- users 
-    - user details is pending
+- users
+
 - orders 
     - in the add order, if in the one dropdown one product is selected then it should be removed from other dropdowns
     - update is pending
-    - view order is pending
-
+-admin profile page
+    -password and email
 pagination and search in every page

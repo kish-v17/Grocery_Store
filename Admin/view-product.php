@@ -156,9 +156,33 @@ $product = mysqli_fetch_assoc($result);
                                     <td>Reply:</td>
                                     <td colspan="2"><?php echo $reply_text; ?></td>
                                     <td>
+                                        <button class="btn btn-info btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#updateModal<?php echo $reply['Review_Id']; ?>">Update</button>
                                         <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $reply['Review_Id']; ?>">Delete</button>
                                     </td>
                                 </tr>
+
+                                <!-- Update Modal -->
+                                <div class="modal fade" id="updateModal<?php echo $reply['Review_Id']; ?>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateModalLabel">Update Reply</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="update-reply.php" method="post">
+                                                    <div class="mb-3">
+                                                        <input type="hidden" name="review_id" value="<?php echo $reply['Review_Id']; ?>">
+                                                        <label for="reviewReply" class="form-label">Your Reply</label>
+                                                        <textarea class="form-control" id="reviewReply" rows="3" name="reply"><?php echo $reply_text; ?></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Update Reply</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Delete Modal -->
                                 <div class="modal fade" id="deleteModal<?php echo $reply['Review_Id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

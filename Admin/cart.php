@@ -5,7 +5,6 @@
             <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
                 <div>
                     <?php
-                    include '../DB/connection.php';
 
                     if (isset($_GET['user_id'])) {
                         $userId = $_GET['user_id'];
@@ -40,7 +39,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $cartQuery = "SELECT p.Product_Id, p.Product_Name, c.Quantity, p.Sale_Price-(p.Sale_Price*p.Discount/100) 'Price' 
+                        $cartQuery = "SELECT p.Product_Image, p.Product_Id, p.Product_Name, c.Quantity, p.Sale_Price-(p.Sale_Price*p.Discount/100) 'Price' 
                                       FROM cart_details_tbl c
                                       JOIN product_details_tbl p ON c.Product_Id = p.Product_Id
                                       WHERE c.User_Id = $userId";
@@ -53,12 +52,13 @@
                                 $quantity = $cartRow['Quantity'];
                                 $price = $cartRow['Price'];
                                 $total = $quantity * $price;
+                                $product_image = $cartRow["Product_Image"];
 
                                 echo "
                                     <tr>
                                         <td>
                                             <div class='d-flex align-items-center'>
-                                                <img src='../img/items/product_image.webp' alt='$productName' style='width: 50px; height: 50px; object-fit: cover;' class='me-2'>
+                                                <img src='../img/items/products/$product_image' alt='$productName' style='width: 50px; height: 50px; object-fit: cover;' class='me-2'>
                                                 <a href='view-product.php?productId=$productId'>$productName</a>
                                             </div>
                                         </td>
