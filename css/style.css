@@ -15,6 +15,7 @@
     --discount:#FFD480;
     --update:#28A745;
 }
+.bg-light-green{background-color: var(--light-green) !important;}
 *{
     margin: 0;
     padding: 0;

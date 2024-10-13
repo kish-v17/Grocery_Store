@@ -1,4 +1,4 @@
-    <?php include('header.php');
+<?php include('header.php');
     require 'PHPMailer/Exception.php';
     require 'PHPMailer/PHPMailer.php';
     require 'PHPMailer/SMTP.php';
@@ -21,7 +21,21 @@
             'pwd' => $regpwd
         ];
 
+        $email_check_query = "SELECT * FROM user_details_tbl WHERE Email = '$regemail' LIMIT 1";
+        $result = mysqli_query($con, $email_check_query);
+        $user = mysqli_fetch_assoc($result);
+
+        if ($user)
+        {
+            if ($user['Active_Status'] == 1) 
+            {
+                setcookie('success', 'Your account already exists.', time() + 5, "/");
+                header("Location:login.php");
+                exit();
+            }
+        }
         $mail = new PHPMailer(true);
+
         try {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -38,7 +52,7 @@
             $mail->Subject = 'Email Verification';
             $otp = rand(100000, 999999);
             $_SESSION['otp'] = $otp;
-            $_SESSION['otp_expiration'] = time() + 300;
+            $_SESSION['otp_expiration'] = time() + 120;
 
             $body = "<html>
                         <body>
@@ -61,6 +75,8 @@
             setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
         }
 
+        
+
         echo "<script> location.replace('otp-page.php');</script>";
     }
 
@@ -73,7 +89,7 @@
                     <div class="mb-3 w-75">
                         <h2 class="mb-3">Create an account</h2>
                         <div class="mb-4">Enter your details below</div>
-                        <form id="registrationForm" onsubmit="return validateRegistrationForm();" method="post">
+                        <form class="login-form" id="registrationForm" onsubmit="return validateRegistrationForm();" method="post">
                             <div class="names d-flex gap-3">
                                 <input type="text" id="fname" name="regfname" class="w-50" placeholder="First Name">
                                 <input type="text" id="lname" name="reglname" class="w-50" placeholder="Last Name">

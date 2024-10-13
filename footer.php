@@ -1,4 +1,7 @@
-    <div class="footer container mt-5 d-flex flex-column border-top">
+
+   
+   
+   <div class="footer container mt-5 d-flex flex-column border-top">
         <div class="row d-flex justify-content-around align-items-center gap-5 my-4" bis_skin_checked="1">
             <div class="col-6 col-md-2 d-flex justify-content-center align-items-center" bis_skin_checked="1">
                 <div class="logo">
@@ -45,3 +48,5 @@
         <script src="js/script.js"></script>
     </body>
 </html>
+
+

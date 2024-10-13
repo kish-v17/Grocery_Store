@@ -6,7 +6,7 @@
                 <div class="mb-3 w-75">
                     <h2 class="mb-3">Log in to PureBite</h2>
                     <div class="mb-4 font-black">Enter your details below</div>
-                    <form id="loginForm" method="post" onsubmit="return validateLoginForm();">
+                    <form id="loginForm" method="post" action="verify-login.php" onsubmit="return validateLoginForm();">
                         <input type="text" id="loginEmail" name="logEmail" class="w-100 p-2" placeholder="Email">
                         <p id="loginEmailError" class="error mb-4"></p>
                         <input type="text" id="loginPassword" name="logPwd" class="w-100 p-2" placeholder="Password">
@@ -24,17 +24,6 @@
     </div>
 </div>
 
-<?php include('footer.php');
-if (isset($_POST['login'])) {
-    $email = $_POST['logEmail'];
-    $pwd = $_POST['logPwd'];
-
-    $query = "Select * from user_details_tbl where Email='$email' and password='$pwd'";
-    $result = mysqli_query($con, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_array($result);
-        $_SESSION['user_id'] = $row[0];
-        echo "<script> location.replace('index.php');</script>";
-    }
-}
+<?php
+include('footer.php');
 ?>
