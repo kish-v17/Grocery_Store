@@ -1,60 +1,58 @@
 <?php include('header.php');
-    require 'PHPMailer/Exception.php';
-    require 'PHPMailer/PHPMailer.php';
-    require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    if (isset($_POST['regbtn'])) {
-        $regfname = $_POST['regfname'];
-        $reglname = $_POST['reglname'];
-        $regemail = $_POST['regemail'];
-        $regphone = $_POST['regphone'];
-        $regpwd = $_POST['regpwd'];
+if (isset($_POST['regbtn'])) {
+    $regfname = $_POST['regfname'];
+    $reglname = $_POST['reglname'];
+    $regemail = $_POST['regemail'];
+    $regphone = $_POST['regphone'];
+    $regpwd = $_POST['regpwd'];
 
-        $_SESSION['user_data'] = [
-            'fname' => $regfname,
-            'lname' => $reglname,
-            'email' => $regemail,
-            'phone' => $regphone,
-            'pwd' => $regpwd
-        ];
+    $_SESSION['user_data'] = [
+        'fname' => $regfname,
+        'lname' => $reglname,
+        'email' => $regemail,
+        'phone' => $regphone,
+        'pwd' => $regpwd
+    ];
 
-        $email_check_query = "SELECT * FROM user_details_tbl WHERE Email = '$regemail' LIMIT 1";
-        $result = mysqli_query($con, $email_check_query);
-        $user = mysqli_fetch_assoc($result);
+    $email_check_query = "SELECT * FROM user_details_tbl WHERE Email = '$regemail' LIMIT 1";
+    $result = mysqli_query($con, $email_check_query);
+    $user = mysqli_fetch_assoc($result);
 
-        if ($user)
-        {
-            if ($user['Active_Status'] == 1) 
-            {
-                setcookie('success', 'Your account already exists.', time() + 5, "/");
-                header("Location:login.php");
-                exit();
-            }
+    if ($user) {
+        if ($user['Active_Status'] == 1) {
+            setcookie('success', 'Your account already exists.', time() + 5, "/");
+            header("Location:login.php");
+            exit();
         }
-        $mail = new PHPMailer(true);
+    }
+    $mail = new PHPMailer(true);
 
-        try {
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'kish.v07@gmail.com';
-            $mail->Password = 'epjr uzfc lnfy yams';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = '587';
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'purebitegroceryshop@gmail.com';
+        $mail->Password = 'ojpb rwba znvs mjac';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = '587';
 
-            $mail->setFrom('kish.v07@gmail.com');
-            $mail->addAddress($regemail, $regfname);
+        $mail->setFrom('purebitegroceryshop@gmail.com');
+        $mail->addAddress($regemail, $regfname);
 
-            $mail->isHTML(true);
-            $mail->Subject = 'Email Verification';
-            $otp = rand(100000, 999999);
-            $_SESSION['otp'] = $otp;
-            $_SESSION['otp_expiration'] = time() + 120;
+        $mail->isHTML(true);
+        $mail->Subject = 'Email Verification';
+        $otp = rand(100000, 999999);
+        $_SESSION['otp'] = $otp;
+        $_SESSION['otp_expiration'] = time() + 120;
 
-            $body = "<html>
+        $body = "<html>
                         <body>
                             <h2>Email Verification</h2>
                             <p>Dear {$_SESSION['user_data']['fname']},</p>
@@ -64,59 +62,59 @@
                         </body>
                     </html>";
 
-            $mail->Body = $body;
+        $mail->Body = $body;
 
-            if (!$mail->send()) {
-                setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
-            } else {
-                setcookie('success', 'Email sent successfully. Please check your inbox for OTP.', time() + 5, "/");
-            }
-        } catch (Exception $e) {
+        if (!$mail->send()) {
             setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
+        } else {
+            setcookie('success', 'Email sent successfully. Please check your inbox for OTP.', time() + 5, "/");
         }
-
-        
-
-        echo "<script> location.replace('otp-page.php');</script>";
+    } catch (Exception $e) {
+        setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
     }
 
-    ?>
 
-    <div class="container">
-        <div class="row p-3 g-3 mt-4 d-flex justify-content-center h-100 align-items-center">
-            <div class="col-md-6">
-                <div class="login-form d-flex flex-column d-flex justify-content-center h-100 align-items-center">
-                    <div class="mb-3 w-75">
-                        <h2 class="mb-3">Create an account</h2>
-                        <div class="mb-4">Enter your details below</div>
-                        <form class="login-form" id="registrationForm" onsubmit="return validateRegistrationForm();" method="post">
-                            <div class="names d-flex gap-3">
-                                <input type="text" id="fname" name="regfname" class="w-50" placeholder="First Name">
-                                <input type="text" id="lname" name="reglname" class="w-50" placeholder="Last Name">
-                            </div>
-                            <p id="nameError" class="error mb-4"></p>
 
-                            <input type="text" id="email" class="w-100" name="regemail" placeholder="Email">
-                            <p id="emailError" class="error mb-4"></p>
+    echo "<script> location.replace('otp-page.php');</script>";
+}
 
-                            <input type="text" id="phone" class="w-100" name="regphone" placeholder="Mobile number">
-                            <p id="phoneError" class="error mb-4"></p>
+?>
 
-                            <input type="text" id="password" class="w-100" name="regpwd" placeholder="Password">
-                            <p id="passwordError" class="error mb-4"></p>
+<div class="container">
+    <div class="row p-3 g-3 mt-4 d-flex justify-content-center h-100 align-items-center">
+        <div class="col-md-6">
+            <div class="login-form d-flex flex-column d-flex justify-content-center h-100 align-items-center">
+                <div class="mb-3 w-75">
+                    <h2 class="mb-3">Create an account</h2>
+                    <div class="mb-4">Enter your details below</div>
+                    <form class="login-form" id="registrationForm" onsubmit="return validateRegistrationForm();" method="post">
+                        <div class="names d-flex gap-3">
+                            <input type="text" id="fname" name="regfname" class="w-50" placeholder="First Name">
+                            <input type="text" id="lname" name="reglname" class="w-50" placeholder="Last Name">
+                        </div>
+                        <p id="nameError" class="error mb-4"></p>
 
-                            <input type="text" id="confirmPassword" class="w-100" name="regcpwd" placeholder="Confirm Password">
-                            <p id="confirmPasswordError" class="error mb-4"></p>
+                        <input type="text" id="email" class="w-100" name="regemail" placeholder="Email">
+                        <p id="emailError" class="error mb-4"></p>
 
-                            <input type="submit" value="Create an account" name="regbtn" class="btn-msg w-100">
-                            <div class="mt-4 text-center">
-                                Already have an account? <a href="login.php" class="dim link ms-2">Log in</a>
-                            </div>
-                        </form>
-                    </div>
+                        <input type="text" id="phone" class="w-100" name="regphone" placeholder="Mobile number">
+                        <p id="phoneError" class="error mb-4"></p>
+
+                        <input type="text" id="password" class="w-100" name="regpwd" placeholder="Password">
+                        <p id="passwordError" class="error mb-4"></p>
+
+                        <input type="text" id="confirmPassword" class="w-100" name="regcpwd" placeholder="Confirm Password">
+                        <p id="confirmPasswordError" class="error mb-4"></p>
+
+                        <input type="submit" value="Create an account" name="regbtn" class="btn-msg w-100">
+                        <div class="mt-4 text-center">
+                            Already have an account? <a href="login.php" class="dim link ms-2">Log in</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <?php include('footer.php'); ?>
+<?php include('footer.php'); ?>

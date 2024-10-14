@@ -9,10 +9,10 @@
                     <form method="post" onsubmit="return validateResetPasswordForm()">
                         <input type="text" id="newPassword" name="new_password" class="w-100 mb-3" placeholder="New Password">
                         <p id="newPasswordError" class="error"></p>
-                        
+
                         <input type="text" id="confirmPassword" name="confirm_password" class="w-100 mb-3" placeholder="Confirm New Password">
                         <p id="confirmPasswordError" class="error"></p>
-                        
+
                         <input type="submit" value="Reset Password" name="submit" class="btn-msg w-100">
                         <div class="mt-4 text-center">
                             <a href="login.php" class="dim link ms-2">Back to log in</a>
@@ -23,30 +23,24 @@
         </div>
     </div>
 </div>
-<?php include('footer.php'); 
-    if(isset($_POST['submit'])){
-        if(isset($_SESSION['verified']))
-        {
-            $email = $_SESSION['email'];
-            $password = $_POST['new_password'];
-            $query = "update user_details_tbl set Password = '$password' where Email = '$email'";
-            if(mysqli_query($con, $query))
-            {
-                unset($_SESSION['email']);
-                unset($_SESSION['verified']);
-                setcookie('success', "Password changed successfully!", time() + 5, "/");
-                echo "<script>location.href='login.php'</script>";
-            }
-            else
-            {
-                setcookie('error', mysqli_error($con), time() + 5, "/");
-                echo "<script>location.href='reset-password.php';</script>";
-            }
+<?php include('footer.php');
+if (isset($_POST['submit'])) {
+    if (isset($_SESSION['verified'])) {
+        $email = $_SESSION['email'];
+        $password = $_POST['new_password'];
+        $query = "update user_details_tbl set Password = '$password' where Email = '$email'";
+        if (mysqli_query($con, $query)) {
+            unset($_SESSION['email']);
+            unset($_SESSION['verified']);
+            setcookie('success', "Password changed successfully!", time() + 5, "/");
+            echo "<script>location.href='login.php'</script>";
+        } else {
+            setcookie('error', mysqli_error($con), time() + 5, "/");
+            echo "<script>location.href='reset-password.php';</script>";
         }
-        else
-        {
-            setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
-            echo "<script>location.href='forgot-password.php';</script>";
-        }
+    } else {
+        setcookie('error', "Error in sending email: " . $mail->ErrorInfo, time() + 5, "/");
+        echo "<script>location.href='forgot-password.php';</script>";
     }
+}
 ?>
