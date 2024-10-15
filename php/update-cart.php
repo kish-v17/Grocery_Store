@@ -1,5 +1,5 @@
 <?php
-    include "../header2.php";
+    include "../DB/connection.php";
     $user_id = $_SESSION["user_id"];
     $product_id = $_POST["product_id"];
     $quantity = $_POST["quantity"];

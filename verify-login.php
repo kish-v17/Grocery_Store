@@ -11,7 +11,7 @@
             if($active_status==1)
             {   
                 $_SESSION['user_id'] = $row['User_Id'];
-                if($row['User_Id']==0)
+                if($row['User_Role_Id']==0)
                 {
                     $username = $row['First_Name'] . " " . $row['Last_Name']; 
                     setcookie('success', "Welcome, $username!", time() + 5, "/");

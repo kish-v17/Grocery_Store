@@ -13,7 +13,7 @@ if (isset($_GET['product_id']))
     }
     $product_id = $_GET['product_id'];
     $quantity = isset($_GET['quantity']) ? $_GET['quantity'] : 1;  
-    if(record_exists($user_id, $product_id,$con))
+    if(record_exists($user_id, $product_id, $con))
     {
         $query = "update cart_details_tbl set quantity = quantity+1 where Product_Id = '$product_id' and User_Id = '$user_id'";
         mysqli_query($con,$query);
@@ -88,60 +88,6 @@ $result = mysqli_query($con,$query);
             
             
         </table>
-<?php include('header.php'); ?>
-<div class="container sitemap cart-table">
-    <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>
-
-    <table class="table cart-table  text-nowrap">
-        <tr class="heading">
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th>Actions</th>
-        </tr>
-
-        <tr>
-            <td>
-                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate</div>
-            </td>
-            <td>₹100.00</td>
-            <td>
-                <div class="d-flex">
-                    <button class="number-button qty-minus">-</button>
-                    <input type="number" name="" id="" value="3">
-                    <button class="number-button qty-plus">+</button>
-                </div>
-            </td>
-            <td>₹300.00</td>
-            <td>
-                <a class="primary-btn update-btn">Update</a>
-                <a class="primary-btn delete-btn">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate</div>
-            </td>
-            <td>₹100.00</td>
-            <td>
-                <div class="d-flex">
-                    <button class="number-button qty-minus">-</button>
-                    <input type="number" name="" id="" value="3">
-                    <button class="number-button qty-plus">+</button>
-                </div>
-            </td>
-            <td>₹300.00</td>
-            <td>
-                <a class="primary-btn update-btn">Update</a>
-                <a class="primary-btn delete-btn">Delete</a>
-            </td>
-        </tr>
-    </table>
-
-    <!-- table end -->
 </div>
 <div class="container mb-5">
     <div class="d-flex justify-content-between align-items-center cart-page mb-5">
@@ -173,4 +119,13 @@ $result = mysqli_query($con,$query);
         </div>
     </div>
 </div>
-<?php include('footer.php'); ?>
+<?php include('footer.php'); 
+
+    function record_exists($user_id, $product_id, $con)
+    {
+        $query = "select * from cart_details_tbl where User_Id=$user_id and Product_Id=$product_id";
+        $result = mysqli_query($con, $query);
+        return mysqli_num_rows($result)>0;
+    }
+
+?>

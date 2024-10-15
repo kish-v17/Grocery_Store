@@ -1,5 +1,5 @@
-<?php include 'header2.php'; 
-$query = "select product.Product_Id, product.Product_Name, product.Product_Image, product.Description, product.Sale_Price, round(product.Sale_Price-(product.Sale_Price*product.Discount/100),2) 'Price', count(Rating) as 'Review_Count', round(avg(Rating)) as 'Rating' from product_details_tbl as product left join review_details_tbl as review on product.Product_Id = review.Product_Id group by product.Product_Id having product.Product_Id=".$_GET['Product_Id'];
+<?php include 'header.php'; 
+$query = "select product.Product_Id, product.Product_Name, product.Product_Image, product.Description, product.Sale_Price, round(product.Sale_Price-(product.Sale_Price*product.Discount/100),2) 'Price', count(Rating) as 'Review_Count', round(avg(Rating)) as 'Rating' from product_details_tbl as product left join review_details_tbl as review on product.Product_Id = review.Product_Id where product.Product_Id=".$_GET['product_id'];
 $result = mysqli_query($con,$query);
 $product = mysqli_fetch_assoc($result);
 ?>
@@ -12,7 +12,7 @@ $product = mysqli_fetch_assoc($result);
 
         <div class="row">
             <div class="col-md-5">
-                <img src="img/items/products/<?php echo $product['Product_Image']?>" alt="Product image" class="img-thumbnail p-3">
+                <img src="img/items/products/<?php echo $product['Product_Image']?>" alt="Product image" class="img-thumbnail p-3 w-100">
             </div>
             <div class="col-md-7 d-flex flex-column px-5 align-items-start">
                 <h4 class="product-title"><?php echo $product['Product_Name']?></h4>

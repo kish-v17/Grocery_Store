@@ -10,6 +10,4 @@ if (mysqli_num_rows($productResult) > 0) {
         $products[] = $productRow;
     }
 }
-
-mysqli_close($con);
 echo json_encode($products);

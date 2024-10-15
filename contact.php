@@ -1,4 +1,9 @@
-<?php include('header.php'); ?>
+<?php 
+    include('header.php'); 
+    $query = "SELECT `Contact_Email`, `Contact_Number` FROM `contact_page_details_tbl`";
+    $result = mysqli_query($con, $query);
+    $contact = mysqli_fetch_assoc($result);
+?>
 <div class="container mt-4">
     <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Contact</p>
 </div>
@@ -11,19 +16,19 @@
                     <p class="m-0">Call to us</p>
                 </div>
                 <p class="m-0">We are available 24/7, 7 days a week.</p>
-                <p class="m-0">Phone: +8801611112222</p>
+                <p class="m-0">Phone: +91 <?php echo $contact["Contact_Number"]; ?></p>
                 <div class="line"></div>
                 <div class="flex">
                     <img src="img/icons/icons-mail.png" alt="">
                     <p class="m-0">Write To US</p>
                 </div>
                 <p class="m-0">Fill out our form and we will contact you within 24 hours.</p>
-                <p class="m-0">Emails: customer@exclusive.com</p>
+                <p class="m-0 text-break">Email: <?php  echo $contact["Contact_Email"]; ?></p>
             </div>
         </div>
         <div class="col-12 col-md-8 col-sm-12 p-2">
             <div class="shadow-sm p-4">
-                <form id="contactForm" method="POST" action="">
+                <form id="contactForm" method="POST" action="submit-response.php" onsubmit="return contactFormValidation()">
                     <div class="flex form">
                         <div class="flex-item">
                             <input type="text" id="contactName" name="contactName" placeholder="Your Name*" class="w-100">
@@ -52,22 +57,3 @@
 </div>
 
 <?php include('footer.php'); ?>
-
-<?php
-if (isset($_POST['submit'])) 
-{
-    $name = $_POST['contactName'];
-    $email = $_POST['contactEmail'];
-    $phone = $_POST['contactPhone'];
-    $message = $_POST['contactMessage'];
-
-    $query = "INSERT INTO responses_tbl (Name, Email, Phone, Message) VALUES ('$name', '$email', '$phone', '$message')";
-    
-    if (mysqli_query($con, $query)) {
-        echo "<script>alert('Message sent successfully!');location.href=location;</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
-    }
-
-}
-?>
