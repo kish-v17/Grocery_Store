@@ -150,17 +150,16 @@ if (isset($_SESSION['user_id'])) { ?>
 
         <?php }
         ?>
-<?php
-if(isset($_COOKIE['success']) || isset($_COOKIE['error']) )
-{
-    $message = isset($_COOKIE['success']) ? $_COOKIE['success'] : $_COOKIE['error'];
+        <?php
+        if (isset($_COOKIE['success']) || isset($_COOKIE['error'])) {
+            $message = isset($_COOKIE['success']) ? $_COOKIE['success'] : $_COOKIE['error'];
 
-    echo '
+            echo '
     <div class="toast-container position-fixed end-0 p-3 ">
-        <div class="toast align-items-center '.(isset($_COOKIE['success']) ? 'bg-success' : 'bg-danger').' text-white border-0" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
+        <div class="toast align-items-center ' . (isset($_COOKIE['success']) ? 'bg-success' : 'bg-danger') . ' text-white border-0" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
             <div class="d-flex">
             <div class="toast-body">
-                '.$message.'
+                ' . $message . '
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -174,6 +173,6 @@ if(isset($_COOKIE['success']) || isset($_COOKIE['error']) )
         };
     </script>
 ';
-}
+        }
 
-?>
+        ?>
