@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <input type="submit" value="Send Message" class="btn-msg mt-2 ">
+                                <input type="submit" value="Update Profile" class="btn-msg mt-2 ">
                             </div>
                         </form>
                         <form  class="edit-profile form" onsubmit="return validateChangePassword();">
