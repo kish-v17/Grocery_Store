@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT Banner_Id, Banner_Image, View_Order, Active_Status FROM banner_details_tbl";
+                        $query = "SELECT Banner_Id, Banner_Image, View_Order, Active_Status FROM banner_details_tbl order by View_Order";
                         $result = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -44,10 +44,16 @@
                                             <?php } else { ?>
                                                 <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#activateModal<?php echo $banner['Banner_Id']; ?>" data-id="<?php echo $banner['Banner_Id']; ?>">Activate</button>
                                             <?php } ?>
-
                                             <a href="update-banner.php?banner_id=<?php echo $banner['Banner_Id']; ?>" class="btn btn-secondary btn-sm ms-2">Edit</a>
+                                            <?php
+                                                if($banner['View_Order']>0)
+                                                {
+                                                    ?>
+                                                <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $banner['Banner_Id']; ?>" data-id="<?php echo $banner['Banner_Id']; ?>">Delete</button>
+                                                    <?php
+                                                }
+                                            ?>
 
-                                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $banner['Banner_Id']; ?>" data-id="<?php echo $banner['Banner_Id']; ?>">Delete</button>
                                         </div>
                                     </td>
                                 </tr>

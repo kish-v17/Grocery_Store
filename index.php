@@ -1,36 +1,39 @@
-<?php include 'header.php'; 
-    $query = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE Active_Status=1 and View_Order>0 order by View_Order";
-    $result = mysqli_query($con, $query);
-    $total_banners = mysqli_num_rows($result);
+<?php 
+include 'header.php'; 
+
+// Query for banners
+$query = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE Active_Status=1 AND View_Order > 0 ORDER BY View_Order";
+$result = mysqli_query($con, $query);
+$total_banners = mysqli_num_rows($result);
 ?>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <ol class="carousel-indicators">
     <?php 
-    for($i=0;$i<$total_banners;$i++)
-    {
-        echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.($i).'" class="'.($i==0?'active':'').'"></li>';
+    for ($i = 0; $i < $total_banners; $i++) {
+        echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="'.$i.'" class="'.($i == 0 ? 'active' : '').'"></li>';
     }
     ?>
   </ol>
   <div class="carousel-inner">
     <?php
-        $i=0;
-        while($banner = mysqli_fetch_assoc($result))
-        {
+        $result = mysqli_query($con, $query);
+        $i = 0;
+        while ($banner = mysqli_fetch_assoc($result)) {
             ?>
-            <div class="carousel-item <?php echo $i==0?'active':''; ?>">
-                <img class="d-block w-100" src="img/banners/<?php echo $banner['Banner_Image']?>" alt="First slide">
-                <?php if($i==0){?>
-                    <div class="carousel-caption h-100 justify-content-center flex d-md-block ">
-                    <div class="row align-items-center flex h-100">
-                    <div class="hero-content col-md-6 order-md-1 order-2 text-center text-md-start text-wrap justify-content-center text-black">
-                        <span>Welcome to</span>
-                        <h1 class="text-black" style="color:black !important;">PureBite</h1>
-                        <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>
-                        <a href="shop.php" class="cta-button btn btn-primary text-center align-self-sm-center align-self-md-start">Explore</a>
+            <div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
+                <img class="d-block w-100" src="img/banners/<?php echo $banner['Banner_Image']; ?>" alt="Banner <?php echo $i + 1; ?>">
+                
+                <?php if ($i == 0) { ?>
+                    <div class="carousel-caption h-100 justify-content-center flex d-md-block">
+                        <div class="row align-items-center flex h-100">
+                            <div class="hero-content col-md-6 order-md-1 order-2 text-center text-md-start text-wrap justify-content-center text-black">
+                                <span>Welcome to</span>
+                                <h1 class="text-black" style="color: black !important;">PureBite</h1>
+                                <p>Discover a world of fresh, quality groceries delivered straight to your door. From farm-fresh produce to pantry essentials, we bring convenience and freshness to your daily life.</p>
+                                <a href="shop.php" class="cta-button btn btn-primary text-center align-self-sm-center align-self-md-start">Explore</a>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 <?php } ?>   
             </div>
             <?php
@@ -38,22 +41,21 @@
         }
     ?>
   </div>
+
   <?php 
-    if($total_banners > 2){
-        echo '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+  if ($total_banners >= 2) {
+      echo '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            ';
-    }
-  
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>';
+  }
   ?>
-  
 </div>
+
 <?php 
     $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1";
     $result = mysqli_query($con, $query);
@@ -112,7 +114,13 @@
     </div>
     <div class="row justify-content-start">
         <?php
-            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name , product.Sale_Price , round((product.Sale_Price-product.Sale_Price*product.Discount/100),2) as 'Price' from product_details_tbl as product left join category_details_tbl as category on product.Category_Id = category.Category_Id where is_active=1";
+            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count'
+            FROM product_details_tbl AS product
+            LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id
+            LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id
+            WHERE product.is_active = 1
+            GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name,  product.Sale_Price
+            ";
             $result = mysqli_query($con, $query);
         
             while ($product = mysqli_fetch_assoc($result)) {
@@ -133,13 +141,13 @@
                             
                             <div class="rating-section">
                                 <div class="ratings">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=1?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=2?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=3?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=4?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=5?'checked':''; ?>"></span>
                                 </div>
-                                <div class="review-count ps-1">(95)</div>
+                                <div class="review-count ps-1">(<?php echo $product['Review_Count']; ?>)</div>
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-sm-2 flex-sm-column flex-row align-items-sm-center flex-lg-row">
                                 <div>
@@ -163,7 +171,7 @@
                     <p class="label">Free delivery</p>
                     <h5 class="heading">Free shipping over ₹<?php echo $offer1['Minimum_Order']; ?></h5>
                     <p class="content">Shop ₹<?php echo $offer1['Minimum_Order']; ?> products and get free delivery anywhere</p>
-                    <button class="primary-btn">Shop Now <i class='fas fa-arrow-right ms-2'></i></button>
+                    <a class="primary-btn order-link" href="shop.php">Shop Now <i class='fas fa-arrow-right ms-2'></i></a>
                 </div>
             </div>
         </div>
@@ -174,7 +182,7 @@
                     <p class="label"><?php echo $offer2['Discount']; ?>% off</p>
                     <h5 class="heading">Organic Food</h5>
                     <p class="content">Save up to <?php echo $offer2['Discount']; ?>% off on your first order</p>
-                    <button class="primary-btn">Order Now <i class='fas fa-arrow-right ms-2'></i></button>
+                    <a class="primary-btn order-link" href="shop.php">Shop Now <i class='fas fa-arrow-right ms-2'></i></a>
                 </div>
             </div>
         </div>
@@ -195,7 +203,7 @@
     </div>
     <div class="row justify-content-start">
         <?php
-            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name , product.Sale_Price , round((product.Sale_Price-product.Sale_Price*product.Discount/100),2) as 'Price' from product_details_tbl as product left join category_details_tbl as category on product.Category_Id = category.Category_Id where is_active=1";
+            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price', COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', COALESCE(SUM(order_tbl.Quantity), 0) AS 'Sold_Quantity' FROM product_details_tbl AS product LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS order_tbl ON product.Product_Id = order_tbl.Product_Id WHERE product.is_active = 1 GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price order by Sold_Quantity desc";
             $result = mysqli_query($con, $query);
         
             while ($product = mysqli_fetch_assoc($result)) {
@@ -215,23 +223,23 @@
                         <p class="category-name"><?php echo $product["Category_Name"]; ?></p>
                         <h6 class="card-title not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
                             
-                        <div class="rating-section">
-                            <div class="ratings">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                            <div class="rating-section">
+                                <div class="ratings">
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=1?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=2?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=3?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=4?'checked':''; ?>"></span>
+                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=5?'checked':''; ?>"></span>
+                                </div>
+                                <div class="review-count ps-1">(<?php echo $product['Review_Count']; ?>)</div>
                             </div>
-                            <div class="review-count ps-1">(95)</div>
-                        </div>
                         <div class="d-flex justify-content-between align-items-end mb-2 mt-sm-2">
                             <div>
                                 <span class="price">₹<?php echo $product["Price"]; ?></span>
                                 <span class="striked-price">₹<?php echo $product["Sale_Price"]; ?></span>
                             </div>
                         </div>
-                        <div class="sold">Sold: 20/50</div>
+                        <!-- <div class="sold">Sold: 20/50</div> -->
                         <a class=" order-link d-block cart-btn" href="cart.php?product_id=<?php echo $product["Product_Id"]; ?>"><i class="fa-solid fa-cart-shopping pe-2"></i>Add to cart</a>
                     </div>
                 </div>
