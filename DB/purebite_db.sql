@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 12, 2024 at 09:11 AM
+-- Generation Time: Oct 16, 2024 at 02:05 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about_page_details_tbl` (
+  `ID` int NOT NULL,
   `Content` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -35,8 +36,8 @@ CREATE TABLE `about_page_details_tbl` (
 -- Dumping data for table `about_page_details_tbl`
 --
 
-INSERT INTO `about_page_details_tbl` (`Content`) VALUES
-('<p>what</p>');
+INSERT INTO `about_page_details_tbl` (`ID`, `Content`) VALUES
+(2, '<h2 class=\"my-4\">About PureBite</h2>\r\n            <p class=\"lead\">Welcome to PureBite, your trusted neighborhood grocery store where quality meets\r\n                convenience. Born out of a passion for fresh, wholesome food, PureBite was founded with a simple\r\n                mission: to provide our community with the finest groceries, sourced responsibly and delivered\r\n                with care. From the beginning, we’ve been committed to creating a shopping experience that not\r\n                only meets your needs but also enhances your lifestyle.</p>\r\n\r\n            <h3 class=\"mt-5\">What We Offer</h3>\r\n            <p>At PureBite, we believe in the power of choice. That\'s why our shelves are stocked with a diverse\r\n                range of products, from locally sourced organic produce to global culinary delights. Whether\r\n                you\'re shopping for everyday essentials or looking to discover something new, our curated\r\n                selection of groceries ensures you’ll find exactly what you need.</p>\r\n\r\n            <ul>\r\n                <li><strong>Fresh Produce:</strong> Hand-picked fruits and vegetables delivered daily to ensure\r\n                    the highest quality.</li>\r\n                <li><strong>Organic & Natural:</strong> A wide variety of organic, non-GMO, and health-conscious\r\n                    options.</li>\r\n                <li><strong>Specialty Items:</strong> International foods, artisanal products, and gourmet\r\n                    ingredients for your culinary adventures.</li>\r\n                <li><strong>Pantry Staples:</strong> A reliable selection of the essentials you need every day.\r\n                </li>\r\n                <li><strong>Sustainable Choices:</strong> Eco-friendly products that support a greener planet.\r\n                </li>\r\n            </ul>\r\n\r\n            <h3 class=\"mt-5\">Our Commitment</h3>\r\n            <p>At PureBite, we’re more than just a grocery store. We’re a part of the community. Our commitment\r\n                extends beyond providing great products; we aim to create a positive impact on our environment\r\n                and the people around us. From reducing waste with sustainable practices to supporting local\r\n                farmers and producers, we strive to make a difference with every bite.</p>\r\n\r\n            <h3 class=\"mt-5\">Why Choose Us?</h3>\r\n            <p>Shopping at PureBite means more than just filling your pantry. It’s about making informed,\r\n                mindful choices that contribute to a healthier lifestyle and a sustainable future. Our\r\n                knowledgeable and friendly staff are always here to help you find the best products for your\r\n                needs, whether you’re looking for specific dietary options or just need a recommendation for\r\n                dinner tonight.</p>\r\n\r\n            <h3 class=\"mt-5\">Join the PureBite Family</h3>\r\n            <p>We’re proud to serve our community, and we invite you to join the PureBite family. Whether you\r\n                visit us in-store or shop online, you’ll experience the same dedication to quality and service\r\n                that has made us a trusted name in groceries. Come and discover why PureBite is more than just a\r\n                grocery store – it’s where you can feel good about what you eat and how you shop.</p>');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,11 @@ INSERT INTO `address_details_tbl` (`Address_Id`, `User_Id`, `Full_Name`, `Addres
 (5, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
 (6, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
 (7, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '08732965892'),
-(8, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '08732965892');
+(8, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '08732965892'),
+(9, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(10, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(11, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(12, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892');
 
 -- --------------------------------------------------------
 
@@ -87,7 +92,9 @@ CREATE TABLE `banner_details_tbl` (
 --
 
 INSERT INTO `banner_details_tbl` (`Banner_Id`, `Banner_Image`, `View_Order`, `Active_Status`) VALUES
-(2, '6706937a84d2fDarshan Chovatiya.pdf', 1, 1);
+(8, '670e9ef3dbc07banner 1.png', 1, 1),
+(9, '670ea91823ea4banner-1.png', -1, 1),
+(10, '670ea92192b5bbanner-2.png', -2, 1);
 
 -- --------------------------------------------------------
 
@@ -100,6 +107,13 @@ CREATE TABLE `cart_details_tbl` (
   `Quantity` int NOT NULL,
   `User_Id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_details_tbl`
+--
+
+INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
+(7, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +132,6 @@ CREATE TABLE `category_details_tbl` (
 --
 
 INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`, `Parent_Category_Id`) VALUES
-(10, 'Meat', 18),
 (11, 'Bakery', NULL),
 (12, 'Canned Goods', NULL),
 (13, 'Frozen Foods', NULL),
@@ -134,7 +147,8 @@ INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`, `Parent_Cate
 (23, 'Household Items', NULL),
 (24, 'Personal Care', NULL),
 (25, 'Pet Supplies', NULL),
-(26, 'Health and Wellness', NULL);
+(26, 'Health and Wellness', NULL),
+(27, 'Meat', NULL);
 
 -- --------------------------------------------------------
 
@@ -174,9 +188,10 @@ CREATE TABLE `offer_details_tbl` (
 --
 
 INSERT INTO `offer_details_tbl` (`Offer_Id`, `Offer_Description`, `Discount`, `Minimum_Order`, `offer_type`, `active_status`) VALUES
-(2, 'sd', 11, 101.00, 1, 1),
-(3, 'sekvn', 11, NULL, 2, 1),
-(4, 'ksdvksdn', NULL, 10002.00, 3, 1);
+(2, 's', 11, 101.00, 1, 1),
+(3, 'sekvn', 12, NULL, 2, 0),
+(4, 'ksdvksdn', NULL, 10002.00, 3, 1),
+(7, 'p', 1, 1.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +211,11 @@ CREATE TABLE `order_details_tbl` (
 --
 
 INSERT INTO `order_details_tbl` (`Order_Id`, `Product_Id`, `Quantity`, `Price`) VALUES
-(6, 5, 1, 135.00);
+(7, 5, 10, 90.00),
+(7, 6, 5, 114.00),
+(8, 5, 10, 90.00),
+(10, 6, 10, 114.00),
+(10, 5, 32, 90.00);
 
 -- --------------------------------------------------------
 
@@ -225,7 +244,9 @@ INSERT INTO `order_header_tbl` (`Order_Id`, `User_Id`, `Order_Date`, `Order_Stat
 (2, 1, '2004-02-10 00:00:00', 'Pending', 4, 4, 0, 0, 'Cash on Delivery'),
 (3, 1, '2004-02-10 00:00:00', 'Pending', 5, 5, 0, 0, 'Cash on Delivery'),
 (4, 1, '2004-02-10 00:00:00', 'Pending', 6, 6, 0, 0, 'Cash on Delivery'),
-(6, 1, '2112-02-11 00:00:00', 'Pending', 8, 8, 0, 0, 'Cash on Delivery');
+(7, 1, '2004-02-10 00:00:00', 'Pending', 9, 9, 0, 0, 'Cash on Delivery'),
+(8, 1, '2003-02-10 00:00:00', 'Pending', 10, 10, 0, 900, 'Cash on Delivery'),
+(10, 1, '2004-02-10 00:00:00', 'Pending', 12, 12, 50, 4070, 'Cash on Delivery');
 
 -- --------------------------------------------------------
 
@@ -251,7 +272,9 @@ CREATE TABLE `product_details_tbl` (
 --
 
 INSERT INTO `product_details_tbl` (`Product_Id`, `Category_Id`, `Product_Name`, `Description`, `Product_Image`, `Sale_Price`, `Cost_Price`, `Discount`, `stock`, `is_active`) VALUES
-(5, 7, 'Apple', 'Crunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh apple', '66ee9001ceeaeapple.webp', 150.00, 100.00, 10, 0, 1);
+(5, 12, 'Apple', 'Crunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCruappleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh apple', '670a3f3b9ac92_shopping.webp', 100.00, 150.00, 10, 0, 0),
+(6, 22, 'Chocolate 3', 'Chocolate is adsvjn', '670f1da018b71_chocolate2.webp', 180.00, 170.00, 15, 140, 1),
+(7, 23, 'Artisanal Candles', 'These candles can come in various scents, shapes, and sizes, offering customers a unique, handcrafted feel. They’re popular for home decor, gifting, and relaxation, aligning with the growing trend of self-care and wellness products. Plus, they can be made with natural ingredients, which appeals to eco-conscious consumers.', '670a3f18f1b02shopping.webp', 120.00, 100.00, 5, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -272,7 +295,33 @@ CREATE TABLE `responses_tbl` (
 --
 
 INSERT INTO `responses_tbl` (`Response_Id`, `Name`, `Email`, `Phone`, `Message`) VALUES
-(4, 'Dobariya Rixit', 'rdobariya283@rku.ac.in', '8723965892', 'sjkv ndsjkn');
+(5, 'Rixit Dobaeriya', 'rixitdobariya05@gmail.com', '08732965892', 'jk vvns'),
+(7, 'Grace Lee', 'grace.lee@example.com', '7890123456', 'This is Grace, and I need assistance.'),
+(8, 'Henry Walker', 'henry.walker@example.com', '8901234567', 'Looking forward to your reply.'),
+(9, 'Ivy Martin', 'ivy.martin@example.com', '9012345678', 'This is a message from Ivy.'),
+(10, 'Jack Turner', 'jack.turner@example.com', '0123456789', 'I have an inquiry about your services.'),
+(11, 'Kathy Perez', 'kathy.perez@example.com', '1234567891', 'Hi, I would like to get in touch.'),
+(12, 'Leo Scott', 'leo.scott@example.com', '2345678902', 'Could you send me more information?'),
+(13, 'Mona Green', 'mona.green@example.com', '3456789013', 'This is a test message.'),
+(14, 'Nina Rodriguez', 'nina.rodriguez@example.com', '4567890124', 'Hello, I have some questions.'),
+(15, 'Oliver White', 'oliver.white@example.com', '5678901235', 'I would appreciate your help.'),
+(16, 'Paula Harris', 'paula.harris@example.com', '6789012346', 'Looking for more details about the service.'),
+(17, 'Quinn Clark', 'quinn.clark@example.com', '7890123457', 'This is a follow-up message.'),
+(18, 'Rita Lewis', 'rita.lewis@example.com', '8901234568', 'Please contact me regarding my inquiry.'),
+(19, 'Steve Hall', 'steve.hall@example.com', '9012345679', 'I need further clarification on this matter.'),
+(20, 'Tina Allen', 'tina.allen@example.com', '0123456780', 'This is Tina, looking forward to your response.'),
+(21, 'Eva Adams', 'eva.adams@example.com', '5678901234', 'Hi, I am interested in your product.'),
+(22, 'David Wilson', 'david.wilson@example.com', '4567890123', 'This is David, and I have a question.'),
+(23, 'Charlie Brown', 'charlie.brown@example.com', '3456789012', 'I would like to know more about your services.'),
+(24, 'Bob Smith', 'bob.smith@example.com', '2345678901', 'Hello, this is Bob.'),
+(25, 'Alice Johnson', 'alice.johnson@example.com', '1234567890', 'This is a test message from Alice.'),
+(26, 'Frank Thompson', 'frank.thompson@example.com', '6789012345', 'Could you provide more details?'),
+(27, '', '', '', ''),
+(28, '', '', '', ''),
+(29, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'djnsdj'),
+(30, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'ksdvkl'),
+(31, 'Rixit Dobaeriya', 'rdobariya@rku.ac.in', '8732965892', 'sdklvn'),
+(32, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'kdvksdn');
 
 -- --------------------------------------------------------
 
@@ -295,8 +344,27 @@ CREATE TABLE `review_details_tbl` (
 --
 
 INSERT INTO `review_details_tbl` (`Review_Id`, `Reply_To`, `Product_Id`, `User_Id`, `Rating`, `Review`, `Review_Date`) VALUES
-(2, NULL, 5, 1, 5, 'svsvd', '2024-10-10 11:30:05'),
-(7, 2, NULL, 1, NULL, 'lol\r\n', '2024-10-12 12:39:22');
+(12, NULL, 6, 1, 2, 'Not what I Huh', '2024-10-13 10:45:10'),
+(13, NULL, 6, 2, 5, 'Fantastic! Exceeded my expectations.', '2024-10-06 00:00:00'),
+(14, NULL, 7, 1, 3, 'Decent product but had issues.', '2024-10-07 00:00:00'),
+(15, NULL, 7, 1, 4, 'Very good overall, would buy again.', '2024-10-08 00:00:00'),
+(16, NULL, 7, 2, 2, 'Did not meet my standards.', '2024-10-09 00:00:00'),
+(17, NULL, 5, 1, 5, 'Best purchase I made this year!', '2024-10-10 00:00:00'),
+(18, NULL, 5, 2, 4, 'Good purchase, happy with it.', '2024-10-11 00:00:00'),
+(19, NULL, 6, 1, 3, 'It is okay, not great.', '2024-10-12 00:00:00'),
+(20, NULL, 6, 2, 5, 'Absolutely wonderful!', '2024-10-13 00:00:00'),
+(21, NULL, 7, 1, 1, 'Very disappointing product.', '2024-10-14 00:00:00'),
+(22, NULL, 7, 2, 4, 'I like it, but it has minor flaws.', '2024-10-15 00:00:00'),
+(23, NULL, 5, 1, 2, 'Could be better.', '2024-10-16 00:00:00'),
+(24, NULL, 5, 2, 3, 'Okay product, not bad.', '2024-10-17 00:00:00'),
+(25, NULL, 6, 1, 4, 'Works as described, happy with it.', '2024-10-18 00:00:00'),
+(26, NULL, 6, 2, 5, 'I am very satisfied!', '2024-10-19 00:00:00'),
+(27, NULL, 7, 1, 3, 'Wouldn\'t buy again.', '2024-10-20 00:00:00'),
+(29, 2, NULL, 1, NULL, 'nah you liar!', '2024-10-12 19:57:14'),
+(30, 8, NULL, 1, NULL, 'done', '2024-10-12 20:00:57'),
+(31, 9, NULL, 1, NULL, 'haha', '2024-10-12 23:14:41'),
+(32, 9, NULL, 1, NULL, 'haha', '2024-10-12 23:14:50'),
+(33, 10, NULL, 1, NULL, 'ahah', '2024-10-12 23:15:48');
 
 -- --------------------------------------------------------
 
@@ -320,8 +388,11 @@ CREATE TABLE `user_details_tbl` (
 --
 
 INSERT INTO `user_details_tbl` (`User_Id`, `User_Role_Id`, `First_Name`, `Last_Name`, `Password`, `Email`, `Mobile_No`, `Active_Status`) VALUES
-(1, 0, 'Rixit', 'Dobariya', '12345678', 'rdobariya283@rku.ac.in', '8732965891', 1),
-(2, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 0);
+(1, 0, 'Rixi', 'Dobariya', 'Tpxitachi', 'rixitdobariya@rku.ac.in', '8732965891', 1),
+(2, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 0),
+(3, 0, 'Itachi', 'Uchiha', 'ANUJ@111', 'itachi.uchiha@gmail.com', '9999999999', 0),
+(8, 0, 'Dobariya', 'Rixit', 'Tpxitachi', 'rixitdobariya00@gmail.com', '8732965892', 1),
+(11, 1, 'Dobariya', 'Rixit', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1);
 
 -- --------------------------------------------------------
 
@@ -337,6 +408,12 @@ CREATE TABLE `wishlist_details_tbl` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about_page_details_tbl`
+--
+ALTER TABLE `about_page_details_tbl`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `address_details_tbl`
@@ -403,58 +480,64 @@ ALTER TABLE `user_details_tbl`
 --
 
 --
+-- AUTO_INCREMENT for table `about_page_details_tbl`
+--
+ALTER TABLE `about_page_details_tbl`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `address_details_tbl`
 --
 ALTER TABLE `address_details_tbl`
-  MODIFY `Address_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Address_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `banner_details_tbl`
 --
 ALTER TABLE `banner_details_tbl`
-  MODIFY `Banner_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Banner_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category_details_tbl`
 --
 ALTER TABLE `category_details_tbl`
-  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `offer_details_tbl`
 --
 ALTER TABLE `offer_details_tbl`
-  MODIFY `Offer_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Offer_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_header_tbl`
 --
 ALTER TABLE `order_header_tbl`
-  MODIFY `Order_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Order_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_details_tbl`
 --
 ALTER TABLE `product_details_tbl`
-  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `responses_tbl`
 --
 ALTER TABLE `responses_tbl`
-  MODIFY `Response_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Response_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `review_details_tbl`
 --
 ALTER TABLE `review_details_tbl`
-  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user_details_tbl`
 --
 ALTER TABLE `user_details_tbl`
-  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
