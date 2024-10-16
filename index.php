@@ -1,12 +1,16 @@
 <?php include 'header.php'; 
     $query = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE Active_Status=1 and View_Order>0 order by View_Order";
     $result = mysqli_query($con, $query);
+    $total_banners = mysqli_num_rows($result);
 ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <?php 
+    for($i=0;$i<$total_banners;$i++)
+    {
+        echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.($i).'" class="'.($i==0?'active':'').'"></li>';
+    }
+    ?>
   </ol>
   <div class="carousel-inner">
     <?php
@@ -34,14 +38,21 @@
         }
     ?>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <?php 
+    if($total_banners > 2){
+        echo '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            ';
+    }
+  
+  ?>
+  
 </div>
 <?php 
     $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1";
@@ -91,13 +102,13 @@
 <section class=" mt-5 container">
     <div class="d-flex justify-content-between featured-products">
         <h4>Featuerd products</h4>
-        <div class="d-flex gap-2">
+        <!-- <div class="d-flex gap-2">
             <div class="active">All</div>
             <div>Vegetables</div>
             <div>Fruits</div>
             <div>Coffee & teas</div>
             <div>Namkeen</div>
-        </div>
+        </div> -->
     </div>
     <div class="row justify-content-start">
         <?php
@@ -170,17 +181,17 @@
     </div>
     <div class="d-flex justify-content-between align-items-center featured-products mt-5 ">
         <div class="d-flex align-items-center gap-5">
-            <h4>Daily Best Sales</h4>
-            <div class="label-red">Expires in:10:56:21</div>
+            <h4>Best selling products</h4>
+            <!-- <div class="label-red">Expires in:10:56:21</div> -->
         </div>
 
-        <div class="d-md-flex gap-2 d-none">
+        <!-- <div class="d-md-flex gap-2 d-none">
             <div class="active">All</div>
             <div>Vegetables</div>
             <div>Fruits</div>
             <div>Coffee & teas</div>
             <div>Namkeen</div>
-        </div>
+        </div> -->
     </div>
     <div class="row justify-content-start">
         <?php
