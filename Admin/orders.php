@@ -23,7 +23,7 @@ $query = "
     JOIN order_details_tbl od ON oh.Order_Id = od.Order_Id
     $search_query
     GROUP BY oh.Order_Id, Customer_Name, oh.Order_Date, oh.Order_Status
-    ORDER BY oh.Order_Date DESC
+    ORDER BY oh.Order_Date DESC 
 ";
 
 $result = mysqli_query($con, $query);

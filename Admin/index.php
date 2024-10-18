@@ -68,6 +68,24 @@
     </div>
 
     <!-- Recent Orders Section -->
+     <?php 
+     $query = "
+         SELECT 
+             oh.Order_Id, 
+             CONCAT(u.First_Name, ' ', u.Last_Name) AS Customer_Name, 
+             oh.Order_Date, 
+             SUM(od.Quantity) AS Total_Quantity, 
+             SUM(od.Quantity * od.Price) AS Total_Price, 
+             oh.Order_Status
+         FROM order_header_tbl oh
+         JOIN user_details_tbl u ON oh.User_Id = u.User_Id
+         JOIN order_details_tbl od ON oh.Order_Id = od.Order_Id
+         GROUP BY oh.Order_Id, Customer_Name, oh.Order_Date, oh.Order_Status
+         ORDER BY oh.Order_Date DESC limit 10
+     ";
+     
+     $result = mysqli_query($con, $query);
+     ?>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
             <h4>Recent Orders</h4>
@@ -75,114 +93,162 @@
         </div>
         <div class="card-body">
         <table class="table border text-nowrap">
-            <thead class="table-light">
-                <tr>
-                    <th>Order ID</th>
-                    <th>Customer Name</th>
-                    <th>Order Date</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Order Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1001</td>
-                    <td><a href="user-profile.php?username=JohnDoe">John Doe</a></td>
-                    <td>2024-08-10</td>
-                    <td>2</td>
-                    <td>₹50.00</td>
-                    <td>Pending</td>
-                    <td>
-                        <a href="view-order.php?id=1001" class="btn btn-info btn-sm">View</a>
-                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1002</td>
-                    <td><a href="user-profile.php?username=JaneSmith">Jane Smith</a></td>
-                    <td>2024-08-11</td>
-                    <td>3</td>
-                    <td>₹75.00</td>
-                    <td>Processing</td>
-                    <td>
-                        <a href="view-order.php?id=1002" class="btn btn-info btn-sm">View</a>
-                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1003</td>
-                    <td><a href="user-profile.php?username=EmilyJohnson">Emily Johnson</a></td>
-                    <td>2024-08-12</td>
-                    <td>1</td>
-                    <td>₹25.00</td>
-                    <td>Shipped</td>
-                    <td>
-                        <a href="view-order.php?id=1003" class="btn btn-info btn-sm">View</a>
-                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1004</td>
-                    <td><a href="user-profile.php?username=MichaelBrown">Michael Brown</a></td>
-                    <td>2024-08-13</td>
-                    <td>4</td>
-                    <td>₹100.00</td>
-                    <td>Delivered</td>
-                    <td>
-                        <a href="view-order.php?id=1004" class="btn btn-info btn-sm">View</a>
-                        <a class="btn btn-primary btn-sm" href="update-order.php">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    <thead class="table-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer Name</th>
+                            <th>Order Date</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Order Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (mysqli_num_rows($result) > 0) 
+                        {
+                            while ($row = mysqli_fetch_assoc($result)) 
+                            {
+                                ?>
+                                <tr>
+                                <td><?php echo $row['Order_Id']; ?></td>
+                                <td><a href='user-profile.php?username=<?php echo $row["Customer_Name"]; ?>'><?php echo $row["Customer_Name"]; ?></a></td>
+                                <td><?php echo $row['Order_Date']; ?></td>
+                                <td><?php echo $row['Total_Quantity']; ?></td>
+                                <td>₹<?php echo number_format($row['Total_Price'], 2); ?></td>
+                                <td><?php echo $row['Order_Status']; ?></td>
+                                <td>
+                                    <div class='d-flex flex-nowrap'>
+                                        <a href='view-order.php?order_id=<?php echo $row["Order_Id"]; ?>' class='btn btn-info btn-sm me-1'>View</a>
+                                        <a href='update-order.php?order_id=<?php echo $row["Order_Id"]; ?>' class='btn btn-primary btn-sm me-1'>Edit</a>
+                                        <button class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $row["Order_Id"]; ?>'>Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <div class="modal fade" id="deleteModal<?php echo $row["Order_Id"]; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this order? This action cannot be undone.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="delete-order.php?order_id=<?php echo $row["Order_Id"]; ?>" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "<tr><td colspan='7' class='text-center'>No orders found.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
         </div>
     </div>
 
     <!-- Recent Products Section -->
+            <?php
+                $query = "
+                SELECT 
+                    product.Discount, 
+                    product.Product_Name, 
+                    product.Product_Id, 
+                    product.Product_Image, 
+                    category.Category_Name, 
+                    product.Sale_Price, 
+                    product.stock, 
+                    COUNT(o.Order_Id) AS Sold_Quantity, 
+                    product.is_active 
+                FROM category_details_tbl AS category
+                RIGHT JOIN product_details_tbl AS product ON category.Category_Id = product.Category_Id
+                LEFT JOIN order_details_tbl AS o ON product.Product_Id = o.Product_Id 
+                GROUP BY product.Product_Id 
+                HAVING product.is_active = 1
+                LIMIT 10
+            ";
+            $result = mysqli_query($con, $query);
+            ?>
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between">
             <h4>Recent Products</h4>
             <a href="products.php" class="btn btn-secondary">See All Products</a>
         </div>
         <div class="card-body">
-            <table class="table border text-nowrap">
-                <thead class="table-light">
-                    <tr>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Discount</th>
-                        <th>Sold Quantity</th>
-                        <th>Stock</th>
-                        <th>Category</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="../img/items/products/cookiecake.webp" alt="Cookie Cake" style="width: 50px; height: 50px; object-fit: cover;">
-                            <span class="ms-2">Cookie Cake</span>
-                        </td>
-                        <td>₹25.00</td>
-                        <td>10%</td>
-                        <td>150</td>
-                        <td>50</td>
-                        <td>Bakery</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" href="view-product.php">View</a>
-                            <a class="btn btn-success btn-sm" href="update-product.php">Update</a>
-                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="table border text-nowrap">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>Sold Quantity</th>
+                            <th>Stock</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            if(mysqli_num_rows($result)){
+                                while($product = mysqli_fetch_assoc($result)) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <img src="../img/items/products/<?php echo $product['Product_Image']; ?>" alt="<?php echo $product['Product_Name']; ?>" style="width: 50px; height: 50px; object-fit: cover;">
+                                            <span class="ms-2"><?php echo $product['Product_Name']; ?></span>
+                                        </td>
+                                        <td>₹<?php echo $product['Sale_Price']; ?></td>
+                                        <td><?php echo $product['Discount']; ?>%</td>
+                                        <td><?php echo $product['Sold_Quantity']; ?></td>
+                                        <td><?php echo $product['stock']; ?></td>
+                                        <td><?php echo $product['Category_Name']; ?></td>
+                                        <td>
+                                            <div class="d-flex flex-nowrap">
+                                                <a class="btn btn-info btn-sm me-1" href="view-product.php?product_id=<?php echo $product['Product_Id']; ?>">View</a>
+                                                <a class="btn btn-success btn-sm me-1" href="update-product.php?product_id=<?php echo $product['Product_Id']; ?>">Update</a>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $product['Product_Id']; ?>" data-id="<?php echo $product['Product_Id']; ?>">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" id="deleteModal<?php echo $product['Product_Id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this product? This action cannot be undone.
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    <a href="delete-product.php?product_id=<?php echo $product['Product_Id']; ?>" class="btn btn-danger">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            else{
+                                echo "<tr>
+                                    <td colspan='7'>There is no products to display!</td>
+                                </tr>";
+                            }   
+                        ?>
+                    </tbody>
+                </table>
         </div>
+        
+      
     </div>
 </div>
 
