@@ -35,6 +35,8 @@ $title = $title_array[$caller_file];
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap/bootstrap.js"></script>
+
 </head>
 <?php
 $query = "Select First_name from user_details_tbl where User_Id='$_SESSION[user_id]'";
