@@ -12,10 +12,60 @@
                         <li class="breadcrumb-item active">Banners</li>
                     </ol>
                 </div>
-                <a class="btn btn-primary ms-auto" href="add-banner.php">Add Banner</a>
+                <a class="btn btn-primary ms-auto" href="add-banner.php" >Add Banner</a>
             </div>
 
             <div class="card-body">
+                <div class="row mb-3 mt-3">
+                
+                    <?php
+                        $query = "SELECT Banner_Id, Banner_Image, View_Order, Active_Status FROM banner_details_tbl where View_Order<0 order by View_Order";
+                        $result = mysqli_query($con, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($banner = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <div class="col-12 col-md-6">
+                    <table class="table border text-nowrap">
+                    <?php 
+                                    if($banner['View_Order']==-1)
+                                        echo "<h5>Banner for free delivery</h5>";
+                                    if($banner['View_Order']==-2)
+                                        echo "<h5>Banner for first order discount</h5>";
+                    ?>
+                    <thead class="table-light">
+                        <tr>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="../img/banners/<?php echo $banner['Banner_Image']; ?>" alt="Banner <?php echo $banner['Banner_Id']; ?>" width="200">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap">
+                                            <a href="update-banner.php?banner_id=<?php echo $banner['Banner_Id']; ?>" class="btn btn-secondary btn-sm ms-2">Edit</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                        
+                    
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="4">No banners found.</td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                </div>
+                <h5>Banners for slider</h5>
                 <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
@@ -26,15 +76,21 @@
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT Banner_Id, Banner_Image, View_Order, Active_Status FROM banner_details_tbl order by View_Order";
+                        $query = "SELECT Banner_Id, Banner_Image, View_Order, Active_Status FROM banner_details_tbl where View_Order>0 order by View_Order";
                         $result = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($result) > 0) {
                             while ($banner = mysqli_fetch_assoc($result)) {
                                 ?>
+                                <?php 
+                                    if($banner['View_Order']==-1)
+                                        echo "<tr><td colspan='3'>Banner for free delivery</td></tr>";
+                                    if($banner['View_Order']==-2)
+                                        echo "<tr><td colspan='3'>Banner for first order discount</td></tr>";
+                                ?>
                                 <tr>
                                     <td>
-                                        <img src="../img/banners/<?php echo $banner['Banner_Image']; ?>" alt="Banner <?php echo $banner['Banner_Id']; ?>" width="100">
+                                        <img src="../img/banners/<?php echo $banner['Banner_Image']; ?>" alt="Banner <?php echo $banner['Banner_Id']; ?>" width="200">
                                     </td>
                                     <td><?php echo $banner['View_Order']; ?></td>
                                     <td>

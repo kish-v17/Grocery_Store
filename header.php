@@ -39,7 +39,7 @@ $title = $title_array[$caller_file];
 
 </head>
 <?php
-$query = "Select First_name from user_details_tbl where User_Id='$_SESSION[user_id]'";
+$query = "Select First_name, Profile_Picture from user_details_tbl where User_Id='$_SESSION[user_id]'";
 $result = mysqli_query($con, $query);
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_array($result);
@@ -77,7 +77,9 @@ if (isset($_SESSION['user_id'])) { ?>
                         </div>
                         <div class="d-flex justify-content-between align-items-center justify-content-sm-between w-100">
                             <li class="nav-item ms-lg-auto dropdown profile-menu">
-                                <i class="fa fa-user-circle"></i><a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row[0]; ?></a>
+                                <img src="img/users/<?php echo $row[1]; ?>" alt="User Image" style="width: 45px; height: 45px; border-radius: 50%;">
+                                <a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row[0]; ?></a>
+
                                 <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
                                     <li><a class="dropdown-item" href="account.php">My Profile</a></li>
                                     <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>

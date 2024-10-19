@@ -16,7 +16,7 @@ $total_pages = ceil($total_records / $records_per_page);
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_from = ($page - 1) * $records_per_page;
 
-$query = "SELECT Response_Id, Name, Email, Phone, Message FROM responses_tbl $search_query LIMIT $start_from, $records_per_page";
+$query = "SELECT Response_Id, Name, Email, Phone, Message, Reply FROM responses_tbl $search_query LIMIT $start_from, $records_per_page";
 $result = mysqli_query($con, $query);
 ?>
 <div id="layoutSidenav_content">
@@ -39,6 +39,7 @@ $result = mysqli_query($con, $query);
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Message</th>
+                            <th>Reply</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -53,14 +54,18 @@ $result = mysqli_query($con, $query);
                             <td><?php echo $response["Name"]; ?></td>
                             <td><?php echo $response["Email"]; ?></td>
                             <td><?php echo $response["Phone"]; ?></td>
-                            <td><?php echo $response["Message"]; ?></td>
+                            <td style="max-width: 250px;" class="text-wrap"><?php echo $response["Message"]; ?></td>
+                            <td style="max-width: 250px; word-wrap: break-word;" class="text-wrap"><?php echo $response["Reply"]; ?></td>
                             <td>
-                                <div class="d-flex flex-nowrap">
-                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $response["Response_Id"]; ?>">Reply</button>
+                                <div class="d-flex justify-content-end">
+                                    <?php if(!$response['Reply']){ ?>
+                                        <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $response["Response_Id"]; ?>">Reply</button>
+                                    <?php } ?>
                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $response["Response_Id"]; ?>">Delete</button>
                                 </div>
                             </td>
                         </tr>
+                        <?php if(!$response['Reply']){ ?>
                         <!-- Reply Modal -->
                         <div class="modal fade" id="replyModal<?php echo $response["Response_Id"]; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -75,6 +80,7 @@ $result = mysqli_query($con, $query);
                                                     <label for="subject" class="form-label">Subject</label>
                                                     <input type="text" class="form-control" id="subject" name="subject" >
                                                 </div>
+                                                <input type="hidden" name="response_id" value="<?php echo $response["Response_Id"];; ?>">
                                                 <div class="mb-3">
                                                     <label for="message" class="form-label">Message</label>
                                                     <textarea class="form-control" id="message" name="message" rows="3" ></textarea>
@@ -85,8 +91,8 @@ $result = mysqli_query($con, $query);
                                         </div>
                                     </div>
                                 </div>
-                            
                         </div>
+                        <?php } ?>
                             <!-- Delete Modal -->
                         <div class="modal fade" id="deleteModal<?php echo $response["Response_Id"]; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">

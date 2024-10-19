@@ -562,6 +562,72 @@ function validateAddReviewForm() {
 
     return isValid;
 }
+function validateUpdateUserForm() {
+    let isValid = true;
+
+    // First Name Validation
+    const firstName = document.getElementById('firstName');
+    const firstNameError = document.getElementById('firstNameError');
+    if (!firstName.value.trim()) {
+        firstNameError.innerText = 'First Name is required.';
+        isValid = false;
+    } else {
+        firstNameError.innerText = '';
+    }
+
+    // Last Name Validation
+    const lastName = document.getElementById('lastName');
+    const lastNameError = document.getElementById('lastNameError');
+    if (!lastName.value.trim()) {
+        lastNameError.innerText = 'Last Name is required.';
+        isValid = false;
+    } else {
+        lastNameError.innerText = '';
+    }
+
+    // Email Validation
+    const email = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim()) {
+        emailError.innerText = 'Email is required.';
+        isValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        emailError.innerText = 'Email must be a valid email address.';
+        isValid = false;
+    } else {
+        emailError.innerText = '';
+    }
+
+    // Phone Validation
+    const phone = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const phoneRegex = /^[0-9]{10}$/; // Assumes phone numbers are 10 digits
+    if (!phone.value.trim()) {
+        phoneError.innerText = 'Phone is required.';
+        isValid = false;
+    } else if (!phoneRegex.test(phone.value)) {
+        phoneError.innerText = 'Phone must be a valid 10-digit number.';
+        isValid = false;
+    } else {
+        phoneError.innerText = '';
+    }
+
+    // Password Validation
+    const password = document.getElementById('password');
+    const passwordError = document.getElementById('passwordError');
+    if (!password.value.trim()) {
+        passwordError.innerText = 'Password is required.';
+        isValid = false;
+    } else if (password.value.length < 8) {
+        passwordError.innerText = 'Password must be at least 8 characters long.';
+        isValid = false;
+    } else {
+        passwordError.innerText = '';
+    }
+
+    return isValid;
+}
 function validateAddUserForm() {
     let isValid = true;
 
@@ -624,6 +690,22 @@ function validateAddUserForm() {
         isValid = false;
     } else {
         passwordError.innerText = '';
+    }
+
+    const userImage = document.getElementById('userImage');
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    
+    if (userImage.files.length === 0) {
+        document.getElementById('userImageError').innerText = 'Please upload a user image.';
+        isValid = false;
+    } else {
+        const fileName = userImage.files[0].name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        
+        if (!allowedExtensions.includes(fileExtension)) {
+            document.getElementById('userImageError').innerText = 'Only image files (jpg, jpeg, png, gif) are allowed.';
+            isValid = false;
+        }
     }
 
     return isValid;

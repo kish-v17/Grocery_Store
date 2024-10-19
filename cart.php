@@ -42,7 +42,9 @@ $result = mysqli_query($con,$query);
     <div class="container sitemap cart-table">
         <p class="my-5"><a href="index.php" class="text-decoration-none dim link">Home /</a> Cart</p>
         <?php
+            $total = 0;
             if(mysqli_num_rows($result) > 0){
+                
                 ?>
                 <table class="table cart-table  text-nowrap">
                     <tr class="heading">
@@ -54,6 +56,7 @@ $result = mysqli_query($con,$query);
                     </tr>
                 <?php
                 while($product = mysqli_fetch_assoc($result)){
+                    $total += $product['Subtotal'];
                     ?>
                         <tr>
                         <form action="php/update-cart.php" method="post">
@@ -63,11 +66,11 @@ $result = mysqli_query($con,$query);
                             </td>
                             <td>₹100.00</td>
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex qty-mod">
                                     <button class="number-button qty-minus">-</button>
-                                    <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
                                     <input type="number" name="quantity" id="" value="<?php echo $product["Quantity"]; ?>">
                                     <button class="number-button qty-plus">+</button>
+                                    <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
                                 </div>
                             </td>
                             <td>₹<?php echo $product["Price"]; ?></td>
@@ -89,10 +92,23 @@ $result = mysqli_query($con,$query);
             
         </table>
 </div>
+<?php
+    $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1 order by Minimum_Order";
+    $result = mysqli_query($con, $query);
+    
+    $discount=0;
+    while($offer = mysqli_fetch_assoc($result))
+    {
+        if($offer['Minimum_Order'] < $total)
+        {
+            $discount = $offer['Minimum_Order'];
+        }
+    }
+?>
 <div class="container mb-5">
     <div class="d-flex justify-content-between align-items-center cart-page mb-5">
         <a class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2" href="shop.php">Return to shop</a>
-        <button class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2">Update Cart</button>
+        <!-- <button class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2">Update Cart</button> -->
     </div>
     <div class="row justify-content-end">
         <div class="col-md-5 col-sm-7">

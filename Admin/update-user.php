@@ -26,7 +26,7 @@ if (isset($_GET['user_id'])) {
 
         <div class="card mb-4">
             <div class="card-body">
-                <form id="updateUserForm" action="update-user.php" method="POST">
+                <form id="updateUserForm" action="update-user.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddUserForm();">
                     <input type="hidden" name="user_id" id="userId" value="<?php echo $user['User_Id']; ?>">
 
                     <div class="row">
@@ -66,6 +66,16 @@ if (isset($_GET['user_id'])) {
                                 <input type="password" class="form-control" id="password" name="password"  value="<?php echo $user['Password']; ?>">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="userImage" class="form-label">User Image</label>
+                                <input type="file" class="form-control" id="userImage" name="user_image" accept="image/*">
+                                <div id="userImageError" class="error-message"></div>
+                            </div>
+                            <div class="mb-3">
+                                <img src="../img/users/<?php echo $user['Profile_Picture']; ?>" alt="" height="200px" width="200px">
+                            </div>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary" name="update-user">Update User</button>
@@ -74,8 +84,8 @@ if (isset($_GET['user_id'])) {
         </div>
     </div>
 <?php include("footer.php"); ?>
-<?php
 
+<?php
 if (isset($_POST["update-user"])) {
     $userId = $_POST['user_id'];
     $firstName = $_POST['first_name'];
@@ -83,14 +93,29 @@ if (isset($_POST["update-user"])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
+    $old_image = $user['User_Image'];
+    $new_image = $_FILES['user_image']['name'];
+
+    if ($new_image) {
+        $image = uniqid() . "_" . $new_image;
+        move_uploaded_file($_FILES['user_image']['tmp_name'], "../img/users/" . $image);
+        if (!empty($old_image) && file_exists("../img/users/" . $old_image)) {
+            unlink("../img/users/" . $old_image);
+        }
+    } else {
+        $image = $old_image;
+    }
 
     $sql = "UPDATE user_details_tbl 
-            SET First_Name = '$firstName', Last_Name = '$lastName', Email = '$email', Mobile_No = '$phone', Password = '$password' 
+            SET First_Name = '$firstName', Last_Name = '$lastName', Email = '$email', Mobile_No = '$phone', Password = '$password', Profile_Picture = '$image'
             WHERE User_Id = $userId";
 
     if (mysqli_query($con, $sql)) {
-        echo "<script>alert('User updated successfully!');</script>";
-        echo "<script>window.location.href = 'users.php';</script>";
+        ?>
+        <script>
+            window.location.href = "users.php";
+        </script>
+        <?php
     } else {
         echo "Error updating user: " . mysqli_error($con);
     }

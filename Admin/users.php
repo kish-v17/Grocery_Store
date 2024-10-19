@@ -1,6 +1,6 @@
 <?php include("sidebar.php");
 
-$query = "SELECT User_Id, CONCAT(First_Name, ' ', Last_Name) AS Full_Name, Email, Mobile_No, Active_Status FROM user_details_tbl where User_Role_Id=0";
+$query = "SELECT User_Id, Profile_Picture, CONCAT(First_Name, ' ', Last_Name) AS Full_Name, Email, Mobile_No, Active_Status FROM user_details_tbl where User_Role_Id=0";
 $result = mysqli_query($con, $query);
 ?>
 <div id="layoutSidenav_content">
@@ -25,7 +25,7 @@ $result = mysqli_query($con, $query);
                 <table class="table border text-nowrap">
                     <thead class="table-light">
                         <tr>
-                            <th>User ID</th>
+                            <th>User Image</th>
                             <th>User Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -38,7 +38,9 @@ $result = mysqli_query($con, $query);
                         while($user = mysqli_fetch_assoc($result)) {
                             ?>
                             <tr>
-                                <td><?php echo $user['User_Id']; ?></td>
+                                <td>
+                                    <img src="../img/users/<?php echo $user['Profile_Picture']; ?>" alt="<?php echo $user['Full_Name']; ?>" style="width: 50px; height: 50px; object-fit: cover;">
+                                </td>
                                 <td><?php echo $user['Full_Name']; ?></td>
                                 <td><?php echo $user['Email']; ?></td>
                                 <td><?php echo $user['Mobile_No']; ?></td>

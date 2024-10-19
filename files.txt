@@ -1,9 +1,0 @@
-- shop.php
-- product-details.php
-- register.php
-- otp-page.php
-------------------------------------------------
-
-- reset password message is not being displayed  
-
------------------------------------------------
