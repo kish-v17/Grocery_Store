@@ -8,6 +8,3 @@
 - orders
 - products
 - users
-
-user-profile.php and view-product.php
-    - from whichever script, another script is called, it should redirect to that file

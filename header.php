@@ -1,6 +1,6 @@
 <?php
 include('DB/connection.php');
-error_reporting(0);
+error_reporting(1);
 $backtrace = debug_backtrace();
 $caller_file = basename($backtrace[0]['file']);
 $title_array = array(
@@ -36,15 +36,30 @@ $title = $title_array[$caller_file];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap/bootstrap.js"></script>
+    <link rel="shortcut icon" href="img/favicon.jpg" type="image/x-icon">
+    
 
 </head>
 <?php
-$query = "Select First_name, Profile_Picture from user_details_tbl where User_Id='$_SESSION[user_id]'";
-$result = mysqli_query($con, $query);
-if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_array($result);
-}
-if (isset($_SESSION['user_id'])) { ?>
+if (isset($_SESSION['user_id'])) 
+{ 
+    $query = "Select First_Name, Profile_Picture from user_details_tbl where User_Id=$_SESSION[user_id]";
+    $result = mysqli_query($con, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+    }
+
+    $query = "select count(*) from cart_details_tbl where User_Id = " . $_SESSION['user_id'];
+    $result = mysqli_query($con, $query);
+    $cart_count = mysqli_fetch_array($result);
+    $cart_count = $cart_count[0];
+
+    $query = "select count(*) from wishlist_details_tbl where User_Id = " . $_SESSION['user_id'];
+    $result = mysqli_query($con, $query);
+    $wishlist_count = mysqli_fetch_array($result);
+    $wishlist_count = $wishlist_count[0];
+
+    ?>
 
     <body>
         <nav id="navibar" class="navbar navbar-expand-lg navbar-light sticky-top container-fluid">
@@ -70,33 +85,38 @@ if (isset($_SESSION['user_id'])) { ?>
                     </ul>
                     <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
                         <div class="d-flex justify-content-end align-items-center not-hidden" id="SearchSection2">
-                            <form class="d-flex justify-content-end ">
-                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar">
+                            <form class="d-flex justify-content-end" action="search.php">
+                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value = "<?php echo $_GET['search']; ?>">
                                 <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
                         <div class="d-flex justify-content-between align-items-center justify-content-sm-between w-100">
-                            <li class="nav-item ms-lg-auto dropdown profile-menu">
-                                <img src="img/users/<?php echo $row[1]; ?>" alt="User Image" style="width: 45px; height: 45px; border-radius: 50%;">
-                                <a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row[0]; ?></a>
+                         <li class="nav-item dropdown profile-menu ms-lg-auto">
+                            <a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/users/<?php echo $user['Profile_Picture']; ?>" alt="User Image" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 10px;">
+                                <?php echo $user['First_Name']; ?>
+                            </a>
 
-                                <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="account.php">My Profile</a></li>
-                                    <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
-                                    <li><a class="dropdown-item" href="logout.php">Log out</a></li>
-                                </ul>
-                            </li>
+                            <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="account.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
+                                <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                            </ul>
+                        </li>
+                        
+
+
                             <div class="d-flex justify-content-end align-items-center justify-content-sm-center w-100">
                                 <a href="wishlist.php" class="icon-link">
                                     <div class="icon me-1">
                                         <i class="fa-regular fa-heart"></i>
-                                        <span class="badge-class">3</span>
+                                        <span class="badge-class"><?php echo $wishlist_count; ?></span>
                                     </div>
                                 </a>
                                 <a href="cart.php" class="icon-link">
                                     <div class="icon me-1">
                                         <i class="fa-solid fa-cart-shopping"></i>
-                                        <span class="badge-class">3</span>
+                                        <span class="badge-class"><?php echo $cart_count; ?></span>
                                     </div>
                                 </a>
                             </div>

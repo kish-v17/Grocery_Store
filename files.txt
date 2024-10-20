@@ -1,0 +1,6 @@
+- wishlist
+- checkout
+- review add condition
+- display messages
+- filter
+- display categories

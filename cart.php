@@ -22,8 +22,9 @@ if (isset($_GET['product_id']))
     {
         $query = "INSERT INTO cart_details_tbl(Product_Id, Quantity, User_Id) VALUES ('$product_id', '$quantity', '$user_id')"; 
         if (mysqli_query($con, $query)) {
-            echo "<script>alert('Product added to cart successfully!');
-            location.href='cart.php';</script>";
+            setcookie('success', "Product added to cart successfully!", time() + 5, "/");
+            echo "<script>
+            location.replace('cart.php');</script>";
             exit;
         } 
         else 

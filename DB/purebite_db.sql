@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 16, 2024 at 02:05 AM
+-- Generation Time: Oct 20, 2024 at 06:12 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -94,7 +94,8 @@ CREATE TABLE `banner_details_tbl` (
 INSERT INTO `banner_details_tbl` (`Banner_Id`, `Banner_Image`, `View_Order`, `Active_Status`) VALUES
 (8, '670e9ef3dbc07banner 1.png', 1, 1),
 (9, '670ea91823ea4banner-1.png', -1, 1),
-(10, '670ea92192b5bbanner-2.png', -2, 1);
+(10, '670ea92192b5bbanner-2.png', -2, 1),
+(11, '670f5e453caf9black_friday_facebook_banner_02.jpg', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,10 @@ CREATE TABLE `cart_details_tbl` (
 --
 
 INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
-(7, 5, 1);
+(6, 1, 3),
+(7, 10, 1),
+(7, 1, 3),
+(7, 2, 11);
 
 -- --------------------------------------------------------
 
@@ -211,11 +215,11 @@ CREATE TABLE `order_details_tbl` (
 --
 
 INSERT INTO `order_details_tbl` (`Order_Id`, `Product_Id`, `Quantity`, `Price`) VALUES
-(7, 5, 10, 90.00),
-(7, 6, 5, 114.00),
 (8, 5, 10, 90.00),
 (10, 6, 10, 114.00),
-(10, 5, 32, 90.00);
+(10, 5, 32, 90.00),
+(7, 7, 10, 114.00),
+(7, 6, 5, 153.00);
 
 -- --------------------------------------------------------
 
@@ -244,7 +248,7 @@ INSERT INTO `order_header_tbl` (`Order_Id`, `User_Id`, `Order_Date`, `Order_Stat
 (2, 1, '2004-02-10 00:00:00', 'Pending', 4, 4, 0, 0, 'Cash on Delivery'),
 (3, 1, '2004-02-10 00:00:00', 'Pending', 5, 5, 0, 0, 'Cash on Delivery'),
 (4, 1, '2004-02-10 00:00:00', 'Pending', 6, 6, 0, 0, 'Cash on Delivery'),
-(7, 1, '2004-02-10 00:00:00', 'Pending', 9, 9, 0, 0, 'Cash on Delivery'),
+(7, 1, '2004-02-10 00:00:00', 'Delivered', 9, 9, 0, 1905, 'Cash on Delivery'),
 (8, 1, '2003-02-10 00:00:00', 'Pending', 10, 10, 0, 900, 'Cash on Delivery'),
 (10, 1, '2004-02-10 00:00:00', 'Pending', 12, 12, 50, 4070, 'Cash on Delivery');
 
@@ -287,41 +291,42 @@ CREATE TABLE `responses_tbl` (
   `Name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(320) COLLATE utf8mb4_general_ci NOT NULL,
   `Phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Message` text COLLATE utf8mb4_general_ci NOT NULL
+  `Message` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Reply` text COLLATE utf8mb4_general_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `responses_tbl`
 --
 
-INSERT INTO `responses_tbl` (`Response_Id`, `Name`, `Email`, `Phone`, `Message`) VALUES
-(5, 'Rixit Dobaeriya', 'rixitdobariya05@gmail.com', '08732965892', 'jk vvns'),
-(7, 'Grace Lee', 'grace.lee@example.com', '7890123456', 'This is Grace, and I need assistance.'),
-(8, 'Henry Walker', 'henry.walker@example.com', '8901234567', 'Looking forward to your reply.'),
-(9, 'Ivy Martin', 'ivy.martin@example.com', '9012345678', 'This is a message from Ivy.'),
-(10, 'Jack Turner', 'jack.turner@example.com', '0123456789', 'I have an inquiry about your services.'),
-(11, 'Kathy Perez', 'kathy.perez@example.com', '1234567891', 'Hi, I would like to get in touch.'),
-(12, 'Leo Scott', 'leo.scott@example.com', '2345678902', 'Could you send me more information?'),
-(13, 'Mona Green', 'mona.green@example.com', '3456789013', 'This is a test message.'),
-(14, 'Nina Rodriguez', 'nina.rodriguez@example.com', '4567890124', 'Hello, I have some questions.'),
-(15, 'Oliver White', 'oliver.white@example.com', '5678901235', 'I would appreciate your help.'),
-(16, 'Paula Harris', 'paula.harris@example.com', '6789012346', 'Looking for more details about the service.'),
-(17, 'Quinn Clark', 'quinn.clark@example.com', '7890123457', 'This is a follow-up message.'),
-(18, 'Rita Lewis', 'rita.lewis@example.com', '8901234568', 'Please contact me regarding my inquiry.'),
-(19, 'Steve Hall', 'steve.hall@example.com', '9012345679', 'I need further clarification on this matter.'),
-(20, 'Tina Allen', 'tina.allen@example.com', '0123456780', 'This is Tina, looking forward to your response.'),
-(21, 'Eva Adams', 'eva.adams@example.com', '5678901234', 'Hi, I am interested in your product.'),
-(22, 'David Wilson', 'david.wilson@example.com', '4567890123', 'This is David, and I have a question.'),
-(23, 'Charlie Brown', 'charlie.brown@example.com', '3456789012', 'I would like to know more about your services.'),
-(24, 'Bob Smith', 'bob.smith@example.com', '2345678901', 'Hello, this is Bob.'),
-(25, 'Alice Johnson', 'alice.johnson@example.com', '1234567890', 'This is a test message from Alice.'),
-(26, 'Frank Thompson', 'frank.thompson@example.com', '6789012345', 'Could you provide more details?'),
-(27, '', '', '', ''),
-(28, '', '', '', ''),
-(29, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'djnsdj'),
-(30, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'ksdvkl'),
-(31, 'Rixit Dobaeriya', 'rdobariya@rku.ac.in', '8732965892', 'sdklvn'),
-(32, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'kdvksdn');
+INSERT INTO `responses_tbl` (`Response_Id`, `Name`, `Email`, `Phone`, `Message`, `Reply`) VALUES
+(5, 'Rixit Dobaeriya', 'rixitdobariya05@gmail.com', '08732965892', 'jk vvns', 'HUh'),
+(7, 'Grace Lee', 'grace.lee@example.com', '7890123456', 'This is Grace, and I need assistance.', 'HuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuh'),
+(8, 'Henry Walker', 'henry.walker@example.com', '8901234567', 'Looking forward to your reply.', NULL),
+(9, 'Ivy Martin', 'ivy.martin@example.com', '9012345678', 'This is a message from Ivy.', NULL),
+(10, 'Jack Turner', 'jack.turner@example.com', '0123456789', 'I have an inquiry about your services.', NULL),
+(11, 'Kathy Perez', 'kathy.perez@example.com', '1234567891', 'Hi, I would like to get in touch.', NULL),
+(12, 'Leo Scott', 'leo.scott@example.com', '2345678902', 'Could you send me more information?', NULL),
+(13, 'Mona Green', 'mona.green@example.com', '3456789013', 'This is a test message.', NULL),
+(14, 'Nina Rodriguez', 'nina.rodriguez@example.com', '4567890124', 'Hello, I have some questions.', NULL),
+(15, 'Oliver White', 'oliver.white@example.com', '5678901235', 'I would appreciate your help.', NULL),
+(16, 'Paula Harris', 'paula.harris@example.com', '6789012346', 'Looking for more details about the service.', NULL),
+(17, 'Quinn Clark', 'quinn.clark@example.com', '7890123457', 'This is a follow-up message.', NULL),
+(18, 'Rita Lewis', 'rita.lewis@example.com', '8901234568', 'Please contact me regarding my inquiry.', NULL),
+(19, 'Steve Hall', 'steve.hall@example.com', '9012345679', 'I need further clarification on this matter.', NULL),
+(20, 'Tina Allen', 'tina.allen@example.com', '0123456780', 'This is Tina, looking forward to your response.', NULL),
+(21, 'Eva Adams', 'eva.adams@example.com', '5678901234', 'Hi, I am interested in your product.', NULL),
+(22, 'David Wilson', 'david.wilson@example.com', '4567890123', 'This is David, and I have a question.', NULL),
+(23, 'Charlie Brown', 'charlie.brown@example.com', '3456789012', 'I would like to know more about your services.', NULL),
+(24, 'Bob Smith', 'bob.smith@example.com', '2345678901', 'Hello, this is Bob.', NULL),
+(25, 'Alice Johnson', 'alice.johnson@example.com', '1234567890', 'This is a test message from Alice.', NULL),
+(26, 'Frank Thompson', 'frank.thompson@example.com', '6789012345', 'Could you provide more details?', NULL),
+(27, '', '', '', '', NULL),
+(28, '', '', '', '', NULL),
+(29, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'djnsdj', NULL),
+(30, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'ksdvkl', NULL),
+(31, 'Rixit Dobaeriya', 'rdobariya@rku.ac.in', '8732965892', 'sdklvn', NULL),
+(32, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'kdvksdn', NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +349,6 @@ CREATE TABLE `review_details_tbl` (
 --
 
 INSERT INTO `review_details_tbl` (`Review_Id`, `Reply_To`, `Product_Id`, `User_Id`, `Rating`, `Review`, `Review_Date`) VALUES
-(12, NULL, 6, 1, 2, 'Not what I Huh', '2024-10-13 10:45:10'),
 (13, NULL, 6, 2, 5, 'Fantastic! Exceeded my expectations.', '2024-10-06 00:00:00'),
 (14, NULL, 7, 1, 3, 'Decent product but had issues.', '2024-10-07 00:00:00'),
 (15, NULL, 7, 1, 4, 'Very good overall, would buy again.', '2024-10-08 00:00:00'),
@@ -380,19 +384,21 @@ CREATE TABLE `user_details_tbl` (
   `Password` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(320) COLLATE utf8mb4_general_ci NOT NULL,
   `Mobile_No` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `Active_Status` tinyint NOT NULL
+  `Active_Status` tinyint NOT NULL,
+  `Profile_Picture` varchar(255) COLLATE utf8mb4_general_ci DEFAULT 'default-img.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_details_tbl`
 --
 
-INSERT INTO `user_details_tbl` (`User_Id`, `User_Role_Id`, `First_Name`, `Last_Name`, `Password`, `Email`, `Mobile_No`, `Active_Status`) VALUES
-(1, 0, 'Rixi', 'Dobariya', 'Tpxitachi', 'rixitdobariya@rku.ac.in', '8732965891', 1),
-(2, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 0),
-(3, 0, 'Itachi', 'Uchiha', 'ANUJ@111', 'itachi.uchiha@gmail.com', '9999999999', 0),
-(8, 0, 'Dobariya', 'Rixit', 'Tpxitachi', 'rixitdobariya00@gmail.com', '8732965892', 1),
-(11, 1, 'Dobariya', 'Rixit', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1);
+INSERT INTO `user_details_tbl` (`User_Id`, `User_Role_Id`, `First_Name`, `Last_Name`, `Password`, `Email`, `Mobile_No`, `Active_Status`, `Profile_Picture`) VALUES
+(1, 0, 'Rixi', 'Dobariya', 'Tpxitachi', 'rixitdobariya@rku.ac.in', '8732965891', 1, '6713a953ddd56_journalism.jpg'),
+(2, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 0, 'default-img.png'),
+(3, 0, 'Itachi', 'Uchiha', 'ANUJ@111', 'itachi.uchiha@gmail.com', '9999999999', 1, 'default-img.png'),
+(8, 0, 'Dobariya', 'Rixit', 'Tpxitachi', 'rixitdobariya00@gmail.com', '8732965892', 1, 'default-img.png'),
+(11, 1, 'Dobariya', 'Rixit', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1, 'default-img.png'),
+(12, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 1, '6713b0e5dbf88_default-img.png');
 
 -- --------------------------------------------------------
 
@@ -495,7 +501,7 @@ ALTER TABLE `address_details_tbl`
 -- AUTO_INCREMENT for table `banner_details_tbl`
 --
 ALTER TABLE `banner_details_tbl`
-  MODIFY `Banner_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Banner_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `category_details_tbl`
@@ -537,7 +543,7 @@ ALTER TABLE `review_details_tbl`
 -- AUTO_INCREMENT for table `user_details_tbl`
 --
 ALTER TABLE `user_details_tbl`
-  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

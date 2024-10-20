@@ -46,6 +46,8 @@
     <script src="https://kit.fontawesome.com/0e8e0c1571.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap/bootstrap.js"></script>
         <script src="js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
     </body>
 </html>
 
