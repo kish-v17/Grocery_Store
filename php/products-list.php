@@ -13,8 +13,9 @@
                 </div>
                 <div class="card-body product-body px-3">
                     <a class="category-name category-link" href="categories.php?category_id=<?php echo $product["Category_Id"]; ?>"><?php echo $product["Category_Name"]; ?></a>
-                    <h6 class="card-title not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
-                    
+                    <a class=" card-title category-link font-black" href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
+                        <h6 class=" not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
+                    </a>
                     <div class="rating-section">
                         <div class="ratings">
                             <span class="fa fa-star <?php echo $product['Average_Rating']>=1?'checked':''; ?>"></span>
