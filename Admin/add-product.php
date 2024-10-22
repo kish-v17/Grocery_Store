@@ -93,7 +93,7 @@
 <?php include("footer.php"); ?>
 <?php
 function display_category_names($con){
-    $query = "SELECT Category_Id,Category_Name FROM category_details_tbl where Parent_Category_Id IS NULL";
+    $query = "SELECT Category_Id,Category_Name FROM category_details_tbl";
     $result=mysqli_query($con,$query);
     while($category= mysqli_fetch_assoc($result)){
         ?>

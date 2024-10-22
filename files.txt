@@ -4,3 +4,8 @@
 - display messages
 - filter
 - display categories
+- make search case insensetive
+
+
+Admin
+- is it possible for product to not have any category

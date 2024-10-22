@@ -85,7 +85,7 @@ if (isset($_SESSION['user_id']))
                     </ul>
                     <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
                         <div class="d-flex justify-content-end align-items-center not-hidden" id="SearchSection2">
-                            <form class="d-flex justify-content-end" action="search.php">
+                            <form class="d-flex justify-content-end" action="search.php" onsubmit="return validateSearch();">
                                 <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value = "<?php echo $_GET['search']; ?>">
                                 <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>

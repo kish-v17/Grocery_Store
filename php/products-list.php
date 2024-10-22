@@ -8,13 +8,12 @@
                     <a href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
                         <img class="img-thumbnail p-4" style="height:300px;" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">
                     </a>
-                    <div class="like"><i class="fa-regular fa-heart"></i></div>
+                    <a href="wishlist.php?product_id=<?php echo $product["Product_Id"]; ?>" class="like text-decoration-none"><i class="<?php $product['User_Id']==""?'fa-regular':'fa-solid'; ?> fa-heart"></i></a>
                     <div class="label">Save <?php echo $product["Discount"]; ?>%</div>
                 </div>
                 <div class="card-body product-body px-3">
-                    <p class="category-name"><?php echo $product["Category_Name"]; ?></p>
-                    
-                        <h6 class="card-title not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
+                    <a class="category-name category-link" href="categories.php?category_id=<?php echo $product["Category_Id"]; ?>"><?php echo $product["Category_Name"]; ?></a>
+                    <h6 class="card-title not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
                     
                     <div class="rating-section">
                         <div class="ratings">

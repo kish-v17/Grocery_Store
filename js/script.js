@@ -1,3 +1,12 @@
+function validateSearch(){
+    var searchBar = document.getElementById('searchBar');
+    if(searchBar.value === '')
+    {
+        alert('Enter something to search products');
+        return false;
+    }
+    return true;
+}
 function validateResetPasswordForm() {
     var newPassword = document.getElementById('newPassword').value.trim();
     var confirmPassword = document.getElementById('confirmPassword').value.trim();
@@ -132,13 +141,13 @@ if(filterButton)
             item.classList.toggle('invisible');
         })
     })
-    likeButtons = Array.from(document.getElementsByClassName('like'));
-    likeButtons.forEach(likeButton =>{
-        likeButton.addEventListener('click',function(){
-            this.children[0].classList.remove('fa-regular');
-            this.children[0].classList.add('fa-solid');
-        });
-    });
+    // likeButtons = Array.from(document.getElementsByClassName('like'));
+    // likeButtons.forEach(likeButton =>{
+    //     likeButton.addEventListener('click',function(){
+    //         this.children[0].classList.remove('fa-regular');
+    //         this.children[0].classList.add('fa-solid');
+    //     });
+    // });
 }
 
 // validation

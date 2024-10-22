@@ -860,10 +860,6 @@ input[type="radio"] , input[type="radio"]:hover{
     flex-wrap: wrap;
 }
 
-.review-card {
-    flex: 1 1 45%;
-    margin: 10px;
-}
 
 /* about */
 .about h3,.about h2{
@@ -885,7 +881,14 @@ input[type="radio"] , input[type="radio"]:hover{
     cursor: pointer;
 }
 .order-link:hover{
-    color:white;
+    color:black;
+}
+.category-link{
+    text-decoration: none;
+    cursor: pointer;
+}
+.category-link:hover{
+    color:black;
 }
 
 /* product details */

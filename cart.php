@@ -65,7 +65,7 @@ $result = mysqli_query($con,$query);
                                 <img src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="<?php echo $product["Product_Name"]; ?>" class="image-item d-inline-block">
                                 <div class="d-inline-block"><?php echo $product["Product_Name"]; ?></div>
                             </td>
-                            <td>₹100.00</td>
+                            <td>₹<?php echo $product["Price"]; ?></td>
                             <td>
                                 <div class="d-flex qty-mod">
                                     <button class="number-button qty-minus">-</button>
@@ -74,7 +74,7 @@ $result = mysqli_query($con,$query);
                                     <input type="hidden" name="product_id" value="<?php echo $product["Product_Id"]; ?>">
                                 </div>
                             </td>
-                            <td>₹<?php echo $product["Price"]; ?></td>
+                            <td>₹<?php echo $product["Subtotal"]; ?></td>
                             <td>
                                 <input type="submit" class="primary-btn update-btn" value="Update">
                                 <a class="primary-btn delete-btn" href="php/remove-from-cart.php?product_id=<?php echo $product["Product_Id"]; ?>">Delete</a>

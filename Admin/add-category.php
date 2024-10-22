@@ -18,17 +18,6 @@
                                 <div id="categoryNameError" class="error-message"></div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="parentCategory" class="form-label">Parent Category</label>
-                                <select class="form-select" id="parentCategory" name="parent_category">
-                                    <option value="" disabled selected>Select a parent category</option>
-                                    <option value="-">None</option>
-                                    <?php display_category_names($con); ?>
-                                </select>
-                                <div id="parentCategoryError" class="error-message"></div>
-                            </div>
-                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary" name="add-category">Add Category</button>
@@ -41,11 +30,8 @@
 <?php
     if(isset($_POST["add-category"])){
         $category_name = $_POST["category_name"];
-        $parent_category = $_POST["parent_category"];
 
-        $query = $parent_category=="-"?
-        "INSERT INTO `category_details_tbl` (`Category_Name`) VALUES ('$category_name')":
-        "INSERT INTO `category_details_tbl` (`Category_Name`, `Parent_Category_Id`) VALUES ('$category_name',$parent_category)";
+        $query ="INSERT INTO `category_details_tbl` (`Category_Name`) VALUES ('$category_name')";
 
         $sql=mysqli_query($con,$query);
 
@@ -60,16 +46,5 @@
             echo mysqli_error($con);  
         }   
         
-    }
-    function display_category_names($con){
-        $query = "SELECT Category_Id,Category_Name FROM category_details_tbl where Parent_Category_Id IS NULL";
-        $result=mysqli_query($con,$query);
-        while($category= mysqli_fetch_assoc($result)){
-            ?>
-            <option value="<?php echo $category["Category_Id"]?>">
-                <?php echo $category["Category_Name"]?>
-            </option>
-            <?php
-        }
     }
 ?>

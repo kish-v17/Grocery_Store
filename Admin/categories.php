@@ -2,16 +2,16 @@
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $search_query = '';
     if (!empty($search)) {
-        $search_query = "having category_id LIKE '%$search%' OR category.category_name LIKE '%$search%' OR parent_category_name LIKE '%$search%'";
+        $search_query = "having category_id LIKE '%$search%' OR category.category_name LIKE '%$search%'";
     }
-    $query = "select category.category_id, category.category_name, parent_category.category_name as 'parent_category_name',  count(product.product_id) as 'products_count' from category_details_tbl as category left join category_details_tbl as parent_category  on category.parent_category_id = parent_category.category_id left join  product_details_tbl as product  on product.category_id = category.category_id group by  category.category_id, category.category_name, parent_category.category_name $search_query";
+    $query = "select category.category_id, category.category_name, count(product.product_id) as 'products_count' from category_details_tbl as category left join  product_details_tbl as product  on product.category_id = category.category_id group by  category.category_id, category.category_name $search_query";
     $result = mysqli_query($con,$query);
     $total_records = mysqli_num_rows($result);
     $records_per_page = 10;
     $total_pages = ceil($total_records / $records_per_page);
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $start_from = ($page - 1) * $records_per_page;
-    $query = "select category.category_id, category.category_name, parent_category.category_name as 'parent_category_name',  count(product.product_id) as 'products_count' from category_details_tbl as category left join category_details_tbl as parent_category  on category.parent_category_id = parent_category.category_id left join  product_details_tbl as product  on product.category_id = category.category_id group by  category.category_id, category.category_name, parent_category.category_name $search_query LIMIT $start_from, $records_per_page";
+    $query = "select category.category_id, category.category_name, count(product.product_id) as 'products_count' from category_details_tbl as category left join  product_details_tbl as product  on product.category_id = category.category_id group by  category.category_id, category.category_name $search_query LIMIT $start_from, $records_per_page";
     $result = mysqli_query($con,$query);
     
 ?>
@@ -34,7 +34,6 @@
                         <tr class="text-nowrap">
                             <th>Category ID</th>
                             <th>Category Name</th>
-                            <th>Parent Category</th>
                             <th>Products Count</th>
                             <th>Actions</th>
                         </tr>
@@ -49,7 +48,6 @@
                             <tr>
                                 <td><?php echo $category['category_id'] ?></td>
                                 <td><?php echo $category['category_name'] ?></td>
-                                <td><?php echo $category['parent_category_name']==''?'None':$category['parent_category_name'] ?></td>
                                 <td><?php echo $category['products_count'] ?></td>
                                 <td>
                                     <div class="d-flex flex-nowrap">

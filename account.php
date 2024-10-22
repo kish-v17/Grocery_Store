@@ -7,7 +7,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 p-2 d-flex flex-row flex-sm-column ">
+            <div class="col-12 col-md-3 p-2 d-flex flex-row flex-sm-column ">
                 <div class="shadow-sm p-4 d-flex heading text-nowrap">
                     <ul class="d-flex flex-row flex-md-column gap-3 heading">
                         <li class="active menu-item js-account mb-0" data-id="my-profile">My Profile</li>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-12 col-md-8 p-2">
+            <div class="col-12 col-md-9 p-2">
                 <div class="shadow-sm p-4">
                     <div id="my-profile" class="invisible">
                         <p class="highlight title">Edit Your Profile</p>
