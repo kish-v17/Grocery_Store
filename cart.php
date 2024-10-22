@@ -36,7 +36,7 @@ if (isset($_GET['product_id']))
 
     
 }
-$query = "select p.Product_Name,c.Product_Id, p.Product_Image, round(p.Sale_Price-p.Sale_Price*p.Discount/100,2) as 'Price',round(p.Sale_Price-p.Sale_Price*p.Discount/100*c.Quantity,2) as 'Subtotal',c.Quantity from cart_details_tbl as c left join product_details_tbl as p on c.Product_Id = p.Product_Id where User_Id = ".$user_id;
+$query = "select p.Product_Name,c.Product_Id, p.Product_Image, round(p.Sale_Price-p.Sale_Price*p.Discount/100,2) as 'Price',round((p.Sale_Price-p.Sale_Price*p.Discount/100)*c.Quantity,2) as 'Subtotal',c.Quantity from cart_details_tbl as c left join product_details_tbl as p on c.Product_Id = p.Product_Id where User_Id = ".$user_id;
 $result = mysqli_query($con,$query);
 
 ?>
@@ -94,6 +94,8 @@ $result = mysqli_query($con,$query);
         </table>
 </div>
 <?php
+    $discount_content = "";
+    //offer available for all
     $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1 order by Minimum_Order";
     $result = mysqli_query($con, $query);
     
@@ -102,8 +104,28 @@ $result = mysqli_query($con,$query);
     {
         if($offer['Minimum_Order'] < $total)
         {
-            $discount = $offer['Minimum_Order'];
+            $discount = $offer['Discount'];
         }
+    }
+    $discount_content .= '<div class="my-2 line"></div>
+                <div class="d-flex align-items-center p-2">
+                    <div>Discount:</div>
+                    <div class="price">₹'. $total*$discount/100 .'</div>
+                </div>';
+    if(is_first_order($con)){
+        $query = "SELECT `Discount` FROM `offer_details_tbl` WHERE `offer_type`=2 and `active_status`=1";
+        $result = mysqli_query($con, $query);
+        $array = mysqli_fetch_array($result);
+        $first_order_discount = $array[0];
+        if(mysqli_num_rows($result))
+        {
+            $discount_content .= '<div class="my-2 line"></div>
+            <div class="d-flex align-items-center p-2">
+                <div>First Order Discount:</div>
+                <div class="price">₹'. $total*$first_order_discount/100 .'</div>
+            </div>';
+        }
+        
     }
 ?>
 <div class="container mb-5">
@@ -124,6 +146,7 @@ $result = mysqli_query($con,$query);
                     <div>Shipping:</div>
                     <div class="price">₹100.00</div>
                 </div>
+                <?php echo $discount_content; ?>
                 <div class="my-2 line"></div>
                 <div class="d-flex align-items-center p-2">
                     <div>Total:</div>
@@ -144,5 +167,13 @@ $result = mysqli_query($con,$query);
         $result = mysqli_query($con, $query);
         return mysqli_num_rows($result)>0;
     }
-
+    function is_first_order($con)
+    {
+        $user_id = $_SESSION["user_id"];
+        $query = "select count(*) from order_header_tbl where User_Id = $user_id";
+        $result = mysqli_query($con, $query);
+        $order_count_array = mysqli_fetch_array($result);
+        $order_count = $order_count_array[0];
+        return $order_count < 1;
+    }
 ?>

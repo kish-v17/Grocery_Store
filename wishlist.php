@@ -49,7 +49,6 @@ $result = mysqli_query($con,$query);
     <p class="my-5"><a href="index.php" class="text-decoration-none dim link ">Home /</a> Wishlist</p>
     <table class="table cart-table text-nowrap">
         <?php
-            $total = 0;
             if(mysqli_num_rows($result) > 0){
         ?>
         <tr class="heading">
@@ -69,8 +68,8 @@ $result = mysqli_query($con,$query);
                         </td>
                         <td>₹<?php echo $product["Price"]; ?></td>
                         <td>
-                            <a class="primary-btn update-btn">Add to cart</a>
-                            <a class="primary-btn delete-btn ms-2">Delete</a>
+                            <a class="primary-btn update-btn" href="php/move-to-cart.php?product_id=<?php echo $product["Product_Id"]?>&user_id=<?php echo $user_id?>">Add to cart</a>
+                            <a class="primary-btn delete-btn ms-2" href="php/remove-from-wishlist.php?product_id=<?php echo $product["Product_Id"]?>">Delete</a>
                         </td>
                     </tr>
                     </form>
