@@ -91,11 +91,11 @@ if (isset($_SESSION['user_id']))
                             </form>
                         </div>
                         <div class="d-flex justify-content-between align-items-center justify-content-sm-between w-100">
-                         <li class="nav-item dropdown profile-menu ms-lg-auto">
-                            <a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="img/users/<?php echo $user['Profile_Picture']; ?>" alt="User Image" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 10px;">
-                                <?php echo $user['First_Name']; ?>
-                            </a>
+                            <li class="nav-item dropdown profile-menu ms-lg-auto">
+                                <a class="nav-link dropdown-toggle" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="img/users/<?php echo $user['Profile_Picture']; ?>" alt="User Image" style="width: 45px; height: 45px; border-radius: 50%; margin-right: 10px;">
+                                    <?php echo $user['First_Name']; ?>
+                                </a>
 
                             <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="account.php">My Profile</a></li>
