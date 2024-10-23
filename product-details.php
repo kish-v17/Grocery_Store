@@ -168,7 +168,7 @@ $product = mysqli_fetch_assoc($result);
             $review_text = $review['Review'];
             $review_date = date('F j, Y', strtotime($review['Review_Date']));
             $stars = str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
-            
+            $reply= $review["Reply"];
         
             $user_name = $review['First_Name'].' '.$review['Last_Name']; 
             
@@ -181,6 +181,13 @@ $product = mysqli_fetch_assoc($result);
                     <p class="card-text">'. $review_text .'</p>
                     <p class="text-muted mb-0"><small>Posted on '. $review_date .'</small></p>
                 </div>
+                '.
+                ($reply!=''?'<div class="card-body">
+                    <h5 class="card-title">Admin</h5>
+                    <p class="card-text">'. $reply .'</p>
+                </div>':'')
+                .
+                '
             </div>
             </div>';
         }
