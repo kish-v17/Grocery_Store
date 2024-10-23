@@ -64,13 +64,17 @@ $product = mysqli_fetch_assoc($result);
         <h4 class="mb-4 text-center fw-bold">Customer Reviews</h4>
         <div class="row">
             <?php 
+            if(isset($_SESSION['user_id']))
+            {
                 $query = "select count(*) from order_details_tbl as od
-                    left join order_header_tbl as oh ON od.Order_Id = oh.Order_Id 
-                    where Product_Id=$product_id and User_Id IS NOT NULL and User_Id=$user_id ";
-                $result = mysqli_query($con, $query);
-                $orderCount = mysqli_fetch_array($result);
-                $hasOrdered = $orderCount[0]>0 ? true : false;
+                left join order_header_tbl as oh ON od.Order_Id = oh.Order_Id 
+                where Product_Id=$product_id and User_Id IS NOT NULL and User_Id=$user_id ";
+            $result = mysqli_query($con, $query);
+            $orderCount = mysqli_fetch_array($result);
+            $hasOrdered = $orderCount[0]>0 ? true : false;
 
+            }
+              
                 if($hasOrdered)
                 {
                     ?>
@@ -158,7 +162,16 @@ $product = mysqli_fetch_assoc($result);
     function display_review($product,$con){
 
     $product_id =$product["Product_Id"];
-    $query = "SELECT * FROM review_details_tbl as review left join user_details_tbl as user on user.User_Id = review.User_Id WHERE review.Product_Id='$product_id'";
+    $query = "SELECT 
+        r.Review_Id, r.Rating, r.Review, r.Review_Date, 
+        p.Product_Id, p.Product_Name, p.Product_Image, 
+        u.User_Id, u.First_Name, u.Last_Name,
+        r1.Review_Id as 'Reply_Id', r1.Review as 'Reply' 
+    FROM review_details_tbl r
+    JOIN product_details_tbl p ON r.Product_Id = p.Product_Id
+    JOIN user_details_tbl u ON r.User_Id = u.User_Id
+    left join review_details_tbl r1 on r.Review_Id = r1.Reply_To
+    where p.is_active=1 and p.Product_Id=$product_id";
     $result = mysqli_query($con, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -181,13 +194,16 @@ $product = mysqli_fetch_assoc($result);
                     <p class="card-text">'. $review_text .'</p>
                     <p class="text-muted mb-0"><small>Posted on '. $review_date .'</small></p>
                 </div>
-                '.
-                ($reply!=''?'<div class="card-body">
+                ';
+                if(isset($review['Reply_Id']))
+                {
+                    $reply_text = $review["Reply"];
+                    echo '<div class="card-body ">
                     <h5 class="card-title">Admin</h5>
-                    <p class="card-text">'. $reply .'</p>
-                </div>':'')
-                .
-                '
+                    <p class="card-text ms-5">'. $reply_text .'</p>
+                </div>';
+                }
+                echo '
             </div>
             </div>';
         }

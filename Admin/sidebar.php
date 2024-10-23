@@ -1,7 +1,7 @@
 <?php 
     include "../DB/connection.php";
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && $_SESSION['user_role']!="admin") {
     echo "<script>
         window.location.href = '../login.php';
     </script>";

@@ -31,7 +31,7 @@
             $query .= " LIMIT $start_from, $records_per_page ";
             $result = mysqli_query($con, $query);
             $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
-            $wishlist_result = mysqli_query($con,$query);
+            // $wishlist_result = mysqli_query($con,$query);
 
             include "php/products-list.php";
             ?>

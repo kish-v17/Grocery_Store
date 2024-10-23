@@ -131,7 +131,7 @@ $total_banners = mysqli_num_rows($result);
              $query .= " LIMIT $start_from, $records_per_page ";
              $result = mysqli_query($con, $query);
              $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
-             $wishlist_result = mysqli_query($con,$query);
+            //  $wishlist_result = mysqli_query($con,$query);
  
         include "php/products-list.php";?>
         <div class="d-flex justify-content-end">
@@ -191,7 +191,7 @@ $total_banners = mysqli_num_rows($result);
             <div>Namkeen</div>
         </div> -->
     </div>
-    <div class="row justify-content-start">
+    <div class="row justify-content-start align-items-stretchs">
         <?php
                   $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price', COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', COALESCE(SUM(order_tbl.Quantity), 0) AS 'Sold_Quantity' FROM product_details_tbl AS product LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS order_tbl ON product.Product_Id = order_tbl.Product_Id WHERE product.is_active = 1 GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price order by Sold_Quantity desc";
                   $result = mysqli_query($con, $query);
@@ -205,12 +205,12 @@ $total_banners = mysqli_num_rows($result);
                  $query .= " LIMIT $start_from, $records_per_page ";
                  $result = mysqli_query($con, $query);
                  $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
-                 $wishlist_result = mysqli_query($con,$query);
+                //  $wishlist_result = mysqli_query($con,$query);
      
             while ($product = mysqli_fetch_assoc($result)) {
         ?>
             <div class=" col-md-3 gap col-sm-4 p-2 col-6">
-                <div class="card">
+                <div class="card h-100">
                     <div class="product-image">
                             <a href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
                                 <img class="img-thumbnail p-4" style="height:300px;" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">

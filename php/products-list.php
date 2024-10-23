@@ -4,7 +4,7 @@
      {
         while ($product = mysqli_fetch_assoc($result) ) {
             
-            $wishlist =mysqli_fetch_assoc($wishlist_result);
+            // $wishlist =mysqli_fetch_assoc($wishlist_result);
             ?>
                 <div class=" col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                     <div class="card h-100">

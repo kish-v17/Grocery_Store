@@ -13,12 +13,15 @@
                 $_SESSION['user_id'] = $row['User_Id'];
                 if($row['User_Role_Id']==0)
                 {
+                    $_SESSION['role']="user";
+
                     $username = $row['First_Name'] . " " . $row['Last_Name']; 
                     setcookie('success', "Welcome, $username!", time() + 5, "/");
                     echo "<script> location.href='index.php';</script>";
                 }
                 else
                 {
+                    $_SESSION['role']="admin";
                     echo "<script> location.href='Admin/index.php';</script>";
                 }
                 
