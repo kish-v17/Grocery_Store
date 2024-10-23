@@ -147,96 +147,96 @@
                                 <th>View Orders</th>
                             </tr>
 
-                            <?php display_orders(); ?>
-                        </table>
-                    </div>
-                    <div id="my-wishlist" class="invisible container cart-table">
-                        <table class="table cart-table text-nowrap">
-                            <tr class="heading">
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Subtotal</th>
-                                <th>Actions</th>
-                            </tr>
+                        <?php display_orders(); ?>
+                    </table>
+                </div>
+                <div id="my-wishlist" class="invisible container cart-table">
+                    <table class="table cart-table text-nowrap">
+                        <tr class="heading">
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                            <th>Actions</th>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                                    <div class="d-inline-block">Chocolate</div>
-                                </td>
-                                <td>₹100.00</td>
-                                <td>₹300.00</td>
-                                <td>
-                                    <a class="primary-btn update-btn">Add to cart</a>
-                                    <a class="primary-btn delete-btn">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                                    <div class="d-inline-block">Chocolate</div>
-                                </td>
-                                <td>₹100.00</td>
-                                <td>₹300.00</td>
-                                <td>
-                                    <a class="primary-btn update-btn">Add to cart</a>
-                                    <a class="primary-btn delete-btn">Delete</a>
-                                </td>
-                            </tr>
-                        </table>
-                        <!-- <div class="container mb-5">
+                        <tr>
+                            <td>
+                                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
+                                <div class="d-inline-block">Chocolate</div>
+                            </td>
+                            <td>₹100.00</td>
+                            <td>₹300.00</td>
+                            <td>
+                                <a class="primary-btn update-btn">Add to cart</a>
+                                <a class="primary-btn delete-btn">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
+                                <div class="d-inline-block">Chocolate</div>
+                            </td>
+                            <td>₹100.00</td>
+                            <td>₹300.00</td>
+                            <td>
+                                <a class="primary-btn update-btn">Add to cart</a>
+                                <a class="primary-btn delete-btn">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- <div class="container mb-5">
                             <div class="d-flex justify-content-end align-items-center cart-page mb-5">
                                 <button class="btn-msg">Move all to cart</button>
                             </div>
                         </div> -->
-                    </div>
                 </div>
             </div>
-            
         </div>
-    </div>
-    <div class="container ">
-        <footer class="py-5">
-            <!-- footer will be here -->
-        </footer>
-    </div>
 
-    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 h" id="exampleModalLabel">Update Address</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="" class="edit-profile form" onsubmit="return validateEditAddressForm();">
+    </div>
+</div>
+<div class="container ">
+    <footer class="py-5">
+        <!-- footer will be here -->
+    </footer>
+</div>
+
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 h" id="exampleModalLabel">Update Address</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" class="edit-profile form" onsubmit="return validateEditAddressForm();">
                 <div class="modal-body">
-                        <div class="row g-2">
-                            <div class="col-12">
-                                <label for="modalFirstName" class="form-label">First Name</label>
-                                <input type="text" class="w-100" placeholder="Your Name*" id="modalFirstName">
-                                <p id="modalFirstNameError" class="error"></p>
-                            </div>
-                            <div class="col-12">
-                                <label for="modalLastName" class="form-label">Last Name</label>
-                                <input type="text" class="w-100" placeholder="Your Last Name*" id="modalLastName">
-                                <p id="modalLastNameError" class="error"></p>
-                            </div>
-                            <div class="col-12">
-                                <label for="modalPhone" class="form-label">Phone</label>
-                                <input type="text" class="w-100" placeholder="Your Phone*" id="modalPhone">
-                                <p id="modalPhoneError" class="error"></p>
-                            </div>
-                            <div class="col-12">
-                                <label for="modalPinCode" class="form-label">Pin code</label>
-                                <input type="text" class="w-100" placeholder="Your Pin code*" id="modalPinCode">
-                                <p id="modalPinCodeError" class="error"></p>
-                            </div>
-                            <div class="col-12">
-                                <label for="modalAddress" class="form-label">Address</label>
-                                <textarea name="address" class="w-100" id="modalAddress" rows="3" placeholder="Your Address*"></textarea>
-                                <p id="modalAddressError" class="error"></p>
-                            </div>
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <label for="modalFirstName" class="form-label">First Name</label>
+                            <input type="text" class="w-100" placeholder="Your Name*" id="modalFirstName">
+                            <p id="modalFirstNameError" class="error"></p>
                         </div>
+                        <div class="col-12">
+                            <label for="modalLastName" class="form-label">Last Name</label>
+                            <input type="text" class="w-100" placeholder="Your Last Name*" id="modalLastName">
+                            <p id="modalLastNameError" class="error"></p>
+                        </div>
+                        <div class="col-12">
+                            <label for="modalPhone" class="form-label">Phone</label>
+                            <input type="text" class="w-100" placeholder="Your Phone*" id="modalPhone">
+                            <p id="modalPhoneError" class="error"></p>
+                        </div>
+                        <div class="col-12">
+                            <label for="modalPinCode" class="form-label">Pin code</label>
+                            <input type="text" class="w-100" placeholder="Your Pin code*" id="modalPinCode">
+                            <p id="modalPinCodeError" class="error"></p>
+                        </div>
+                        <div class="col-12">
+                            <label for="modalAddress" class="form-label">Address</label>
+                            <textarea name="address" class="w-100" id="modalAddress" rows="3" placeholder="Your Address*"></textarea>
+                            <p id="modalAddressError" class="error"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end gap">
@@ -244,18 +244,19 @@
                         <input class="primary-btn" type="submit" value="Edit Address">
                     </div>
                 </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 
 
 <?php include('footer.php'); ?>
 
-<?php 
-    function display_orders(){
-        for($i=1;$i<=5;$i++){
-            echo '
+<?php
+function display_orders()
+{
+    for ($i = 1; $i <= 5; $i++) {
+        echo '
             <tr>
                 <td>123</td>
                 <td>11-08-2024</td>
@@ -268,6 +269,43 @@
                 </td>
             </tr>
             ';
-        } 
     }
+}
+
+
+if (isset($_POST['btnUpdate'])) {
+
+    $ufnm = $_POST['ufname'];
+    $ulnm = $_POST['ulname'];
+    $umob = $_POST['uphone'];
+
+    $sql = "UPDATE user_details_tbl SET First_Name='$ufnm',Last_Name='$ulnm',Mobile_No='$umob' WHERE User_Id='$_SESSION[user_id]'";
+    if (mysqli_query($con, $sql)) {
+        setcookie('success', 'Your Details has been updated.', time() + 5, "/");
+        echo "<script> location.replace('account.php');</script>";
+    } else {
+        setcookie('error', 'Error in Update Profile.', time() + 5, "/");
+        echo "<script> location.replace('account.php');</script>";
+    }
+}
+
+if (isset($_POST['change'])) {
+    $curr = $_POST['current'];
+    $new = $_POST['new'];
+
+    if ($curr == $user['Password']) {
+        $sql = "UPDATE user_details_tbl SET Password='$new' WHERE User_Id='$_SESSION[user_id]'";
+        if (mysqli_query($con, $sql)) {
+            setcookie('success', 'Your Details has been updated.', time() + 5, "/");
+            echo "<script> location.replace('account.php');</script>";
+        } else {
+            setcookie('error', 'Error in Update Profile.', time() + 5, "/");
+            echo "<script> location.replace('account.php');</script>";
+        }
+    } else {
+        setcookie('error', 'Password does not matched.', time() + 5, "/");
+        echo "<script> location.replace('account.php');</script>";
+    }
+}
+
 ?>
