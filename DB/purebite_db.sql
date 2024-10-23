@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 20, 2024 at 06:12 AM
+-- Generation Time: Oct 22, 2024 at 03:53 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -117,6 +117,7 @@ INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
 (6, 1, 3),
 (7, 10, 1),
 (7, 1, 3),
+(7, 3, 8),
 (7, 2, 11);
 
 -- --------------------------------------------------------
@@ -127,32 +128,31 @@ INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
 
 CREATE TABLE `category_details_tbl` (
   `Category_Id` int NOT NULL,
-  `Category_Name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `Parent_Category_Id` int DEFAULT NULL
+  `Category_Name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category_details_tbl`
 --
 
-INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`, `Parent_Category_Id`) VALUES
-(11, 'Bakery', NULL),
-(12, 'Canned Goods', NULL),
-(13, 'Frozen Foods', NULL),
-(14, 'Snacks', NULL),
-(15, 'Beverages', NULL),
-(16, 'Condiments', NULL),
-(17, 'Grains and Pasta', NULL),
-(18, 'Seafood', NULL),
-(19, 'Spices and Herbs', NULL),
-(20, 'Oils and Fats', NULL),
-(21, 'Cereals', NULL),
-(22, 'Baking Supplies', NULL),
-(23, 'Household Items', NULL),
-(24, 'Personal Care', NULL),
-(25, 'Pet Supplies', NULL),
-(26, 'Health and Wellness', NULL),
-(27, 'Meat', NULL);
+INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`) VALUES
+(11, 'Bakery'),
+(12, 'Canned Goods'),
+(13, 'Frozen Foods'),
+(14, 'Snacks'),
+(15, 'Beverages'),
+(16, 'Condiments'),
+(17, 'Grains and Pasta'),
+(18, 'Seafood'),
+(19, 'Spices and Herbs'),
+(20, 'Oils and Fats'),
+(21, 'Cereals'),
+(22, 'Baking Supplies'),
+(23, 'Household Items'),
+(24, 'Personal Care'),
+(25, 'Pet Supplies'),
+(26, 'Health and Wellness'),
+(27, 'Meat');
 
 -- --------------------------------------------------------
 
@@ -192,10 +192,11 @@ CREATE TABLE `offer_details_tbl` (
 --
 
 INSERT INTO `offer_details_tbl` (`Offer_Id`, `Offer_Description`, `Discount`, `Minimum_Order`, `offer_type`, `active_status`) VALUES
-(2, 's', 11, 101.00, 1, 1),
+(2, 's', 10, 145.00, 1, 1),
 (3, 'sekvn', 12, NULL, 2, 0),
 (4, 'ksdvksdn', NULL, 10002.00, 3, 1),
-(7, 'p', 1, 1.00, 1, 1);
+(7, 'p', 15, 200.00, 1, 1),
+(8, '12', 20, 300.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -507,13 +508,13 @@ ALTER TABLE `banner_details_tbl`
 -- AUTO_INCREMENT for table `category_details_tbl`
 --
 ALTER TABLE `category_details_tbl`
-  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `offer_details_tbl`
 --
 ALTER TABLE `offer_details_tbl`
-  MODIFY `Offer_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Offer_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_header_tbl`
