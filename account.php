@@ -49,6 +49,16 @@
                                         <div id="userImageError" class="error-message"></div>
                                     </div>
                                 </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="" class="form-label d-block">Email</label>
+                                    <input type="text" class="w-100" placeholder="Your Email*" name="uemail" id="email" value="<?php echo $user['Email']; ?>" disabled>
+                                    <p id="emailError" class="error"></p>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="" class="form-label d-block">Phone</label>
+                                    <input type="text" class="w-100" placeholder="Your Phone*" name="uphone" id="phone" value="<?php echo $user['Mobile_No']; ?>" disabled>
+                                    <p id="phoneError" class="error"></p>
+                                </div>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <input type="submit" value="Update Profile" class="btn-msg mt-2 ">

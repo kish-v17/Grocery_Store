@@ -28,7 +28,7 @@ if (isset($_GET['user_id'])) {
             <div class="card-body">
                 <form id="updateUserForm" action="update-user.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddUserForm();">
                     <input type="hidden" name="user_id" id="userId" value="<?php echo $user['User_Id']; ?>">
-
+                    <input type="hidden" name="User_Image" value="<?php echo $user["Profile_Picture"]; ?>">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
