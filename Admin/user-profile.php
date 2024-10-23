@@ -13,7 +13,7 @@ $user_id = $_GET['user_id'];
 
         <!-- Fetching User Information -->
         <?php
-            $query = "SELECT * FROM user_details_tbl ";
+            $query = "SELECT * FROM user_details_tbl where User_Id=$user_id";
             $result = mysqli_query($con, $query);
             $user = mysqli_fetch_assoc($result);
             $status = $user['Active_Status']; // Get the user's active status

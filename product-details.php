@@ -6,6 +6,7 @@ $product_id = $_GET['product_id'];
 $query = "select product.Product_Id, product.Product_Name, product.Product_Image, product.Description, product.Sale_Price, round(product.Sale_Price-(product.Sale_Price*product.Discount/100),2) 'Price', count(Rating) as 'Review_Count', round(avg(Rating)) as 'Rating' from product_details_tbl as product left join review_details_tbl as review on product.Product_Id = review.Product_Id where product.Product_Id=".$_GET['product_id'];
 $result = mysqli_query($con,$query);
 $product = mysqli_fetch_assoc($result);
+// $category_id = $product[""]
 
 ?>
     <div class="container sitemap mt-5">
@@ -116,20 +117,20 @@ $product = mysqli_fetch_assoc($result);
        
         
 
-        <h4 class="mt-5 mb-4 text-center fw-bold">More from PureBite</h4>
+        <!-- <h4 class="mt-5 mb-4 text-center fw-bold">More from PureBite</h4>
         <div class="row justify-content-start">
             <?php
-                $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count'
-                FROM product_details_tbl AS product
-                LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id
-                LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id
-                WHERE product.is_active = 1
-                GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name,  product.Sale_Price
-                ";
-                $result = mysqli_query($con, $query);
-                include "php/products-list.php";
+                // $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count'
+                // FROM product_details_tbl AS product
+                // LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id
+                // LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id
+                // WHERE product.is_active = 1
+                // GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name,  product.Sale_Price
+                // ";
+                // $result = mysqli_query($con, $query);
+                // include "php/products-list.php";
             ?>
-        </div>
+        </div> -->
     </div>
 
 <?php 
@@ -164,7 +165,7 @@ $product = mysqli_fetch_assoc($result);
         while($review = mysqli_fetch_assoc($result)) {
             
             $rating = intval($review['Rating']); 
-            $review_text = htmlspecialchars($review['Review']);
+            $review_text = $review['Review'];
             $review_date = date('F j, Y', strtotime($review['Review_Date']));
             $stars = str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
             
@@ -175,7 +176,7 @@ $product = mysqli_fetch_assoc($result);
             <div class="col-md-6 mb-4">
             <div class="review-card  card h-100">
                 <div class="card-body">
-                    <h5 class="card-title">'. htmlspecialchars($user_name) .'</h5>
+                    <h5 class="card-title">'. $user_name .'</h5>
                     <h6 class="card-subtitle mb-2 text-warning">'. $stars .'</h6>
                     <p class="card-text">'. $review_text .'</p>
                     <p class="text-muted mb-0"><small>Posted on '. $review_date .'</small></p>

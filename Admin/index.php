@@ -76,7 +76,7 @@
                 <div class="card bg-danger text-white shadow">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
-                            <h5>Total Users</h5>
+                            <h5>Total Active Users</h5>
                             <h2><?php echo $total_users; ?></h2>
                         </div>
                         <i class="fas fa-users fa-2x"></i>
@@ -96,13 +96,14 @@
         <?php include "common/orders-table.php"; ?>
     </div>
 
-    <div class="card mb-4 p-2">
+    <!-- <div class="card mb-4 p-2">
         <div class="card-header d-flex justify-content-between">
             <h4>Recent Products</h4>
             <a href="products.php" class="btn btn-secondary">See All Products</a>
         </div>
-        <?php include "common/products-table.php"; ?>
-    </div>
+        <?php 
+        // include "common/products-table.php"; ?>
+    </div> -->
 </div>
 
 <?php include("footer.php"); ?>

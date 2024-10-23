@@ -1,4 +1,9 @@
-<?php include('header.php') ?>
+<?php include('header.php');
+    $user_id = $_SESSION["user_id"];
+    $query = "select * from user_details_tbl where User_Id=" . $user_id;
+    $result = mysqli_query($con,$query);
+    $user = mysqli_fetch_assoc($result);
+?>
     <div class="container ">
         <div class=" d-flex justify-content-between sitemap mt-5">
             <p><a href="index.php" class="text-decoration-none dim link">Home /</a> Account</p>
@@ -11,7 +16,7 @@
                 <div class="shadow-sm p-4 d-flex heading text-nowrap">
                     <ul class="d-flex flex-row flex-md-column gap-3 heading">
                         <li class="active menu-item js-account mb-0" data-id="my-profile">My Profile</li>
-                        <li class=" menu-item js-account mb-0" data-id="address-book">Address Book</li>
+                        <!-- <li class=" menu-item js-account mb-0" data-id="address-book">Address Book</li> -->
                         <li class="menu-item my-orders-main mb-0" data-id="all-orders">My Orders</li>
                         <li class="menu-item mb-0" data-id="my-wishlist">My Wishlist</li>
                     </ul>
@@ -21,47 +26,48 @@
                 <div class="shadow-sm p-4">
                     <div id="my-profile" class="invisible">
                         <p class="highlight title">Edit Your Profile</p>
-                        <form class="edit-profile form" onsubmit = "return validateMyAccountForm();">
+                        <form class="edit-profile form" onsubmit = "return validateMyAccountForm();" action="update-profile.php" method="post" enctype="multipart/form-data">
                             <div class="row g-2">
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">First Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Name*" id="firstName" value="Rixit">
+                                    <input type="text" class="w-100" name="firstName" placeholder="Your Name*" id="firstName" value="<?php echo $user["First_Name"]; ?>">
                                     <p id="firstNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="" class="form-label">Last Name</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*" id="lastName" value="Dobariya">
+                                    <input type="text" class="w-100" name="lastName" placeholder="Your Last name*" id="lastName" value="<?php echo $user["Last_Name"]; ?>">
                                     <p id="lastNameError" class="error"></p>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <label for="" class="form-label d-block">Email</label>
-                                    <input type="text" class="w-100" placeholder="Your Email*" id="email" value="rixitdoabariya05@gmail.com">
-                                    <p id="emailError" class="error"></p>
+                                    <img src="img/users/<?php echo $user["Profile_Picture"]; ?>" alt="" height="200" width="200">
+                                    <input type="hidden" name="old_image" value="<?php echo $user["Profile_Picture"]; ?>">
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <label for="" class="form-label d-block">Phone</label>
-                                    <input type="text" class="w-100" placeholder="Your Phone*" id="phone" value="87329 65892">
-                                    <p id="phoneError" class="error"></p>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="userImage" class="form-label">User Image</label>
+                                        <input type="file" class="form-control" id="userImage" name="user_image" accept="image/*">
+                                        <div id="userImageError" class="error-message"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <input type="submit" value="Update Profile" class="btn-msg mt-2 ">
                             </div>
                         </form>
-                        <form  class="edit-profile form" onsubmit="return validateChangePassword();">
+                        <form  class="edit-profile form" onsubmit="return validateChangePassword();" action="update-password.php">
                             <div class="row g-2">                            
                                 <div class="col-12">
                                     <label for="" class="form-label d-block">Password</label>
-                                    <input type="text" class="w-100 mb-2" placeholder="Current password" id="currentPassword">
+                                    <input type="text" name="current" class="w-100 mb-2" placeholder="Current password" id="currentPassword">
                                     <p id="currentPasswordError" class="error"></p>
-                                    <input type="text" class="w-100 mb-2" placeholder="New password" id="newPassword">
+                                    <input type="text" name="new" class="w-100 mb-2" placeholder="New password" id="newPassword">
                                     <p id="newPasswordError" class="error"></p>
-                                    <input type="text" class="w-100 mb-2" placeholder="Confirm password" id="confirmPassword">
+                                    <input type="text" name="confirm" class="w-100 mb-2" placeholder="Confirm password" id="confirmPassword">
                                     <p id="confirmPasswordError" class="error"></p>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <input type="submit" value="Change Password" class="btn-msg mt-2 ">
+                                <input type="submit" name="change" value="Change Password" class="btn-msg mt-2 ">
                             </div>
                         </form>
                     </div>

@@ -15,7 +15,8 @@ $query = "
     FROM review_details_tbl r
     JOIN product_details_tbl p ON r.Product_Id = p.Product_Id
     JOIN user_details_tbl u ON r.User_Id = u.User_Id
-    left join review_details_tbl r1 on r.Review_Id = r1.Reply_To 
+    left join review_details_tbl r1 on r.Review_Id = r1.Reply_To
+    where p.is_active=1
     $search_query
 ";
 

@@ -26,7 +26,39 @@ $result = mysqli_query($con, $query);
     <?php
     include "filter.php";
     ?>
-    <?php include "php/products-list.php"; ?>
+    <?php 
+    $result = mysqli_query($con, $query);
+    $total_records = mysqli_num_rows($result);
+    
+    $records_per_page = 8;
+    $total_pages = ceil($total_records / $records_per_page);
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start_from = ($page - 1) * $records_per_page;
+    
+    $query .= " LIMIT $start_from, $records_per_page ";
+    $result = mysqli_query($con, $query);
+    $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
+    $wishlist_result = mysqli_query($con,$query);
+        
+    include "php/products-list.php"; ?>
+    <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                
+                <?php 
+                    if ($page > 1) {
+                        echo "<li class='page-item'><a class='page-link' href='?page=".($page - 1)."'>Previous</a></li>";
+                    }
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "'>" . $i . "</a></li>";
+                    }
+                    if ($page < $total_pages) {
+                        echo "<li class='page-item'><a class='page-link' href='?page=".($page + 1)."'>Next</a></li>";
+                    }
+                ?>
+            </ul>
+        </nav>
+    </div> 
     
 </div>
 <?php include('footer.php'); ?>

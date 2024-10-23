@@ -193,6 +193,7 @@ function validateChangePassword(){
     } else {
         confirmPasswordError.innerText = '';
     }
+    return isValid;
     
 }
 function validateMyAccountForm() {
@@ -200,10 +201,6 @@ function validateMyAccountForm() {
     const firstNameError = document.getElementById('firstNameError');
     const lastNameInput = document.getElementById('lastName');
     const lastNameError = document.getElementById('lastNameError');
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('emailError');
-    const phoneInput = document.getElementById('phone');
-    const phoneError = document.getElementById('phoneError');
 
     let isValid = true;
 
@@ -235,33 +232,6 @@ function validateMyAccountForm() {
         lastNameError.innerText = '';
     }
 
-
-    const emailValue = emailInput.value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailValue) {
-        emailError.innerText = 'Email is required.';
-        isValid = false;
-    } else if (!emailPattern.test(emailValue)) {
-        emailError.innerText = 'Invalid email format.';
-        isValid = false;
-    } else if (emailValue.length > 100) {
-        emailError.innerText = 'Email cannot exceed 100 characters.';
-        isValid = false;
-    } else {
-        emailError.innerText = ''; 
-    }
-
-    const phoneValue = phoneInput.value.trim();
-    const phonePattern = /^\d{10}$/; 
-    if (!phoneValue) {
-        phoneError.innerText = 'Phone number is required.';
-        isValid = false;
-    } else if (!phonePattern.test(phoneValue)) {
-        phoneError.innerText = 'Phone number must be 10 digits.';
-        isValid = false;
-    } else {
-        phoneError.innerText = ''; 
-    }
 
     return isValid;
 }

@@ -12,7 +12,8 @@
                 </div>
                 <a class="btn btn-primary text-nowrap" href="add-product.php">Add Product</a>
             </div>
-            <?php include "common/products-table.php"; ?>
+            <?php 
+            include "common/products-table.php"; ?>
         </div>
     </main>
 <?php include("footer.php");
