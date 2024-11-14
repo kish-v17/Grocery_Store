@@ -65,7 +65,7 @@
                                 <input type="submit" value="Update Profile" class="btn-msg mt-2 ">
                             </div>
                         </form>
-                        <form  class="edit-profile form" onsubmit="return validateChangePassword();" action="update-password.php">
+                        <form  class="edit-profile form" onsubmit="return validateChangePassword();" action="update-password.php" method="post">
                             <div class="row g-2">                            
                                 <div class="col-12">
                                     <label for="" class="form-label d-block">Password</label>

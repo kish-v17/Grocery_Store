@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 22, 2024 at 03:53 PM
+-- Generation Time: Oct 23, 2024 at 05:08 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -95,7 +95,7 @@ INSERT INTO `banner_details_tbl` (`Banner_Id`, `Banner_Image`, `View_Order`, `Ac
 (8, '670e9ef3dbc07banner 1.png', 1, 1),
 (9, '670ea91823ea4banner-1.png', -1, 1),
 (10, '670ea92192b5bbanner-2.png', -2, 1),
-(11, '670f5e453caf9black_friday_facebook_banner_02.jpg', 2, 1);
+(11, '670f5e453caf9black_friday_facebook_banner_02.jpg', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +114,7 @@ CREATE TABLE `cart_details_tbl` (
 --
 
 INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
-(6, 1, 3),
+(6, 2, 3),
 (7, 10, 1),
 (7, 1, 3),
 (7, 3, 8),
@@ -136,23 +136,9 @@ CREATE TABLE `category_details_tbl` (
 --
 
 INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`) VALUES
-(11, 'Bakery'),
-(12, 'Canned Goods'),
-(13, 'Frozen Foods'),
-(14, 'Snacks'),
-(15, 'Beverages'),
-(16, 'Condiments'),
-(17, 'Grains and Pasta'),
-(18, 'Seafood'),
-(19, 'Spices and Herbs'),
-(20, 'Oils and Fats'),
-(21, 'Cereals'),
-(22, 'Baking Supplies'),
-(23, 'Household Items'),
-(24, 'Personal Care'),
-(25, 'Pet Supplies'),
-(26, 'Health and Wellness'),
-(27, 'Meat');
+(1, 'Snacks'),
+(2, 'Vegetables'),
+(3, 'Fruits');
 
 -- --------------------------------------------------------
 
@@ -192,11 +178,11 @@ CREATE TABLE `offer_details_tbl` (
 --
 
 INSERT INTO `offer_details_tbl` (`Offer_Id`, `Offer_Description`, `Discount`, `Minimum_Order`, `offer_type`, `active_status`) VALUES
-(2, 's', 10, 145.00, 1, 1),
-(3, 'sekvn', 12, NULL, 2, 0),
-(4, 'ksdvksdn', NULL, 10002.00, 3, 1),
-(7, 'p', 15, 200.00, 1, 1),
-(8, '12', 20, 300.00, 1, 1);
+(2, '10% Discount on orders above ₹145', 10, 145.00, 1, 1),
+(3, 'First purchase discount', 12, NULL, 2, 1),
+(4, 'Free shipping offer', NULL, 10002.00, 3, 1),
+(7, '15% Discount on orders above ₹200', 15, 200.00, 1, 1),
+(8, '20% Discount on orders above ₹300', 20, 300.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -245,10 +231,6 @@ CREATE TABLE `order_header_tbl` (
 --
 
 INSERT INTO `order_header_tbl` (`Order_Id`, `User_Id`, `Order_Date`, `Order_Status`, `Billing_Address_Id`, `Shipping_Address_Id`, `Shipping_Charge`, `Total`, `Payment_Mode`) VALUES
-(1, 1, '2004-02-10 00:00:00', 'Pending', 3, 3, 0, 0, 'Cash on Delivery'),
-(2, 1, '2004-02-10 00:00:00', 'Pending', 4, 4, 0, 0, 'Cash on Delivery'),
-(3, 1, '2004-02-10 00:00:00', 'Pending', 5, 5, 0, 0, 'Cash on Delivery'),
-(4, 1, '2004-02-10 00:00:00', 'Pending', 6, 6, 0, 0, 'Cash on Delivery'),
 (7, 1, '2004-02-10 00:00:00', 'Delivered', 9, 9, 0, 1905, 'Cash on Delivery'),
 (8, 1, '2003-02-10 00:00:00', 'Pending', 10, 10, 0, 900, 'Cash on Delivery'),
 (10, 1, '2004-02-10 00:00:00', 'Pending', 12, 12, 50, 4070, 'Cash on Delivery');
@@ -278,8 +260,22 @@ CREATE TABLE `product_details_tbl` (
 
 INSERT INTO `product_details_tbl` (`Product_Id`, `Category_Id`, `Product_Name`, `Description`, `Product_Image`, `Sale_Price`, `Cost_Price`, `Discount`, `stock`, `is_active`) VALUES
 (5, 12, 'Apple', 'Crunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCruappleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh apple', '670a3f3b9ac92_shopping.webp', 100.00, 150.00, 10, 0, 0),
-(6, 22, 'Chocolate 3', 'Chocolate is adsvjn', '670f1da018b71_chocolate2.webp', 180.00, 170.00, 15, 140, 1),
-(7, 23, 'Artisanal Candles', 'These candles can come in various scents, shapes, and sizes, offering customers a unique, handcrafted feel. They’re popular for home decor, gifting, and relaxation, aligning with the growing trend of self-care and wellness products. Plus, they can be made with natural ingredients, which appeals to eco-conscious consumers.', '670a3f18f1b02shopping.webp', 120.00, 100.00, 5, 100, 1);
+(6, 1, 'Chocolate', 'Dairy milk chocolate', '670f1da018b71_chocolate2.webp', 50.00, 70.00, 15, 140, 1),
+(7, 23, 'Artisanal Candles', 'These candles can come in various scents, shapes, and sizes, offering customers a unique, handcrafted feel. They’re popular for home decor, gifting, and relaxation, aligning with the growing trend of self-care and wellness products. Plus, they can be made with natural ingredients, which appeals to eco-conscious consumers.', '670a3f18f1b02shopping.webp', 120.00, 100.00, 5, 100, 0),
+(8, 2, 'Ladies Fingers (Loose), 1 kg', 'Ladies Fingers is a green vegetable with a tip at the end and a lighter green head, which is inedible and to be thrown away. It tastes mild and slightly grassy. Ladies Fingers or okra is a popular vegetable that is nutritious and has a high fibre content. It contains both soluble as well as insoluble fibres and is used in various recipes.', '6718683989c3310000142_18-fresho-ladies-finger.webp', 20.00, 30.00, 48, 100, 1),
+(9, 2, 'Beans - Haricot (Loose), 1 kg', 'Haricot beans are small, oval, plump and creamy-white with a mild flavour and a smooth, buttery texture.\r\nBenefits\r\n\r\nHaricot beans are great for metabolism and regulation of the sugar level of blood.\r\nThey support the adrenal regulation function and provide an excellent source of protein and fibre.', '671868766c77240089741_3-fresho-beans-haricot.webp', 20.00, 30.00, 15, 100, 1),
+(10, 2, 'Brinjal - Bottle Shape (Loose), 1 kg', 'Deep purple and oval shaped bottle brinjals are glossy skinned vegetables with a white and have a soft flesh.\r\nDo not forget to check our delicious recipe - https://www.bigbasket.com/cookbook/recipes/133/baingan-bharta/\r\n', '671868aa4402510000053_19-fresho-brinjal-bottle-shape.webp', 50.00, 30.00, 15, 100, 1),
+(11, 2, 'Beans - Broad (Loose), 500 g', 'Broad beans, also known as fava beans, are a versatile and nutritious legume popular in many cuisines. These beans have a firm texture and a slightly sweet, earthy flavour, making them a favourite in both fresh and dried forms. Broad beans are commonly used in Mediterranean, Middle Eastern dishes, often featured in stews, salads, and dips.', '671868e72a86410000038_21-fresho-beans-broad.webp', 20.00, 10.00, 15, 100, 1),
+(12, 2, 'Carrot Strips and Beans Strip, 200 g', 'These beans and carrots have been chopped thinly into short strips for using in a variety of quick recipes. They are used in curries, soups, stir-fry with rice, noodles and salads.\r\nTry out this recipe at home - https://www.bigbasket.com/flavors/collections/222/ready-to-cook-vegetable-pack-recipes/\r\nProduct image shown is for representation purpose only, the actually product may vary based on season, produce & availability.', '671869110dad440010013_4-fresho-carrot-strips-and-beans-strip.webp', 20.00, 10.00, 15, 100, 1),
+(13, 2, 'Orange 2 kg', 'Oranges are a favourite snack for many people. They can be eaten out-of-hand or used as a garnish. Besides orange juices, which are very popular worldwide, there are many other culinary uses of oranges. Oranges can be made into jams, marmalades, and preserves with the addition of sugar. ', '671869a11802eorange-1-kg-product-images-o590000449-p590034326-0-202203170713.webp', 120.00, 100.00, 10, 100, 1),
+(14, 3, 'Apple Shimla 1 kg', 'Shimla Apple is a crisp, deliciously sweet or tart, and aromatic fruit which is indigenous to India. Looking for small to medium-sized culinary apples? The Shimla Apple might be just what you are after! Perfect for baking, cooking, and snacking, the Shimla Apple is not only versatile but also very tasty. ', '671869dc0fdb7apple-shimla-1-kg-product-images-o590000009-p590032630-0-202410011654.webp', 100.00, 90.00, 10, 100, 1),
+(15, 3, 'Tender Coconut Cling Wrapped (1 pc) ', 'Taste the deliciously refreshing and light liquid Coconut Water, inside the coir sac of a green coconut. Coconut water inside the coir sac is white in colour with a distinct hint of sweetness to it, like fresh natural spring water.', '67186b0b0d362_download.jfif', 50.00, 80.00, 15, 100, 1),
+(16, 3, 'Papaya (Each) ', 'Papaya is a fruit that has a vibrant colour, a cream-like texture, and a sweet and exquisite taste. They are also known as Papaws or Pawpaws. It has an exotic flavour that tastes like a cross between a mango and a cantaloupe with a mixture of citrus and butter.', '67186a582c7bdpapaya-each-approx-800-g-1600-g-product-images-o590001247-p590001247-0-202409041925 (1).webp', 80.00, 50.00, 10, 100, 1),
+(17, 3, 'Banana MRL Pack 5 pcs (Approx. 600 g-700 g)', 'The banana may be a simple fruit, but it iss surprisingly versatile. The process of eating a banana is relatively simple. Buy it, peel it, and eat it- but there is so much more to it than that! ', '67186a83efeaabanana-mrl-pack-5-pcs-approx-600-g-700-g-product-images-o590008622-p590804206-0-202408070949.webp', 50.00, 30.00, 10, 100, 1),
+(18, 1, 'Haldiram Namkeen - Moong Dal, 6x30 g Multipack', 'Haldirams Namkeen - Moong Dal', '67186aec3c6d71203930_1-haldirams-namkeen-moong-dal (1).webp', 60.00, 50.00, 10, 100, 1),
+(19, 1, 'Lite Chiwda, 6x57 g Multipack', 'Namkeen - Lite Chiwda', '67186b4bb30f91203981_1-haldirams-namkeen-lite-chiwda.webp', 60.00, 50.00, 10, 100, 1),
+(20, 1, 'GRB Butter Murukku, 500 g Pouch', 'Town Bus Butter Murukku offers a delightful blend of nostalgia and flavour. Crafted from authentic recipes and the freshest ingredients, it evokes memories of unforgettable journeys. Each bite is a journey through time, resonating with the essence of traditional South Indian snacks. Let the taste transport you to a bygone era, filled with warmth, nostalgia, and the rich culinary heritage.', '67186b789e95a900457130_1-grb-butter-murukku.webp', 60.00, 50.00, 10, 100, 1),
+(21, 1, 'Townbus Namkeen - Kodubale, 135 g', 'Townbus Savoury Snacks are made by combining the freshest of ingredients with a traditional recipie. These authentic snacks will take you down memory lane and remind you of the traditional snacks your grandma used to make with love. Townbus namkeens are perfect to relish with your evening tea or coffee. They can also be used in chaat for added flavour or to customise it as per your liking. Townbus every bite has a story.', '67186b9b560ea40123675_5-townbus-namkeen-kodubale.webp', 60.00, 50.00, 10, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -301,33 +297,12 @@ CREATE TABLE `responses_tbl` (
 --
 
 INSERT INTO `responses_tbl` (`Response_Id`, `Name`, `Email`, `Phone`, `Message`, `Reply`) VALUES
-(5, 'Rixit Dobaeriya', 'rixitdobariya05@gmail.com', '08732965892', 'jk vvns', 'HUh'),
-(7, 'Grace Lee', 'grace.lee@example.com', '7890123456', 'This is Grace, and I need assistance.', 'HuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuhHuh'),
-(8, 'Henry Walker', 'henry.walker@example.com', '8901234567', 'Looking forward to your reply.', NULL),
-(9, 'Ivy Martin', 'ivy.martin@example.com', '9012345678', 'This is a message from Ivy.', NULL),
-(10, 'Jack Turner', 'jack.turner@example.com', '0123456789', 'I have an inquiry about your services.', NULL),
-(11, 'Kathy Perez', 'kathy.perez@example.com', '1234567891', 'Hi, I would like to get in touch.', NULL),
-(12, 'Leo Scott', 'leo.scott@example.com', '2345678902', 'Could you send me more information?', NULL),
-(13, 'Mona Green', 'mona.green@example.com', '3456789013', 'This is a test message.', NULL),
-(14, 'Nina Rodriguez', 'nina.rodriguez@example.com', '4567890124', 'Hello, I have some questions.', NULL),
-(15, 'Oliver White', 'oliver.white@example.com', '5678901235', 'I would appreciate your help.', NULL),
-(16, 'Paula Harris', 'paula.harris@example.com', '6789012346', 'Looking for more details about the service.', NULL),
-(17, 'Quinn Clark', 'quinn.clark@example.com', '7890123457', 'This is a follow-up message.', NULL),
-(18, 'Rita Lewis', 'rita.lewis@example.com', '8901234568', 'Please contact me regarding my inquiry.', NULL),
-(19, 'Steve Hall', 'steve.hall@example.com', '9012345679', 'I need further clarification on this matter.', NULL),
-(20, 'Tina Allen', 'tina.allen@example.com', '0123456780', 'This is Tina, looking forward to your response.', NULL),
-(21, 'Eva Adams', 'eva.adams@example.com', '5678901234', 'Hi, I am interested in your product.', NULL),
-(22, 'David Wilson', 'david.wilson@example.com', '4567890123', 'This is David, and I have a question.', NULL),
-(23, 'Charlie Brown', 'charlie.brown@example.com', '3456789012', 'I would like to know more about your services.', NULL),
-(24, 'Bob Smith', 'bob.smith@example.com', '2345678901', 'Hello, this is Bob.', NULL),
-(25, 'Alice Johnson', 'alice.johnson@example.com', '1234567890', 'This is a test message from Alice.', NULL),
-(26, 'Frank Thompson', 'frank.thompson@example.com', '6789012345', 'Could you provide more details?', NULL),
-(27, '', '', '', '', NULL),
-(28, '', '', '', '', NULL),
-(29, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'djnsdj', NULL),
-(30, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'ksdvkl', NULL),
-(31, 'Rixit Dobaeriya', 'rdobariya@rku.ac.in', '8732965892', 'sdklvn', NULL),
-(32, 'Dobariya Rixit', 'rdobariya@rku.ac.in', '8732965892', 'kdvksdn', NULL);
+(5, 'Rixit Dobaeriya', 'rixitdobariya05@gmail.com', '08732965892', 'Activate my ID', 'Ok'),
+(7, 'Grace Lee', 'rixitdobariya05@gmail.com', '7890123456', 'Add some more categories', 'We will do that soon'),
+(8, 'Henry Walker', 'rdobariya283@rku.ac.in', '8901234567', 'Looking forward to your reply.', NULL),
+(9, 'Ivy Martin', 'rdobariya283@rku.ac.in', '9012345678', 'This is a message from Ivy.', NULL),
+(10, 'Jack Turner', 'harshilhirani576@gmail.com', '0123456789', 'I have an inquiry about your services.', NULL),
+(11, 'Kathy Perez', 'harshilhirani576@gmail.com', '1234567891', 'Hi, I would like to get in touch.', NULL);
 
 -- --------------------------------------------------------
 
@@ -369,7 +344,8 @@ INSERT INTO `review_details_tbl` (`Review_Id`, `Reply_To`, `Product_Id`, `User_I
 (30, 8, NULL, 1, NULL, 'done', '2024-10-12 20:00:57'),
 (31, 9, NULL, 1, NULL, 'haha', '2024-10-12 23:14:41'),
 (32, 9, NULL, 1, NULL, 'haha', '2024-10-12 23:14:50'),
-(33, 10, NULL, 1, NULL, 'ahah', '2024-10-12 23:15:48');
+(33, 10, NULL, 1, NULL, 'ahah', '2024-10-12 23:15:48'),
+(35, 13, NULL, 3, NULL, 'Thanks!', '2024-10-23 10:08:01');
 
 -- --------------------------------------------------------
 
@@ -394,12 +370,11 @@ CREATE TABLE `user_details_tbl` (
 --
 
 INSERT INTO `user_details_tbl` (`User_Id`, `User_Role_Id`, `First_Name`, `Last_Name`, `Password`, `Email`, `Mobile_No`, `Active_Status`, `Profile_Picture`) VALUES
-(1, 0, 'Rixi', 'Dobariya', 'Tpxitachi', 'rixitdobariya@rku.ac.in', '8732965891', 1, '6713a953ddd56_journalism.jpg'),
-(2, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 0, 'default-img.png'),
-(3, 0, 'Itachi', 'Uchiha', 'ANUJ@111', 'itachi.uchiha@gmail.com', '9999999999', 1, 'default-img.png'),
+(1, 0, 'Rixit', 'Dobariya', 'Tpxitachi', 'rixitdobariya283@rku.ac.in', '8732965891', 1, 'default-img.png'),
+(2, 0, 'Anuj', 'Jivani', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 1, 'default-img.png'),
 (8, 0, 'Dobariya', 'Rixit', 'Tpxitachi', 'rixitdobariya00@gmail.com', '8732965892', 1, 'default-img.png'),
-(11, 1, 'Dobariya', 'Rixit', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1, 'default-img.png'),
-(12, 0, 'Rixit', 'Dobaeriya', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 1, '6713b0e5dbf88_default-img.png');
+(11, 0, 'Rixit', 'Dobariya', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1, 'default-img.png'),
+(13, 1, 'Harshil', 'Hirani', 'Harshil@786', 'harshilhirani576@gmail.com', '9737074939', 1, 'default-img.png');
 
 -- --------------------------------------------------------
 
@@ -508,7 +483,7 @@ ALTER TABLE `banner_details_tbl`
 -- AUTO_INCREMENT for table `category_details_tbl`
 --
 ALTER TABLE `category_details_tbl`
-  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `offer_details_tbl`
@@ -526,7 +501,7 @@ ALTER TABLE `order_header_tbl`
 -- AUTO_INCREMENT for table `product_details_tbl`
 --
 ALTER TABLE `product_details_tbl`
-  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `responses_tbl`
@@ -538,13 +513,13 @@ ALTER TABLE `responses_tbl`
 -- AUTO_INCREMENT for table `review_details_tbl`
 --
 ALTER TABLE `review_details_tbl`
-  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `Review_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user_details_tbl`
 --
 ALTER TABLE `user_details_tbl`
-  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
