@@ -11,7 +11,8 @@ include 'DB/connection.php';
         $image = uniqid() . "_" . $new_image;
         move_uploaded_file($_FILES['user_image']['tmp_name'], "img/users/" . $image);
         if (!empty($old_image) && file_exists("img/users/" . $old_image)) {
-            unlink("img/users/" . $old_image);
+            if($old_image!='default-img.png')
+                unlink("img/users/" . $old_image);
         }
     } else {
         $image = $old_image;

@@ -1,10 +1,10 @@
 <?php
 include('DB/connection.php');
-if(isset($_SESSION["user_id"]) && $_SESSION['role']!="user")
+if(isset($_SESSION["user_id"]) && $_SESSION['role']=="admin")
 {
     echo "<script>
-    window.location.href = 'Admin';
-</script>";
+        window.location.href = 'Admin';
+    </script>";
 }
 error_reporting(1);
 $backtrace = debug_backtrace();

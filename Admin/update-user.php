@@ -93,7 +93,7 @@ if (isset($_POST["update-user"])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
-    $old_image = $user['User_Image'];
+    $old_image = $_POST['User_Image'];
     $new_image = $_FILES['user_image']['name'];
 
     if ($new_image) {

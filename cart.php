@@ -95,7 +95,6 @@ $result = mysqli_query($con,$query);
 </div>
 <?php
     $discount_content = "";
-    //offer available for all
     $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1 order by Minimum_Order";
     $result = mysqli_query($con, $query);
     
@@ -113,7 +112,7 @@ $result = mysqli_query($con,$query);
                     <div class="price">₹'. $total*$discount/100 .'</div>
                 </div>';
     if(is_first_order($con)){
-        $query = "SELECT `Discount` FROM `offer_details_tbl` WHERE `offer_type`=2 and `active_status`=1";
+        $query = "SELECT `Discount` FROM `offer_details_tbl` WHERE `offer_type`=2";
         $result = mysqli_query($con, $query);
         $array = mysqli_fetch_array($result);
         $first_order_discount = $array[0];
@@ -139,7 +138,7 @@ $result = mysqli_query($con,$query);
                 <h5 class="mb-3">Cart Total</h5>
                 <div class="d-flex align-items-center p-2">
                     <div>Subtotal:</div>
-                    <div class="price">₹200.00</div>
+                    <div class="price">₹<?php echo $total; ?></div>
                 </div>
                 <div class="my-2 line"></div>
                 <div class="d-flex align-items-center p-2">
