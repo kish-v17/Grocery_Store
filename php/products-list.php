@@ -12,7 +12,7 @@
                             <a href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
                                 <img class="img-thumbnail p-4" style="height:300px;" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">
                             </a>
-                            <a href="wishlist.php?product_id=<?php echo $product["Product_Id"]; ?>" class="like text-decoration-none"><i class="<?php $wishlist['User_Id']==""?'fa-regular':'fa-solid'; ?> fa-heart"></i></a>
+                            <a href="wishlist.php?product_id=<?php echo $product["Product_Id"]; ?>" class="like text-decoration-none"><i class="<?php $wishlist['User_Id']==""?'fa-regular':'fa-solid'; ?>fa-regular fa-heart"></i></a>
                             <div class="label">Save <?php echo $product["Discount"]; ?>%</div>
                         </div>
                         <div class="card-body product-body px-3">

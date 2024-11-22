@@ -1,15 +1,10 @@
 <?php 
     include "../DB/connection.php";
-if(!isset($_SESSION["user_id"]) &&  $_SESSION['user_role']!="admin"){
-    echo "<script>
-        window.location.href = '../login.php';
-    </script>";
-}
-if ( $_SESSION['user_role']!="admin") {
-    echo "<script>
-        history.back();
-    </script>";
-}
+// if($_SESSION['user_role']!="admin"){
+//     echo "<script>
+//         window.location.href = '../login.php';
+//     </script>";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

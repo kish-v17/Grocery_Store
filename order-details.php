@@ -1,4 +1,11 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); 
+    $query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, 
+    u.First_Name, u.Last_Name, u.Mobile_No, u.Email, oh.Payment_Mode, oh.Shipping_Address_Id, oh.Billing_Address_Id
+    from order_header_tbl oh right join user_details_tbl u on oh.User_Id = u.User_Id 
+    where u.User_Id = ". $_SESSION["user_id"];
+    $result = mysqli_query($con, $query);
+    $order = mysqli_fetch_assoc($result);
+?>
 
 <div class="container sitemap">
     <p class="my-5">
@@ -8,12 +15,12 @@
     </p>
     <div class="row order-border p-3 mb-4 m-1">
         <div class="col-6">
-            <h4 class="mb-2">Order# 123456</h4>
+            <h4 class="mb-2">Order# <?php echo $order["Order_Id"]; ?></h4>
             <div class="order-status mb-3">
-                Pending
+            <?php echo $order["Order_Status"]; ?>
             </div>
             <div class="order-date">
-                Placed on: 11/08/2024, 06:49 PM
+                Placed on: <?php echo $order["Order_Date"]; ?>
             </div>
         </div>
         <div class="col-6 d-flex justify-content-end align-items-start">
@@ -39,43 +46,56 @@
                         <p>:</p>
                     </div>
                     <div class="col-7">
-                        <p>Tony Stark</p>
-                        <p>+91 99099 99099</p>
-                        <p>tony.stark@gmail.com</p>
-                        <p>Cash on delivery</p>
+                        <p><?php echo $order["First_Name"] . $order["Last_Name"]; ?></p>
+                        <p>+91 <?php echo $order["Mobile_No"]?></p>
+                        <p class="text-break"><?php echo $order["Email"]; ?></p>
+                        <p><?php echo $order["Payment_Mode"]; ?></p>
                     </div>
                 </div>
 
             </div>
         </div>
+        <?php
+            $query = "select * from address_details_tbl where Address_Id=". $order["Shipping_Address_Id"];
+            $result = mysqli_query($con, $query);
+            $shipping_address = mysqli_fetch_assoc($result);
+        ?>
         <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Shipping Address</h5>
                 <address class="address-book">
-                    <p>Tony Stark</p>
-                    <p> Street: 56 Lotus Avenue</p>
-                    <p> City: New Delhi</p>
-                    <p> State/Province full: Delhi</p>
-                    <p> Zip Code/Postal code: 110001</p>
-                    <p> Phone Number: +91 98101 23456</p>
+                    <p><?php echo $shipping_address["Full_Name"]; ?></p>
+                    <p> Street: <?php echo $shipping_address["Address"]; ?></p>
+                    <p> City: <?php echo $shipping_address["City"]; ?></p>
+                    <p> State:<?php echo $shipping_address["State"]; ?></p>
+                    <p> Pin code: <?php echo $shipping_address["Pincode"]; ?></p>
+                    <p> Phone Number: +91 <?php echo $shipping_address["Phone"]; ?></p>
                 </address>
             </div>
         </div>
+        <?php
+            $query = "select * from address_details_tbl where Address_Id=". $order["Billing_Address_Id"];
+            $result = mysqli_query($con, $query);
+            $billing_address = mysqli_fetch_assoc($result);
+        ?>
         <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Billing Address</h5>
 
                 <address class="address-book">
-                    <p>Tony Stark</p>
-                    <p> Street: 56 Lotus Avenue</p>
-                    <p> City: New Delhi</p>
-                    <p> State/Province full: Delhi</p>
-                    <p> Zip Code/Postal code: 110001</p>
-                    <p> Phone Number: +91 98101 23456</p>
+                <p><?php echo $billing_address["Full_Name"]; ?></p>
+                    <p> Street: <?php echo $billing_address["Address"]; ?></p>
+                    <p> City: <?php echo $billing_address["City"]; ?></p>
+                    <p> State:<?php echo $billing_address["State"]; ?></p>
+                    <p> Pin code: <?php echo $billing_address["Pincode"]; ?></p>
+                    <p> Phone Number: +91 <?php echo $billing_address["Phone"]; ?></p>
                 </address>
             </div>
         </div>
     </div>
+    <?php 
+        
+    ?>
     <div class="row order-border py-4 mb-4 order-item-list m-1 m-md-0 cart-table">
         <h5 class="mb-3">Items ordered</h5>
         <div class="row py-3 order-item-list-header mx-0 my-2 text-nowrap">

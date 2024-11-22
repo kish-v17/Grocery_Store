@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 23, 2024 at 05:08 AM
+-- Generation Time: Nov 22, 2024 at 07:23 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -37,7 +37,7 @@ CREATE TABLE `about_page_details_tbl` (
 --
 
 INSERT INTO `about_page_details_tbl` (`ID`, `Content`) VALUES
-(2, '<h2 class=\"my-4\">About PureBite</h2>\r\n            <p class=\"lead\">Welcome to PureBite, your trusted neighborhood grocery store where quality meets\r\n                convenience. Born out of a passion for fresh, wholesome food, PureBite was founded with a simple\r\n                mission: to provide our community with the finest groceries, sourced responsibly and delivered\r\n                with care. From the beginning, we’ve been committed to creating a shopping experience that not\r\n                only meets your needs but also enhances your lifestyle.</p>\r\n\r\n            <h3 class=\"mt-5\">What We Offer</h3>\r\n            <p>At PureBite, we believe in the power of choice. That\'s why our shelves are stocked with a diverse\r\n                range of products, from locally sourced organic produce to global culinary delights. Whether\r\n                you\'re shopping for everyday essentials or looking to discover something new, our curated\r\n                selection of groceries ensures you’ll find exactly what you need.</p>\r\n\r\n            <ul>\r\n                <li><strong>Fresh Produce:</strong> Hand-picked fruits and vegetables delivered daily to ensure\r\n                    the highest quality.</li>\r\n                <li><strong>Organic & Natural:</strong> A wide variety of organic, non-GMO, and health-conscious\r\n                    options.</li>\r\n                <li><strong>Specialty Items:</strong> International foods, artisanal products, and gourmet\r\n                    ingredients for your culinary adventures.</li>\r\n                <li><strong>Pantry Staples:</strong> A reliable selection of the essentials you need every day.\r\n                </li>\r\n                <li><strong>Sustainable Choices:</strong> Eco-friendly products that support a greener planet.\r\n                </li>\r\n            </ul>\r\n\r\n            <h3 class=\"mt-5\">Our Commitment</h3>\r\n            <p>At PureBite, we’re more than just a grocery store. We’re a part of the community. Our commitment\r\n                extends beyond providing great products; we aim to create a positive impact on our environment\r\n                and the people around us. From reducing waste with sustainable practices to supporting local\r\n                farmers and producers, we strive to make a difference with every bite.</p>\r\n\r\n            <h3 class=\"mt-5\">Why Choose Us?</h3>\r\n            <p>Shopping at PureBite means more than just filling your pantry. It’s about making informed,\r\n                mindful choices that contribute to a healthier lifestyle and a sustainable future. Our\r\n                knowledgeable and friendly staff are always here to help you find the best products for your\r\n                needs, whether you’re looking for specific dietary options or just need a recommendation for\r\n                dinner tonight.</p>\r\n\r\n            <h3 class=\"mt-5\">Join the PureBite Family</h3>\r\n            <p>We’re proud to serve our community, and we invite you to join the PureBite family. Whether you\r\n                visit us in-store or shop online, you’ll experience the same dedication to quality and service\r\n                that has made us a trusted name in groceries. Come and discover why PureBite is more than just a\r\n                grocery store – it’s where you can feel good about what you eat and how you shop.</p>');
+(2, '<p>about Purebite</p>');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,23 @@ INSERT INTO `address_details_tbl` (`Address_Id`, `User_Id`, `Full_Name`, `Addres
 (9, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
 (10, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
 (11, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
-(12, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892');
+(12, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(13, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(14, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(15, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(16, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabra', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(17, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabrasdvsdvsdv', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(18, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabrafdvsdvs', 'Amreli', 'GUJARAT', 365421, '9909988088'),
+(19, 1, 'Rixit Dobaeriya', 'Addresssdvsdvsd', 'Surat', 'Gujarat', 365421, '1111111111'),
+(20, 1, 'Rixit Dobaeriya', 'Addresssdvsdvsd', 'Surat', 'Gujarat', 365421, '1111111111'),
+(21, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabradvsvsd', 'Amreli', 'GUJARAT', 365421, '2222255555'),
+(22, 1, 'Rixit Dobaeriya', 'Addresssdvsdvsd', 'Surat', 'Gujarat', 365421, '1111111111'),
+(23, 1, 'Rixit Dobaeriya', 'Addresssdvsdvsd', 'Surat', 'Gujarat', 365421, '1111111111'),
+(24, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabradvdvsv', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(25, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabrasdvsdv', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(26, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabradvdvsv', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(27, 1, 'Dobariya Rixit', 'Kotdapitha\r\nBabrasdvsdv', 'Amreli', 'GUJARAT', 365421, '8732965892'),
+(28, 1, 'Rixit Dobaeriya', 'Addresssdvsdvsd', 'Surat', 'Gujarat', 365421, '1111111111');
 
 -- --------------------------------------------------------
 
@@ -114,11 +130,12 @@ CREATE TABLE `cart_details_tbl` (
 --
 
 INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
+(6, 9, 2),
 (6, 2, 3),
-(7, 10, 1),
 (7, 1, 3),
 (7, 3, 8),
-(7, 2, 11);
+(7, 7, 11),
+(8, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -166,23 +183,27 @@ INSERT INTO `contact_page_details_tbl` (`Contact_Email`, `Contact_Number`) VALUE
 
 CREATE TABLE `offer_details_tbl` (
   `Offer_Id` int NOT NULL,
+  `Offer_Code` varchar(20) NOT NULL,
   `Offer_Description` text,
   `Discount` int DEFAULT NULL,
+  `Max_Discount` float NOT NULL,
   `Minimum_Order` decimal(7,2) DEFAULT NULL,
   `offer_type` int DEFAULT '1',
-  `active_status` int DEFAULT '1'
+  `active_status` int DEFAULT '1',
+  `Start_Date` datetime DEFAULT NULL,
+  `End_Date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `offer_details_tbl`
 --
 
-INSERT INTO `offer_details_tbl` (`Offer_Id`, `Offer_Description`, `Discount`, `Minimum_Order`, `offer_type`, `active_status`) VALUES
-(2, '10% Discount on orders above ₹145', 10, 145.00, 1, 1),
-(3, 'First purchase discount', 12, NULL, 2, 1),
-(4, 'Free shipping offer', NULL, 10002.00, 3, 1),
-(7, '15% Discount on orders above ₹200', 15, 200.00, 1, 1),
-(8, '20% Discount on orders above ₹300', 20, 300.00, 1, 1);
+INSERT INTO `offer_details_tbl` (`Offer_Id`, `Offer_Code`, `Offer_Description`, `Discount`, `Max_Discount`, `Minimum_Order`, `offer_type`, `active_status`, `Start_Date`, `End_Date`) VALUES
+(2, '10DISCOUNT', '10% Discount on orders above ₹145', 10, 100, 145.00, 1, 1, '2024-11-21 21:48:06', '2024-11-30 21:48:37'),
+(3, 'FIRSTORDER', 'First purchase discount', 5, 50, NULL, 2, 1, '2024-11-21 21:48:20', '2024-11-30 21:48:37'),
+(4, 'FREESHIPPING', 'Free shipping offer', NULL, 0, 300.00, 3, 1, '2024-11-21 21:48:25', '2024-11-30 21:48:37'),
+(7, '15DISCOUNT', '15% Discount on orders above ₹200', 15, 150, 200.00, 1, 1, '2024-11-14 21:48:28', '2024-11-30 21:48:37'),
+(8, '20DISCOUNT', '20% Discount on orders above ₹300', 20, 60, 300.00, 1, 1, '2024-11-21 21:48:32', '2024-11-30 21:48:37');
 
 -- --------------------------------------------------------
 
@@ -206,7 +227,8 @@ INSERT INTO `order_details_tbl` (`Order_Id`, `Product_Id`, `Quantity`, `Price`) 
 (10, 6, 10, 114.00),
 (10, 5, 32, 90.00),
 (7, 7, 10, 114.00),
-(7, 6, 5, 153.00);
+(7, 6, 5, 153.00),
+(11, 7, 10, 114.00);
 
 -- --------------------------------------------------------
 
@@ -233,7 +255,9 @@ CREATE TABLE `order_header_tbl` (
 INSERT INTO `order_header_tbl` (`Order_Id`, `User_Id`, `Order_Date`, `Order_Status`, `Billing_Address_Id`, `Shipping_Address_Id`, `Shipping_Charge`, `Total`, `Payment_Mode`) VALUES
 (7, 1, '2004-02-10 00:00:00', 'Delivered', 9, 9, 0, 1905, 'Cash on Delivery'),
 (8, 1, '2003-02-10 00:00:00', 'Pending', 10, 10, 0, 900, 'Cash on Delivery'),
-(10, 1, '2004-02-10 00:00:00', 'Pending', 12, 12, 50, 4070, 'Cash on Delivery');
+(10, 1, '2004-02-10 00:00:00', 'Pending', 12, 12, 50, 4070, 'Cash on Delivery'),
+(11, 1, '2024-11-22 05:34:53', 'Pending', 26, 27, 50, 1090, 'Online'),
+(12, 1, '2024-11-22 05:35:37', 'Pending', 28, 28, 50, 1090, 'Online');
 
 -- --------------------------------------------------------
 
@@ -275,7 +299,8 @@ INSERT INTO `product_details_tbl` (`Product_Id`, `Category_Id`, `Product_Name`, 
 (18, 1, 'Haldiram Namkeen - Moong Dal, 6x30 g Multipack', 'Haldirams Namkeen - Moong Dal', '67186aec3c6d71203930_1-haldirams-namkeen-moong-dal (1).webp', 60.00, 50.00, 10, 100, 1),
 (19, 1, 'Lite Chiwda, 6x57 g Multipack', 'Namkeen - Lite Chiwda', '67186b4bb30f91203981_1-haldirams-namkeen-lite-chiwda.webp', 60.00, 50.00, 10, 100, 1),
 (20, 1, 'GRB Butter Murukku, 500 g Pouch', 'Town Bus Butter Murukku offers a delightful blend of nostalgia and flavour. Crafted from authentic recipes and the freshest ingredients, it evokes memories of unforgettable journeys. Each bite is a journey through time, resonating with the essence of traditional South Indian snacks. Let the taste transport you to a bygone era, filled with warmth, nostalgia, and the rich culinary heritage.', '67186b789e95a900457130_1-grb-butter-murukku.webp', 60.00, 50.00, 10, 100, 1),
-(21, 1, 'Townbus Namkeen - Kodubale, 135 g', 'Townbus Savoury Snacks are made by combining the freshest of ingredients with a traditional recipie. These authentic snacks will take you down memory lane and remind you of the traditional snacks your grandma used to make with love. Townbus namkeens are perfect to relish with your evening tea or coffee. They can also be used in chaat for added flavour or to customise it as per your liking. Townbus every bite has a story.', '67186b9b560ea40123675_5-townbus-namkeen-kodubale.webp', 60.00, 50.00, 10, 100, 1);
+(21, 1, 'Townbus Namkeen - Kodubale, 135 g', 'Townbus Savoury Snacks are made by combining the freshest of ingredients with a traditional recipie. These authentic snacks will take you down memory lane and remind you of the traditional snacks your grandma used to make with love. Townbus namkeens are perfect to relish with your evening tea or coffee. They can also be used in chaat for added flavour or to customise it as per your liking. Townbus every bite has a story.', '67186b9b560ea40123675_5-townbus-namkeen-kodubale.webp', 60.00, 50.00, 10, 100, 1),
+(22, 1, 'Chocolate', 'THIS IS CHOCOLATE', '671888f9c1fddball1.png', 150.00, 100.00, 10, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -302,7 +327,8 @@ INSERT INTO `responses_tbl` (`Response_Id`, `Name`, `Email`, `Phone`, `Message`,
 (8, 'Henry Walker', 'rdobariya283@rku.ac.in', '8901234567', 'Looking forward to your reply.', NULL),
 (9, 'Ivy Martin', 'rdobariya283@rku.ac.in', '9012345678', 'This is a message from Ivy.', NULL),
 (10, 'Jack Turner', 'harshilhirani576@gmail.com', '0123456789', 'I have an inquiry about your services.', NULL),
-(11, 'Kathy Perez', 'harshilhirani576@gmail.com', '1234567891', 'Hi, I would like to get in touch.', NULL);
+(11, 'Kathy Perez', 'harshilhirani576@gmail.com', '1234567891', 'Hi, I would like to get in touch.', NULL),
+(33, 'Rixit Dobaeriya', 'rdobariya00@rku.ac.in', '8732965892', 'DEMO INQUIRYYYYYY', NULL);
 
 -- --------------------------------------------------------
 
@@ -370,11 +396,12 @@ CREATE TABLE `user_details_tbl` (
 --
 
 INSERT INTO `user_details_tbl` (`User_Id`, `User_Role_Id`, `First_Name`, `Last_Name`, `Password`, `Email`, `Mobile_No`, `Active_Status`, `Profile_Picture`) VALUES
-(1, 0, 'Rixit', 'Dobariya', 'Tpxitachi', 'rixitdobariya283@rku.ac.in', '8732965891', 1, 'default-img.png'),
+(1, 0, 'Rixit', 'Dobariya', 'Tpxitachi', 'rixitdobariya283@rku.ac.in', '8732965892', 1, '6718859c43dec_download.png'),
 (2, 0, 'Anuj', 'Jivani', 'ANUJ@111', 'janujkumar409@rku.ac.in', '8732965892', 1, 'default-img.png'),
 (8, 0, 'Dobariya', 'Rixit', 'Tpxitachi', 'rixitdobariya00@gmail.com', '8732965892', 1, 'default-img.png'),
-(11, 0, 'Rixit', 'Dobariya', 'Tpxitachi05', 'rixitdobariya05@gmail.com', '8732965892', 1, 'default-img.png'),
-(13, 1, 'Harshil', 'Hirani', 'Harshil@786', 'harshilhirani576@gmail.com', '9737074939', 1, 'default-img.png');
+(11, 0, 'Rixit', 'Dobariya', '123123123', 'rixitdobariya05@gmail.com', '8732965892', 1, 'default-img.png'),
+(13, 1, 'Harshil', 'Hirani', 'Harshil@786', 'harshilhirani576@gmail.com', '9737074939', 1, 'default-img.png'),
+(14, 0, 'Swati Do', 'Dobaeriya', 'Tpxitachi', 'dobariyaswati2@gmail.com', '8732965892', 1, '671889df2cab8_ball1.png');
 
 -- --------------------------------------------------------
 
@@ -386,6 +413,14 @@ CREATE TABLE `wishlist_details_tbl` (
   `Product_Id` int NOT NULL,
   `User_Id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist_details_tbl`
+--
+
+INSERT INTO `wishlist_details_tbl` (`Product_Id`, `User_Id`) VALUES
+(6, 1),
+(6, 2);
 
 --
 -- Indexes for dumped tables
@@ -471,7 +506,7 @@ ALTER TABLE `about_page_details_tbl`
 -- AUTO_INCREMENT for table `address_details_tbl`
 --
 ALTER TABLE `address_details_tbl`
-  MODIFY `Address_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Address_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `banner_details_tbl`
@@ -483,7 +518,7 @@ ALTER TABLE `banner_details_tbl`
 -- AUTO_INCREMENT for table `category_details_tbl`
 --
 ALTER TABLE `category_details_tbl`
-  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Category_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `offer_details_tbl`
@@ -495,19 +530,19 @@ ALTER TABLE `offer_details_tbl`
 -- AUTO_INCREMENT for table `order_header_tbl`
 --
 ALTER TABLE `order_header_tbl`
-  MODIFY `Order_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Order_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product_details_tbl`
 --
 ALTER TABLE `product_details_tbl`
-  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Product_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `responses_tbl`
 --
 ALTER TABLE `responses_tbl`
-  MODIFY `Response_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Response_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `review_details_tbl`
@@ -519,7 +554,7 @@ ALTER TABLE `review_details_tbl`
 -- AUTO_INCREMENT for table `user_details_tbl`
 --
 ALTER TABLE `user_details_tbl`
-  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `User_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
