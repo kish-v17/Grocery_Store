@@ -300,7 +300,7 @@ $result = mysqli_query($con,$query);
                 $_SESSION["discount_amount"] = $discount_amount;
                 $_SESSION["subtotal"] = $total;
                 $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
-                $_SESSION["shippsing_charge"] = $shipping_charge;
+                $_SESSION["shipping_charge"] = $shipping_charge;
 
 
             }
