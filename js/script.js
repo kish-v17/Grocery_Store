@@ -92,6 +92,19 @@ if(choice){
     });
 }
 
+function showHideForm(){
+const addBtn=document.getElementById('add-new-address');
+const billingForm=document.querySelector('.billing-details');
+const field=document.getElementById('#billingFirstName');
+    if (billingForm.style.display === 'none') {
+        billingForm.style.display = 'block';
+        addBtn.innerHTML = "Close";
+        // field.focus();
+    } else {
+        billingForm.style.display = 'none';
+        addBtn.innerHTML = "Add New Address";
+    }
+}
 
 //cart page - to change the quantity of the certain cart item
 const quantityModifier = Array.from(document.getElementsByClassName('qty-mod'));

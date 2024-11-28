@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `about_page_details_tbl` (
   `ID` int NOT NULL,
   `Content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `about_page_details_tbl`
@@ -101,7 +101,7 @@ CREATE TABLE `banner_details_tbl` (
   `Banner_Image` text NOT NULL,
   `View_Order` int NOT NULL,
   `Active_Status` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `banner_details_tbl`
@@ -166,7 +166,7 @@ INSERT INTO `category_details_tbl` (`Category_Id`, `Category_Name`) VALUES
 CREATE TABLE `contact_page_details_tbl` (
   `Contact_Email` varchar(255) DEFAULT NULL,
   `Contact_Number` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact_page_details_tbl`
@@ -192,7 +192,7 @@ CREATE TABLE `offer_details_tbl` (
   `active_status` int DEFAULT '1',
   `Start_Date` datetime DEFAULT NULL,
   `End_Date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `offer_details_tbl`
@@ -276,7 +276,7 @@ CREATE TABLE `product_details_tbl` (
   `Discount` tinyint NOT NULL,
   `stock` int NOT NULL DEFAULT '0',
   `is_active` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_details_tbl`
