@@ -236,11 +236,26 @@ if (isset($_POST['apply'])) {
                             <div>Shipping Discount:</div>
                             <div class="price">-₹<?php echo $discount_amount; ?></div>
                         </div>`;
+<<<<<<< HEAD
                     document.getElementById('total').innerHTML = `₹<?php echo $new_total + $shipping_charge - $discount_amount; ?>`;
                     document.getElementById('err').style.color = "green";
                     document.getElementById('err').innerHTML = "Offer code applied successfully";
                 </script>
         <?php
+=======
+                        document.getElementById('total').innerHTML = `₹<?php echo $new_total + $shipping_charge - $discount_amount; ?>`;
+                        document.getElementById('err').style.color = "green";
+                        document.getElementById('err').innerHTML = "Offer code applied successfully";
+                    </script>
+                    <?php
+                }
+                $_SESSION["discount_amount"] = $discount_amount;
+                $_SESSION["subtotal"] = $total;
+                $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
+                $_SESSION["shipping_charge"] = $shipping_charge;
+
+
+>>>>>>> e3b6178218b02f9cb2dcf465a4b8a48544823ac8
             }
         }
     } else {

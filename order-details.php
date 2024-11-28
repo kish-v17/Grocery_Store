@@ -1,8 +1,9 @@
 <?php include('header.php'); 
-    $query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, 
+    $order_id = $_GET["order_id"];
+    $query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, oh.Total, oh.Shipping_Charge,
     u.First_Name, u.Last_Name, u.Mobile_No, u.Email, oh.Payment_Mode, oh.Shipping_Address_Id, oh.Billing_Address_Id
     from order_header_tbl oh right join user_details_tbl u on oh.User_Id = u.User_Id 
-    where u.User_Id = ". $_SESSION["user_id"];
+    where oh.Order_Id = $order_id";
     $result = mysqli_query($con, $query);
     $order = mysqli_fetch_assoc($result);
 ?>
@@ -94,7 +95,8 @@
         </div>
     </div>
     <?php 
-        
+        $query = "select p.Product_Image, p.Product_Name, od.Quantity, od.Price from product_details_tbl p left join order_details_tbl od on p.Product_Id = od.Product_Id where od.Order_Id=" . $order["Order_Id"];
+        $result = mysqli_query($con, $query);
     ?>
     <div class="row order-border py-4 mb-4 order-item-list m-1 m-md-0 cart-table">
         <h5 class="mb-3">Items ordered</h5>
@@ -106,53 +108,38 @@
             <div class="col-4">Price</div>
             <div class="col-2 text-center">Total</div>
         </div>
+        <?php while($product = mysqli_fetch_assoc($result)){ ?>
         <div class="row m-0 border-bottom">
             <div class="col-4 p-0">
-                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate</div>
+                <img src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Chocolate image" class="image-item d-inline-block">
+                <div class="d-inline-block"><?php echo $product["Product_Name"]; ?></div>
             </div>
-            <div class="col-2 text-center">2</div>
-            <div class="col-4">₹100.00</div>
-            <div class="col-2 text-center">₹200.00</div>
+            <div class="col-2 text-center"><?php echo $product["Quantity"]; ?></div>
+            <div class="col-4">₹<?php echo number_format($product["Price"], 2); ?></div>
+            <div class="col-2 text-center">₹<?php echo number_format($product["Price"]*$product["Quantity"],2); ?></div>
         </div>
-        <div class="row m-0 border-bottom">
-            <div class="col-4 p-0">
-                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate</div>
-            </div>
-            <div class="col-2 text-center">2</div>
-            <div class="col-4">₹100.00</div>
-            <div class="col-2 text-center">₹200.00</div>
-        </div>
-        <div class="row m-0 border-bottom">
-            <div class="col-4 p-0">
-                <img src="img/items/chocolate.webp" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block">Chocolate</div>
-            </div>
-            <div class="col-2 text-center">2</div>
-            <div class="col-4">₹100.00</div>
-            <div class="col-2 text-center">₹200.00</div>
-        </div>
+        <?php } ?>
         <div class="row m-0 border-bottom py-3">
             <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey ">Subtotal</div>
-            <div class="col-2 text-center">₹600.00</div>
+            <div class="col-2 text-center">₹<?php echo number_format($order["Total"] - $order["Shipping_Charge"],2); ?></div>
         </div>
         <div class="row m-0 border-bottom py-3">
-            <div class="col-4 p-0">
+            <!-- <div class="col-4 p-0">
                 Free Shipping
                 <a href="" class="ps-5 highlight">[Change]</a>
-            </div>
+            </div> -->
+            <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey ">Shipping Charge</div>
-            <div class="col-2 text-center">₹0.00</div>
+            <div class="col-2 text-center">₹<?php echo number_format($order["Shipping_Charge"],2); ?></div>
         </div>
         <div class="row m-0 border-bottom py-3">
             <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey bold">Total</div>
-            <div class="col-2 text-center bold">₹600.00</div>
+            <div class="col-2 text-center bold">₹<?php echo number_format($order["Total"],2); ?></div>
         </div>
 
     </div>
