@@ -12,10 +12,47 @@ $result = mysqli_query($con, $query);
     </p>
 </div>
 
-<form action="" method="post" id="billingForm" class="billing-details form" onsubmit="return validateForms();">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-md-6">
+<div class="container">
+    <div class="row g-5">
+        <div class="col-md-6">
+            <div class="card border-0" style="margin-top: 20px;">
+                <div class="row">
+                    <h5>Select Shipping Address</h5>
+                    <?php
+                    $q = "select * from address_details_tbl where User_Id = '$_SESSION[user_id]'";
+                    $result_address = mysqli_query($con, $q);
+                    $i = 0;
+                    while ($r_address = mysqli_fetch_assoc($result_address)) {
+                        $fullAddress = $r_address['Full_Name'] . ',<br />' . $r_address['Phone'] . ',<br />' . $r_address['Address'] . ',<br/>' . $r_address['City'] . ',<br/>' . $r_address['State'] . ' - ' . $r_address['Pincode'];
+                    ?>
+                        <div class="col-6">
+                            <div class="col-12">
+                                <div name="address" style="border:2px solid black;height:28vh;" class="w-100 mb-2 p-2"><?php echo $fullAddress ?></div>
+
+                                <div class="d-flex justify-content-between">
+                                    <a href="edit_address.php?id=<?php echo $r_address['Address_Id']; ?>"><input type="button" class="primary-btn" style="margin-right:1vw;border:none" value="Edit"></a>
+                                    <input type="button" style="border:none" value="Select this Address" onclick="select_address(<?php echo $r_address['Address_Id']; ?>)" class="primary-btn">
+                                </div>
+                            </div>
+                            <?php
+                            $i++;
+
+                            if ($i % 2 == 0) {
+
+                                echo "<br><br>";
+                            }
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" id="add-new-address" onclick="showHideForm();" class="btn-msg mt-2">Add New Address</button>
+                </div>
+            </div>
+
+            <form action="" method="post" id="billingForm" class="billing-details form" style="display:none !important" onsubmit="return validateForms();">
                 <div class="mb-4">
                     <h2 class="mb-4">Billing Details</h2>
                     <div class="row gx-2 gy-3">
@@ -58,14 +95,11 @@ $result = mysqli_query($con, $query);
                             <input name="billingPhone" type="text" id="billingPhone" class="w-100" placeholder="Phone Number">
                             <p id="billingPhoneError" class="error"></p>
                         </div>
+
                         <div class="col-12">
                             <div>
-                                <input type="checkbox" id="confirmation">
-                                <label for="confirmation" class="form-label ms-1">Save this information for faster check-out next time</label>
-                            </div>
-                            <div>
                                 <input name="add-shipping-address" type="checkbox" id="choice">
-                                <label for="choice" class="form-label ms-1">Do you want to add shipping address?</label>
+                                <label for="choice" class="form-label ms-1">Prefer a different address for shipping?</label>
                             </div>
                         </div>
                     </div>
@@ -116,44 +150,49 @@ $result = mysqli_query($con, $query);
                         </div>
                     </div>
                 </div>
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Save Address" name="address" class="btn-msg mt-2">
+                </div>
                 <div class="mt-4 line mb-4"></div>
+            </form>
+        </div>
+        <div class="col-md-6 font-black checkout">
+            <div class="mb-2">
+                <?php
+                while ($product = mysqli_fetch_assoc($result)) {
+                ?>
+                    <div class="d-flex align-items-center p-2">
+                        <img src="img/items/products/<?php echo $product["Product_Image"] ?>" class="checkout-image" alt="">
+                        <div class="item-name ms-2"><?php echo $product["Product_Name"] ?> x <?php echo $product["Quantity"] ?></div>
+                        <div class="price">₹<?php echo number_format($product["Price"], 2) ?></div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
-            <div class="col-md-6 font-black checkout">
-                <div class="mb-2">
-                    <?php
-                    while ($product = mysqli_fetch_assoc($result)) {
-                    ?>
-                        <div class="d-flex align-items-center p-2">
-                            <img src="img/items/products/<?php echo $product["Product_Image"] ?>" class="checkout-image" alt="">
-                            <div class="item-name ms-2"><?php echo $product["Product_Name"] ?> x <?php echo $product["Quantity"] ?></div>
-                            <div class="price">₹<?php echo number_format($product["Price"], 2) ?></div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <div class="d-flex align-items-center p-2">
-                    <div>Subtotal:</div>
-                    <div class="price">₹<?php echo number_format($_SESSION["subtotal"], 2); ?></div>
-                </div>
-                <div class="my-2 line"></div>
-                <div class="d-flex align-items-center p-2">
-                    <div>Shipping:</div>
-                    <div class="price">₹<?php echo number_format($_SESSION["shipping_charge"], 2); ?></div>
-                </div>
-                <?php if (isset($_SESSION["discount_amount"])) {
-                    echo '<div class="my-2 line"></div>
-                <div class="d-flex align-items-center p-2">
+            <div class="d-flex align-items-center p-2">
+                <div>Subtotal:</div>
+                <div class="price">₹<?php echo number_format($_SESSION["subtotal"], 2); ?></div>
+            </div>
+            <div class="my-2 line"></div>
+            <div class="d-flex align-items-center p-2">
+                <div>Shipping:</div>
+                <div class="price">₹<?php echo number_format($_SESSION["shipping_charge"], 2); ?></div>
+            </div>
+            <?php if (isset($_SESSION["discount_amount"])) {
+                echo '<div class="my-2 line"></div>
+                    <div class="d-flex align-items-center p-2">
                     <div>Discount:</div>
                     <div class="price">-₹' . number_format($_SESSION["discount_amount"], 2) . '</div>
-                </div>';
-                } ?>
-                <div class="my-2 line"></div>
-                <div class="d-flex align-items-center p-2">
-                    <div>Total:</div>
-                    <div class="price">₹<?php echo number_format($_SESSION["total"], 2); ?></div>
-                </div>
-                <div class="my-2 line"></div>
+                    </div>';
+            } ?>
+            <div class="my-2 line"></div>
+            <div class="d-flex align-items-center p-2">
+                <div>Total:</div>
+                <div class="price">₹<?php echo number_format($_SESSION["total"], 2); ?></div>
+            </div>
+            <div class="my-2 line"></div>
+            <form action="" method="post" id="checkoutForm" class="billing-details form" onsubmit="return validateForms();">
                 <div class="p-2">
                     <div class="mb-1">Payment Mode:</div>
                     <div class="mb-1"><input type="radio" name="pay-mode" id="" value="COD"> Cash On Delivery</div>
@@ -162,20 +201,20 @@ $result = mysqli_query($con, $query);
                 <div class="d-flex justify-content-end">
                     <input type="submit" value="Place Order" name="pay_now" class="btn-msg mt-2">
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</form>
+</div>
 
 <?php include('footer.php');
 
-if (isset($_POST["pay_now"])) {
+if (isset($_POST['address'])) {
     $userId = $_SESSION['user_id'];
 
     // Retrieve billing address data
     $billingFirstName = $_POST['billingFirstName'];
     $billingLastName = $_POST['billingLastName'];
-    $billingAddress = $_POST['billingAddress'] . $_POST['billingApartment'];
+    $billingAddress = $_POST['billingAddress'] . '<br />' . $_POST['billingApartment'];
     $billingCity = $_POST['billingCity'];
     $billingState = $_POST['billingState'];
     $billingPinCode = $_POST['billingPinCode'];
@@ -197,7 +236,7 @@ if (isset($_POST["pay_now"])) {
     if ($addShippingAddress) {
         $shippingFirstName = $_POST['shippingFirstName'];
         $shippingLastName = $_POST['shippingLastName'];
-        $shippingAddress = $_POST['shippingAddress'] . $_POST['shippingApartment'];
+        $shippingAddress = $_POST['shippingAddress'] . ', ' . $_POST['shippingApartment'];
         $shippingCity = $_POST['shippingCity'];
         $shippingState = $_POST['shippingState'];
         $shippingPinCode = $_POST['shippingPinCode'];
@@ -215,7 +254,12 @@ if (isset($_POST["pay_now"])) {
     } else {
         $shippingAddressId = $billingAddressId;
     }
+}
 
+
+
+
+if (isset($_POST["pay_now"])) {
     $orderDate = date('Y-m-d H:i:s'); // Current date and time
     $paymentMode = $_POST['pay-mode']; // Set default or fetch from user input
     $orderStatus = $paymentMode == 'COD' ? 'Pending' : ''; // Default order status

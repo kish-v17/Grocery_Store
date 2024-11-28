@@ -89,8 +89,8 @@ $final_total = $total + $shipping_charge;
         <a class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2" href="shop.php">Return to shop</a>
         <div class="flex flex-col">
             <div class="d-flex justify-content-end align-items-center not-hidden">
-                <form class="d-flex justify-content-end" action="cart.php" method="post" onsubmit="return validateOfferCode();">
-                    <input class="search-input" type="search" placeholder="Add offer code" size="25" name="offer_code" id="offerCodeText" value="<?php echo $_POST['offer_code']; ?>">
+                <form class="d-flex justify-content-end" action="cart.php" method="post"">
+                    <input class=" search-input" type="search" placeholder="Add offer code" size="25" name="offer_code" id="offerCodeText" value="<?php echo $_POST['offer_code']; ?>">
                     <button class="primary-btn" type="submit" name="apply">Apply</button>
                 </form>
             </div>
@@ -236,37 +236,26 @@ if (isset($_POST['apply'])) {
                             <div>Shipping Discount:</div>
                             <div class="price">-₹<?php echo $discount_amount; ?></div>
                         </div>`;
-<<<<<<< HEAD
                     document.getElementById('total').innerHTML = `₹<?php echo $new_total + $shipping_charge - $discount_amount; ?>`;
                     document.getElementById('err').style.color = "green";
                     document.getElementById('err').innerHTML = "Offer code applied successfully";
                 </script>
-        <?php
-=======
-                        document.getElementById('total').innerHTML = `₹<?php echo $new_total + $shipping_charge - $discount_amount; ?>`;
-                        document.getElementById('err').style.color = "green";
-                        document.getElementById('err').innerHTML = "Offer code applied successfully";
-                    </script>
-                    <?php
-                }
-                $_SESSION["discount_amount"] = $discount_amount;
-                $_SESSION["subtotal"] = $total;
-                $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
-                $_SESSION["shipping_charge"] = $shipping_charge;
-
-
->>>>>>> e3b6178218b02f9cb2dcf465a4b8a48544823ac8
+    <?php
             }
+            $_SESSION["discount_amount"] = $discount_amount;
+            $_SESSION["subtotal"] = $total;
+            $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
+            $_SESSION["shipping_charge"] = $shipping_charge;
         }
-    } else {
-        // Offer code does not exist
-        ?>
-        <script>
-            document.getElementById('err').style.color = "red";
-            document.getElementById('err').innerHTML = "Invalid Code";
-        </script>
-<?php
     }
+} else {
+    // Offer code does not exist
+    ?>
+    <script>
+        document.getElementById('err').style.color = "red";
+        document.getElementById('err').innerHTML = "Invalid Code";
+    </script>
+<?php
 }
 if (isset($_POST['checkout'])) {
     $_SESSION["discount_amount"] = $discount_amount;
@@ -274,5 +263,5 @@ if (isset($_POST['checkout'])) {
     $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
     $_SESSION["shipping_charge"] = $shipping_charge;
     echo "<script>
-    location.href='demo-checkout.php';</script>";
+    location.href='checkout.php';</script>";
 }
