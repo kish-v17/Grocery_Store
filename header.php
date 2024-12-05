@@ -1,7 +1,6 @@
 <?php
 include('DB/connection.php');
-if(isset($_SESSION["user_id"]) && $_SESSION['role']=="admin")
-{
+if (isset($_SESSION["user_id"]) && $_SESSION['role'] == "admin") {
     echo "<script>
         window.location.href = 'Admin';
     </script>";
@@ -42,13 +41,14 @@ $title = $title_array[$caller_file];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
     <link rel="shortcut icon" href="img/favicon.jpg" type="image/x-icon">
-    
+
 
 </head>
 <?php
-if (isset($_SESSION['user_id'])) 
-{ 
+if (isset($_SESSION['user_id'])) {
     $query = "Select First_Name, Profile_Picture from user_details_tbl where User_Id=$_SESSION[user_id]";
     $result = mysqli_query($con, $query);
     if (mysqli_num_rows($result) == 1) {
@@ -65,7 +65,7 @@ if (isset($_SESSION['user_id']))
     $wishlist_count = mysqli_fetch_array($result);
     $wishlist_count = $wishlist_count[0];
 
-    ?>
+?>
 
     <body>
         <nav id="navibar" class="navbar navbar-expand-lg navbar-light sticky-top container-fluid">
@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id']))
                     <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
                         <div class="d-flex justify-content-end align-items-center not-hidden" id="SearchSection2">
                             <form class="d-flex justify-content-end" action="search.php" onsubmit="return validateSearch();">
-                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value = "<?php echo $_GET['search']; ?>">
+                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value="<?php echo $_GET['search']; ?>">
                                 <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
@@ -103,13 +103,13 @@ if (isset($_SESSION['user_id']))
                                     <?php echo $user['First_Name']; ?>
                                 </a>
 
-                            <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="account.php">My Profile</a></li>
-                                <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
-                                <li><a class="dropdown-item" href="logout.php">Log out</a></li>
-                            </ul>
-                        </li>
-                        
+                                <ul id="pro-drop" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="account.php">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="order-history.php">Your Orders</a></li>
+                                    <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                                </ul>
+                            </li>
+
 
 
                             <div class="d-flex justify-content-end align-items-center justify-content-sm-center w-100">
@@ -184,27 +184,27 @@ if (isset($_SESSION['user_id']))
         if (isset($_COOKIE['success']) || isset($_COOKIE['error'])) {
             $message = isset($_COOKIE['success']) ? $_COOKIE['success'] : $_COOKIE['error'];
 
-    //         echo '
-    // <div class="toast-container position-fixed end-0 p-3 ">
-    //     <div class="toast align-items-center ' . (isset($_COOKIE['success']) ? 'bg-success' : 'bg-danger') . ' text-white border-0" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
-    //         <div class="d-flex">
-    //         <div class="toast-body">
-    //             ' . $message . '
-    //         </div>
-    //         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    //         </div>
-    //     </div>
-    // </div>
-    // <script>
-    //     window.onload = function() {
-    //         var myToast = document.getElementById("myToast");
-    //         var toast = new bootstrap.Toast(myToast);
-    //         toast.show();
-    //     };
-    // </script>';
-    echo '
+            //         echo '
+            // <div class="toast-container position-fixed end-0 p-3 ">
+            //     <div class="toast align-items-center ' . (isset($_COOKIE['success']) ? 'bg-success' : 'bg-danger') . ' text-white border-0" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true" id="myToast">
+            //         <div class="d-flex">
+            //         <div class="toast-body">
+            //             ' . $message . '
+            //         </div>
+            //         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            //         </div>
+            //     </div>
+            // </div>
+            // <script>
+            //     window.onload = function() {
+            //         var myToast = document.getElementById("myToast");
+            //         var toast = new bootstrap.Toast(myToast);
+            //         toast.show();
+            //     };
+            // </script>';
+            echo '
         <div class="alert ' . (isset($_COOKIE['success']) ? 'alert-success' : 'alert-danger') . '" role="alert" id="myAlert">
-            '.$message.'
+            ' . $message . '
         </div>
         <script>
             setTimeout(()=>{

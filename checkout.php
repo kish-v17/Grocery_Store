@@ -4,6 +4,35 @@ right join cart_details_tbl c on c.Product_Id = p.Product_Id where c.User_Id = '
 $result = mysqli_query($con, $query);
 
 ?>
+<script>
+    function select_address(id) {
+        $.ajax({
+            url: 'select-address.php',
+            type: 'POST',
+            data: {
+                id: id
+            },
+            success: function(response) {
+                // Display the selected address and hide other addresses
+                const addressElement = document.getElementById('d_address');
+                if (addressElement) {
+                    addressElement.innerHTML = `
+                    <div class="alert alert-success">
+                        ${response}
+                    </div>`;
+                }
+
+                // Hide the address selection container
+                document.querySelector('.addresses').style.display = 'none';
+            },
+            error: function(xhr, status, error) {
+                console.error("Error selecting address:", error);
+                alert("An error occurred while selecting the address. Please try again.");
+            }
+        });
+    }
+</script>
+
 <div class="container sitemap">
     <p>
         <a href="index.php" class="text-decoration-none dim link">Home /</a>
@@ -18,41 +47,34 @@ $result = mysqli_query($con, $query);
             <div class="card border-0" style="margin-top: 20px;">
                 <div class="row">
                     <h5>Select Shipping Address</h5>
-                    <?php
-                    $q = "select * from address_details_tbl where User_Id = '$_SESSION[user_id]'";
-                    $result_address = mysqli_query($con, $q);
-                    $i = 0;
-                    while ($r_address = mysqli_fetch_assoc($result_address)) {
-                        $fullAddress = $r_address['Full_Name'] . ',<br />' . $r_address['Phone'] . ',<br />' . $r_address['Address'] . ',<br/>' . $r_address['City'] . ',<br/>' . $r_address['State'] . ' - ' . $r_address['Pincode'];
-                    ?>
-                        <div class="col-6">
-                            <div class="col-12">
-                                <div name="address" style="border:2px solid black;height:28vh;" class="w-100 mb-2 p-2"><?php echo $fullAddress ?></div>
+                    <div class="addresses d-flex flex-wrap">
+                        <?php
+                        $q = "SELECT * FROM address_details_tbl WHERE User_Id = '$_SESSION[user_id]'";
+                        $result_address = mysqli_query($con, $q);
 
-                                <div class="d-flex justify-content-between">
-                                    <a href="edit_address.php?id=<?php echo $r_address['Address_Id']; ?>"><input type="button" class="primary-btn" style="margin-right:1vw;border:none" value="Edit"></a>
-                                    <input type="button" style="border:none" value="Select this Address" onclick="select_address(<?php echo $r_address['Address_Id']; ?>)" class="primary-btn">
+                        while ($r_address = mysqli_fetch_assoc($result_address)) {
+                            $fullAddress = $r_address['Full_Name'] . ',<br />' . $r_address['Phone'] . ',<br />' . $r_address['Address'] . ',<br/>' . $r_address['City'] . ',<br/>' . $r_address['State'] . ' - ' . $r_address['Pincode'];
+                        ?>
+                            <div class="col-md-6 mb-4"> <!-- 2 columns layout -->
+                                <div class="border p-3 h-100 d-flex flex-column justify-content-between">
+                                    <div><?php echo $fullAddress ?></div>
+                                    <button type="button" onclick="select_address(<?php echo $r_address['Address_Id']; ?>)" class="btn btn-primary mt-2">Select this Address</button>
                                 </div>
                             </div>
-                            <?php
-                            $i++;
-
-                            if ($i % 2 == 0) {
-
-                                echo "<br><br>";
-                            }
-                            ?>
-                        </div>
-                    <?php
-                    }
-                    ?>
+                        <?php } ?>
+                    </div>
+                    <div class="card mt-4 p-3 border">
+                        <h5><u>Delivery Address</u></h5>
+                        <p id="d_address"></p>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" id="add-new-address" onclick="showHideForm();" class="btn-msg mt-2">Add New Address</button>
+                    <button type="button" id="add-new-address" onclick="showHideForm()" class="btn btn-success mt-2">Add New Address</button>
                 </div>
             </div>
 
-            <form action="" method="post" id="billingForm" class="billing-details form" style="display:none !important" onsubmit="return validateForms();">
+
+            <form action="checkout.php" method="post" id="billingForm" class="billing-details form" style="display:none !important" onsubmit="return validateForms();">
                 <div class="mb-4">
                     <h2 class="mb-4">Billing Details</h2>
                     <div class="row gx-2 gy-3">
@@ -95,59 +117,6 @@ $result = mysqli_query($con, $query);
                             <input name="billingPhone" type="text" id="billingPhone" class="w-100" placeholder="Phone Number">
                             <p id="billingPhoneError" class="error"></p>
                         </div>
-
-                        <div class="col-12">
-                            <div>
-                                <input name="add-shipping-address" type="checkbox" id="choice">
-                                <label for="choice" class="form-label ms-1">Prefer a different address for shipping?</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="js-shipping-details invisible">
-                    <div class="line mb-4"></div>
-                    <h2 class="mb-4">Shipping Details</h2>
-                    <div class="row gx-2 gy-3">
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingFirstName" class="form-label d-block">First Name<span class="required">*</span></label>
-                            <input name="shippingFirstName" type="text" id="shippingFirstName" class="w-100" placeholder="First Name">
-                            <p id="shippingFirstNameError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingLastName" class="form-label d-block">Last Name<span class="required">*</span></label>
-                            <input name="shippingLastName" type="text" id="shippingLastName" class="w-100" placeholder="Last Name">
-                            <p id="shippingLastNameError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-12">
-                            <label for="shippingAddress" class="form-label d-block">Street Address<span class="required">*</span></label>
-                            <textarea name="shippingAddress" id="shippingAddress" class="w-100" rows="2" placeholder="Street Address"></textarea>
-                            <p id="shippingAddressError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-12">
-                            <label for="shippingApartment" class="form-label d-block">Apartment, Floor, etc.(Optional)</label>
-                            <textarea name="shippingApartment" id="shippingApartment" class="w-100" rows="2" placeholder="Apartment, Floor, etc."></textarea>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingCity" class="form-label d-block">City<span class="required">*</span></label>
-                            <input name="shippingCity" type="text" id="shippingCity" class="w-100" placeholder="City">
-                            <p id="shippingCityError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingState" class="form-label d-block">State<span class="required">*</span></label>
-                            <input name="shippingState" type="text" id="shippingState" class="w-100" placeholder="State">
-                            <p id="shippingStateError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingPinCode" class="form-label d-block">Pin Code<span class="required">*</span></label>
-                            <input name="shippingPinCode" type="text" id="shippingPinCode" class="w-100" placeholder="Pin Code">
-                            <p id="shippingPinCodeError" class="error"></p>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <label for="shippingPhone" class="form-label d-block">Phone<span class="required">*</span></label>
-                            <input name="shippingPhone" type="text" id="shippingPhone" class="w-100" placeholder="Phone Number">
-                            <p id="shippingPhoneError" class="error"></p>
-                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
@@ -172,12 +141,12 @@ $result = mysqli_query($con, $query);
             </div>
             <div class="d-flex align-items-center p-2">
                 <div>Subtotal:</div>
-                <div class="price">₹<?php echo number_format($_SESSION["subtotal"], 2); ?></div>
+                <div class="price">₹<?php echo number_format($_SESSION['total-pay']['subtotal'], 2); ?></div>
             </div>
             <div class="my-2 line"></div>
             <div class="d-flex align-items-center p-2">
                 <div>Shipping:</div>
-                <div class="price">₹<?php echo number_format($_SESSION["shipping_charge"], 2); ?></div>
+                <div class="price">₹<?php echo number_format($_SESSION['total-pay']['shipping_charge'], 2); ?></div>
             </div>
             <?php if (isset($_SESSION["discount_amount"])) {
                 echo '<div class="my-2 line"></div>
@@ -189,15 +158,16 @@ $result = mysqli_query($con, $query);
             <div class="my-2 line"></div>
             <div class="d-flex align-items-center p-2">
                 <div>Total:</div>
-                <div class="price">₹<?php echo number_format($_SESSION["total"], 2); ?></div>
+                <div class="price">₹<?php echo number_format($_SESSION['total-pay']['total'] - $_SESSION["discount_amount"], 2); ?></div>
             </div>
             <div class="my-2 line"></div>
-            <form action="" method="post" id="checkoutForm" class="billing-details form" onsubmit="return validateForms();">
+            <form action="" method="post" id="checkoutForm" class="form" onsubmit="return validateCheckout();">
                 <div class="p-2">
                     <div class="mb-1">Payment Mode:</div>
-                    <div class="mb-1"><input type="radio" name="pay-mode" id="" value="COD"> Cash On Delivery</div>
-                    <div><input type="radio" name="pay-mode" id="" value="Online"> Online</div>
+                    <div class="mb-1"><label><input type="radio" name="pay-mode" value="COD"> Cash On Delivery</label></div>
+                    <div><label><input type="radio" name="pay-mode" value="Online"> Online</label></div>
                 </div>
+                <div id="payModeError" class="error"></div>
                 <div class="d-flex justify-content-end">
                     <input type="submit" value="Place Order" name="pay_now" class="btn-msg mt-2">
                 </div>
@@ -207,108 +177,86 @@ $result = mysqli_query($con, $query);
 </div>
 
 <?php include('footer.php');
-
+// echo $_SESSION["discount_amount"];
+$_SESSION['checkout_initiated'] = true;
 if (isset($_POST['address'])) {
     $userId = $_SESSION['user_id'];
 
     // Retrieve billing address data
     $billingFirstName = $_POST['billingFirstName'];
     $billingLastName = $_POST['billingLastName'];
-    $billingAddress = $_POST['billingAddress'] . '<br />' . $_POST['billingApartment'];
+    $billingAddress = $_POST['billingAddress'] . ',<br />' . $_POST['billingApartment'];
     $billingCity = $_POST['billingCity'];
     $billingState = $_POST['billingState'];
     $billingPinCode = $_POST['billingPinCode'];
     $billingPhone = $_POST['billingPhone'];
 
-    $addShippingAddress = isset($_POST['add-shipping-address']) ? true : false;
 
     $billingFullName = $billingFirstName . ' ' . $billingLastName;
     $billingQuery = "INSERT INTO address_details_tbl (User_Id, Full_Name, Address, City, State, Pincode, Phone) 
                      VALUES ('$userId', '$billingFullName', '$billingAddress', '$billingCity', '$billingState', '$billingPinCode', '$billingPhone')";
 
     if (mysqli_query($con, $billingQuery)) {
-        $billingAddressId = mysqli_insert_id($con); // Get last inserted billing address ID
+        $billingAddressId = mysqli_insert_id($con);
+        echo "<script>
+    location.href='checkout.php';</script>"; // Get last inserted billing address ID
     } else {
         echo  mysqli_error($con);
     }
-
-    // Handle shipping address if "same as billing" is unchecked
-    if ($addShippingAddress) {
-        $shippingFirstName = $_POST['shippingFirstName'];
-        $shippingLastName = $_POST['shippingLastName'];
-        $shippingAddress = $_POST['shippingAddress'] . ', ' . $_POST['shippingApartment'];
-        $shippingCity = $_POST['shippingCity'];
-        $shippingState = $_POST['shippingState'];
-        $shippingPinCode = $_POST['shippingPinCode'];
-        $shippingPhone = $_POST['shippingPhone'];
-
-        $shippingFullName = $shippingFirstName . ' ' . $shippingLastName;
-        $shippingQuery = "INSERT INTO address_details_tbl (User_Id, Full_Name, Address, City, State, Pincode, Phone) 
-                          VALUES ('$userId', '$shippingFullName', '$shippingAddress', '$shippingCity', '$shippingState', '$shippingPinCode', '$shippingPhone')";
-
-        if (mysqli_query($con, $shippingQuery)) {
-            $shippingAddressId = mysqli_insert_id($con); // Get last inserted shipping address ID
-        } else {
-            echo  mysqli_error($con);
-        }
-    } else {
-        $shippingAddressId = $billingAddressId;
-    }
 }
 
-
-
-
 if (isset($_POST["pay_now"])) {
+    $userId = $_SESSION['user_id'];
     $orderDate = date('Y-m-d H:i:s'); // Current date and time
     $paymentMode = $_POST['pay-mode']; // Set default or fetch from user input
     $orderStatus = $paymentMode == 'COD' ? 'Pending' : ''; // Default order status
-    $shippingCharge = $_SESSION["shipping_charge"];
-    $total = $_SESSION["total"];
+    $shippingCharge = $_SESSION['total-pay']['shipping_charge'];
+    $total_amount = $_SESSION['total-pay']['total'] - $_SESSION["discount_amount"];
     if ($paymentMode == 'Online') {
         echo "<script>
     location.href='payment-page.php';</script>";
-    }
-    // Insert Order into order_header_tbl
-    $orderQuery = "INSERT INTO order_header_tbl 
-                   (User_Id, Order_Date, Order_Status, Billing_Address_Id, Shipping_Address_Id, Shipping_Charge, Total, Payment_Mode) 
-                   VALUES ('$userId', '$orderDate', '$orderStatus', '$billingAddressId', '$shippingAddressId', '$shippingCharge', '$total', '$paymentMode')";
-
-    if (mysqli_query($con, $orderQuery)) {
-        $orderId = mysqli_insert_id($con); // Get the last inserted Order ID
     } else {
-        die("Error inserting order: " . mysqli_error($con));
-    }
+        // Insert Order into order_header_tbl
+        $orderQuery = "INSERT INTO order_header_tbl 
+                   (User_Id, Order_Date, Order_Status,Del_Address_Id, Shipping_Charge, Total, Payment_Mode) 
+                   VALUES ('$userId', '$orderDate', '$orderStatus', '$_SESSION[add_id]', '$shippingCharge', '$total_amount', '$paymentMode')";
 
-    // Fetch Products from the Cart and Insert into order_details_tbl
-    $cartQuery = "SELECT c.Product_Id, c.Quantity, 
+        if (mysqli_query($con, $orderQuery)) {
+            $orderId = mysqli_insert_id($con); // Get the last inserted Order ID
+        } else {
+            die("Error inserting order: " . mysqli_error($con));
+        }
+
+        // Fetch Products from the Cart and Insert into order_details_tbl
+        $cartQuery = "SELECT c.Product_Id, c.Quantity, 
                          (p.Sale_Price - p.Sale_Price * p.Discount / 100) as Price 
                   FROM cart_details_tbl c
                   INNER JOIN product_details_tbl p ON c.Product_Id = p.Product_Id
                   WHERE c.User_Id = '$userId'";
 
-    $cartResult = mysqli_query($con, $cartQuery);
+        $cartResult = mysqli_query($con, $cartQuery);
 
-    while ($cartRow = mysqli_fetch_assoc($cartResult)) {
-        $productId = $cartRow['Product_Id'];
-        $quantity = $cartRow['Quantity'];
-        $price = $cartRow['Price'];
+        while ($cartRow = mysqli_fetch_assoc($cartResult)) {
+            $productId = $cartRow['Product_Id'];
+            $quantity = $cartRow['Quantity'];
+            $price = $cartRow['Price'];
 
-        $orderDetailsQuery = "INSERT INTO order_details_tbl 
+            $orderDetailsQuery = "INSERT INTO order_details_tbl 
                               (Order_Id, Product_Id, Quantity, Price) 
                               VALUES ('$orderId', '$productId', '$quantity', '$price')";
 
-        if (!mysqli_query($con, $orderDetailsQuery)) {
-            die("Error inserting order details: " . mysqli_error($con));
+            if (!mysqli_query($con, $orderDetailsQuery)) {
+                die("Error inserting order details: " . mysqli_error($con));
+            }
         }
-    }
 
-    // Clear the cart after placing the order
-    $clearCartQuery = "DELETE FROM cart_details_tbl WHERE User_Id = '$userId'";
-    if (!mysqli_query($con, $clearCartQuery)) {
-        die("Error clearing cart: " . mysqli_error($con));
-    }
+        // Clear the cart after placing the order
+        $clearCartQuery = "DELETE FROM cart_details_tbl WHERE User_Id = '$userId'";
+        if (!mysqli_query($con, $clearCartQuery)) {
+            die("Error clearing cart: " . mysqli_error($con));
+        }
 
-    echo "<script>
+        echo "<script>
     location.href='order-success.php';</script>";
+    }
 }

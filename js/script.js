@@ -55,7 +55,8 @@ function validateResetPasswordForm() {
 }
 
 // account page
-const menuItems = document.querySelectorAll('.menu-item');
+if (typeof menuItems === 'undefined') {
+    const menuItems = document.querySelectorAll('.menu-item');
 menuItems.forEach(menuItem=>{
     
     menuItem.addEventListener('click',function(){
@@ -71,8 +72,10 @@ menuItems.forEach(menuItem=>{
         });
     });
 });
+}
 
 //for printing my profile section by default on account page
+if (typeof profile === 'undefined') {
 const profile = document.querySelector('#my-profile');
 if(profile)
     profile.classList.remove('invisible');
@@ -91,15 +94,14 @@ if(choice){
         }
     });
 }
+}
 
 function showHideForm(){
 const addBtn=document.getElementById('add-new-address');
 const billingForm=document.querySelector('.billing-details');
-const field=document.getElementById('#billingFirstName');
     if (billingForm.style.display === 'none') {
         billingForm.style.display = 'block';
         addBtn.innerHTML = "Close";
-        // field.focus();
     } else {
         billingForm.style.display = 'none';
         addBtn.innerHTML = "Add New Address";
@@ -107,6 +109,7 @@ const field=document.getElementById('#billingFirstName');
 }
 
 //cart page - to change the quantity of the certain cart item
+if (typeof quantityModifier === 'undefined') {
 const quantityModifier = Array.from(document.getElementsByClassName('qty-mod'));
 
 if(quantityModifier && quantityModifier.length>0){
@@ -142,7 +145,7 @@ if(quantityModifier && quantityModifier.length>0){
         });
     });
 }
-
+}
 // product details page
 function selectQuantity(selectedDiv, value) {
     const quantities = document.querySelectorAll('.quantity div');
@@ -732,6 +735,26 @@ function validateForms() {
 
     return isValid;
 }
+function validateCheckout() {
+    let isValid = true;
+    document.getElementById('payModeError').innerText = '';
+    const paymentModes = document.getElementsByName('pay-mode');
+    let selected = false;
+    for (let i = 0; i < paymentModes.length; i++) {
+        if (paymentModes[i].checked) {
+            selected = true;
+            break;
+        }
+    }
+    if (!selected) {
+        document.getElementById('payModeError').innerText = 'Please select a payment mode.';
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+
 function validateReviewForm() {
     let isValid = true;
 
@@ -752,17 +775,28 @@ function validateReviewForm() {
 
     return isValid;
 }
-document.querySelector('#collapse-btn').addEventListener('click',function(){
-    if(this.classList.contains('collapsed')){
-        document.querySelector('#SearchSection').classList.add('hidden');
-        document.querySelector('#SearchSection').classList.remove('not-hidden');
-        document.querySelector('#SearchSectio2').classList.add('hidden');
-        document.querySelector('#SearchSection2').classList.remove('not-hidden');
+
+document.addEventListener('DOMContentLoaded', function() {
+    const collapseBtn = document.querySelector('#collapse-btn');
+    
+    if (collapseBtn) {  // Ensure the element exists
+      collapseBtn.addEventListener('click', function() {
+        if (this.classList.contains('collapsed')) {
+          document.querySelector('#SearchSection').classList.add('hidden');
+          document.querySelector('#SearchSection').classList.remove('not-hidden');
+          document.querySelector('#SearchSection2').classList.add('hidden');
+          document.querySelector('#SearchSection2').classList.remove('not-hidden');
+        } else {
+          document.querySelector('#SearchSection').classList.remove('hidden');
+          document.querySelector('#SearchSection').classList.add('not-hidden');
+          document.querySelector('#SearchSection2').classList.remove('hidden');
+          document.querySelector('#SearchSection2').classList.add('not-hidden');
+        }
+      });
+    } else {
+      console.error('Element with ID "collapse-btn" not found');
     }
-    else{
-        document.querySelector('#SearchSection').classList.remove('hidden');
-        document.querySelector('#SearchSection').classList.add('not-hidden');
-        document.querySelector('#SearchSection2').classList.remove('hidden');
-        document.querySelector('#SearchSection2').classList.add('not-hidden');
-    }
-});
+  });
+  
+
+

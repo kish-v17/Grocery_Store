@@ -1,11 +1,11 @@
-<?php include('header.php'); 
-    $order_id = $_GET["order_id"];
-    $query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, oh.Total, oh.Shipping_Charge,
-    u.First_Name, u.Last_Name, u.Mobile_No, u.Email, oh.Payment_Mode, oh.Shipping_Address_Id, oh.Billing_Address_Id
+<?php include('header.php');
+$order_id = $_GET["order_id"];
+$query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, oh.Total, oh.Shipping_Charge,
+    u.First_Name, u.Last_Name, u.Mobile_No, u.Email, oh.Payment_Mode, oh.Del_Address_Id
     from order_header_tbl oh right join user_details_tbl u on oh.User_Id = u.User_Id 
-    where oh.Order_Id = $order_id";
-    $result = mysqli_query($con, $query);
-    $order = mysqli_fetch_assoc($result);
+    where oh.Order_Id = '$order_id'";
+$result = mysqli_query($con, $query);
+$order = mysqli_fetch_assoc($result);
 ?>
 
 <div class="container sitemap">
@@ -18,7 +18,7 @@
         <div class="col-6">
             <h4 class="mb-2">Order# <?php echo $order["Order_Id"]; ?></h4>
             <div class="order-status mb-3">
-            <?php echo $order["Order_Status"]; ?>
+                <?php echo $order["Order_Status"]; ?>
             </div>
             <div class="order-date">
                 Placed on: <?php echo $order["Order_Date"]; ?>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-7">
                         <p><?php echo $order["First_Name"] . $order["Last_Name"]; ?></p>
-                        <p>+91 <?php echo $order["Mobile_No"]?></p>
+                        <p>+91 <?php echo $order["Mobile_No"] ?></p>
                         <p class="text-break"><?php echo $order["Email"]; ?></p>
                         <p><?php echo $order["Payment_Mode"]; ?></p>
                     </div>
@@ -57,34 +57,29 @@
             </div>
         </div>
         <?php
-            $query = "select * from address_details_tbl where Address_Id=". $order["Shipping_Address_Id"];
-            $result = mysqli_query($con, $query);
-            $shipping_address = mysqli_fetch_assoc($result);
+        $query = "select * from address_details_tbl where Address_Id=$order[Del_Address_Id]";
+        $result = mysqli_query($con, $query);
+        $billing_address = mysqli_fetch_assoc($result);
         ?>
         <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Shipping Address</h5>
                 <address class="address-book">
-                    <p><?php echo $shipping_address["Full_Name"]; ?></p>
-                    <p> Street: <?php echo $shipping_address["Address"]; ?></p>
-                    <p> City: <?php echo $shipping_address["City"]; ?></p>
-                    <p> State:<?php echo $shipping_address["State"]; ?></p>
-                    <p> Pin code: <?php echo $shipping_address["Pincode"]; ?></p>
-                    <p> Phone Number: +91 <?php echo $shipping_address["Phone"]; ?></p>
+                    <p><?php echo $billing_address["Full_Name"]; ?></p>
+                    <p> Street: <?php echo $billing_address["Address"]; ?></p>
+                    <p> City: <?php echo $billing_address["City"]; ?></p>
+                    <p> State:<?php echo $billing_address["State"]; ?></p>
+                    <p> Pin code: <?php echo $billing_address["Pincode"]; ?></p>
+                    <p> Phone Number: +91 <?php echo $billing_address["Phone"]; ?></p>
                 </address>
             </div>
         </div>
-        <?php
-            $query = "select * from address_details_tbl where Address_Id=". $order["Billing_Address_Id"];
-            $result = mysqli_query($con, $query);
-            $billing_address = mysqli_fetch_assoc($result);
-        ?>
         <div class="col-md-4 col-sm-6 col-12 mb-2">
             <div class="order-border p-3">
                 <h5 class="mb-3">Billing Address</h5>
 
                 <address class="address-book">
-                <p><?php echo $billing_address["Full_Name"]; ?></p>
+                    <p><?php echo $billing_address["Full_Name"]; ?></p>
                     <p> Street: <?php echo $billing_address["Address"]; ?></p>
                     <p> City: <?php echo $billing_address["City"]; ?></p>
                     <p> State:<?php echo $billing_address["State"]; ?></p>
@@ -94,9 +89,9 @@
             </div>
         </div>
     </div>
-    <?php 
-        $query = "select p.Product_Image, p.Product_Name, od.Quantity, od.Price from product_details_tbl p left join order_details_tbl od on p.Product_Id = od.Product_Id where od.Order_Id=" . $order["Order_Id"];
-        $result = mysqli_query($con, $query);
+    <?php
+    $query = "select p.Product_Image, p.Product_Name, od.Quantity, od.Price from product_details_tbl p left join order_details_tbl od on p.Product_Id = od.Product_Id where od.Order_Id=" . $order["Order_Id"];
+    $result = mysqli_query($con, $query);
     ?>
     <div class="row order-border py-4 mb-4 order-item-list m-1 m-md-0 cart-table">
         <h5 class="mb-3">Items ordered</h5>
@@ -108,22 +103,22 @@
             <div class="col-4">Price</div>
             <div class="col-2 text-center">Total</div>
         </div>
-        <?php while($product = mysqli_fetch_assoc($result)){ ?>
-        <div class="row m-0 border-bottom">
-            <div class="col-4 p-0">
-                <img src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Chocolate image" class="image-item d-inline-block">
-                <div class="d-inline-block"><?php echo $product["Product_Name"]; ?></div>
+        <?php while ($product = mysqli_fetch_assoc($result)) { ?>
+            <div class="row m-0 border-bottom">
+                <div class="col-4 p-0">
+                    <img src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Chocolate image" class="image-item d-inline-block">
+                    <div class="d-inline-block"><?php echo $product["Product_Name"]; ?></div>
+                </div>
+                <div class="col-2 text-center"><?php echo $product["Quantity"]; ?></div>
+                <div class="col-4">₹<?php echo number_format($product["Price"], 2); ?></div>
+                <div class="col-2 text-center">₹<?php echo number_format($product["Price"] * $product["Quantity"], 2); ?></div>
             </div>
-            <div class="col-2 text-center"><?php echo $product["Quantity"]; ?></div>
-            <div class="col-4">₹<?php echo number_format($product["Price"], 2); ?></div>
-            <div class="col-2 text-center">₹<?php echo number_format($product["Price"]*$product["Quantity"],2); ?></div>
-        </div>
         <?php } ?>
         <div class="row m-0 border-bottom py-3">
             <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey ">Subtotal</div>
-            <div class="col-2 text-center">₹<?php echo number_format($order["Total"] - $order["Shipping_Charge"],2); ?></div>
+            <div class="col-2 text-center">₹<?php echo number_format($order["Total"] - $order["Shipping_Charge"], 2); ?></div>
         </div>
         <div class="row m-0 border-bottom py-3">
             <!-- <div class="col-4 p-0">
@@ -133,13 +128,13 @@
             <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey ">Shipping Charge</div>
-            <div class="col-2 text-center">₹<?php echo number_format($order["Shipping_Charge"],2); ?></div>
+            <div class="col-2 text-center">₹<?php echo number_format($order["Shipping_Charge"], 2); ?></div>
         </div>
         <div class="row m-0 border-bottom py-3">
             <div class="col-4 p-0"></div>
             <div class="col-2 text-center"></div>
             <div class="col-4 grey bold">Total</div>
-            <div class="col-2 text-center bold">₹<?php echo number_format($order["Total"],2); ?></div>
+            <div class="col-2 text-center bold">₹<?php echo number_format($order["Total"], 2); ?></div>
         </div>
 
     </div>
