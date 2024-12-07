@@ -13,7 +13,7 @@
     ?>
     <div class="row justify-content-start">
         <?php
-            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', category.Category_Id
+            $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', category.Category_Id,product.stock
             FROM product_details_tbl AS product
             LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id
             LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id

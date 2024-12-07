@@ -35,9 +35,9 @@ $order = mysqli_fetch_assoc($result);
 
                 <div class="row customer-details">
                     <div class="col-4">
-                        <p>Name:</p>
-                        <p>Phone:</p>
-                        <p>Email:</p>
+                        <p>Name</p>
+                        <p>Phone</p>
+                        <p>Email</p>
                         <p>Payment Terms</p>
                     </div>
                     <div class="col-1">

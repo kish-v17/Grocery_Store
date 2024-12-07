@@ -53,6 +53,16 @@ function validateResetPasswordForm() {
     
     return isValid;
 }
+$(document).ready(function() {
+    // When any radio button is clicked
+    $('input[name="add"]').on('change', function() {
+        // Remove the 'selected' class from all address-box divs
+        $('.address-box').removeClass('selected');
+        
+        // Add 'selected' class to the parent div of the clicked radio button
+        $(this).closest('.address-box').addClass('selected');
+    });
+});
 
 // account page
 if (typeof menuItems === 'undefined') {
@@ -638,120 +648,36 @@ function validateForms() {
     } else {
         billingPhoneError.innerText = '';
     }
-
-    // Shipping Details Validation (only if checkbox is checked)
-    if (document.getElementById('choice').checked) {
-        let shippingFirstName = document.getElementById('shippingFirstName');
-        let shippingFirstNameError = document.getElementById('shippingFirstNameError');
-
-        if (shippingFirstName.value.trim() === '') {
-            shippingFirstNameError.innerText = 'First Name is required';
-            isValid = false;
-        } else if (shippingFirstName.value.length > 50) {
-            shippingFirstNameError.innerText = 'First Name must be 50 characters or less';
-            isValid = false;
-        } else {
-            shippingFirstNameError.innerText = '';
-        }
-
-        let shippingLastName = document.getElementById('shippingLastName');
-        let shippingLastNameError = document.getElementById('shippingLastNameError');
-
-        if (shippingLastName.value.trim() === '') {
-            shippingLastNameError.innerText = 'Last Name is required';
-            isValid = false;
-        } else if (shippingLastName.value.length > 50) {
-            shippingLastNameError.innerText = 'Last Name must be 50 characters or less';
-            isValid = false;
-        } else {
-            shippingLastNameError.innerText = '';
-        }
-
-        let shippingAddress = document.getElementById('shippingAddress');
-        let shippingAddressError = document.getElementById('shippingAddressError');
-
-        if (shippingAddress.value.trim() === '') {
-            shippingAddressError.innerText = 'Street Address is required';
-            isValid = false;
-        } else if (shippingAddress.value.length > 100) {
-            shippingAddressError.innerText = 'Street Address must be 100 characters or less';
-            isValid = false;
-        } else {
-            shippingAddressError.innerText = '';
-        }
-
-        let shippingCity = document.getElementById('shippingCity');
-        let shippingCityError = document.getElementById('shippingCityError');
-
-        if (shippingCity.value.trim() === '') {
-            shippingCityError.innerText = 'City is required';
-            isValid = false;
-        } else if (shippingCity.value.length > 50) {
-            shippingCityError.innerText = 'City must be 50 characters or less';
-            isValid = false;
-        } else {
-            shippingCityError.innerText = '';
-        }
-
-        let shippingState = document.getElementById('shippingState');
-        let shippingStateError = document.getElementById('shippingStateError');
-
-        if (shippingState.value.trim() === '') {
-            shippingStateError.innerText = 'State is required';
-            isValid = false;
-        } else if (shippingState.value.length > 50) {
-            shippingStateError.innerText = 'State must be 50 characters or less';
-            isValid = false;
-        } else {
-            shippingStateError.innerText = '';
-        }
-
-        let shippingPinCode = document.getElementById('shippingPinCode');
-        let shippingPinCodeError = document.getElementById('shippingPinCodeError');
-
-        if (shippingPinCode.value.trim() === '') {
-            shippingPinCodeError.innerText = 'Pin Code is required';
-            isValid = false;
-        } else if (!/^\d{6}$/.test(shippingPinCode.value)) {
-            shippingPinCodeError.innerText = 'Valid Pin Code is required';
-            isValid = false;
-        } else {
-            shippingPinCodeError.innerText = '';
-        }
-
-        let shippingPhone = document.getElementById('shippingPhone');
-        let shippingPhoneError = document.getElementById('shippingPhoneError');
-
-        if (shippingPhone.value.trim() === '') {
-            shippingPhoneError.innerText = 'Phone Number is required';
-            isValid = false;
-        } else if (!/^\d{10}$/.test(shippingPhone.value)) {
-            shippingPhoneError.innerText = 'Valid Phone Number is required';
-            isValid = false;
-        } else {
-            shippingPhoneError.innerText = '';
-        }
-    }
-
     return isValid;
 }
 function validateCheckout() {
-    let isValid = true;
     document.getElementById('payModeError').innerText = '';
+    document.getElementById('addressError').innerText = '';
+
     const paymentModes = document.getElementsByName('pay-mode');
-    let selected = false;
+    let selectedPayMode = false;
     for (let i = 0; i < paymentModes.length; i++) {
         if (paymentModes[i].checked) {
-            selected = true;
+            selectedPayMode = true;
             break;
         }
     }
-    if (!selected) {
+    if (!selectedPayMode) {
         document.getElementById('payModeError').innerText = 'Please select a payment mode.';
-        isValid = false;
+    }
+    const addressRadioButtons = document.getElementsByName('add');
+    let selectedAddress = false;
+    for (let i = 0; i < addressRadioButtons.length; i++) {
+        if (addressRadioButtons[i].checked) {
+            selectedAddress = true;
+            break;
+        }
+    }
+    if (!selectedAddress) {
+        document.getElementById('addressError').innerText = 'Please select an address.';
     }
 
-    return isValid;
+    return selectedPayMode && selectedAddress;
 }
 
 

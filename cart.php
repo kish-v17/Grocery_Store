@@ -55,7 +55,7 @@ $result = mysqli_query($con, $query);
                         </td>
                         <td>₹<?php echo $product["Price"]; ?></td>
                         <td>
-                            <div class="d-flex ms-5 qty-mod">
+                            <div class="d-flex justify-content-center qty-mod">
                                 <button class="number-button qty-minus">-</button>
                                 <input type="number" name="quantity" id="" value="<?php echo $product["Quantity"]; ?>">
                                 <button class="number-button qty-plus">+</button>
@@ -88,7 +88,7 @@ $final_total = $total + $shipping_charge;
         <a class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2" href="shop.php">Return to shop</a>
         <div class="flex flex-col">
             <div class="d-flex justify-content-end align-items-center not-hidden">
-                <form class="d-flex justify-content-end" action="cart.php" method="post"" onsubmit=" return validateOfferCode();">
+                <form class="d-flex justify-content-end" action="cart.php" method="post" onsubmit=" return validateOfferCode();">
                     <input class=" search-input" type="search" placeholder="Add offer code" size="25" name="offer_code" id="offerCodeText" value="<?php echo $_POST['offer_code']; ?>">
                     <button class="primary-btn" type="submit" name="apply">Apply</button>
                 </form>
@@ -96,30 +96,32 @@ $final_total = $total + $shipping_charge;
             <div id="err"></div>
         </div>
 
-        <!-- <button class="btn-msg px-sm-4 py-sm-2 px-2 py-1 mt-2">Update Cart</button> -->
     </div>
     <div class="row justify-content-end">
         <div class="col-md-5 col-sm-7">
             <div class="bold-border p-4">
-                <h5 class="mb-3">Cart Total</h5>
-                <div class="d-flex align-items-center p-2">
-                    <div>Subtotal:</div>
-                    <div class="price">₹<?php echo $total; ?></div>
-                </div>
-                <div class="my-2 line"></div>
-                <div class="d-flex align-items-center p-2">
-                    <div>Shipping:</div>
-                    <div class="price">₹<?php echo $shipping_charge; ?></div>
-                </div>
-                <div id="discount-section">
+                <form action="cart.php" method="post">
+                    <h5 class="mb-3">Cart Total</h5>
+                    <div class="d-flex align-items-center p-2">
+                        <div>Subtotal:</div>
+                        <div class="price">₹<?php echo $total; ?></div>
+                        <input type="hidden" name="sub" value="<?php echo $total; ?>" />
+                    </div>
+                    <div class="my-2 line"></div>
+                    <div class="d-flex align-items-center p-2">
+                        <div>Shipping:</div>
+                        <div class="price">₹<?php echo $shipping_charge; ?></div>
+                        <input type="hidden" name="ship" value="<?php echo $shipping_charge; ?>" />
+                    </div>
+                    <div id="discount-section">
 
-                </div>
-                <div class="my-2 line"></div>
-                <div class="d-flex align-items-center p-2">
-                    <div>Total:</div>
-                    <div class="price" id="total">₹<?php echo $final_total; ?></div>
-                </div>
-                <form action="" method="post">
+                    </div>
+                    <div class="my-2 line"></div>
+                    <div class="d-flex align-items-center p-2">
+                        <div>Total:</div>
+                        <div class="price" id="total">₹<?php echo $final_total; ?></div>
+                        <input type="hidden" name="grand-total" id="gt" value="<?php echo $final_total; ?>" />
+                    </div>
                     <div class="d-flex justify-content-center w-100 mt-3">
                         <input type="submit" class="btn-msg checkout-link text-nowrap" name="checkout" value="Proceed to checkout" />
                     </div>
@@ -146,11 +148,10 @@ function is_first_order($con)
     return $order_count < 1;
 }
 if (isset($_SESSION['checkout_initiated']) && $_SESSION['checkout_initiated'] === true) {
-    // Unset specific session variables
     unset($_SESSION['total-pay']);
     unset($_SESSION['discount_amount']);
     unset($_SESSION['new_total']);
-    unset($_SESSION['checkout_initiated']);  // Optional: Reset this flag
+    unset($_SESSION['checkout_initiated']);
 }
 
 if (isset($_POST['apply'])) {
@@ -168,12 +169,12 @@ if (isset($_POST['apply'])) {
         $discount_percentage = $offer_data['Discount'];
         $max_discount = $offer_data['Max_Discount'];
         $order_total = $offer_data['Minimum_Order'];
-        $start_date = strtotime($offer_data['Start_Date']); // Convert to Unix timestamp
-        $end_date = strtotime($offer_data['End_Date']);     // Convert to Unix timestamp
+        $start_date = strtotime($offer_data['Start_Date']);
+        $end_date = strtotime($offer_data['End_Date']);
         $current_date = time();
 
         if (!($current_date > $start_date && $current_date < $end_date)) {
-            // Offer not valid on the current date
+
 ?>
             <script>
                 document.getElementById('err').style.color = "red";
@@ -182,12 +183,7 @@ if (isset($_POST['apply'])) {
             <?php
         } else {
             if ($total >= $order_total) {
-                $discount_amount = min(($total * $discount_percentage) / 100, $max_discount);
-                $_SESSION['discount_amount'] = $discount_amount;  // Store discount in session
-                $_SESSION['new_total'] = $total - $discount_amount;
-                $_SESSION['total-pay'] = [
-                    'total' => $total - $discount_amount
-                ];
+                $discount_amount = min(($total * $discount_percentage) / 100, $max_discount);  // Store discount in session
                 $new_total = $total - $discount_amount;
             ?>
                 <script>
@@ -196,8 +192,10 @@ if (isset($_POST['apply'])) {
                             <div class="d-flex align-items-center p-2">
                                 <div>Discount:</div>
                                 <div class="price">-₹<?php echo $discount_amount; ?></div>
+                                <input type="hidden" name="discount" value="<?php echo $discount_amount; ?>" />
                             </div>`;
-                    document.getElementById('total').innerHTML = `₹<?php echo $_SESSION['new_total'] + $shipping_charge; ?>`;
+                    document.getElementById('total').innerHTML = `₹<?php echo $new_total + $shipping_charge; ?>`;
+                    document.getElementById('gt').value = `<?php echo $new_total + $shipping_charge; ?>`;
                     document.getElementById('err').style.color = "green";
                     document.getElementById('err').innerHTML = "Offer code applied successfully";
                 </script>
@@ -213,17 +211,25 @@ if (isset($_POST['apply'])) {
         }
     }
 }
+
 if (isset($_POST['checkout'])) {
-    $_SESSION['total-pay'] = [
-        'discount_amount' => $discount_amount,
-        'subtotal' => $total,
-        'total' => $total + $shipping_charge - $discount_amount,
-        'shipping_charge' => $shipping_charge
-    ];
-    // $_SESSION["discount_amount"] = $discount_amount;
-    // $_SESSION["subtotal"] = $total;
-    // $_SESSION["total"] = $total + $shipping_charge - $discount_amount;
-    // $_SESSION["shipping_charge"] = $shipping_charge;
-    echo "<script>
-    location.href='checkout.php';</script>";
+    $user_id = $_SESSION["user_id"];
+    $sql = "select * from cart_details_tbl where User_Id='$user_id'";
+    $cart = mysqli_query($con, $sql);
+    if (mysqli_num_rows($cart) > 0) {
+        $subTotal = $_POST['sub'];
+        $shipping = $_POST['ship'];
+        $discount = $_POST['discount'];
+        $grandTotal = $_POST['grand-total'];
+        $_SESSION['total-pay'] = [
+            'discount_amount' => $discount,
+            'subtotal' => $subTotal,
+            'total' => $grandTotal,
+            'shipping_charge' => $shipping
+        ];
+        echo "<script>location.href='checkout.php';</script>";
+    } else {
+        echo "<script>alert('Cart is Empty')</script>";
+        echo "<script>location.href='shop.php';</script>";
+    }
 }
