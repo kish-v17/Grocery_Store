@@ -1,5 +1,5 @@
-<?php 
-include 'header.php'; 
+<?php
+include 'header.php';
 
 // Query for banners
 $query = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE Active_Status=1 AND View_Order > 0 ORDER BY View_Order";
@@ -7,22 +7,22 @@ $result = mysqli_query($con, $query);
 $total_banners = mysqli_num_rows($result);
 ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <ol class="carousel-indicators">
-    <?php 
-    for ($i = 0; $i < $total_banners; $i++) {
-        echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="'.$i.'" class="'.($i == 0 ? 'active' : '').'"></li>';
-    }
-    ?>
-  </ol>
-  <div class="carousel-inner">
-    <?php
+    <ol class="carousel-indicators">
+        <?php
+        for ($i = 0; $i < $total_banners; $i++) {
+            echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $i . '" class="' . ($i == 0 ? 'active' : '') . '"></li>';
+        }
+        ?>
+    </ol>
+    <div class="carousel-inner">
+        <?php
         $result = mysqli_query($con, $query);
         $i = 0;
         while ($banner = mysqli_fetch_assoc($result)) {
-            ?>
+        ?>
             <div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
                 <img class="d-block w-100" src="img/banners/<?php echo $banner['Banner_Image']; ?>" alt="Banner <?php echo $i + 1; ?>">
-                
+
                 <?php if ($i == 0) { ?>
                     <div class="carousel-caption h-100 justify-content-center flex d-md-block">
                         <div class="row align-items-center flex h-100">
@@ -34,17 +34,17 @@ $total_banners = mysqli_num_rows($result);
                             </div>
                         </div>
                     </div>
-                <?php } ?>   
+                <?php } ?>
             </div>
-            <?php
+        <?php
             $i++;
         }
-    ?>
-  </div>
+        ?>
+    </div>
 
-  <?php 
-  if ($total_banners >= 2) {
-      echo '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+    <?php
+    if ($total_banners >= 2) {
+        echo '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
@@ -52,51 +52,50 @@ $total_banners = mysqli_num_rows($result);
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>';
-  }
-  ?>
+    }
+    ?>
 </div>
 
-<?php 
-    $query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1";
-    $result = mysqli_query($con, $query);
+<?php
+$query = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=1 and `active_status`=1";
+$result = mysqli_query($con, $query);
 
-    #offer 1
-    $offerQuery = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=3";
-    $offerResult = mysqli_query($con,$offerQuery);
-    $offer1 = mysqli_fetch_assoc($offerResult);
+#offer 1
+$offerQuery = "SELECT `Discount`, `Minimum_Order` FROM `offer_details_tbl` WHERE `offer_type`=3";
+$offerResult = mysqli_query($con, $offerQuery);
+$offer1 = mysqli_fetch_assoc($offerResult);
 
-    #offer2
-    $offerQuery = "SELECT `Discount`, `Discount` FROM `offer_details_tbl` WHERE `offer_type`=2";
-    $offerResult = mysqli_query($con,$offerQuery);
-    $offer2 = mysqli_fetch_assoc($offerResult);
+#offer2
+$offerQuery = "SELECT `Discount`, `Discount` FROM `offer_details_tbl` WHERE `offer_type`=2";
+$offerResult = mysqli_query($con, $offerQuery);
+$offer2 = mysqli_fetch_assoc($offerResult);
 
-    #banner1
-    $bannerQuery = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE View_Order=-1";
-    $bannerResult = mysqli_query($con, $bannerQuery);
-    $banner1 = mysqli_fetch_assoc($bannerResult);
+#banner1
+$bannerQuery = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE View_Order=-1";
+$bannerResult = mysqli_query($con, $bannerQuery);
+$banner1 = mysqli_fetch_assoc($bannerResult);
 
-    #banner2
-    $bannerQuery = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE View_Order=-2";
-    $bannerResult = mysqli_query($con, $bannerQuery);
-    $banner2 = mysqli_fetch_assoc($bannerResult);
+#banner2
+$bannerQuery = "SELECT `Banner_Image` FROM `banner_details_tbl` WHERE View_Order=-2";
+$bannerResult = mysqli_query($con, $bannerQuery);
+$banner2 = mysqli_fetch_assoc($bannerResult);
 ?>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Exclusive Offers</h2>
     <div class="row">
-        <?php   
-            while($offer = mysqli_fetch_assoc($result))
-            {
-                ?>
-                <div class="col-md-6 mb-4">
-                    <div class="card border-success shadow-sm">
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-success"><?php echo $offer['Discount']; ?>% Discount</h5>
-                            <p class="card-text">On orders above ₹<?php echo $offer['Minimum_Order']; ?></p>
-                        </div>
+        <?php
+        while ($offer = mysqli_fetch_assoc($result)) {
+        ?>
+            <div class="col-md-6 mb-4">
+                <div class="card border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success"><?php echo $offer['Discount']; ?>% Discount</h5>
+                        <p class="card-text">On orders above ₹<?php echo $offer['Minimum_Order']; ?></p>
                     </div>
                 </div>
-                <?php
-            }
+            </div>
+        <?php
+        }
         ?>
     </div>
 </div>
@@ -113,46 +112,46 @@ $total_banners = mysqli_num_rows($result);
         </div> -->
     </div>
     <?php
-        $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count'
+    $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price',COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count',product.stock
         FROM product_details_tbl AS product
         LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id
         LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id
         WHERE product.is_active = 1
         GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name,  product.Sale_Price
         ";
-             $result = mysqli_query($con, $query);
-             $total_records = mysqli_num_rows($result);
-             
-             $records_per_page = 8;
-             $total_pages = ceil($total_records / $records_per_page);
-             $page = isset($_GET['page']) ? $_GET['page'] : 1;
-             $start_from = ($page - 1) * $records_per_page;
-             
-             $query .= " LIMIT $start_from, $records_per_page ";
-             $result = mysqli_query($con, $query);
-             $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
-            //  $wishlist_result = mysqli_query($con,$query);
- 
-        include "php/products-list.php";?>
-        <div class="d-flex justify-content-end">
-               <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        
-                        <?php 
-                            if ($page > 1) {
-                                echo "<li class='page-item'><a class='page-link' href='?page=".($page - 1)."'>Previous</a></li>";
-                            }
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                                echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "'>" . $i . "</a></li>";
-                            }
-                            if ($page < $total_pages) {
-                                echo "<li class='page-item'><a class='page-link' href='?page=".($page + 1)."'>Next</a></li>";
-                            }
-                        ?>
-                    </ul>
-                </nav>
-            </div> 
-    
+    $result = mysqli_query($con, $query);
+    $total_records = mysqli_num_rows($result);
+
+    $records_per_page = 8;
+    $total_pages = ceil($total_records / $records_per_page);
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start_from = ($page - 1) * $records_per_page;
+
+    $query .= " LIMIT $start_from, $records_per_page ";
+    $result = mysqli_query($con, $query);
+    $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
+    //  $wishlist_result = mysqli_query($con,$query);
+
+    include "php/products-list.php"; ?>
+    <div class="d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+
+                <?php
+                if ($page > 1) {
+                    echo "<li class='page-item'><a class='page-link' href='?page=" . ($page - 1) . "'>Previous</a></li>";
+                }
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "'>" . $i . "</a></li>";
+                }
+                if ($page < $total_pages) {
+                    echo "<li class='page-item'><a class='page-link' href='?page=" . ($page + 1) . "'>Next</a></li>";
+                }
+                ?>
+            </ul>
+        </nav>
+    </div>
+
     <div class="row mt-5">
         <div class="col-md-6 col-6 ps-2 pe-2">
             <div class="border position-relative banner">
@@ -193,28 +192,28 @@ $total_banners = mysqli_num_rows($result);
     </div>
     <div class="row justify-content-start align-items-stretchs">
         <?php
-                  $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price', COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', COALESCE(SUM(order_tbl.Quantity), 0) AS 'Sold_Quantity' FROM product_details_tbl AS product LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS order_tbl ON product.Product_Id = order_tbl.Product_Id WHERE product.is_active = 1 GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price order by Sold_Quantity desc";
-                  $result = mysqli_query($con, $query);
-                 $total_records = mysqli_num_rows($result);
-                 
-                 $records_per_page = 8;
-                 $total_pages = ceil($total_records / $records_per_page);
-                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                 $start_from = ($page - 1) * $records_per_page;
-                 
-                 $query .= " LIMIT $start_from, $records_per_page ";
-                 $result = mysqli_query($con, $query);
-                 $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
-                //  $wishlist_result = mysqli_query($con,$query);
-     
-            while ($product = mysqli_fetch_assoc($result)) {
+        $query = "SELECT product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price,product.stock, ROUND((product.Sale_Price - product.Sale_Price * product.Discount / 100), 2) AS 'Price', COALESCE(AVG(review.Rating), 0) AS 'Average_Rating', COUNT(review.Review_Id) AS 'Review_Count', COALESCE(SUM(order_tbl.Quantity), 0) AS 'Sold_Quantity' FROM product_details_tbl AS product LEFT JOIN category_details_tbl AS category ON product.Category_Id = category.Category_Id LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS order_tbl ON product.Product_Id = order_tbl.Product_Id WHERE product.is_active = 1 GROUP BY product.Product_Id, product.Discount, product.Product_Image, product.Product_Name, category.Category_Name, product.Sale_Price order by Sold_Quantity desc";
+        $result = mysqli_query($con, $query);
+        $total_records = mysqli_num_rows($result);
+
+        $records_per_page = 8;
+        $total_pages = ceil($total_records / $records_per_page);
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start_from = ($page - 1) * $records_per_page;
+
+        $query .= " LIMIT $start_from, $records_per_page ";
+        $result = mysqli_query($con, $query);
+        $query = "select p.Product_Id, w.User_Id from product_details_tbl p left join wishlist_details_tbl w on p.Product_Id = w.Product_Id where w.User_Id=" . $_SESSION['user_id'];
+        //  $wishlist_result = mysqli_query($con,$query);
+
+        while ($product = mysqli_fetch_assoc($result)) {
         ?>
             <div class=" col-md-3 gap col-sm-4 p-2 col-6">
                 <div class="card h-100">
                     <div class="product-image">
-                            <a href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
-                                <img class="img-thumbnail p-4" style="height:300px;" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">
-                            </a>
+                        <a href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
+                            <img class="img-thumbnail p-4" style="height:300px;" src="img/items/products/<?php echo $product["Product_Image"]; ?>" alt="Card image cap">
+                        </a>
                         <div class="like"><i class="fa-regular fa-heart"></i></div>
                         <div class="label">Save <?php echo $product["Discount"]; ?>%</div>
 
@@ -223,17 +222,17 @@ $total_banners = mysqli_num_rows($result);
                     <div class="card-body product-body px-3">
                         <p class="category-name"><?php echo $product["Category_Name"]; ?></p>
                         <h6 class="card-title not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
-                            
-                            <div class="rating-section">
-                                <div class="ratings">
-                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=1?'checked':''; ?>"></span>
-                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=2?'checked':''; ?>"></span>
-                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=3?'checked':''; ?>"></span>
-                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=4?'checked':''; ?>"></span>
-                                    <span class="fa fa-star <?php echo $product['Average_Rating']>=5?'checked':''; ?>"></span>
-                                </div>
-                                <div class="review-count ps-1">(<?php echo $product['Review_Count']; ?>)</div>
+
+                        <div class="rating-section">
+                            <div class="ratings">
+                                <span class="fa fa-star <?php echo $product['Average_Rating'] >= 1 ? 'checked' : ''; ?>"></span>
+                                <span class="fa fa-star <?php echo $product['Average_Rating'] >= 2 ? 'checked' : ''; ?>"></span>
+                                <span class="fa fa-star <?php echo $product['Average_Rating'] >= 3 ? 'checked' : ''; ?>"></span>
+                                <span class="fa fa-star <?php echo $product['Average_Rating'] >= 4 ? 'checked' : ''; ?>"></span>
+                                <span class="fa fa-star <?php echo $product['Average_Rating'] >= 5 ? 'checked' : ''; ?>"></span>
                             </div>
+                            <div class="review-count ps-1">(<?php echo $product['Review_Count']; ?>)</div>
+                        </div>
                         <div class="d-flex justify-content-between align-items-end mb-2 mt-sm-2">
                             <div>
                                 <span class="price">₹<?php echo $product["Price"]; ?></span>
@@ -246,27 +245,26 @@ $total_banners = mysqli_num_rows($result);
                 </div>
             </div>
         <?php
-            }
+        }
         ?>
         <div class="d-flex justify-content-end">
-               <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        
-                        <?php 
-                            if ($page > 1) {
-                                echo "<li class='page-item'><a class='page-link' href='?page=".($page - 1)."'>Previous</a></li>";
-                            }
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                                echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "'>" . $i . "</a></li>";
-                            }
-                            if ($page < $total_pages) {
-                                echo "<li class='page-item'><a class='page-link' href='?page=".($page + 1)."'>Next</a></li>";
-                            }
-                        ?>
-                    </ul>
-                </nav>
-            </div> 
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    <?php
+                    if ($page > 1) {
+                        echo "<li class='page-item'><a class='page-link' href='?page=" . ($page - 1) . "'>Previous</a></li>";
+                    }
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "'>" . $i . "</a></li>";
+                    }
+                    if ($page < $total_pages) {
+                        echo "<li class='page-item'><a class='page-link' href='?page=" . ($page + 1) . "'>Next</a></li>";
+                    }
+                    ?>
+                </ul>
+            </nav>
+        </div>
     </div>
 </section>
 <?php include('footer.php'); ?>
-
