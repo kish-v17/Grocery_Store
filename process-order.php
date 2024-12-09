@@ -1,7 +1,6 @@
 <?php
-include('DB/connection.php');  // Your database connection file
+include('DB/connection.php');
 
-// Check if data is received via GET request
 if (isset($_GET['payment_id']) && isset($_GET['order_id']) && isset($_GET['total_amount']) && isset($_GET['uid'])) {
     $payment_id = $_GET['payment_id'];
     $order_id = $_GET['order_id'];
@@ -18,10 +17,13 @@ if (isset($_GET['payment_id']) && isset($_GET['order_id']) && isset($_GET['total
         $orderDate = date('Y-m-d H:i:s');
         $shippingCharge = $_SESSION['total-pay']['shipping_charge'];
         $total_amount = $_SESSION['total-pay']['total'];
+        $discount = $_SESSION['total-pay']['discount_amount'];
+        $addId = $_SESSION["addId"];
+
 
         $orderQuery = "INSERT INTO order_header_tbl 
         (User_Id, Order_Date, Order_Status, Del_Address_Id, Shipping_Charge, Total, Payment_Mode) 
-        VALUES ('$uid', '$orderDate', 'Completed', '$_SESSION[add_id]', '$shippingCharge', '$total_amount', 'Online')";
+        VALUES ('$uid', '$orderDate', 'Completed', '$addId', '$shippingCharge', '$total_amount', 'Online')";
 
         if (mysqli_query($con, $orderQuery)) {
             $orderId = mysqli_insert_id($con); // Get the last inserted Order ID
@@ -41,10 +43,13 @@ if (isset($_GET['payment_id']) && isset($_GET['order_id']) && isset($_GET['total
             $productId = $cartRow['Product_Id'];
             $quantity = $cartRow['Quantity'];
             $price = $cartRow['Price'];
+            $sub = $price * $quantity;
+            $dis_amount = ($sub / ($total_amount - $shippingCharge)) * $discount;
+            $actual_price = $sub - $dis_amount;
 
             $orderDetailsQuery = "INSERT INTO order_details_tbl 
-                              (Order_Id, Product_Id, Quantity, Price) 
-                              VALUES ('$orderId', '$productId', '$quantity', '$price')";
+            (Order_Id, Product_Id, Quantity, Price,Discount) 
+            VALUES ('$orderId', '$productId', '$quantity', '$actual_price','$dis_amount')";
 
             if (!mysqli_query($con, $orderDetailsQuery)) {
                 die("Error inserting order details: " . mysqli_error($con));
@@ -66,6 +71,5 @@ if (isset($_GET['payment_id']) && isset($_GET['order_id']) && isset($_GET['total
         echo 'Cart is empty.';
     }
 } else {
-    // If necessary parameters are missing, redirect to error page or show a message
     echo 'Payment details are missing.';
 }

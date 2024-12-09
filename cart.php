@@ -149,8 +149,6 @@ function is_first_order($con)
 }
 if (isset($_SESSION['checkout_initiated']) && $_SESSION['checkout_initiated'] === true) {
     unset($_SESSION['total-pay']);
-    unset($_SESSION['discount_amount']);
-    unset($_SESSION['new_total']);
     unset($_SESSION['checkout_initiated']);
 }
 

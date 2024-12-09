@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2024 at 07:06 AM
+-- Generation Time: Dec 09, 2024 at 06:40 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -108,8 +108,7 @@ INSERT INTO `cart_details_tbl` (`Product_Id`, `Quantity`, `User_Id`) VALUES
 (6, 2, 3),
 (7, 1, 3),
 (7, 3, 8),
-(7, 7, 11),
-(15, 1, 14);
+(7, 7, 11);
 
 -- --------------------------------------------------------
 
@@ -189,24 +188,17 @@ CREATE TABLE `order_details_tbl` (
   `Order_Id` int(11) NOT NULL,
   `Product_Id` int(11) NOT NULL,
   `Quantity` int(11) NOT NULL,
-  `Price` decimal(10,2) DEFAULT NULL
+  `Price` decimal(10,2) DEFAULT NULL,
+  `Discount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `order_details_tbl`
 --
 
-INSERT INTO `order_details_tbl` (`Order_Id`, `Product_Id`, `Quantity`, `Price`) VALUES
-(1, 13, 2, '108.00'),
-(2, 14, 7, '90.00'),
-(3, 14, 5, '90.00'),
-(4, 8, 4, '10.40'),
-(4, 14, 7, '90.00'),
-(5, 14, 2, '90.00'),
-(6, 13, 3, '108.00'),
-(7, 13, 4, '108.00'),
-(8, 13, 2, '108.00'),
-(8, 14, 2, '90.00');
+INSERT INTO `order_details_tbl` (`Order_Id`, `Product_Id`, `Quantity`, `Price`, `Discount`) VALUES
+(1, 8, 10, '92.44', '11.56'),
+(1, 9, 8, '120.89', '15.11');
 
 -- --------------------------------------------------------
 
@@ -230,14 +222,7 @@ CREATE TABLE `order_header_tbl` (
 --
 
 INSERT INTO `order_header_tbl` (`Order_Id`, `User_Id`, `Order_Date`, `Order_Status`, `Del_Address_Id`, `Shipping_Charge`, `Total`, `Payment_Mode`) VALUES
-(1, 14, '2024-12-07 09:46:48', 'Pending', 1, 50, 266, 'COD'),
-(2, 14, '2024-12-07 09:53:01', 'Pending', 1, 50, 680, 'COD'),
-(3, 14, '2024-12-07 10:24:10', 'Pending', 2, 50, 500, 'COD'),
-(4, 14, '2024-12-07 10:47:15', 'Pending', 1, 50, 587.28, 'COD'),
-(5, 14, '2024-12-07 10:52:09', 'Completed', 2, 50, 212, 'Online'),
-(6, 14, '2024-12-07 19:56:34', 'Pending', 2, 50, 309.2, 'COD'),
-(7, 14, '2024-12-07 19:57:22', 'Pending', 2, 50, 395.6, 'COD'),
-(8, 14, '2024-12-07 19:58:28', 'Pending', 1, 50, 446, 'COD');
+(1, 14, '2024-12-09 18:29:21', 'Completed', 2, 50, 266, 'Online');
 
 -- --------------------------------------------------------
 
@@ -264,16 +249,16 @@ CREATE TABLE `product_details_tbl` (
 
 INSERT INTO `product_details_tbl` (`Product_Id`, `Category_Id`, `Product_Name`, `Description`, `Product_Image`, `Sale_Price`, `Cost_Price`, `Discount`, `stock`, `is_active`) VALUES
 (5, 12, 'Apple', 'Crunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh appleCruappleCrunchy and fresh appleCrunchy and fresh appleCrunchy and fresh apple', '670a3f3b9ac92_shopping.webp', '100.00', '150.00', 10, 0, 0),
-(6, 1, 'Chocolate', 'Dairy milk chocolate', '670f1da018b71_chocolate2.webp', '50.00', '70.00', 15, 140, 1),
+(6, 1, 'Chocolate', 'Dairy milk chocolate', '670f1da018b71_chocolate2.webp', '50.00', '70.00', 15, 136, 1),
 (7, 23, 'Artisanal Candles', 'These candles can come in various scents, shapes, and sizes, offering customers a unique, handcrafted feel. They’re popular for home decor, gifting, and relaxation, aligning with the growing trend of self-care and wellness products. Plus, they can be made with natural ingredients, which appeals to eco-conscious consumers.', '670a3f18f1b02shopping.webp', '120.00', '100.00', 5, 100, 0),
-(8, 2, 'Ladies Fingers (Loose), 1 kg', 'Ladies Fingers is a green vegetable with a tip at the end and a lighter green head, which is inedible and to be thrown away. It tastes mild and slightly grassy. Ladies Fingers or okra is a popular vegetable that is nutritious and has a high fibre content. It contains both soluble as well as insoluble fibres and is used in various recipes.', '6718683989c3310000142_18-fresho-ladies-finger.webp', '20.00', '30.00', 48, 100, 1),
-(9, 2, 'Beans - Haricot (Loose), 1 kg', 'Haricot beans are small, oval, plump and creamy-white with a mild flavour and a smooth, buttery texture.\r\nBenefits\r\n\r\nHaricot beans are great for metabolism and regulation of the sugar level of blood.\r\nThey support the adrenal regulation function and provide an excellent source of protein and fibre.', '671868766c77240089741_3-fresho-beans-haricot.webp', '20.00', '30.00', 15, 100, 1),
+(8, 2, 'Ladies Fingers (Loose), 1 kg', 'Ladies Fingers is a green vegetable with a tip at the end and a lighter green head, which is inedible and to be thrown away. It tastes mild and slightly grassy. Ladies Fingers or okra is a popular vegetable that is nutritious and has a high fibre content. It contains both soluble as well as insoluble fibres and is used in various recipes.', '6718683989c3310000142_18-fresho-ladies-finger.webp', '20.00', '30.00', 48, 80, 1),
+(9, 2, 'Beans - Haricot (Loose), 1 kg', 'Haricot beans are small, oval, plump and creamy-white with a mild flavour and a smooth, buttery texture.\r\nBenefits\r\n\r\nHaricot beans are great for metabolism and regulation of the sugar level of blood.\r\nThey support the adrenal regulation function and provide an excellent source of protein and fibre.', '671868766c77240089741_3-fresho-beans-haricot.webp', '20.00', '30.00', 15, 84, 1),
 (10, 2, 'Brinjal - Bottle Shape (Loose), 1 kg', 'Deep purple and oval shaped bottle brinjals are glossy skinned vegetables with a white and have a soft flesh.\r\nDo not forget to check our delicious recipe - https://www.bigbasket.com/cookbook/recipes/133/baingan-bharta/\r\n', '671868aa4402510000053_19-fresho-brinjal-bottle-shape.webp', '50.00', '30.00', 15, 100, 1),
 (11, 2, 'Beans - Broad (Loose), 500 g', 'Broad beans, also known as fava beans, are a versatile and nutritious legume popular in many cuisines. These beans have a firm texture and a slightly sweet, earthy flavour, making them a favourite in both fresh and dried forms. Broad beans are commonly used in Mediterranean, Middle Eastern dishes, often featured in stews, salads, and dips.', '671868e72a86410000038_21-fresho-beans-broad.webp', '20.00', '10.00', 15, 100, 1),
 (12, 2, 'Carrot Strips and Beans Strip, 200 g', 'These beans and carrots have been chopped thinly into short strips for using in a variety of quick recipes. They are used in curries, soups, stir-fry with rice, noodles and salads.\r\nTry out this recipe at home - https://www.bigbasket.com/flavors/collections/222/ready-to-cook-vegetable-pack-recipes/\r\nProduct image shown is for representation purpose only, the actually product may vary based on season, produce & availability.', '671869110dad440010013_4-fresho-carrot-strips-and-beans-strip.webp', '20.00', '10.00', 15, 100, 1),
 (13, 2, 'Orange 2 kg', 'Oranges are a favourite snack for many people. They can be eaten out-of-hand or used as a garnish. Besides orange juices, which are very popular worldwide, there are many other culinary uses of oranges. Oranges can be made into jams, marmalades, and preserves with the addition of sugar. ', '671869a11802eorange-1-kg-product-images-o590000449-p590034326-0-202203170713.webp', '120.00', '100.00', 10, 94, 1),
 (14, 3, 'Apple Shimla 1 kg', 'Shimla Apple is a crisp, deliciously sweet or tart, and aromatic fruit which is indigenous to India. Looking for small to medium-sized culinary apples? The Shimla Apple might be just what you are after! Perfect for baking, cooking, and snacking, the Shimla Apple is not only versatile but also very tasty. ', '671869dc0fdb7apple-shimla-1-kg-product-images-o590000009-p590032630-0-202410011654.webp', '100.00', '90.00', 10, 98, 1),
-(15, 3, 'Tender Coconut Cling Wrapped (1 pc) ', 'Taste the deliciously refreshing and light liquid Coconut Water, inside the coir sac of a green coconut. Coconut water inside the coir sac is white in colour with a distinct hint of sweetness to it, like fresh natural spring water.', '67186b0b0d362_download.jfif', '50.00', '80.00', 15, 100, 1),
+(15, 3, 'Tender Coconut Cling Wrapped (1 pc) ', 'Taste the deliciously refreshing and light liquid Coconut Water, inside the coir sac of a green coconut. Coconut water inside the coir sac is white in colour with a distinct hint of sweetness to it, like fresh natural spring water.', '67186b0b0d362_download.jfif', '50.00', '80.00', 15, 96, 1),
 (16, 3, 'Papaya (Each) ', 'Papaya is a fruit that has a vibrant colour, a cream-like texture, and a sweet and exquisite taste. They are also known as Papaws or Pawpaws. It has an exotic flavour that tastes like a cross between a mango and a cantaloupe with a mixture of citrus and butter.', '67186a582c7bdpapaya-each-approx-800-g-1600-g-product-images-o590001247-p590001247-0-202409041925 (1).webp', '80.00', '50.00', 10, 0, 1),
 (17, 3, 'Banana MRL Pack 5 pcs (Approx. 600 g-700 g)', 'The banana may be a simple fruit, but it iss surprisingly versatile. The process of eating a banana is relatively simple. Buy it, peel it, and eat it- but there is so much more to it than that! ', '67186a83efeaabanana-mrl-pack-5-pcs-approx-600-g-700-g-product-images-o590008622-p590804206-0-202408070949.webp', '50.00', '30.00', 10, 100, 1),
 (18, 1, 'Haldiram Namkeen - Moong Dal, 6x30 g Multipack', 'Haldirams Namkeen - Moong Dal', '67186aec3c6d71203930_1-haldirams-namkeen-moong-dal (1).webp', '60.00', '50.00', 10, 100, 1),
@@ -510,7 +495,7 @@ ALTER TABLE `offer_details_tbl`
 -- AUTO_INCREMENT for table `order_header_tbl`
 --
 ALTER TABLE `order_header_tbl`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_details_tbl`

@@ -189,7 +189,9 @@ if (isset($_POST["pay_now"])) {
         $paymentMode = $_POST['pay-mode'];
         $orderStatus = $paymentMode == 'COD' ? 'Pending' : '';
         $shippingCharge = $_SESSION['total-pay']['shipping_charge'];
-        $total_amount = $_SESSION['total-pay']['total'] - $_SESSION['total-pay']['discount_amount'];
+        $total_amount = $_SESSION['total-pay']['total'];
+        $discount = $_SESSION['total-pay']['discount_amount'];
+
 
         $orderQuery = "INSERT INTO order_header_tbl 
                    (User_Id, Order_Date, Order_Status,Del_Address_Id, Shipping_Charge, Total, Payment_Mode) 
@@ -213,10 +215,13 @@ if (isset($_POST["pay_now"])) {
             $productId = $cartRow['Product_Id'];
             $quantity = $cartRow['Quantity'];
             $price = $cartRow['Price'];
+            $sub = $price * $quantity;
+            $dis_amount = ($sub / ($total_amount - $shippingCharge)) * $discount;
+            $actual_price = $sub - $dis_amount;
 
             $orderDetailsQuery = "INSERT INTO order_details_tbl 
-                              (Order_Id, Product_Id, Quantity, Price) 
-                              VALUES ('$orderId', '$productId', '$quantity', '$price')";
+                              (Order_Id, Product_Id, Quantity, Price,Discount) 
+                              VALUES ('$orderId', '$productId', '$quantity', '$actual_price','$dis_amount')";
 
             if (!mysqli_query($con, $orderDetailsQuery)) {
                 die("Error inserting order details: " . mysqli_error($con));
