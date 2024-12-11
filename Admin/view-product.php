@@ -1,15 +1,15 @@
-<?php include "sidebar.php" ; 
+<?php include "sidebar.php";
 
 $product_id = $_GET['product_id'];
 
-$query = "select product.`Product_Id`, product.`Category_Id`, product.`Product_Name`, product.`Description`, product.`Product_Image`, product.`Sale_Price`, product.`Cost_Price`, product.`Discount`, product.`stock` , round(avg(review.Rating)) 'Rating', round(Sale_Price-Sale_Price*Discount/100,2) 'Price',COUNT(o.Order_Id) 'Sold_Quantity' from product_details_tbl as product left join review_details_tbl as review on product.Product_Id = review.Product_Id left join order_details_tbl as o on o.Product_Id = review.Product_Id group by Product_Id having Product_Id=$product_id";
-$result = mysqli_query($con,$query);
+$query = "SELECT product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock, ROUND(AVG(review.Rating), 0) AS Rating, ROUND(product.Sale_Price - (product.Sale_Price * product.Discount) / 100, 2) AS Price, COUNT(o.Order_Id) AS Sold_Quantity FROM product_details_tbl AS product LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS o ON o.Product_Id = review.Product_Id WHERE product.Product_Id = '$product_id' GROUP BY product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock;
+";
+$result = mysqli_query($con, $query);
 $product = mysqli_fetch_assoc($result);
 
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $search_query = '';
-
 if (!empty($search)) {
     $search_query = "WHERE r.Rating LIKE '%$search%' OR r.Review LIKE '%$search%' OR p.Product_Name LIKE '%$search%' OR u.First_Name LIKE '%$search%' OR u.Last_Name LIKE '%$search%'";
 }
@@ -60,15 +60,15 @@ $result = mysqli_query($con, $query);
                     <div class="col-md-8">
                         <p><strong>Product ID:</strong> <?php echo $product["Product_Id"]; ?></p>
                         <p><strong>Product Name:</strong> <?php echo $product["Product_Name"]; ?></p>
-                        <p><strong>Average Rating:</strong>  <?php echo $product["Rating"]; ?></p>
-                        <p><strong>Description:</strong>  <?php echo $product["Description"]; ?></p>
-                        <p><strong>Stock Quantity:</strong>  <?php echo $product["stock"]; ?></p>
+                        <p><strong>Average Rating:</strong> <?php echo $product["Rating"]; ?></p>
+                        <p><strong>Description:</strong> <?php echo $product["Description"]; ?></p>
+                        <p><strong>Stock Quantity:</strong> <?php echo $product["stock"]; ?></p>
                         <p><strong>Cost Price:</strong> ₹ <?php echo $product["Cost_Price"]; ?></p>
                         <p><strong>Sale Price:</strong> ₹ <?php echo $product["Sale_Price"]; ?></p>
-                        <p><strong>Discount Percentage:</strong>  <?php echo $product["Discount"]; ?>%</p>
+                        <p><strong>Discount Percentage:</strong> <?php echo $product["Discount"]; ?>%</p>
                         <p><strong>Price After Discount:</strong> ₹<?php echo $product["Price"]; ?></p>
                         <p><strong>Category:</strong> Bakery > Desserts</p>
-                        <p><strong>Total Sales:</strong>  <?php echo $product["Sold_Quantity"]; ?></p>
+                        <p><strong>Total Sales:</strong> <?php echo $product["Sold_Quantity"]; ?></p>
                         <a class="btn btn-success" href="update-product.php?product_id=<?php echo $product["Product_Id"]; ?>">Update Product</a>
                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Product</button>
                     </div>
@@ -101,76 +101,73 @@ $result = mysqli_query($con, $query);
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    if (mysqli_num_rows($result)) 
-                    {
-                        while($review = mysqli_fetch_assoc($result))
-                        {
-                            $fullName = $review['First_Name'] . ' ' . $review['Last_Name'];
-                            ?>
-                            <tr>
-                                <td><a href="user-profile.php?user_id=<?php echo $review['User_Id']; ?>"><?php echo $fullName; ?></a></td>
-                                <td style="width: 100px;">
-                                    <span class="text-warning">
-                                        <?php
-                                        for($i = 0; $i < 5; $i++) {
-                                            echo ($i < $review['Rating']) ? "&#9733;" : "&#9734;";
-                                        }
-                                        ?>
-                                    </span>
-                                </td>
-                                <td style="max-width: 250px;" class="text-wrap"><?php echo $review['Review']; ?></td>
-                                <td>
-                                    <div class="d-flex flex-nowrap">
-                                        <button class="btn btn-primary btn-sm me-2 <?php echo isset($review['Reply_Id'])?'d-none':''; ?>" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $review['Review_Id']; ?>">Reply</button>
-                                        <a class="btn btn-info btn-sm" href="update-review.php?review_id=<?php echo $review['Review_Id']; ?>">Update</a>
-                                        <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $review['Review_Id']; ?>">Delete</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Reply Modal -->
-                            <div class="modal fade" id="replyModal<?php echo $review['Review_Id']; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="replyModalLabel">Reply to Review</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <?php
+                        if (mysqli_num_rows($result)) {
+                            while ($review = mysqli_fetch_assoc($result)) {
+                                $fullName = $review['First_Name'] . ' ' . $review['Last_Name'];
+                        ?>
+                                <tr>
+                                    <td><a href="user-profile.php?user_id=<?php echo $review['User_Id']; ?>"><?php echo $fullName; ?></a></td>
+                                    <td style="width: 100px;">
+                                        <span class="text-warning">
+                                            <?php
+                                            for ($i = 0; $i < 5; $i++) {
+                                                echo ($i < $review['Rating']) ? "&#9733;" : "&#9734;";
+                                            }
+                                            ?>
+                                        </span>
+                                    </td>
+                                    <td style="max-width: 250px;" class="text-wrap"><?php echo $review['Review']; ?></td>
+                                    <td>
+                                        <div class="d-flex flex-nowrap">
+                                            <button class="btn btn-primary btn-sm me-2 <?php echo isset($review['Reply_Id']) ? 'd-none' : ''; ?>" data-bs-toggle="modal" data-bs-target="#replyModal<?php echo $review['Review_Id']; ?>">Reply</button>
+                                            <a class="btn btn-info btn-sm" href="update-review.php?review_id=<?php echo $review['Review_Id']; ?>">Update</a>
+                                            <button class="btn btn-danger btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $review['Review_Id']; ?>">Delete</button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form action="review-reply.php" method="post">
-                                                <div class="mb-3">
-                                                    <input type="hidden" name="review_id" value="<?php echo $review["Review_Id"]; ?>">
-                                                    <label for="reviewReply" class="form-label">Your Reply</label>
-                                                    <textarea class="form-control" id="reviewReply" rows="3" name="reply"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Send Reply</button>
-                                            </form>
+                                    </td>
+                                </tr>
+                                <!-- Reply Modal -->
+                                <div class="modal fade" id="replyModal<?php echo $review['Review_Id']; ?>" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="replyModalLabel">Reply to Review</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="review-reply.php" method="post">
+                                                    <div class="mb-3">
+                                                        <input type="hidden" name="review_id" value="<?php echo $review["Review_Id"]; ?>">
+                                                        <label for="reviewReply" class="form-label">Your Reply</label>
+                                                        <textarea class="form-control" id="reviewReply" rows="3" name="reply"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Delete Modal -->
-                            <div class="modal fade" id="deleteModal<?php echo $review['Review_Id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this review? This action cannot be undone.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <a href="delete-review.php?review_id=<?php echo $review['Review_Id']; ?>" class="btn btn-danger">Delete</a>
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="deleteModal<?php echo $review['Review_Id']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this review? This action cannot be undone.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="delete-review.php?review_id=<?php echo $review['Review_Id']; ?>" class="btn btn-danger">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <?php
-                                if(isset($review['Reply_Id']))
-                                {
+                                <?php
+                                if (isset($review['Reply_Id'])) {
                                     $reply_text = $review["Reply"];
                                 ?>
                                     <tr>
@@ -222,36 +219,34 @@ $result = mysqli_query($con, $query);
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                        <?php
                                 }
                             }
-                    }
-                    else 
-                    {
-                        echo "<td colspan='4'>No reviews found!</td>";
-                    }
-                    ?>
-                </tbody>
+                        } else {
+                            echo "<td colspan='4'>No reviews found!</td>";
+                        }
+                        ?>
+                    </tbody>
 
                 </table>
                 <div class="d-flex justify-content-end">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            
-                            <?php 
-                                if ($page > 1) {
-                                    echo "<li class='page-item'><a class='page-link' href='?page=".($page - 1)."&search=$search&product_id=$product_id'>Previous</a></li>";
-                                }
-                                for ($i = 1; $i <= $total_pages; $i++) {
-                                    echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "&search=$search&product_id=$product_id'>" . $i . "</a></li>";
-                                }
-                                if ($page < $total_pages) {
-                                    echo "<li class='page-item'><a class='page-link' href='?page=".($page + 1) . "&search=$search&product_id=$product_id'>Next</a></li>";
-                                }
+
+                            <?php
+                            if ($page > 1) {
+                                echo "<li class='page-item'><a class='page-link' href='?page=" . ($page - 1) . "&search=$search&product_id=$product_id'>Previous</a></li>";
+                            }
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                echo "<li class='page-item " . ($i == $page ? 'active' : '') . "'><a class='page-link' href='?page=" . $i . "&search=$search&product_id=$product_id'>" . $i . "</a></li>";
+                            }
+                            if ($page < $total_pages) {
+                                echo "<li class='page-item'><a class='page-link' href='?page=" . ($page + 1) . "&search=$search&product_id=$product_id'>Next</a></li>";
+                            }
                             ?>
                         </ul>
                     </nav>
-                </div> 
+                </div>
 
             </div>
         </div>
@@ -274,4 +269,4 @@ $result = mysqli_query($con, $query);
             </div>
         </div>
     </div>
-<?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>

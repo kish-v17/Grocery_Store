@@ -17,7 +17,7 @@
             $order_id = $_GET['order_id']; // Retrieve the order ID from the URL
 
             // Fetch order details
-            $order_query = "SELECT oh.Order_Id, oh.Order_Date, oh.Order_Status, oh.Payment_Mode, oh.Shipping_Address_Id, oh.Billing_Address_Id, oh.Shipping_Charge, oh.Total,
+            $order_query = "SELECT oh.Order_Id, oh.Order_Date, oh.Order_Status, oh.Payment_Mode, oh.Del_Address_Id, oh.Shipping_Charge, oh.Total,
                             ud.First_Name, ud.Last_Name, ud.Email, ud.Mobile_No
                             FROM order_header_tbl oh
                             JOIN user_details_tbl ud ON oh.User_Id = ud.User_Id
@@ -26,14 +26,9 @@
             $order_data = mysqli_fetch_assoc($order_result);
 
             // Fetch shipping address details
-            $shipping_query = "SELECT * FROM address_details_tbl WHERE Address_Id = " . $order_data['Shipping_Address_Id'];
+            $shipping_query = "SELECT * FROM address_details_tbl WHERE Address_Id = " . $order_data['Del_Address_Id'];
             $shipping_result = mysqli_query($con, $shipping_query);
             $shipping_data = mysqli_fetch_assoc($shipping_result);
-
-            // Fetch billing address details
-            $billing_query = "SELECT * FROM address_details_tbl WHERE Address_Id = " . $order_data['Billing_Address_Id'];
-            $billing_result = mysqli_query($con, $billing_query);
-            $billing_data = mysqli_fetch_assoc($billing_result);
 
             // Fetch ordered items
             $items_query = "SELECT od.Product_Id, od.Quantity, od.Price, p.Product_Name, p.Product_Image
@@ -82,12 +77,12 @@
                             <h5>Billing Address</h5>
                         </div>
                         <div class="card-body">
-                            <p class="mb-1"><strong>Name:</strong> <?php echo $billing_data['Full_Name']; ?></p>
-                            <p class="mb-1"><strong>Street:</strong> <?php echo $billing_data['Address']; ?></p>
-                            <p class="mb-1"><strong>City:</strong> <?php echo $billing_data['City']; ?></p>
-                            <p class="mb-1"><strong>State:</strong> <?php echo $billing_data['State']; ?></p>
-                            <p class="mb-1"><strong>Zip Code:</strong> <?php echo $billing_data['Pincode']; ?></p>
-                            <p class="mb-0"><strong>Phone:</strong> <?php echo $billing_data['Phone']; ?></p>
+                            <p class="mb-1"><strong>Name:</strong> <?php echo $shipping_data['Full_Name']; ?></p>
+                            <p class="mb-1"><strong>Street:</strong> <?php echo $shipping_data['Address']; ?></p>
+                            <p class="mb-1"><strong>City:</strong> <?php echo $shipping_data['City']; ?></p>
+                            <p class="mb-1"><strong>State:</strong> <?php echo $shipping_data['State']; ?></p>
+                            <p class="mb-1"><strong>Zip Code:</strong> <?php echo $shipping_data['Pincode']; ?></p>
+                            <p class="mb-0"><strong>Phone:</strong> <?php echo $shipping_data['Phone']; ?></p>
                         </div>
                     </div>
                 </div>
@@ -152,4 +147,4 @@
         </div>
     </main>
 
-<?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
