@@ -1,4 +1,4 @@
-<?php include('header.php'); 
+<?php include('header.php');
 $search = $_GET['search'];
 ?>
 <div class="container ">
@@ -14,6 +14,6 @@ $search = $_GET['search'];
     include "filter.php";
     ?>
     <?php include "php/products-list.php"; ?>
-    
+
 </div>
 <?php include('footer.php'); ?>

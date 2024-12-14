@@ -98,7 +98,7 @@
     if (mysqli_num_rows($result) > 0) {
         while ($product = mysqli_fetch_assoc($result)) {
             $isOutOfStock = $product['stock'] <= 0;
-            ?>
+    ?>
             <div class="col-md-3 gap col-sm-4 p-2 col-6 mt-2">
                 <div class="card h-100 <?php echo $isOutOfStock ? 'disabled-card' : ''; ?>">
                     <div class="product-image">
@@ -117,7 +117,7 @@
                     <div class="card-body product-body px-3">
                         <a class="category-name category-link" href="categories.php?category_id=<?php echo $product["Category_Id"]; ?>"><?php echo $product["Category_Name"]; ?></a>
                         <a class="card-title category-link font-black" href="product-details.php?product_id=<?php echo $product["Product_Id"]; ?>">
-                            <h6 class="not-link text-decoration-none"><?php echo $product["Product_Name"]; ?></h6>
+                            <h6 class="not-link text-decoration-none text-wrap"><?php echo $product["Product_Name"]; ?></h6>
                         </a>
                         <div class="rating-section">
                             <div class="ratings">
@@ -143,7 +143,7 @@
                     </div>
                 </div>
             </div>
-            <?php
+        <?php
         }
         ?>
         <div class="d-flex justify-content-end">
@@ -163,7 +163,7 @@
                 </ul>
             </nav>
         </div>
-        <?php
+    <?php
     } else {
         echo "<h2>No products found.</h2>";
     }

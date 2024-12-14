@@ -137,6 +137,46 @@ input[type="checkbox"]:checked {
     border-radius: 0.7vh;
 }
 
+ /* Footer Social Buttons Container */
+
+
+  /* Individual Social Button Styles */
+  .social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  /* Button Colors */
+  .social-btn.facebook {
+    background-color: #3b5998;
+  }
+
+  .social-btn.twitter {
+    background-color: #000000;
+  }
+
+  .social-btn.instagram {
+    background-color: #e4405f;
+  }
+
+  .social-btn.mail {
+    background-color: #ea4335;
+  }
+
+  /* Hover Effect */
+  .social-btn:hover {
+    transform: translateY(-5px);
+    background-color: var(--primary);
+    color: #fff;
+  }
 @media (max-width:600px) {
     .btns{
         align-content: center;

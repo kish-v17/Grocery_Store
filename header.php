@@ -5,7 +5,7 @@ if (isset($_SESSION["user_id"]) && $_SESSION['role'] == "admin") {
         window.location.href = 'Admin';
     </script>";
 }
-error_reporting(1);
+// error_reporting(0);
 $backtrace = debug_backtrace();
 $caller_file = basename($backtrace[0]['file']);
 $title_array = array(
@@ -24,7 +24,11 @@ $title_array = array(
     "order-success.php" => "Order successful",
     "forgot-password.php" => "Forgot password?",
     "otp-page.php" => "OTP page",
-    "product-details.php" => "Chocolate"
+    "product-details.php" => "Chocolate",
+    "payment-page.php" => "Payment",
+    "categories.php" => "Categories",
+    "search.php" => "Search",
+    "order-history.php" => "Your Orders"
 );
 $title = $title_array[$caller_file];
 
@@ -92,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="d-flex justify-content-end align-items-center flex-sm-row flex-column">
                         <div class="d-flex justify-content-end align-items-center not-hidden" id="SearchSection2">
                             <form class="d-flex justify-content-end" action="search.php" onsubmit="return validateSearch();">
-                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value="<?php echo $_GET['search']; ?>">
+                                <input class="search-input" type="search" placeholder="Search for items..." size="25" id="searchBar" name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
                                 <button class="primary-btn me-3 search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>

@@ -89,7 +89,7 @@ $final_total = $total + $shipping_charge;
         <div class="flex flex-col">
             <div class="d-flex justify-content-end align-items-center not-hidden">
                 <form class="d-flex justify-content-end" action="cart.php" method="post" onsubmit=" return validateOfferCode();">
-                    <input class=" search-input" type="search" placeholder="Add offer code" size="25" name="offer_code" id="offerCodeText" value="<?php echo $_POST['offer_code']; ?>">
+                    <input class=" search-input" type="search" placeholder="Add offer code" size="25" name="offer_code" id="offerCodeText" value="<?php if (isset($_POST['offer_code'])) echo $_POST['offer_code']; ?>">
                     <button class="primary-btn" type="submit" name="apply">Apply</button>
                 </form>
             </div>

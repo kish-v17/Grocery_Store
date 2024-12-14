@@ -177,13 +177,6 @@ if(filterButton)
             item.classList.toggle('invisible');
         })
     })
-    // likeButtons = Array.from(document.getElementsByClassName('like'));
-    // likeButtons.forEach(likeButton =>{
-    //     likeButton.addEventListener('click',function(){
-    //         this.children[0].classList.remove('fa-regular');
-    //         this.children[0].classList.add('fa-solid');
-    //     });
-    // });
 }
 
 // validation

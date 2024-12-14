@@ -1,10 +1,10 @@
-<?php include('header.php'); 
-    $category_id = $_GET['category_id'];
-    $query = "select Category_Name from category_details_tbl where Category_Id = $category_id";
-    $result = mysqli_query($con, $query);
-    $category=mysqli_fetch_assoc($result);
-    $category_name = $category['Category_Name'];
-    $sitemap ="<a href='categories.php?category_id=$category_id' class='text-decoration-none dim link'>/ $category_name</a>";
+<?php include('header.php');
+$category_id = $_GET['category_id'];
+$query = "select Category_Name from category_details_tbl where Category_Id = $category_id";
+$result = mysqli_query($con, $query);
+$category = mysqli_fetch_assoc($result);
+$category_name = $category['Category_Name'];
+$sitemap = "<a href='categories.php?category_id=$category_id' class='text-decoration-none dim link'>/ $category_name</a>";
 ?>
 <div class="container ">
     <div class="row align-items-center sitemap">

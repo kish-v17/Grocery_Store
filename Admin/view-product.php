@@ -2,8 +2,7 @@
 
 $product_id = $_GET['product_id'];
 
-$query = "SELECT product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock, ROUND(AVG(review.Rating), 0) AS Rating, ROUND(product.Sale_Price - (product.Sale_Price * product.Discount) / 100, 2) AS Price, COUNT(o.Order_Id) AS Sold_Quantity FROM product_details_tbl AS product LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS o ON o.Product_Id = review.Product_Id WHERE product.Product_Id = '$product_id' GROUP BY product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock;
-";
+$query = "SELECT product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock, ROUND(AVG(review.Rating), 0) AS Rating, ROUND(product.Sale_Price - (product.Sale_Price * product.Discount) / 100, 2) AS Price, COUNT(o.Order_Id) AS Sold_Quantity FROM product_details_tbl AS product LEFT JOIN review_details_tbl AS review ON product.Product_Id = review.Product_Id LEFT JOIN order_details_tbl AS o ON o.Product_Id = review.Product_Id WHERE product.Product_Id = '$product_id' GROUP BY product.Product_Id, product.Category_Id, product.Product_Name, product.Description, product.Product_Image, product.Sale_Price, product.Cost_Price, product.Discount, product.stock";
 $result = mysqli_query($con, $query);
 $product = mysqli_fetch_assoc($result);
 

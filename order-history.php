@@ -21,7 +21,7 @@
             <td><?php echo $order["Quantity"]; ?></td>
             <td>₹<?php echo number_format($order["Total"],2); ?></td>
             <td>
-                <a class="primary-btn order-link" href="order-details.php?order_id=<?php echo $order["Order_Id"]; ?>">View Order</a>
+                <a class="primary-btn order-link" href="order-details.php?id=<?php echo $order["Order_Id"]; ?>">View Order</a>
             </td>
         </tr>
         <?php }?>

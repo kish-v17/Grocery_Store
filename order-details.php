@@ -1,5 +1,5 @@
 <?php include('header.php');
-$order_id = $_GET["order_id"];
+$order_id = $_GET["id"];
 $query = "select oh.Order_Id, oh.Order_Status, oh.Order_Date, oh.Total, oh.Shipping_Charge,
     u.First_Name, u.Last_Name, u.Mobile_No, u.Email, oh.Payment_Mode, oh.Del_Address_Id
     from order_header_tbl oh right join user_details_tbl u on oh.User_Id = u.User_Id 

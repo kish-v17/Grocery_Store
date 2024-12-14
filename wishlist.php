@@ -70,7 +70,7 @@ $result = mysqli_query($con, $query);
 </div>
 <div class="container mb-5">
     <div class="d-flex justify-content-end align-items-center cart-page mb-5">
-        <button class="btn-msg">Move all to cart</button>
+        <a class="btn-msg" href="move-all-to-cart.php">Move all to cart</a>
     </div>
 </div>
 <?php include('footer.php');

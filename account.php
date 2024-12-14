@@ -89,7 +89,7 @@ $wishResult = mysqli_query($con, $wishQuery);
                         </div>
                     </form>
                 </div>
-                <div id="address-book" class="invisible">
+                <!-- <div id="address-book" class="invisible">
                     <p class="highlight title">Address Book</p>
                     <div class="row row-cols-2 g-2">
                         <div class="col-12 col-sm-6">
@@ -144,7 +144,7 @@ $wishResult = mysqli_query($con, $wishQuery);
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div id="all-orders" class="invisible container cart-table">
                     <table class="table cart-table  text-nowrap">
                         <tr class="heading">
@@ -196,99 +196,26 @@ $wishResult = mysqli_query($con, $wishQuery);
                             echo "<td colspan='4'>No items in wishlist.</td>";
                         } ?>
                     </table>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button class="btn-msg">Move all to cart</button>
+                    <div class="text-end cart-page mb-5 mt-3">
+                        <a class="primary-btn update-btn" href="move-all-to-cart.php">Move all to cart</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container ">
-    <footer class="py-5">
-        <!-- footer will be here -->
-    </footer>
-</div>
-
-<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5 h" id="exampleModalLabel">Update Address</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" class="edit-profile form" onsubmit="return validateEditAddressForm();">
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="col-12">
-                            <label for="modalFirstName" class="form-label">First Name</label>
-                            <input type="text" class="w-100" placeholder="Your Name*" id="modalFirstName">
-                            <p id="modalFirstNameError" class="error"></p>
-                        </div>
-                        <div class="col-12">
-                            <label for="modalLastName" class="form-label">Last Name</label>
-                            <input type="text" class="w-100" placeholder="Your Last Name*" id="modalLastName">
-                            <p id="modalLastNameError" class="error"></p>
-                        </div>
-                        <div class="col-12">
-                            <label for="modalPhone" class="form-label">Phone</label>
-                            <input type="text" class="w-100" placeholder="Your Phone*" id="modalPhone">
-                            <p id="modalPhoneError" class="error"></p>
-                        </div>
-                        <div class="col-12">
-                            <label for="modalPinCode" class="form-label">Pin code</label>
-                            <input type="text" class="w-100" placeholder="Your Pin code*" id="modalPinCode">
-                            <p id="modalPinCodeError" class="error"></p>
-                        </div>
-                        <div class="col-12">
-                            <label for="modalAddress" class="form-label">Address</label>
-                            <textarea name="address" class="w-100" id="modalAddress" rows="3" placeholder="Your Address*"></textarea>
-                            <p id="modalAddressError" class="error"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="d-flex justify-content-end gap">
-                        <button class="primary-btn d" data-bs-dismiss="modal">Close</button>
-                        <input class="primary-btn" type="submit" value="Edit Address">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
-<?php include('footer.php'); ?>
+    <?php include('footer.php'); ?>
 
-<?php
+    <?php
 
-function display_orders() {}
+    if (isset($_POST['btnUpdate'])) {
 
+        $ufnm = $_POST['ufname'];
+        $ulnm = $_POST['ulname'];
+        $umob = $_POST['uphone'];
 
-
-if (isset($_POST['btnUpdate'])) {
-
-    $ufnm = $_POST['ufname'];
-    $ulnm = $_POST['ulname'];
-    $umob = $_POST['uphone'];
-
-    $sql = "UPDATE user_details_tbl SET First_Name='$ufnm',Last_Name='$ulnm',Mobile_No='$umob' WHERE User_Id='$_SESSION[user_id]'";
-    if (mysqli_query($con, $sql)) {
-        setcookie('success', 'Your Details has been updated.', time() + 5, "/");
-        echo "<script> location.replace('account.php');</script>";
-    } else {
-        setcookie('error', 'Error in Update Profile.', time() + 5, "/");
-        echo "<script> location.replace('account.php');</script>";
-    }
-}
-
-if (isset($_POST['change'])) {
-    $curr = $_POST['current'];
-    $new = $_POST['new'];
-
-    if ($curr == $user['Password']) {
-        $sql = "UPDATE user_details_tbl SET Password='$new' WHERE User_Id='$_SESSION[user_id]'";
+        $sql = "UPDATE user_details_tbl SET First_Name='$ufnm',Last_Name='$ulnm',Mobile_No='$umob' WHERE User_Id='$_SESSION[user_id]'";
         if (mysqli_query($con, $sql)) {
             setcookie('success', 'Your Details has been updated.', time() + 5, "/");
             echo "<script> location.replace('account.php');</script>";
@@ -296,10 +223,25 @@ if (isset($_POST['change'])) {
             setcookie('error', 'Error in Update Profile.', time() + 5, "/");
             echo "<script> location.replace('account.php');</script>";
         }
-    } else {
-        setcookie('error', 'Password does not matched.', time() + 5, "/");
-        echo "<script> location.replace('account.php');</script>";
     }
-}
 
-?>
+    if (isset($_POST['change'])) {
+        $curr = $_POST['current'];
+        $new = $_POST['new'];
+
+        if ($curr == $user['Password']) {
+            $sql = "UPDATE user_details_tbl SET Password='$new' WHERE User_Id='$_SESSION[user_id]'";
+            if (mysqli_query($con, $sql)) {
+                setcookie('success', 'Your Details has been updated.', time() + 5, "/");
+                echo "<script> location.replace('account.php');</script>";
+            } else {
+                setcookie('error', 'Error in Update Profile.', time() + 5, "/");
+                echo "<script> location.replace('account.php');</script>";
+            }
+        } else {
+            setcookie('error', 'Password does not matched.', time() + 5, "/");
+            echo "<script> location.replace('account.php');</script>";
+        }
+    }
+
+    ?>

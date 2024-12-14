@@ -99,12 +99,22 @@ function validateAddOfferForm() {
     let isValid = true;
 
     document.getElementById('offerDescriptionError').innerText = '';
+    document.getElementById('offerCodeError').innerText = '';
     document.getElementById('discountError').innerText = '';
+    document.getElementById('maxDiscountError').innerText = '';
     document.getElementById('minOrderError').innerText = '';
+    document.getElementById('startDateError').innerText = '';
+    document.getElementById('endDateError').innerText = '';
 
     const offerDescription = document.getElementById('offerDescription').value.trim();
     if (offerDescription === '') {
         document.getElementById('offerDescriptionError').innerText = 'Offer description is required.';
+        isValid = false;
+    }
+
+    const offerCode = document.getElementById('offerCode').value.trim();
+    if (offerCode === '') {
+        document.getElementById('offerCodeError').innerText = 'Offer code is required.';
         isValid = false;
     }
 
@@ -117,14 +127,42 @@ function validateAddOfferForm() {
         isValid = false;
     }
 
+    const maxDiscount = document.getElementById('maxDiscount').value.trim();
+    if (maxDiscount === '') {
+        document.getElementById('maxDiscountError').innerText = 'Maximum discount is required.';
+        isValid = false;
+    } else if (isNaN(maxDiscount) || maxDiscount <= 0) {
+        document.getElementById('maxDiscountError').innerText = 'Please enter a valid maximum discount amount.';
+        isValid = false;
+    }
+
     const minOrder = document.getElementById('minOrder').value.trim();
-    if (minOrder === '' || (isNaN(minOrder) || minOrder <= 0)) {
+    if (minOrder === '') {
+        document.getElementById('minOrderError').innerText = 'Minimum order amount is required.';
+        isValid = false;
+    } else if (isNaN(minOrder) || minOrder <= 0) {
         document.getElementById('minOrderError').innerText = 'Please enter a valid minimum order amount.';
+        isValid = false;
+    }
+
+    const startDate = document.getElementById('sDate').value.trim();
+    if (startDate === '') {
+        document.getElementById('startDateError').innerText = 'Start date is required.';
+        isValid = false;
+    }
+
+    const endDate = document.getElementById('eDate').value.trim();
+    if (endDate === '') {
+        document.getElementById('endDateError').innerText = 'End date is required.';
+        isValid = false;
+    } else if (startDate && endDate && new Date(endDate) < new Date(startDate)) {
+        document.getElementById('endDateError').innerText = 'End date must be after the start date.';
         isValid = false;
     }
 
     return isValid;
 }
+
 
 function removeProduct(button) {
     const productEntry = button.closest('.product-entry');

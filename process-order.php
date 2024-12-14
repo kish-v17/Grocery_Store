@@ -23,7 +23,7 @@ if (isset($_GET['payment_id']) && isset($_GET['order_id']) && isset($_GET['total
 
         $orderQuery = "INSERT INTO order_header_tbl 
         (User_Id, Order_Date, Order_Status, Del_Address_Id, Shipping_Charge, Total, Payment_Mode) 
-        VALUES ('$uid', '$orderDate', 'Completed', '$addId', '$shippingCharge', '$total_amount', 'Online')";
+        VALUES ('$uid', '$orderDate', 'Delivered', '$addId', '$shippingCharge', '$total_amount', 'Online')";
 
         if (mysqli_query($con, $orderQuery)) {
             $orderId = mysqli_insert_id($con); // Get the last inserted Order ID

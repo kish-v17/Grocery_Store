@@ -4,7 +4,6 @@ require 'vendor/autoload.php';
 use Razorpay\Api\Api;
 
 include_once("header.php");
-include_once("user_authentication.php");
 
 $q = "select * from user_details_tbl where User_Id='$_SESSION[user_id]'";
 $userData = mysqli_fetch_assoc(mysqli_query($con, $q));
@@ -116,7 +115,7 @@ try {
                                     alert("Payment Failed: " + error.error.description);
                                 },
                                 "prefill": {
-                                    "name": "<?php echo $userData['FirstName']; ?>", // Prefill customer's name (can fetch from session or database)
+                                    "name": "<?php echo $userData['First_Name']; ?>", // Prefill customer's name (can fetch from session or database)
                                     "email": "<?php echo $userData['Email']; ?>", // Prefill customer's email (can fetch from session)
                                     "contact": "<?php echo $userData['Mobile_No']; ?>" // Prefill customer's contact number
                                 },
