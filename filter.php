@@ -1,5 +1,5 @@
 <form action="" method="post">
-    <div class="invisible border p-3 row" id="filter-section">
+    <div class="invisible container border p-3 row" id="filter-section">
         <div class="col-6 col-sm-4 col-md-3 invisible mb-2">
             <h6 class="mb-2"><span>Customer Ratings</span></h6>
             <div>
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="col-6 col-sm-4 col-md-3 invisible mb-2 d-flex align-items-end justify-content-evenly">
+        <div class="col-6 col-sm-4 col-md-3 invisible mb-2 d-flex align-items-end justify-content-end">
             <input type="submit" value="Apply" name="filter-submit" class="primary-btn js-filter-btn">
         </div>
     </div>

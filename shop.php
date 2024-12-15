@@ -6,7 +6,11 @@
         </div>
         <div class="col-6 justify-content-end d-flex">
             <button class="primary-btn js-filter-btn me-3"><i class="fa-solid fa-filter pe-2"></i>Filter</button>
+            <form method="POST" action="shop.php" style="margin-right:12px">
+                <input type="submit" value="Clear Filters" name="clear_filters" class="primary-btn" />
+            </form>
         </div>
+
     </div>
     <?php
     include "filter.php";
