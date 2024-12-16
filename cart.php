@@ -158,7 +158,7 @@ if (isset($_POST['apply'])) {
     $_SESSION['offer_code'] = $offer;
     $query = "SELECT `Offer_Id`, `Offer_Code`, `Offer_Description`, `Discount`, `Max_Discount`, `Minimum_Order`, `active_status`, `Start_Date`, `End_Date` 
                   FROM `offer_details_tbl` 
-                  WHERE Offer_Code='$offer' AND active_status=1";
+                  WHERE Offer_Code='$offer'";
     $result = mysqli_query($con, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -170,8 +170,9 @@ if (isset($_POST['apply'])) {
         $start_date = strtotime($offer_data['Start_Date']);
         $end_date = strtotime($offer_data['End_Date']);
         $current_date = time();
+        $isactive = $offer_data['active_status'];
 
-        if (!($current_date > $start_date && $current_date < $end_date)) {
+        if (!$isactive) {
 
 ?>
             <script>
@@ -204,9 +205,15 @@ if (isset($_POST['apply'])) {
                     document.getElementById('err').style.color = "red";
                     document.getElementById('err').innerHTML = "To avail this offer, the cart total must be greater than ₹<?php echo $order_total; ?>.";
                 </script>
-<?php
+        <?php
             }
         }
+    } else { ?>
+        <script>
+            document.getElementById('err').style.color = "red";
+            document.getElementById('err').innerHTML = "Invalid Offer Code";
+        </script>
+<?php
     }
 }
 
